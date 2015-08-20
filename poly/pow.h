@@ -1,5 +1,5 @@
 //
-//  coefficients.h
+//  pow.h
 //  poly
 //
 //  Created by Ewart Timothée on 18/08/15.
