@@ -11,14 +11,14 @@
 
     template<int n, int m, int q = n/poly_order::value, int r = n%poly_order::value> // quotient and remainder
     struct helper_horner{
-        static inline double horner(double const& a){
+        static inline double horner(double const& x){
 #ifdef NDEBUG
             int debug_n = n;
             int debug_m = m;
             int debug_q = q;
             int debug_r = r;
 #endif
-            return coeff<n>::coefficient()+a*helper_horner<n+m,m>::horner(a);
+            return coeff<n>::coefficient()+x*helper_horner<n+m,m>::horner(x);
         }
     };
 
@@ -38,25 +38,25 @@
 
     template<int k,int m>
     struct helper_horner_kth{
-        static inline double horner_kth(double const& a){
+        static inline double horner_kth(double const& x){
 #ifdef NDEBUG
             int debug_k = k;
 #endif
-            return pow<k-1>(a)*helper_horner<k-1,m>::horner(pow<m>(a))
-                              +helper_horner_kth<k-1,m>::horner_kth(a);
+            return pow<k-1>(x)*helper_horner<k-1,m>::horner(pow<m>(x))
+                              +helper_horner_kth<k-1,m>::horner_kth(x);
         }
     };
 
     template<int m>
     struct helper_horner_kth<0,m>{
-        static inline double horner_kth(double const& a){
+        static inline double horner_kth(double const& x){
             return 0;
         }
     };
 
     template<int m>
-    inline double horner_kth(double const& a){
-        return helper_horner_kth<m,m>::horner_kth(a);
+    inline double horner_kth(double const& x){
+        return helper_horner_kth<m,m>::horner_kth(x);
     }
 
 #endif
