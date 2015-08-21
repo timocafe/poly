@@ -49,7 +49,11 @@ int main(int argc, const char * argv[]) {
 
     t = horner_kth<11>(a);
     std::cout << t << std::endl;
+    
+    t = estrin(a);
+    std::cout << t << std::endl;
 
+    
     return 0;
 }
 

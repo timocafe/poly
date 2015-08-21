@@ -12,5 +12,6 @@
 #include "poly/coefficients.h"
 #include "poly/pow.h"
 #include "poly/horner.h"
+#include "poly/estrin.h"
 
 #endif
