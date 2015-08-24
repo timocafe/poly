@@ -20,13 +20,13 @@ namespace poly{
     }
 
     /** factorization: recursive multiplication of quadratic
-                    (P0)*(P1)*(P2)*(P3)*(P4)*(P5)
-                      \   /     \   /     \   /
-                      (...)     (...)     (...)
-                         \        /         /
-                         (........)        /
-                             \            /
-                            (....Result....)
+                    (P0)*(P1)*(P2)*(P3)*(P4)
+                      \   /     \   /    /
+                      (...)     (...)   /
+                         \        /    /
+                         (........)   /
+                             \       /
+                            (.Result.)
      */
     template<int n, int n0>
     struct factorization_helper{
@@ -51,7 +51,7 @@ namespace poly{
     };
 
     inline const double factorization(double const& x){
-        return factorization_helper<6,0>::factorization(x);
+        return 1 + factorization_helper<5,0>::factorization(x);
     }
 
 }

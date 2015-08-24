@@ -6,8 +6,8 @@
 //
 //
 
-#ifndef bruteforce_factorization_h
-#define bruteforce_factorization_h
+#ifndef poly_bruteforce_h
+#define poly_bruteforce_h
 
 namespace poly{
 
