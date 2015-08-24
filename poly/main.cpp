@@ -54,6 +54,9 @@ int main(int argc, const char * argv[]) {
     t = poly::factorization(a);
     std::cout << " factorization " << t << std::endl;
 
+    t = poly::bruteforce(a);
+    std::cout << " bruteforce " << t << std::endl;
+
     return 0;
 }
 

@@ -14,6 +14,7 @@
 #include "poly/horner.h"
 #include "poly/estrin.h"
 #include "poly/factorization.h"
+#include "poly/bruteforce.h"
 
 
 #endif
