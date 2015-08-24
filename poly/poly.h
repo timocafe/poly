@@ -13,5 +13,7 @@
 #include "poly/pow.h"
 #include "poly/horner.h"
 #include "poly/estrin.h"
+#include "poly/factorization.h"
+
 
 #endif

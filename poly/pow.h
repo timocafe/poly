@@ -9,6 +9,8 @@
 #ifndef poly_pow_h
 #define poly_pow_h
 
+namespace poly{
+
     template<int M, int K = M%2>
     struct pow_helper{
         static inline double pow(const double& a){
@@ -42,4 +44,5 @@
         return pow_helper<M>::pow(a);
     }
 
+}
 #endif
