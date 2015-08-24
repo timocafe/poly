@@ -33,6 +33,7 @@ Factorization 45 8.55
 Bruteforce 38 8.50
 
 SANDY BRIDGE
+without FMA -O3, no FMA on this architecture
 Solver Latency [cycle] Throughput [cycle]
 Horner1 99 12.00
 Horner2 69 13.10
