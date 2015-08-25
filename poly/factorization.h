@@ -11,13 +11,25 @@
 
 namespace poly{
 
-    /** the basic quadratic, obtained from complex conjugate roots */
+    /** the basic quadratic, obtained from complex conjugate roots, brute force compute */
     template<int n>
-    inline const double quadratic(double const& x){
-        return coeff_factorization<n,0>::coefficient()
-                + x*coeff_factorization<n,1>::coefficient()
-                + x*x*coeff_factorization<n,2>::coefficient(); // a+b*x+c*x^2
-    }
+    struct bruteforce_poly{
+        inline static const double quadratic(double const& x){
+            return coeff_factorization<n,0>::coefficient()
+                    + x*coeff_factorization<n,1>::coefficient()
+                    + x*x*coeff_factorization<n,2>::coefficient(); // a+b*x+c*x^2
+        }
+    };
+
+    /** the basic quadratic, obtained from complex conjugate roots, evalute using,
+     On simultaenous evaluation of several polynomials of low degree (2 to 5) V. Ya. Pan
+     USSR Computational Math. and Math. Physic 2 (1963), 137-146 */
+    template<int n>
+    struct pan_poly{
+        inline static const double quadratic(double const& x){
+            return x*(x+coeff_factorization<n,1>::coefficient())+coeff_factorization<n,2>::coefficient();
+        }
+    };
 
     /** factorization: recursive multiplication of quadratic
                     (P0)*(P1)*(P2)*(P3)*(P4)
@@ -28,7 +40,7 @@ namespace poly{
                              \       /
                             (.Result.)
      */
-    template<int n, int n0>
+    template<int n, int n0, class Q = pan_poly<n0> > // specify how calculate the quadratic
     struct factorization_helper{
         inline static const double factorization(double const& x){
             return factorization_helper<n/2,n0>::factorization(x)
@@ -43,10 +55,10 @@ namespace poly{
         }
     };
 
-    template<int n0>
-    struct factorization_helper<1,n0>{
+    template<int n0, class Q>
+    struct factorization_helper<1,n0,Q>{
         inline static const double factorization(double const& x){
-            return quadratic<n0>(x);
+            return Q::quadratic(x);
         }
     };
 
