@@ -1,0 +1,58 @@
+digraph IacaAnalysisGraph{
+0 [label="0. vmovsd xmm0, qword ptr [rip+0x556]", style=filled, color=cyan]
+1 [label="1. vmovsd xmm6, qword ptr [rbp-0x28]", style=filled, color=cyan]
+2 [label="2. vfmadd213sd xmm0, xmm6, qword ptr [rip+0x550]", style=filled, color=pink]
+3 [label="3. vmovsd xmm1, qword ptr [rip+0x550]", style=filled, color=cyan]
+4 [label="4. vfmadd213sd xmm0, xmm6, xmm1", style=filled, color=pink]
+5 [label="5. vmovsd xmm2, qword ptr [rip+0x54b]", style=filled, color=cyan]
+6 [label="6. vfmadd213sd xmm2, xmm6, qword ptr [rip+0x54a]", style=filled, color=pink]
+7 [label="7. vfmadd213sd xmm2, xmm6, xmm1", style=filled, color=pink]
+8 [label="8. vmovsd xmm3, qword ptr [rip+0x545]", style=filled, color=cyan]
+9 [label="9. vfmadd213sd xmm3, xmm6, qword ptr [rip+0x544]", style=filled, color=pink]
+10 [label="10. vfmadd213sd xmm3, xmm6, xmm1", style=filled, color=pink]
+11 [label="11. vmovsd xmm4, qword ptr [rip+0x53f]", style=filled, color=cyan]
+12 [label="12. vfmadd213sd xmm4, xmm6, qword ptr [rip+0x53e]", style=filled, color=pink]
+13 [label="13. vfmadd213sd xmm4, xmm6, xmm1", style=filled, color=pink]
+14 [label="14. vmovsd xmm5, qword ptr [rip+0x539]", style=filled, color=cyan]
+15 [label="15. vfmadd213sd xmm5, xmm6, qword ptr [rip+0x538]", style=filled, color=pink]
+16 [label="16. vfmadd213sd xmm5, xmm6, xmm1", style=filled, color=pink]
+17 [label="17. vmulsd xmm0, xmm0, xmm2", style=filled, color=pink]
+18 [label="18. vmulsd xmm0, xmm0, xmm5", style=filled, color=pink]
+19 [label="19. vmulsd xmm0, xmm0, xmm4", style=filled, color=pink]
+20 [label="20. vmulsd xmm0, xmm0, xmm3", style=filled, color=pink]
+21 [label="21. vmovsd qword ptr [rbp-0x28], xmm0", style=filled, color=cyan]
+1 -> 2
+0 -> 2
+3 -> 4
+1 -> 4
+2 -> 4
+1 -> 6
+5 -> 6
+3 -> 7
+1 -> 7
+6 -> 7
+1 -> 9
+8 -> 9
+3 -> 10
+1 -> 10
+9 -> 10
+1 -> 12
+11 -> 12
+3 -> 13
+1 -> 13
+12 -> 13
+1 -> 15
+14 -> 15
+3 -> 16
+1 -> 16
+15 -> 16
+7 -> 17
+4 -> 17
+16 -> 18
+17 -> 18
+13 -> 19
+18 -> 19
+10 -> 20
+19 -> 20
+20 -> 21
+}

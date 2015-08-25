@@ -27,7 +27,9 @@ namespace poly{
     template<int n>
     struct pan_poly{
         inline static const double quadratic(double const& x){
-            return x*(x+coeff_factorization<n,1>::coefficient())+coeff_factorization<n,2>::coefficient();
+            return coeff_factorization<n,2>::coefficient()*x
+                    *(x+coeff_factorization<n,1>::coefficient()/coeff_factorization<n,2>::coefficient())
+                    +coeff_factorization<n,0>::coefficient();
         }
     };
 

@@ -1,0 +1,51 @@
+digraph IacaAnalysisGraph{
+0 [label="0. vmovsd xmm0, qword ptr [rip+0x4fe]", style=filled, color=cyan]
+1 [label="1. vmovsd xmm4, qword ptr [rbp-0x28]", style=filled, color=cyan]
+2 [label="2. vfmadd213sd xmm0, xmm4, qword ptr [rip+0x4f8]", style=filled, color=pink]
+3 [label="3. vfmadd213sd xmm0, xmm4, qword ptr [rip+0x4f7]", style=filled, color=pink]
+4 [label="4. vfmadd213sd xmm0, xmm4, qword ptr [rip+0x4f6]", style=filled, color=pink]
+5 [label="5. vmulsd xmm1, xmm4, xmm4", style=filled, color=pink]
+6 [label="6. vmulsd xmm2, xmm1, xmm1", style=filled, color=pink]
+7 [label="7. vmovsd xmm3, qword ptr [rip+0x4ee]", style=filled, color=cyan]
+8 [label="8. vfmadd213sd xmm3, xmm4, qword ptr [rip+0x4ed]", style=filled, color=pink]
+9 [label="9. vfmadd213sd xmm3, xmm4, qword ptr [rip+0x4ec]", style=filled, color=pink]
+10 [label="10. vfmadd213sd xmm3, xmm4, qword ptr [rip+0x4eb]", style=filled, color=pink]
+11 [label="11. vmovaps xmm5, xmm3", style=filled, color=cyan]
+12 [label="12. vmulsd xmm1, xmm1, xmm4", style=filled, color=pink]
+13 [label="13. vmulsd xmm1, xmm1, xmm1", style=filled, color=pink]
+14 [label="14. vmovsd xmm3, qword ptr [rip+0x4df]", style=filled, color=cyan]
+15 [label="15. vfmadd213sd xmm3, xmm4, qword ptr [rip+0x4de]", style=filled, color=pink]
+16 [label="16. vfmadd213sd xmm3, xmm4, qword ptr [rip+0x4dd]", style=filled, color=pink]
+17 [label="17. vfmadd213sd xmm3, xmm1, xmm0", style=filled, color=pink]
+18 [label="18. vfmadd213sd xmm5, xmm2, xmm3", style=filled, color=pink]
+19 [label="19. vmovsd qword ptr [rbp-0x28], xmm5", style=filled, color=cyan]
+1 -> 2
+0 -> 2
+1 -> 3
+2 -> 3
+1 -> 4
+3 -> 4
+1 -> 5
+5 -> 6
+1 -> 8
+7 -> 8
+1 -> 9
+8 -> 9
+1 -> 10
+9 -> 10
+10 -> 11
+1 -> 12
+5 -> 12
+12 -> 13
+1 -> 15
+14 -> 15
+1 -> 16
+15 -> 16
+4 -> 17
+13 -> 17
+16 -> 17
+17 -> 18
+6 -> 18
+11 -> 18
+18 -> 19
+}
