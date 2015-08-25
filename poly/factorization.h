@@ -51,7 +51,7 @@ namespace poly{
     };
 
     inline const double factorization(double const& x){
-        return 1 + factorization_helper<5,0>::factorization(x);
+        return factorization_helper<5,0>::factorization(x);
     }
 
 }
