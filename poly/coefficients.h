@@ -84,12 +84,12 @@
 
     template<>
     struct coeff_factorization<0,2>{
-        const static inline double coefficient() {return 2.187223636402653e-01;}
+        const static inline double coefficient() {return 5.863999468698624e-01;}
     };
 
     template<>
     struct coeff_factorization<0,1>{
-        const static inline double coefficient() {return 0;}
+        const static inline double coefficient() {return 9.111669706698734e-02;}
     };
 
     /* P1 */
@@ -100,12 +100,12 @@
 
     template<>
     struct coeff_factorization<1,1>{
-        const static inline double coefficient() {return 3.499464240904064e-01;}
+        const static inline double coefficient() {return 4.250022501401942e-01;}
     };
 
     template<>
     struct coeff_factorization<1,2>{
-        const static inline double coefficient() {return  4.672228409122134e-02;}
+        const static inline double coefficient() {return 7.935993577895180e-02;}
     };
 
     /* P2 */
@@ -116,12 +116,12 @@
 
     template<>
     struct coeff_factorization<2,1>{
-        const static inline double coefficient() {return 1.449446256895610e-01;}
+        const static inline double coefficient() {return 1.854407635308873e-01;}
     };
 
     template<>
     struct coeff_factorization<2,2>{
-        const static inline double coefficient() {return  4.447764598062776e-02;}
+        const static inline double coefficient() {return 6.057133407964636e-02;}
     };
 
     /* P3 */
@@ -132,12 +132,12 @@
 
     template<>
     struct coeff_factorization<3,1>{
-        const static inline double coefficient() {return -4.915540116153910e-02 ;}
+        const static inline double coefficient() {return -3.311114389316798e-02  ;}
     };
 
     template<>
     struct coeff_factorization<3,2>{
-        const static inline double coefficient() {return   3.882395876459366e-02;}
+        const static inline double coefficient() {return 4.034499642737116e-02;}
     };
 
     /* P4 */
@@ -148,12 +148,12 @@
 
     template<>
     struct coeff_factorization<4,1>{
-        const static inline double coefficient() {return -1.644580122539510e-01;}
+        const static inline double coefficient() {return -1.637318166478535e-01;}
     };
 
     template<>
     struct coeff_factorization<4,2>{
-        const static inline double coefficient() {return   2.202958165013717e-02;}
+        const static inline double coefficient() {return 2.199930801424831e-02;}
     };
 
 #endif
