@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
     double t(0);
 
     std::cout << std::setprecision(std::numeric_limits<double>::digits10 + 1) <<  std::endl;
-    /*
+
     t = poly::horner_kth<1>(a);
     std::cout << " Horner order 1 " << t << std::endl;
     t = poly::horner_kth<2>(a);
@@ -48,7 +48,6 @@ int main(int argc, const char * argv[]) {
     t = poly::bruteforce(a);
     std::cout << " bruteforce " << t << std::endl;
     std::cout << " bruteforce " << t << std::endl;
-*/
 
 #ifdef POLY_Horner1
     IACA_START

@@ -56,7 +56,7 @@ namespace poly{
     };
 
     double estrin(double const& x){
-        return helper_estrin<0,11>::estrin(x);
+        return helper_estrin<0,10>::estrin(x);
     }
 }
 
