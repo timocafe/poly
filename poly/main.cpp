@@ -13,13 +13,25 @@
 
 #include "poly/poly.h"
 
+#include "poly/polynomial.h"
+
+using namespace poly;
 
 int main(int argc, const char * argv[]) {
 
     double a = atof(argv[1]);
     double t(0);
 
-    std::cout << std::setprecision(std::numeric_limits<double>::digits10 + 1) <<  std::endl;
+    poly::bf b;
+    std::string toto =    b.generate(2, 3);
+    std::cout << toto << std::endl;
+
+//    std::cout << std::setprecision(std::numeric_limits<double>::digits10 + 1) <<  std::endl;
+//    t = poly::bruteforce<4,2>(a);
+//    std::cout << t << std::endl;
+ //   std::cout << " Horner order 1 " << t << std::endl;
+
+
 
     t = poly::horner_kth<1>(a);
     std::cout << " Horner order 1 " << t << std::endl;
@@ -41,14 +53,14 @@ int main(int argc, const char * argv[]) {
     std::cout << " Horner order 9 " << t << std::endl;
     t = poly::horner_kth<10>(a);
     std::cout << " Horner order 10 " << t << std::endl;
-    t = poly::estrin(a);
+    t = poly::estrin<10>(a);
     std::cout << " Estrin " << t << std::endl;
     t = poly::factorization(a);
     std::cout << " factorization " << t << std::endl;
-    t = poly::bruteforce(a);
+    t = poly::bruteforce<10>(a);
     std::cout << " bruteforce " << t << std::endl;
     std::cout << " bruteforce " << t << std::endl;
-
+/*
 #ifdef POLY_Horner1
     IACA_START
     t = poly::horner_kth<1>(a);
@@ -121,7 +133,7 @@ int main(int argc, const char * argv[]) {
     
 #ifdef POLY_Estrin
     IACA_START
-    t = poly::estrin(a);
+    t = poly::estrin<10>(a);
     IACA_END
     std::cout << " Estrin " << t << std::endl;
 #endif
@@ -139,7 +151,7 @@ int main(int argc, const char * argv[]) {
     IACA_END
     std::cout << " bruteforce " << t << std::endl;
 #endif
-
+*/
     return 0;
 }
 
