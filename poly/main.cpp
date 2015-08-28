@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <set>
 
 #include <poly/iacaMarks.h>
 
@@ -17,21 +18,58 @@
 
 using namespace poly;
 
+void combinatory_poly(int degree1, int degree2){
+
+    std::set<std::pair<std::string,int> > s1;
+    s1.insert(std::make_pair("bruteforce", 1));
+    s1.insert(std::make_pair("estrin", 1));
+    s1.insert(std::make_pair("horner", degree1-1));
+
+    std::set<std::pair<std::string,int> > s2;
+    s2.insert(std::make_pair("bruteforce", 1));
+    s2.insert(std::make_pair("estrin", 1));
+    s2.insert(std::make_pair("horner", degree2-1));
+
+    std::vector<produce> s3;
+
+    for(auto i1 = s1.begin(); i1 != s1.end(); ++i1){
+        for(int j1=1; j1<= (*i1).second; ++j1)
+            for(auto i2 = s2.begin(); i2 != s2.end(); ++i2)
+                for(int j2=1; j2<= (*i2).second; ++j2){
+                    produce p;
+                    p.add((*i1).first,j1);
+                    p.add((*i2).first,j2);
+                    s3.push_back(p);
+                }
+    }
+
+    for(auto i = s3.begin(); i != s3.end(); ++i)
+        std::cout << (*i).generate() << std::endl;
+}
+
+
+
+
 int main(int argc, const char * argv[]) {
+    combinatory_poly(6,4);
+//    double a = atof(argv[1]);
+//    double t(0);
 
-    double a = atof(argv[1]);
-    double t(0);
+    std::set<std::string> s = {"bruteforce","estrin","horner"};
 
-    poly::bf b;
-    std::string toto =    b.generate(2, 3);
-    std::cout << toto << std::endl;
 
-//    std::cout << std::setprecision(std::numeric_limits<double>::digits10 + 1) <<  std::endl;
+
+
+
+
+
+
+    std::cout << std::setprecision(std::numeric_limits<double>::digits10 + 1) <<  std::endl;
 //    t = poly::bruteforce<4,2>(a);
 //    std::cout << t << std::endl;
  //   std::cout << " Horner order 1 " << t << std::endl;
 
-
+/*
 
     t = poly::horner_kth<1>(a);
     std::cout << " Horner order 1 " << t << std::endl;
@@ -60,7 +98,8 @@ int main(int argc, const char * argv[]) {
     t = poly::bruteforce<10>(a);
     std::cout << " bruteforce " << t << std::endl;
     std::cout << " bruteforce " << t << std::endl;
-/*
+*/
+ /*
 #ifdef POLY_Horner1
     IACA_START
     t = poly::horner_kth<1>(a);

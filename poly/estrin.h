@@ -55,7 +55,7 @@ namespace poly{
         }
     };
 
-    template<int n>
+    template<int n, int o=0>
     inline double estrin(double const& x){
         return helper_estrin<0,n>::estrin(x);
     }

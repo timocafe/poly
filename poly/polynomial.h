@@ -6,39 +6,26 @@ namespace poly {
 
     class method{
     public:
-        method(std::string const& name):n(name){}
-        virtual ~method(){};
-        virtual std::string const generate(int d, int o) const = 0;
+        method(std::string const& n):name(n){}
+        ~method(){};
+        std::string const generate(int degree, int offset) const;
     protected:
-        std::string n;
-    };
-
-    class bf : public method{
-    public:
-        bf():method("bruteforce"){}
-        std::string const generate(int d, int o) const;
+        std::string name;
     };
 
     class polynomial{
     public:
-        polynomial(int d=0, int o=0):degree(d),offset(o){};
-        std::string const generate() const{
-            return method1.generate(degree,offset);
-        }
+        polynomial(method const& p, int d=0):degree(d),pm(p){};
+        std::string const generate() const;
     private:
         int degree;
-        int offset;
-        bf method1;
+        int offset;        method pm;;
     };
 
     class produce{
-        std::string const generate() const{
-            std::string evaluation;
-            for(auto it = v.begin(); it != v.end(); ++it)
-                evaluation += it->generate()+"*";
-            return evaluation;
-        }
-
+    public:
+        void add(method const&p, int d);
+        std::string const generate() const;
     private:
         std::vector<polynomial> v;
     };
