@@ -4,12 +4,19 @@
 
 namespace poly {
 
-    std::string const method::generate(int degree, int offset) const {
-        return name+"<"+std::to_string(degree)+","+std::to_string(offset)+">(x)";
+    std::string method::generate() const{
+        if(name()=="Horner")
+            return name()+"<C,"+std::to_string(iteration())+">(x)";
+        else
+            return name()+"<C>(x)";
     }
 
-    std::string const polynomial::generate() const{
-        return pm.generate(degree,offset);
+    std::string const method::name() const{
+        return n;
+    }
+
+    int const method::iteration() const{
+        return it;
     }
 
     std::string const produce::generate() const{
@@ -21,8 +28,8 @@ namespace poly {
         return evaluation;
     }
 
-    void produce::add(method const &p, int d){
-        v.push_back(polynomial(p,d));
+    void produce::add(method const& p){
+        v.push_back(p);
     }
 }
 

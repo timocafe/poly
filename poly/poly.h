@@ -15,6 +15,7 @@
 #include "poly/estrin.h"
 #include "poly/factorization.h"
 #include "poly/bruteforce.h"
+#include "poly/combinatory.h"
 
 
 #endif

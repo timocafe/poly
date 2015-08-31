@@ -8,7 +8,7 @@
 
 #include <iostream>
 #include <iomanip>
-#include <set>
+#include <array>
 
 #include <poly/iacaMarks.h>
 
@@ -18,30 +18,98 @@
 
 using namespace poly;
 
-void combinatory_poly(int degree1, int degree2){
+void combinatory_uni_poly(){
 
-    std::set<std::pair<std::string,int> > s1;
-    s1.insert(std::make_pair("bruteforce", 1));
-    s1.insert(std::make_pair("estrin", 1));
-    s1.insert(std::make_pair("horner", degree1-1));
-
-    std::set<std::pair<std::string,int> > s2;
-    s2.insert(std::make_pair("bruteforce", 1));
-    s2.insert(std::make_pair("estrin", 1));
-    s2.insert(std::make_pair("horner", degree2-1));
+    std::array<method,3> s = {method("bruteforce"),method("estrin"),method("horner1")};
 
     std::vector<produce> s3;
 
-    for(auto i1 = s1.begin(); i1 != s1.end(); ++i1){
-        for(int j1=1; j1<= (*i1).second; ++j1)
-            for(auto i2 = s2.begin(); i2 != s2.end(); ++i2)
-                for(int j2=1; j2<= (*i2).second; ++j2){
-                    produce p;
-                    p.add((*i1).first,j1);
-                    p.add((*i2).first,j2);
-                    s3.push_back(p);
-                }
+    for(auto i = s.begin(); i != s.end(); ++i){
+        produce p;
+        p.add((*i));
+        s3.push_back(p);
     }
+
+    for(auto i = s3.begin(); i != s3.end(); ++i)
+        std::cout << (*i).generate() << std::endl;
+}
+
+void combinatory_duo_poly(){
+
+    std::array<method,3> s = {method("bruteforce"),method("estrin"),method("horner")};
+
+    std::vector<produce> s3;
+
+    for(auto i = s.begin(); i != s.end(); ++i)
+        for(auto j = i; j != s.end(); ++j){
+            produce p;
+            p.add((*i));
+            p.add((*j));
+            s3.push_back(p);
+        }
+
+
+    for(auto i = s3.begin(); i != s3.end(); ++i)
+        std::cout << (*i).generate() << std::endl;
+}
+
+
+void combinatory_duo_poly_full(){
+
+    std::array<method,3> s = {method("bruteforce"),method("estrin"),method("horner")};
+
+    std::vector<produce> s3;
+
+    for(auto i = s.begin(); i != s.end(); ++i)
+        for(auto j = s.begin(); j != s.end(); ++j){
+            produce p;
+            p.add((*i));
+            p.add((*j));
+            s3.push_back(p);
+        }
+
+
+    for(auto i = s3.begin(); i != s3.end(); ++i)
+        std::cout << (*i).generate() << std::endl;
+}
+
+
+void combinatory_tri_poly(){
+
+    std::array<method,3> s = {method("bruteforce"),method("estrin"),method("horner")};
+
+    std::vector<produce> s3;
+
+    for(auto i = s.begin(); i != s.end(); ++i)
+        for(auto j = i; j != s.end(); ++j)
+            for(auto k = j; k != s.end(); ++k){
+                produce p;
+                p.add((*i));
+                p.add((*j));
+                p.add((*k));
+                s3.push_back(p);
+            }
+
+    for(auto i = s3.begin(); i != s3.end(); ++i)
+        std::cout << (*i).generate() << std::endl;
+}
+
+
+void combinatory_tri_full_poly(){
+
+    std::array<method,3> s = {method("bruteforce"),method("estrin"),method("horner")};
+
+    std::vector<produce> s3;
+
+    for(auto i = s.begin(); i != s.end(); ++i)
+        for(auto j = s.begin(); j != s.end(); ++j)
+            for(auto k = j; k != s.end(); ++k){
+                produce p;
+                p.add((*i));
+                p.add((*j));
+                p.add((*k));
+                s3.push_back(p);
+            }
 
     for(auto i = s3.begin(); i != s3.end(); ++i)
         std::cout << (*i).generate() << std::endl;
@@ -49,20 +117,106 @@ void combinatory_poly(int degree1, int degree2){
 
 
 
+void combinatory_quadri_poly(){
+
+    std::array<method,3> s = {method("bruteforce"),method("estrin"),method("horner")};
+
+    std::vector<produce> s3;
+
+    for(auto i = s.begin(); i != s.end(); ++i)
+        for(auto j = s.begin() ; j != s.end(); ++j)
+            for(auto k = j; k != s.end(); ++k)
+                for(auto l = k; l != s.end(); ++l){
+                    produce p;
+                    p.add((*i));
+                    p.add((*j));
+                    p.add((*k));
+                    p.add((*l));
+                    s3.push_back(p);
+            }
+
+    for(auto i = s3.begin(); i != s3.end(); ++i)
+        std::cout << (*i).generate() << std::endl;
+}
+
+void combinatory_sext_poly(){
+
+    std::array<method,3> s = {method("bruteforce"),method("estrin"),method("horner")};
+
+    std::vector<produce> s3;
+
+    for(auto i = s.begin(); i != s.end(); ++i)
+        for(auto j = i; j != s.end(); ++j)
+            for(auto k = j; k != s.end(); ++k)
+                for(auto l = k; l != s.end(); ++l)
+                    for(auto m = l; m != s.end(); ++m)
+                        for(auto n = m; n != s.end(); ++n){
+                            produce p;
+                            p.add((*i));
+                            p.add((*j));
+                            p.add((*k));
+                            p.add((*l));
+                            p.add((*m));
+                            p.add((*n));
+                            s3.push_back(p);
+                        }
+
+    for(auto i = s3.begin(); i != s3.end(); ++i)
+        std::cout << (*i).generate() << std::endl;
+}
+
+struct combinatory{
+    std::array<method,3> s = {method("bruteforce"),method("estrin"),method("horner")};
+};
+
+struct CoeffP10{
+    static const int order_value = 10;
+};
+
+struct CoeffP8{
+    static const int order_value = 8;
+};
+
+struct CoeffP2{
+    static const int order_value = 2;
+};
+
+
 
 int main(int argc, const char * argv[]) {
-    combinatory_poly(6,4);
-//    double a = atof(argv[1]);
-//    double t(0);
 
-    std::set<std::string> s = {"bruteforce","estrin","horner"};
+    {
+    combinatory<CoeffP10> c;
+    c.generate();
+    }
 
+    {
+        combinatory<CoeffP8,CoeffP2> c;
+        c.generate();
+    }
 
+    /*
+    std::string s1 = "A", s2 = "B";
+    std::string sum = adder(s1, s2);
+    std::cout << sum << std::endl;
+*/
+    /*
+    std::cout << " UNI ---------------------- " << std::endl;
+    combinatory_uni_poly();
+    std::cout << " DUO ---------------------- " << std::endl;
+    combinatory_duo_poly();
+    std::cout << " DUO FULL ----------------- " << std::endl;
+    combinatory_duo_poly_full();
+    std::cout << " TRI ---------------------- " << std::endl;
+    combinatory_tri_poly();
+    std::cout << " TRI FULL ----------------- " << std::endl;
+    combinatory_tri_full_poly();
+    std::cout << " QUADRI ------------------- " << std::endl;
+    combinatory_quadri_poly();
+    std::cout << " SEXT --------------------- " << std::endl;
+    combinatory_sext_poly();
 
-
-
-
-
+*/
 
     std::cout << std::setprecision(std::numeric_limits<double>::digits10 + 1) <<  std::endl;
 //    t = poly::bruteforce<4,2>(a);
