@@ -58,9 +58,13 @@ namespace poly{
         std::cout << buf.str() << std::endl;
         for(auto i = v.begin(); i != v.end(); ++i){
             p(buf,(*i).generate());
-            std::cout << buf.str() << std::endl;
+            std::cout << buf.str() << std::endl; // screen
+//            std::ofstream fout("test.out"); //file
+//            fout  << buf.str() << '\n';
         }
     }
+
+
 
 
     template<class ...P>
