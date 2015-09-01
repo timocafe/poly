@@ -12,7 +12,6 @@
 #include <poly/iacaMarks.h>
 
 #include "poly/combinatory.hpp"
-#include "poly/polynomial.h"
 
 #include "poly/poly.h"
 
@@ -35,9 +34,9 @@ int main(int argc, const char * argv[]) {
 //    }
 
 
-    combinatory<coeff<10> > c;
+    combinatory<coeff> c;
     c.generate();
-
+/*
     double x = atof(argv[1]);
 
  //   IACA_START
@@ -69,7 +68,7 @@ int main(int argc, const char * argv[]) {
     y = horner_kth<coeff,10>(x);
     std::cout << "y: " << y << std::endl;
 
-
+*/
 
 //    combinatory<CoeffP10> c;
 //    c.generate();

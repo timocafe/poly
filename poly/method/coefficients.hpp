@@ -75,6 +75,7 @@
     struct poly_order<coeff>
     {
         static const std::size_t value=10;
+        const static inline char * name() {return  "coeff";}
     };
 
     /*****************************************************************************************************************/

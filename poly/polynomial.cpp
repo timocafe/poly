@@ -5,14 +5,18 @@
 namespace poly {
 
     std::string method::generate() const{
-        if(name()=="horner")
-            return name()+"<C,"+std::to_string(iteration())+">(x)";
+        if(name()=="horner_kth")
+            return name()+"<"+coefficient()+","+std::to_string(iteration())+">(x)";
         else
-            return name()+"<C>(x)";
+            return name()+"<"+coefficient()+">(x)";
     }
 
     std::string const method::name() const{
         return n;
+    }
+
+    std::string const method::coefficient() const{
+        return c;
     }
 
     int const method::iteration() const{
@@ -21,7 +25,7 @@ namespace poly {
 
     std::string const method::tag() const{
         std::string tag = std::string();
-        if(name()=="horner")
+        if(name()=="horner_kth")
             tag += name().front()+std::to_string(iteration());
         else
             tag += name().front(); // number useless for Estrin and BruteForce

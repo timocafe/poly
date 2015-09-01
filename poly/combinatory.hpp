@@ -23,10 +23,10 @@ namespace poly{
         std::array<method, poly_order<C>::value+1> s;
 
         listing(){
-            s[0]=method("bruteforce");
-            s[1]=method("estrin");
+            s[0]=method("bruteforce",std::string(poly_order<C>::name()));
+            s[1]=method("estrin",std::string(poly_order<C>::name()));
             for(auto i=1; i < poly_order<C>::value  ; ++i)
-                s[i+1]=method("horner",i);
+                s[i+1]=method("horner_kth",std::string(poly_order<C>::name()),i);
         }
 
         auto begin() -> decltype(this->s.begin()) {
@@ -38,11 +38,11 @@ namespace poly{
         }
     };
 
-    template<class ...P>
-    struct combinatory{};
+//    template<class ...C>
+//    struct combinatory{};
 
     template<template <int> class C>
-    struct combinatory<C<poly_order<C>::value> >{
+    struct combinatory{
         void generate() {
             std::vector<produce> v;
             for(auto i = l.begin(); i != l.end(); ++i){
