@@ -51,7 +51,7 @@ template<int n, int m, bool b = (n<=poly_order::value)>
         }
     };
 
-    template<int m, int o=0>
+    template<int m>
     inline double horner_kth(double const& x){
         return helper_horner_kth<m,m>::horner_kth(x);
     }

@@ -5,7 +5,7 @@
 namespace poly {
 
     std::string method::generate() const{
-        if(name()=="Horner")
+        if(name()=="horner")
             return name()+"<C,"+std::to_string(iteration())+">(x)";
         else
             return name()+"<C>(x)";
@@ -21,7 +21,7 @@ namespace poly {
 
     std::string const method::tag() const{
         std::string tag = std::string();
-        if(name()=="Horner")
+        if(name()=="horner")
             tag += name().front()+std::to_string(iteration());
         else
             tag += name().front(); // number useless for Estrin and BruteForce

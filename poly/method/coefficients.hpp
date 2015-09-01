@@ -10,7 +10,9 @@
 #define poly_coefficients_h
 
     template<int n>
-    struct coeff;
+    struct coeff{
+        static const std::size_t order_value=10;
+    };
 
     template<>
     struct coeff<0>{

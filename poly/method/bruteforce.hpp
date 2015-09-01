@@ -13,31 +13,31 @@
 
 namespace poly{
 
-    template<int n, int n0, int o>
+    template<int n, int n0>
     struct bruteforce_helper{
         inline static const double bruteforce(double const& x){
-            return bruteforce_helper<n/2,n0,o>::bruteforce(x)
-                    + bruteforce_helper<n-n/2,n0+n/2,o>::bruteforce(x);
+            return bruteforce_helper<n/2,n0>::bruteforce(x)
+                    + bruteforce_helper<n-n/2,n0+n/2>::bruteforce(x);
         }
     };
 
-    template<int n0, int o>
-    struct bruteforce_helper<0,n0,o>{
+    template<int n0>
+    struct bruteforce_helper<0,n0>{
         inline static const double bruteforce(double const& x){
             return 0;
         }
     };
 
-    template<int n0, int o>
-    struct bruteforce_helper<1,n0,o>{
+    template<int n0>
+    struct bruteforce_helper<1,n0>{
         inline static const double bruteforce(double const& x){
-            return pow<n0>(x)*coeff<n0+o>::coefficient(); // offset act here
+            return pow<n0>(x)*coeff<n0>::coefficient(); // offset act here
         }
     };
 
-    template<int n, int o = 0> // o = offset
+    template<int n> // o = offset
     inline const double bruteforce(double const& x){
-        return bruteforce_helper<n,0,o>::bruteforce(x);
+        return bruteforce_helper<n,0>::bruteforce(x);
     }
 
 

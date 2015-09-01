@@ -22,10 +22,10 @@ namespace poly{
         std::array<method,P::order_value+1> s;
 
         listing(){
-            s[0]=method("Bruteforce");
-            s[1]=method("Estrin");
+            s[0]=method("bruteforce");
+            s[1]=method("estrin");
             for(auto i=1; i < P::order_value  ; ++i)
-                s[i+1]=method("Horner",i);
+                s[i+1]=method("horner",i);
         }
 
         auto begin() -> decltype(this->s.begin()) {
