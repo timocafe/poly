@@ -21,18 +21,6 @@
 
 using namespace poly;
 
-struct CoeffP10{
-    static const int order_value = 10;
-};
-
-struct CoeffP8{
-    static const int order_value = 8;
-};
-
-struct CoeffP2{
-    static const int order_value = 2;
-};
-
 
 int main(int argc, const char * argv[]) {
 
@@ -48,16 +36,41 @@ int main(int argc, const char * argv[]) {
 
 
 
-    double x = atof(argv[0]);
+    double x = atof(argv[1]);
 
  //   IACA_START
-    double y = bruteforce<10>(x);
-  //  IACA_END
-
+    double y = bruteforce<coeff>(x);
     std::cout << "y: " << y << std::endl;
 
-    combinatory<CoeffP10> c;
-    c.generate();
+    y = estrin<coeff>(x);
+    std::cout << "y: " << y << std::endl;
+
+    y = horner_kth<coeff,1>(x);
+    std::cout << "y: " << y << std::endl;
+
+    y = horner_kth<coeff,2>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,3>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,4>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,5>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,6>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,7>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,8>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,9>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,10>(x);
+    std::cout << "y: " << y << std::endl;
+
+
+
+//    combinatory<CoeffP10> c;
+//    c.generate();
 
     return 0;
 }

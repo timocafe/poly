@@ -11,7 +11,6 @@
 
     template<int n>
     struct coeff{
-        static const std::size_t order_value=10;
     };
 
     template<>
@@ -69,7 +68,12 @@
         const static inline double coefficient() {return 3.8874526912789884677625679351432816392776740411369e-7;}
     };
 
-    struct poly_order {
+    template< template<int> class C>
+    struct poly_order;
+
+    template<>
+    struct poly_order<coeff>
+    {
         static const std::size_t value=10;
     };
 

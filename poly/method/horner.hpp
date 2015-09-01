@@ -11,22 +11,23 @@
 
 namespace poly{
 
-template<int n, int m, bool b = (n<=poly_order::value)>
+    template<template <int> class C, int n, int m, bool b1 = (n<=poly_order<C>::value),
+                                                   bool b2 = (n == poly_order<C>::value)> // idem than estrin pb
     struct helper_horner{
         static inline double horner(double const& x){
-            return coeff<n>::coefficient()+x*helper_horner<n+m,m>::horner(x);
+            return C<n>::coefficient()+x*helper_horner<C,n+m,m>::horner(x);
         }
     };
 
-    template<>
-    struct helper_horner<poly_order::value,poly_order::value,true>{ // n is the max degree
+    template<template <int> class C,int n, int m>
+    struct helper_horner<C,n,m,true,true>{ // n is the max degree
         static inline double horner(double const&){
-            return coeff<poly_order::value>::coefficient();
+            return C<poly_order<C>::value>::coefficient();
         }
     };
 
-    template<int n, int m>
-    struct helper_horner<n,m,false>{ // looking for a coefficient larger than the max degree
+    template<template <int> class C,int n, int m>
+    struct helper_horner<C,n,m,false,false>{ // looking for a coefficient larger than the max degree
         static inline double horner(double const&){
             return 0;
         }
@@ -36,24 +37,24 @@ template<int n, int m, bool b = (n<=poly_order::value)>
     Generalization of Horner's Rule for polynomial evaluation - W.S. Dorn, year 1962, page 240-245
     Horner k-order scheme - paper equation (3.4)
  */
-    template<int k,int m>
+    template<template <int> class C,int k,int m>
     struct helper_horner_kth{
         static inline double horner_kth(double const& x){
-            return pow<k-1>(x)*helper_horner<k-1,m>::horner(pow<m>(x))
-                              +helper_horner_kth<k-1,m>::horner_kth(x);
+            return pow<k-1>(x)*helper_horner<C,k-1,m>::horner(pow<m>(x))
+                              +helper_horner_kth<C,k-1,m>::horner_kth(x);
         }
     };
 
-    template<int m>
-    struct helper_horner_kth<0,m>{
+    template<template <int> class C,int m>
+    struct helper_horner_kth<C,0,m>{
         static inline double horner_kth(double const& x){
             return 0;
         }
     };
 
-    template<int m>
+    template<template <int> class C, int m>
     inline double horner_kth(double const& x){
-        return helper_horner_kth<m,m>::horner_kth(x);
+        return helper_horner_kth<C,m,m>::horner_kth(x);
     }
 }
 #endif

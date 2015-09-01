@@ -13,7 +13,7 @@
 #include "poly/method/pow.hpp"
 #include "poly/method/horner.hpp"
 #include "poly/method/estrin.hpp"
-#include "poly/method/factorization.hpp"
+//#include "poly/method/factorization.hpp"
 #include "poly/method/bruteforce.hpp"
 
 #endif
