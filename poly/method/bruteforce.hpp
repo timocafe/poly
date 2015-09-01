@@ -13,7 +13,7 @@
 
 namespace poly{
 
-    template< template <int k> class C, int n, int n0>
+    template< template <int> class C, int n, int n0>
     struct bruteforce_helper{
         inline static const double bruteforce(double const& x){
             return bruteforce_helper<C,n/2,n0>::bruteforce(x)
@@ -21,7 +21,7 @@ namespace poly{
         }
     };
 
-    template<template <int k> class C, int n0>
+    template<template <int> class C, int n0>
     struct bruteforce_helper<C,0,n0>{
         inline static const double bruteforce(double const& x){
             return 0;
@@ -35,7 +35,7 @@ namespace poly{
         }
     };
 
-    template< template <int k> class C>
+    template< template <int> class C>
     inline const double bruteforce(double const& x){
         return bruteforce_helper<C, poly_order<C>::value,0>::bruteforce(x);
     }

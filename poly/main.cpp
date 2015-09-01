@@ -35,6 +35,8 @@ int main(int argc, const char * argv[]) {
 //    }
 
 
+    combinatory<coeff<10> > c;
+    c.generate();
 
     double x = atof(argv[1]);
 

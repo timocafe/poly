@@ -14,17 +14,18 @@
 
 #include "poly/printer.h"
 #include "poly/polynomial.h"
+#include "poly/method/coefficients.hpp"
 
 namespace poly{
     
-    template<class P>
+    template<template <int> class C>
     struct listing{
-        std::array<method,P::order_value+1> s;
+        std::array<method, poly_order<C>::value+1> s;
 
         listing(){
             s[0]=method("bruteforce");
             s[1]=method("estrin");
-            for(auto i=1; i < P::order_value  ; ++i)
+            for(auto i=1; i < poly_order<C>::value  ; ++i)
                 s[i+1]=method("horner",i);
         }
 
@@ -40,8 +41,8 @@ namespace poly{
     template<class ...P>
     struct combinatory{};
 
-    template<class P>
-    struct combinatory<P>{
+    template<template <int> class C>
+    struct combinatory<C<poly_order<C>::value> >{
         void generate() {
             std::vector<produce> v;
             for(auto i = l.begin(); i != l.end(); ++i){
@@ -51,9 +52,9 @@ namespace poly{
             }
             helper_printer(v);
         }
-        listing<P> l;
+        listing<C> l;
     };
-
+/*
     template<class P1, class P2>
     struct combinatory<P1, P2>{
         void generate() {
@@ -136,6 +137,7 @@ namespace poly{
         }
         listing<P1> l1; // P2.P2.P2.P2.P2, same degree one listing
     };
-}
+*/
+ }
 
 #endif
