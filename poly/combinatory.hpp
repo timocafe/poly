@@ -175,7 +175,7 @@ namespace poly{
                                     auto itj = l2[j];
                                     auto itk = l3[k];
                                     auto itl = l4[l];
-                                    auto itm = l4[l];
+                                    auto itm = l5[m];
 
                                     produce p(iti.tag()+itj.tag()+
                                               itk.tag()+itl.tag()+
