@@ -32,11 +32,33 @@ int main(int argc, const char * argv[]) {
 //        combinatory<CoeffP8,CoeffP2> c;
 //        c.generate();
 //    }
-
-
-    combinatory<coeff> c;
-    c.generate();
 /*
+    {
+        combinatory<decomposition::uno> c("coeffP10",10);
+        c.generate();
+    }
+
+    {
+        combinatory<decomposition::duo> c("coeffP8",8,"coeffP2",2);
+        c.generate();
+    }
+
+    {
+        combinatory<decomposition::trio> c("coeffP6",8,"coeffP2_1",2,"coeffP2_2",2);
+        c.generate();
+  }
+*/
+    {
+        combinatory<decomposition::quadri> c("coeffP4",4,"coeffP2_1",2,"coeffP2_2",2,"coeffP2_3",2);
+        c.generate();
+    }
+/*
+    {
+        combinatory<decomposition::pint> c("coeff2_1",8,"coeffP2_2",2,"coeffP2_3",2,"coeffP2_4",2,"coeffP2_5",2);
+        c.generate();
+    }
+
+
     double x = atof(argv[1]);
 
  //   IACA_START

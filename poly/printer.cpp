@@ -55,7 +55,7 @@ namespace poly{
             std::string tag((*t).tag());
             std::ostringstream buf;
             p(buf,(*t).generate(),tag);
-            print<poly::screen>(buf,tag); // screen or file
+            print<poly::file>(buf,tag); // screen or file
         }
     }
 }
