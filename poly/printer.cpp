@@ -30,11 +30,11 @@ namespace poly{
         ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
         ps << "//\n";
         ps << "\n";
-        ps << "#include <ostream>\n";
+        ps << "#include <iostream>\n";
         ps << "#include <stdlib.h>\n";
         ps << "\n";
         ps << "#include \"poly/poly.h\"\n";
-        ps << "#include \"poly/iacaMarks.h\" /** Intel specific **/\n";
+        ps << "#include \"iacaMarks.h\" /** Intel specific **/\n";
         ps << "\n";
         ps << "int main(int argc, const char* argv []){\n";
         ps << "    double x = atof(argv[0]);\n";

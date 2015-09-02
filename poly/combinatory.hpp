@@ -14,7 +14,7 @@
 
 #include "poly/printer.h"
 #include "poly/polynomial.h"
-#include "poly/method/coefficients.hpp"
+#include "poly/method/coefficients/coefficients.hpp"
 
 #include <cassert>
 namespace poly{

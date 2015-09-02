@@ -6,9 +6,9 @@ namespace poly {
 
     std::string method::generate() const{
         if(name()=="horner_kth")
-            return name()+"<"+coefficient()+","+std::to_string(iteration())+">(x)";
+            return "poly::"+name()+"<poly::"+coefficient()+","+std::to_string(iteration())+">(x)";
         else
-            return name()+"<"+coefficient()+">(x)";
+            return "poly::"+name()+"<poly::"+coefficient()+">(x)";
     }
 
     std::string const method::name() const{

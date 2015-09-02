@@ -9,11 +9,10 @@
 #ifndef poly_poly_h
 #define poly_poly_h
 
-#include "poly/method/coefficients.hpp"
+#include "poly/method/coefficients/coefficients.hpp"
 #include "poly/method/pow.hpp"
 #include "poly/method/horner.hpp"
 #include "poly/method/estrin.hpp"
-//#include "poly/method/factorization.hpp"
 #include "poly/method/bruteforce.hpp"
 
 #endif

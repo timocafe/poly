@@ -23,7 +23,7 @@ namespace poly{
 
     template<>
     void print<device::file>(std::ostringstream const& buf, std::string const& tag){
-        std::ofstream fout(tag+".txt");
+        std::ofstream fout(tag+".cpp");
         fout << buf.str();
         fout.close();
     }
