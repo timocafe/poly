@@ -37,7 +37,7 @@ namespace poly{
         ps << "#include \"iacaMarks.h\" /** Intel specific **/\n";
         ps << "\n";
         ps << "int main(int argc, const char* argv []){\n";
-        ps << "    double x = atof(argv[0]);\n";
+        ps << "    double x = atof(argv[1]);\n";
         ps << "\n";
         ps << "    IACA_START\n";
         ps << "    double y = " + produce + "\n";

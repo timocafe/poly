@@ -37,7 +37,7 @@ namespace poly{
 
     template< template <int> class C>
     inline const double bruteforce(double const& x){
-        return bruteforce_helper<C, poly_order<C>::value,0>::bruteforce(x);
+        return bruteforce_helper<C, poly_order<C>::value+1,0>::bruteforce(x);
     }
 
 

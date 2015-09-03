@@ -23,11 +23,11 @@ namespace poly{
     struct listing{
         std::vector<method> s;
 
-        listing(std::string name_coeff = std::string(), int order = 0){
-            s.push_back(method("bruteforce",name_coeff));
-            s.push_back(method("estrin",name_coeff));
+        listing(std::string name_coeff = std::string(), int order = 0):o(order){
+            s.push_back(method("bruteforce",name_coeff,o));
+            s.push_back(method("estrin",name_coeff,o));
             for(auto i=1; i < order ; ++i)
-                s.push_back(method("horner_kth",name_coeff,i));
+                s.push_back(method("horner_kth",name_coeff,o,i));
         }
 
         const int size(){return s.size();}
@@ -36,6 +36,7 @@ namespace poly{
             assert(i < s.size());
             return s[i];
         }
+        int o;
     };
 
     enum decomposition {uno, duo, trio, quadri, pint};
@@ -95,9 +96,11 @@ namespace poly{
 
         void generate() {
             std::vector<produce> v;
+            int counter(0);
             for(auto i = 0; i != l1.size(); ++i)
                 for(auto j = 0; j != l2.size(); ++j)
                     for(auto k = j; k != l3.size(); ++k){
+                        counter++;
                         auto iti = l1[i];
                         auto itj = l2[j];
                         auto itk = l3[k];
@@ -126,10 +129,12 @@ namespace poly{
 
         void generate() {
             std::vector<produce> v;
+    int counter(0);
             for(auto i = 0; i != l1.size(); ++i)
                 for(auto j = 0 ; j != l2.size(); ++j)
                     for(auto k = j; k != l3.size(); ++k)
                         for(auto l = k; l != l4.size(); ++l){
+                            counter++;
                             auto iti = l1[i];
                             auto itj = l2[j];
                             auto itk = l3[k];
@@ -171,6 +176,7 @@ namespace poly{
                     for(auto k = j; k != l3.size(); ++k)
                         for(auto l = k; l != l4.size(); ++l)
                             for(auto m = l; m != l5.size(); ++m){
+                                std::cout << counter << " " << i << " "<< j << " " << k << " " << l << " " << m << std::endl;
                                     auto iti = l1[i];
                                     auto itj = l2[j];
                                     auto itk = l3[k];

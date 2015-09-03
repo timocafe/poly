@@ -23,12 +23,20 @@ namespace poly {
         return it;
     }
 
+    int const method::degree() const{
+        return order;
+    }
+
     std::string const method::tag() const{
         std::string tag = std::string();
-        if(name()=="horner_kth")
-            tag += name().front()+std::to_string(iteration());
-        else
+        if(name()=="horner_kth"){
+            tag += name().front();
+            tag += "kth"+std::to_string(iteration());
+            tag += "d"+std::to_string(degree());
+        }else{
             tag += name().front(); // number useless for Estrin and BruteForce
+            tag += "d"+std::to_string(degree());
+        }
         return tag;
     }
 

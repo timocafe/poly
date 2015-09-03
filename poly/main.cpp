@@ -59,7 +59,7 @@ int main(int argc, const char * argv[]) {
     }
 
     {
-        combinatory<decomposition::quadri> c("coeffP4_1",4,"coeffP2_4",2,"coeffP2_4",2,"coeffP2_5",2);
+        combinatory<decomposition::quadri> c("coeffP4_1",4,"coeffP2_3",2,"coeffP2_4",2,"coeffP2_5",2);
         c.generate();
     }
 
