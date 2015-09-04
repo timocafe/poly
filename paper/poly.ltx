@@ -24,6 +24,7 @@
 \address[rvt]{Blue Brain Project, Campus Biotech, Ch. des Mines 9. CH-1212 Gen\`eve}
 
 
+\graphicspath{{plot/figures/}} %do not forget the / at the end
 
 \newcommand{\R}{\mathbb{R}}
 
@@ -113,7 +114,7 @@ $P^{n}_{m}$ polynomial of degree $n$, $m$ indicate the method ( $e = \textrm{Est
 Starting point  Polynomial degree 10 approximation $e^x$ no real root, complex only, 5 pair conjugate, 5 quadratic. How many factorization ? Partition of 10
 into even summands  (equivalent decomposition of 5 "multiply by 2"). $P^{10} = P^6P^4 = P^6P^2P^2 = P^4P^4P^2 = P^4P^2P^2P^2 = P^2P^2P^2P^2P^2 $.
 Multiplication commutative. Every polynomial degree+1 method of evaluation (bruteforce + estrin + horner kth = degree-1) (horner kth=degree equivalent order one).
-if $P^nP^m$ and $n!=m$ so $n*m$ possibilitties. if $n=m$,  ${n+k-1 \choose k} $ possibilities. On the present example 237 possibilities. Automatic program than generate
+if $P^nP^m$ and $n!=m$ so $n*m$ possibilitties. if $n=m$,  ${n+k-1 \choose k} $ possibilities. On the present example 231 possibilities. Automatic program than generate
 all the possibilities, get all the factorisation scheme
 
 \section{Processor \& methods}
@@ -273,11 +274,6 @@ Fine control of the code but compiler as the final word.
 \end{figure}
 
 
-
-
-
-
-
 \section{Results}
 
 \begin{table}[htdp]
@@ -295,6 +291,13 @@ FPU/core              & \multicolumn{2}{c}{2}                   & \multicolumn{2
 \end{center}
 \label{default}
 \end{table}%
+
+
+
+\begin{figure}[h]
+\includegraphics{pLTSBHS.eps} 
+\caption{Latency/Throughput for SandyBridge \& Haswell}
+\end{figure}
 
 
 

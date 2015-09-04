@@ -49,13 +49,28 @@ namespace poly{
         return ps;
     }
 
+//    std::ostream& printer::operator()(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
+//
+//        ps <<"  template <> \n";
+//        ps <<"  struct primitive_op_default<arith_op::"+tag+">{ \n";
+//        ps <<"      template <typename V>\n";
+//        ps <<"     ALWAYS_INLINE static void run(V &a1, V &a2, ...) { a1 = " + produce +  ";}\n";
+//        ps <<"     static constexpr bool is_specialized=false;\n";
+//        ps <<"  };\n";
+////
+////         ps <<"   { arith_op::"+tag+",  \""+tag+"\" },";
+////        ps << "arith_op::"+tag+",";
+//
+//        return ps;
+//    }
+
     void helper_printer(std::vector<produce> const & v){
         printer p;
         for(auto t = v.begin(); t != v.end(); ++t){
             std::string tag((*t).tag());
             std::ostringstream buf;
             p(buf,(*t).generate(),tag);
-            print<poly::file>(buf,tag); // screen or file
+            print<poly::screen>(buf,tag); // screen or file
         }
     }
 }

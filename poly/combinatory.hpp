@@ -176,7 +176,6 @@ namespace poly{
                     for(auto k = j; k != l3.size(); ++k)
                         for(auto l = k; l != l4.size(); ++l)
                             for(auto m = l; m != l5.size(); ++m){
-                                std::cout << counter << " " << i << " "<< j << " " << k << " " << l << " " << m << std::endl;
                                     auto iti = l1[i];
                                     auto itj = l2[j];
                                     auto itk = l3[k];

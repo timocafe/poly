@@ -36,12 +36,12 @@ set style line 61 lc rgb '#000000' pt 1 lw 2 lt 2 # black dash
 set style line 7 lc rgb '#C03000' pt 1 lw 2 lt 1 # vermillon
 set style line 71 lc rgb '#C03000' pt 1 lw 2 lt 2 # vermillon dash
 
-set object 1 rect from 20,0 to 40,20 
+set object 1 rect from 20,0 to 40,20
 
 set grid noxtics noytics noztics front
 
-set label "P@^{10}_e" at 92,97
-set label "P@^{10}_{h^1}" at 83,84
+set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_e}' at 92,97
+set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 1}}' at 83,84
 plot "joined_sort_HS" using 2:3 ls 2 title "Haswell", "joined_sort_HS" using 4:5 ls 4 title "SandyBridge"
 
 
@@ -62,23 +62,23 @@ set object 1 rect from 20,20 to 40,40
 
 #HS
 set arrow to 26,7 from 32,7.35 linestyle 6
-set label "P@^{10}_{h^9}" at 22,7
+set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 9}}' at 22,7
 
 set arrow to 26,5 from 32,7.10 linestyle 6
-set label "P@^{10}_{e}" at 22,4
+set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{e}' at 22,4
 
 set arrow to 30,4 from 33,6.45 linestyle 6
-set label "P@^{10}_{h^4}" at 26,2
+set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 4}}' at 26,2
 
 set arrow to 34,4 from 36,6.05 linestyle 6
-set label "P@^{10}_{h^3}" at 33,2
+set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 3}}' at 33,2
 
 #SB
 set arrow to 34,14 from 39,17.5 linestyle 6
-set label "P@^{2}_{b}P@^{4}_{b}P@^{4}_{b}" at 30,12
+set label '{/Helvetica-oblique P@^{{/Helvetica 2}}_{b}P@^{{/Helvetica 4}}_{b}P@^{{/Helvetica 4}}_{b}' at 30,12
 
 set arrow to 32,17 from 39,19.2 linestyle 6
-set label "P@^{6}_{b}P@^{4}_{b}" at 27,16
+set label '{/Helvetica-oblique P@^{{/Helvetica 6}}_{b}P@^{{/Helvetica 4}}_{b}' at 27,16
 
 
 set xlabel ""
