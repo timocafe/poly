@@ -11,134 +11,99 @@
 
 #include <poly/iacaMarks.h>
 
+#include "poly/combinatory.hpp"
+
 #include "poly/poly.h"
+
+//#include "poly/method/coefficients.hpp"
+
+
+using namespace poly;
 
 
 int main(int argc, const char * argv[]) {
 
-    double a = atof(argv[1]);
-    double t(0);
+//    {
+//         combinatory<CoeffP2,CoeffP2,CoeffP2,CoeffP2,CoeffP2> c;
+//         c.generate();
+//    }
+//
+//    {
+//        combinatory<CoeffP8,CoeffP2> c;
+//        c.generate();
+//    }
 
-    std::cout << std::setprecision(std::numeric_limits<double>::digits10 + 1) <<  std::endl;
+    {
+        combinatory<decomposition::uno> c("coeffP10",10);
+        c.generate();
+    }
 
-    t = poly::horner_kth<1>(a);
-    std::cout << " Horner order 1 " << t << std::endl;
-    t = poly::horner_kth<2>(a);
-    std::cout << " Horner order 2 " << t << std::endl;
-    t = poly::horner_kth<3>(a);
-    std::cout << " Horner order 3 " << t << std::endl;
-    t = poly::horner_kth<4>(a);
-    std::cout << " Horner order 4 " << t << std::endl;
-    t = poly::horner_kth<5>(a);
-    std::cout << " Horner order 5 " << t << std::endl;
-    t = poly::horner_kth<6>(a);
-    std::cout << " Horner order 6 " << t << std::endl;
-    t = poly::horner_kth<7>(a);
-    std::cout << " Horner order 7 " << t << std::endl;
-    t = poly::horner_kth<8>(a);
-    std::cout << " Horner order 8 " << t << std::endl;
-    t = poly::horner_kth<9>(a);
-    std::cout << " Horner order 9 " << t << std::endl;
-    t = poly::horner_kth<10>(a);
-    std::cout << " Horner order 10 " << t << std::endl;
-    t = poly::estrin(a);
-    std::cout << " Estrin " << t << std::endl;
-    t = poly::factorization(a);
-    std::cout << " factorization " << t << std::endl;
-    t = poly::bruteforce(a);
-    std::cout << " bruteforce " << t << std::endl;
-    std::cout << " bruteforce " << t << std::endl;
+    {
+        combinatory<decomposition::duo> c("coeffP8",8,"coeffP2_5",2);
+        c.generate();
+    }
 
-#ifdef POLY_Horner1
-    IACA_START
-    t = poly::horner_kth<1>(a);
-    IACA_END
-    std::cout << " Horner order 1 " << t << std::endl;
-#endif
-    
-#ifdef POLY_Horner2
-    IACA_START
-    t = poly::horner_kth<2>(a);
-    IACA_END
-    std::cout << " Horner order 2 " << t << std::endl;
-#endif
+    {
+        combinatory<decomposition::duo> c("coeffP6",6,"coeffP4_3",4);
+        c.generate();
+    }
 
-#ifdef POLY_Horner3
-    IACA_START
-    t = poly::horner_kth<3>(a);
-    IACA_END
-    std::cout << " Horner order 3 " << t << std::endl;
-#endif
+    {
+        combinatory<decomposition::trio> c("coeffP6",6,"coeffP2_4",2,"coeffP2_5",2);
+        c.generate();
+    }
 
-#ifdef POLY_Horner4
-    IACA_START
-    t = poly::horner_kth<4>(a);
-    IACA_END
-    std::cout << " Horner order 4 " << t << std::endl;
-#endif
-    
-#ifdef POLY_Horner5
-    IACA_START
-    t = poly::horner_kth<5>(a);
-    IACA_END
-    std::cout << " Horner order 5 " << t << std::endl;
-#endif
-   
-#ifdef POLY_Horner6
-    IACA_START
-    t = poly::horner_kth<6>(a);
-    IACA_END
-    std::cout << " Horner order 6 " << t << std::endl;
-#endif
-    
-#ifdef POLY_Horner7
-    IACA_START
-    t = poly::horner_kth<7>(a);
-    IACA_END
-    std::cout << " Horner order 7 " << t << std::endl;
-#endif
-    
-#ifdef POLY_Horner8
-    IACA_START
-    t = poly::horner_kth<8>(a);
-    IACA_END
-    std::cout << " Horner order 8 " << t << std::endl;
-#endif
-    
-#ifdef POLY_Horner9
-    IACA_START
-    t = poly::horner_kth<9>(a);
-    IACA_END
-    std::cout << " Horner order 9 " << t << std::endl;
-#endif
-    
-#ifdef POLY_Horner10
-    IACA_START
-    t = poly::horner_kth<10>(a);
-    IACA_END
-    std::cout << " Horner order 10 " << t << std::endl;
-#endif
-    
-#ifdef POLY_Estrin
-    IACA_START
-    t = poly::estrin(a);
-    IACA_END
-    std::cout << " Estrin " << t << std::endl;
-#endif
+    {
+        combinatory<decomposition::trio> c("coeffP2_5",2,"coeffP4_1",4,"coeffP4_2",4); // P4P4P2 = P2P4P4
+        c.generate();
+    }
 
-#ifdef POLY_Factorization
-    IACA_START
-    t = poly::factorization(a);
-    IACA_END
-    std::cout << " factorization " << t << std::endl;
-#endif
-    
-#ifdef POLY_Bruteforce
-    IACA_START
-    t = poly::bruteforce(a);
-    IACA_END
-    std::cout << " bruteforce " << t << std::endl;
-#endif
+    {
+        combinatory<decomposition::quadri> c("coeffP4_1",4,"coeffP2_3",2,"coeffP2_4",2,"coeffP2_5",2);
+        c.generate();
+    }
+
+    {
+        combinatory<decomposition::pint> c("coeffP2_1",2,"coeffP2_2",2,"coeffP2_3",2,"coeffP2_4",2,"coeffP2_5",2);
+        c.generate();
+    }
+
+/*
+    double x = atof(argv[1]);
+
+ //   IACA_START
+    double y = bruteforce<coeff>(x);
+    std::cout << "y: " << y << std::endl;
+
+    y = estrin<coeff>(x);
+    std::cout << "y: " << y << std::endl;
+
+    y = horner_kth<coeff,1>(x);
+    std::cout << "y: " << y << std::endl;
+
+    y = horner_kth<coeff,2>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,3>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,4>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,5>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,6>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,7>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,8>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,9>(x);
+    std::cout << "y: " << y << std::endl;
+    y = horner_kth<coeff,10>(x);
+    std::cout << "y: " << y << std::endl;
+
+*/
+
+//    combinatory<CoeffP10> c;
+//    c.generate();
 
     return 0;
 }

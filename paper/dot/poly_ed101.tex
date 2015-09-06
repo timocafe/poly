@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage[x11names, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usepackage{amsmath}
+%
+%
+
+%
+
+%
+
+\begin{document}
+\pagestyle{empty}
+%
+%
+%
+
+\enlargethispage{100cm}
+% Start of code
+\begin{tikzpicture}[>=latex',line join=bevel,]
+%%
+\node (11) at (1013.0bp,306.0bp) [draw=pink,fill=pink,ellipse] {11. vmulsd xmm2, xmm2, xmm0};
+  \node (10) at (1420.0bp,162.0bp) [draw=cyan,fill=cyan,ellipse] {10. vmovaps xmm5, xmm4};
+  \node (13) at (649.0bp,378.0bp) [draw=cyan,fill=cyan,ellipse] {13. vmovsd xmm4, qword ptr [rip+0x4e8]};
+  \node (12) at (1013.0bp,234.0bp) [draw=pink,fill=pink,ellipse] {12. vmulsd xmm2, xmm2, xmm2};
+  \node (15) at (649.0bp,234.0bp) [draw=pink,fill=pink,ellipse] {15. vfmadd213sd xmm4, xmm0, qword ptr [rip+0x4e6]};
+  \node (14) at (649.0bp,306.0bp) [draw=pink,fill=pink,ellipse] {14. vfmadd213sd xmm4, xmm0, qword ptr [rip+0x4e7]};
+  \node (17) at (1163.0bp,90.0bp) [draw=pink,fill=pink,ellipse] {17. vfmadd213sd xmm5, xmm3, xmm4};
+  \node (16) at (755.0bp,162.0bp) [draw=pink,fill=pink,ellipse] {16. vfmadd213sd xmm4, xmm2, xmm1};
+  \node (18) at (1163.0bp,18.0bp) [draw=cyan,fill=cyan,ellipse] {18. vmovsd qword ptr [rbp-0x20], xmm5};
+  \node (1) at (209.0bp,378.0bp) [draw=pink,fill=pink,ellipse] {1. vfmadd213sd xmm1, xmm0, qword ptr [rip+0x501]};
+  \node (0) at (209.0bp,450.0bp) [draw=cyan,fill=cyan,ellipse] {0. vmovsd xmm1, qword ptr [rip+0x502]};
+  \node (3) at (211.0bp,234.0bp) [draw=pink,fill=pink,ellipse] {3. vfmadd213sd xmm1, xmm0, qword ptr [rip+0x4ff]};
+  \node (2) at (209.0bp,306.0bp) [draw=pink,fill=pink,ellipse] {2. vfmadd213sd xmm1, xmm0, qword ptr [rip+0x500]};
+  \node (5) at (1163.0bp,162.0bp) [draw=pink,fill=pink,ellipse] {5. vmulsd xmm3, xmm2, xmm2};
+  \node (4) at (1034.0bp,378.0bp) [draw=pink,fill=pink,ellipse] {4. vmulsd xmm2, xmm0, xmm0};
+  \node (7) at (1420.0bp,378.0bp) [draw=pink,fill=pink,ellipse] {7. vfmadd213sd xmm4, xmm0, qword ptr [rip+0x4f6]};
+  \node (6) at (1420.0bp,450.0bp) [draw=cyan,fill=cyan,ellipse] {6. vmovsd xmm4, qword ptr [rip+0x4f7]};
+  \node (9) at (1420.0bp,234.0bp) [draw=pink,fill=pink,ellipse] {9. vfmadd213sd xmm4, xmm0, qword ptr [rip+0x4f4]};
+  \node (8) at (1420.0bp,306.0bp) [draw=pink,fill=pink,ellipse] {8. vfmadd213sd xmm4, xmm0, qword ptr [rip+0x4f5]};
+  \draw [->] (17) ..controls (1163.0bp,63.983bp) and (1163.0bp,54.712bp)  .. (18);
+  \draw [->] (4) ..controls (1120.5bp,354.54bp) and (1141.2bp,342.45bp)  .. (1154.0bp,324.0bp) .. controls (1181.6bp,284.05bp) and (1175.9bp,224.27bp)  .. (5);
+  \draw [->] (14) ..controls (649.0bp,279.98bp) and (649.0bp,270.71bp)  .. (15);
+  \draw [->] (16) ..controls (905.34bp,135.21bp) and (1000.1bp,118.95bp)  .. (17);
+  \draw [->] (4) ..controls (1026.5bp,351.9bp) and (1023.7bp,342.51bp)  .. (11);
+  \draw [->] (7) ..controls (1420.0bp,351.98bp) and (1420.0bp,342.71bp)  .. (8);
+  \draw [->] (6) ..controls (1420.0bp,423.98bp) and (1420.0bp,414.71bp)  .. (7);
+  \draw [->] (15) ..controls (688.59bp,206.85bp) and (705.99bp,195.36bp)  .. (16);
+  \draw [->] (2) ..controls (209.71bp,279.98bp) and (209.98bp,270.71bp)  .. (3);
+  \draw [->] (8) ..controls (1420.0bp,279.98bp) and (1420.0bp,270.71bp)  .. (9);
+  \draw [->] (3) ..controls (415.8bp,206.65bp) and (550.91bp,189.26bp)  .. (16);
+  \draw [->] (13) ..controls (649.0bp,351.98bp) and (649.0bp,342.71bp)  .. (14);
+  \draw [->] (10) ..controls (1326.3bp,135.49bp) and (1272.6bp,120.85bp)  .. (17);
+  \draw [->] (5) ..controls (1163.0bp,135.98bp) and (1163.0bp,126.71bp)  .. (17);
+  \draw [->] (9) ..controls (1420.0bp,207.98bp) and (1420.0bp,198.71bp)  .. (10);
+  \draw [->] (12) ..controls (917.11bp,206.98bp) and (864.6bp,192.74bp)  .. (16);
+  \draw [->] (0) ..controls (209.0bp,423.98bp) and (209.0bp,414.71bp)  .. (1);
+  \draw [->] (11) ..controls (1013.0bp,279.98bp) and (1013.0bp,270.71bp)  .. (12);
+  \draw [->] (1) ..controls (209.0bp,351.98bp) and (209.0bp,342.71bp)  .. (2);
+%
+\end{tikzpicture}
+% End of code
+
+%
+\end{document}
+%
+
+
+
