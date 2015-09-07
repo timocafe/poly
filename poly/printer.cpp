@@ -49,6 +49,45 @@ namespace poly{
         return ps;
     }
 
+    std::ostream& printer::test(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
+        time_t t = time(NULL);
+        tm* timePtr = localtime(&t);
+        ps << "//\n";
+        ps << "// " << tag + "_test.cpp"  <<  "\n";
+        ps << "//\n";
+        ps << "// Created by Ewart Timothée, " << timePtr->tm_mday
+        <<"/"<< timePtr->tm_mon+1
+        <<"/"<< timePtr->tm_year+1900 <<"\n";
+        ps << "// Copyright (c) Ewart Timothée. All rights reserved.\n";
+        ps << "//\n";
+        ps << "// This file is generated automatically, do not edit!\n";
+        ps << "// TAG: " << tag << "\n";
+        ps << "// Helper:\n";
+        ps << "//     h = Horner, e = Estrin, b = BruteForce\n";
+        ps << "//     The number indicates the order for Horner\n";
+        ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
+        ps << "//\n";
+        ps << "\n";
+        ps << "#include <random>\n";
+        ps << "#include <cmath>\n";
+        ps << "#define BOOST_TEST_MODULE poly\n";
+        ps << "#include <boost/test/unit_test.hpp>\n";
+        ps << "#include \"poly/poly.h\"\n";
+        ps << "\n";
+        ps << "BOOST_AUTO_TEST_CASE("+tag+"_test){\n";
+        ps << "    std::random_device rd;\n";
+        ps << "    std::mt19937 gen(rd());\n";
+        ps << "    std::uniform_real_distribution<> dis(0, std::log(2));\n";
+        ps << "    for (int i = 0; i < 100; ++i){\n";
+        ps << "        double x = dis(gen);\n";
+        ps << "        double y = "+produce+"\n";
+        ps << "        double ref = std::exp(x);\n";
+        ps << "        BOOST_REQUIRE_CLOSE(y, ref, 0.001);\n";
+        ps << "    }\n";
+        ps <<"}\n";
+        return ps;
+    }
+
 //    std::ostream& printer::operator()(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
 //
 //        ps <<"  template <> \n";
@@ -70,7 +109,9 @@ namespace poly{
             std::string tag((*t).tag());
             std::ostringstream buf;
             p(buf,(*t).generate(),tag);
-            print<poly::screen>(buf,tag); // screen or file
+//            p.test(buf,(*t).generate(),tag);
+            print<poly::screen>(buf,tag);
         }
     }
 }
+
