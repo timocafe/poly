@@ -45,7 +45,7 @@ namespace poly {
         for(auto it = v.begin(); it != v.end(); ++it)
             evaluation += it->generate()+"*";
         evaluation.pop_back(); // renove the last "*"
-        evaluation += ";";
+        evaluation += "";
         return evaluation;
     }
 

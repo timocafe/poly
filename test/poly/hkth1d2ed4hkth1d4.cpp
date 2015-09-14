@@ -1,7 +1,7 @@
 //
 // hkth1d2ed4hkth1d4_test.cpp
 //
-// Created by Ewart Timothée, 7/9/2015
+// Created by Ewart Timothée, 14/9/2015
 // Copyright (c) Ewart Timothée. All rights reserved.
 //
 // This file is generated automatically, do not edit!
@@ -21,11 +21,13 @@
 BOOST_AUTO_TEST_CASE(hkth1d2ed4hkth1d4_test){
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(0, std::log(2));
+    std::uniform_real_distribution<> dis(-700,700);
     for (int i = 0; i < 100; ++i){
         double x = dis(gen);
-        double y = poly::horner_kth<poly::coeffP2_5,1>(x)*poly::estrin<poly::coeffP4_1>(x)*poly::horner_kth<poly::coeffP4_2,1>(x);
         double ref = std::exp(x);
+        long long int twok = ((1023 + ((long long int)(1.4426950408889634 * x))) << (52));
+        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;
+        double y = poly::horner_kth<poly::coeffP2_5,1>(x)*poly::estrin<poly::coeffP4_1>(x)*poly::horner_kth<poly::coeffP4_2,1>(x)* (*(double *)(&twok));
         BOOST_REQUIRE_CLOSE(y, ref, 0.001);
     }
 }

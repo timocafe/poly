@@ -77,11 +77,13 @@ namespace poly{
         ps << "BOOST_AUTO_TEST_CASE("+tag+"_test){\n";
         ps << "    std::random_device rd;\n";
         ps << "    std::mt19937 gen(rd());\n";
-        ps << "    std::uniform_real_distribution<> dis(0, std::log(2));\n";
+        ps << "    std::uniform_real_distribution<> dis(-700,700);\n";
         ps << "    for (int i = 0; i < 100; ++i){\n";
         ps << "        double x = dis(gen);\n";
-        ps << "        double y = "+produce+"\n";
         ps << "        double ref = std::exp(x);\n";
+        ps << "        long long int twok = ((1023 + ((long long int)(1.4426950408889634 * x))) << (52));\n";
+        ps << "        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;\n";
+        ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        BOOST_REQUIRE_CLOSE(y, ref, 0.001);\n";
         ps << "    }\n";
         ps <<"}\n";
@@ -93,13 +95,12 @@ namespace poly{
 //        ps <<"  template <> \n";
 //        ps <<"  struct primitive_op_default<arith_op::"+tag+">{ \n";
 //        ps <<"      template <typename V>\n";
-//        ps <<"     ALWAYS_INLINE static void run(V &a1, V &a2, ...) { a1 = " + produce +  ";}\n";
+//        ps <<"     ALWAYS_INLINE static void run(V &a1, ...) {\n";
+//        ps <<"          long long int twok = ((1023 + ((long long int)(1.4426950408889634 * a1))) << (52)); \n";
+//        ps <<"          a1 = " + produce +  "* (*(double *)(&twok));\n";
+//        ps <<"     };\n";
 //        ps <<"     static constexpr bool is_specialized=false;\n";
 //        ps <<"  };\n";
-////
-////         ps <<"   { arith_op::"+tag+",  \""+tag+"\" },";
-////        ps << "arith_op::"+tag+",";
-//
 //        return ps;
 //    }
 
@@ -108,9 +109,9 @@ namespace poly{
         for(auto t = v.begin(); t != v.end(); ++t){
             std::string tag((*t).tag());
             std::ostringstream buf;
-            p(buf,(*t).generate(),tag);
-//            p.test(buf,(*t).generate(),tag);
-            print<poly::screen>(buf,tag);
+//            p(buf,(*t).generate(),tag);
+            p.test(buf,(*t).generate(),tag);
+            print<poly::file>(buf,tag);
         }
     }
 }
