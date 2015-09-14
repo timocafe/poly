@@ -40,7 +40,9 @@ namespace poly{
 //        ps << "    double x = atof(argv[1]);\n";
 //        ps << "\n";
 //        ps << "    IACA_START\n";
-//        ps << "    double y = " + produce + "\n";
+//        ps << "    long long int twok = ((1023 + ((long long int)(1.4426950408889634 * x))) << (52));\n";
+//        ps << "    x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;\n";
+//        ps << "    double  y = " + produce +  "* (*(double *)(&twok));\n";
 //        ps << "    IACA_END\n";
 //        ps << "\n";
 //        ps << "    std::cout << \"y: \" << y << std::endl;\n";
@@ -112,7 +114,7 @@ namespace poly{
             std::ostringstream buf;
             p(buf,(*t).generate(),tag);
 //            p.test(buf,(*t).generate(),tag);
-            print<poly::file>(buf,tag);
+            print<poly::screen>(buf,tag);
         }
     }
 }
