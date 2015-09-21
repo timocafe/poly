@@ -36,8 +36,7 @@ In the evaluation of the elementary functions $e.g.$ $e^x$, the challenge consis
 a polynomial of low degree polynomial ($e.g.$ 10) in a small $x$-range, where the coefficients are known in advance.
 In this paper, we evaluate the main methods of the literature and we complete 
 this work by the factorisation evaluation, that is surprisingly  neglected in the literature. 
-We focus our evaluation  on the last modern processors of Intel(SandyBridge Haswell)/IBM(Power8)/ARM(V8) where several computational units are available, and may maximise the computing throughput.
-We show experimentally, for a polynomial of degree 10, the factorisation scheme is the fastest except on the Intel Haswell architecture.
+We focus our evaluation  on the last modern processors of Intel(SandyBridge Haswell)/IBM(Power8)/ARM(V8) where several computational units are available, and may maximise the computing throughput. We show experimentally, for a polynomial of degree 10, the factorisation scheme combined with usual approach is the is the fastest.
 \end{abstract}
 
 
@@ -55,7 +54,8 @@ We show experimentally, for a polynomial of degree 10, the factorisation scheme 
 ... Right-to-left binary method for exponentiation ... not the fastest ... but enough for us ... because did at compile time.  
 $ \lfloor log(n) \rfloor + \upsilon(n)$ multiplications where  $\upsilon(n)$ number of ones in the binary representation of $n$
 \subsection{Brute force}
-... evaluate polynomial \ref{P0}  at $x = x_0$ ... using evaluation of power as described previously ... Divide and conquer algorithm to calculate the sum better than linear recursive because parallel
+... evaluate polynomial \ref{P0}  at $x = x_0$ ... using evaluation of power as described previously  $n$ addition, $2n-1$ multiplication
+... degree parallelism $n$
 \subsection{Horner method: classical - $1^{st}$-order}
 .... the most classical .... \textit{"Horner's rule"} .... evaluate polynomial \ref{P0} at $x = x_0$
 
@@ -84,25 +84,28 @@ P(x_0) = c_0^n
 look like 
 
 \begin{eqnarray}
-P(x_0) = & &  a_0 + a_1 x_0   \\
+P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
                &+&  x_0^2(a_2  + a_3 x_0) \nonumber \\
                &+&  x_0^4(a_4  + a_5 x_0 + x_0^2 (a_6 + a_7x_0)) \nonumber \\
                &+&  x_0^8(a_8  + a_9 x_0 + x_0^2 (a_{10} + a_{11}x_0) + x_0^4 ((a_{12}+a_{13}x_0 +x_0^2(a_{14}+a_{15}x_0)))))  \nonumber \\
                & &\dots
 \end{eqnarray}
+$n$ multiplication, $n$ additions, remark pattern design for FMA
 
-\subsection{Adaptation of coefficients}
 
-Pam modify the coefficient exemple quadratic:
-
-\begin{eqnarray}
-P_2(x) =a_0+a_1x+a_2x^2, a_i \neq 0  \nonumber \\
-P_0(x) = x\left(x+\frac{a_1}{a_2}\right) \nonumber \\
-P_2(x) = a_2P_0(x)+a_0
-\end{eqnarray}
-3 multiplications , 2 additions TO  2 mull 2 add 1 div (can calculate before)
+%\subsection{Adaptation of coefficients}
+%
+%Pam modify the coefficient exemple quadratic:
+%
+%\begin{eqnarray}
+%P_2(x) =a_0+a_1x+a_2x^2, a_i \neq 0  \nonumber \\
+%P_0(x) = x\left(x+\frac{a_1}{a_2}\right) \nonumber \\
+%P_2(x) = a_2P_0(x)+a_0
+%\end{eqnarray}
+%3 multiplications , 2 additions TO  2 mull 2 add 1 div (can calculate before)
 \subsection{factorization}
-factorize the polynomial (outside), get produce of linear or quadratic if complex-root. Divide-conquer multiplication.
+factorize the polynomial (outside), get produce of linear or quadratic if complex-root. combinaison different method $e.g.$ 
+$k$ factor gives $k-1$ factor multiplication, factor depends of the method of multiplications. 
 
 \subsection{Notations}
 
@@ -111,27 +114,27 @@ $P^{n}_{m}$ polynomial of degree $n$, $m$ indicate the method ( $e = \textrm{Est
 
 \subsection{Combinatory}
 
-Starting point  Polynomial degree 10 approximation $e^x$ no real root, complex only, 5 pair conjugate, 5 quadratic. How many factorization ? Partition of 10
+Starting point  Polynomial degree 10 approximation $e^x$ no real root, complex only, 5 pair conjugate, 5 quadratic. How many factorization  scheme? Partition of 10
 into even summands  (equivalent decomposition of 5 "multiply by 2"). $P^{10} = P^6P^4 = P^6P^2P^2 = P^4P^4P^2 = P^4P^2P^2P^2 = P^2P^2P^2P^2P^2 $.
 Multiplication commutative. Every polynomial degree+1 method of evaluation (bruteforce + estrin + horner kth = degree-1) (horner kth=degree equivalent order one).
-if $P^nP^m$ and $n!=m$ so $n*m$ possibilitties. if $n=m$,  ${n+k-1 \choose k} $ possibilities. On the present example 231 possibilities. Automatic program than generate
+if $P^n \P^m$ and $n!=m$ so $n \times m$ possibilitties. if $n=m$,  ${n+k-1 \choose k} $ possibilities (and not ${n \choose k}$ because repetitions are allowed ). On the present example 231 possibilities. Automatic program than generate
 all the possibilities, get all the factorisation scheme
 
 \section{Processor \& methods}
 \subsection{Intel SandyBridge/Haswell architecture}
 blabla
-\subsection{IBM Power8}
-blabla
-\subsection{ARM v8}
-blabla
+
 \subsection{Latency, throughput }
-definition, show how it is importante for the algorithms
+Latency: number of cycle needed to execute a single instruction. Throughput: number of cycle needed to execute the same instruction.
+e.g. Haswell add double precision latency 3 cycle, throughput 1 cycle. mean 2 independents additions takes 4 cycles where 6 if they are independents. 
+From the 231 possibilities difficult to determine what will be the fastest method due to the interaction latency throughput. 
+
 \subsection{measurement tool}
-IACA and our tool for Power8/ARM
+IACA measure latency/throughput of C++ code, kernel that is pinned by marks into the code.  
 
 \subsection{Programming model}
 C++ basic recursive meta-programming (like template factorial ), all models are written with fairplay. Assembly check, look good.
-Fine control of the code but compiler as the final word.
+Fine control of the code but compiler as the final word, and can do strong optimisation. 
 
 \subsection{ASM quality}
 
@@ -280,12 +283,12 @@ Fine control of the code but compiler as the final word.
 \caption{Latency/Throughput add/mul/fma on the targeting architecture}
 \begin{center}
 \begin{tabular}{l c c c c c c c  c}
-		             & \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Haswell} & \multicolumn{2}{c}{Power8} & \multicolumn{2}{c}{ARMv7} \\
-		             \hline
-add                        &  3 & 1 & 3 & 0.8 & 6 & 1 & 5 & 2  \\
-mul                        &  5 & 1 & 5 & 0.5 & 6 & 1 & 5 & 2\\
-FMA                        &  - & -  & 5 & 0.5  & 6 & 1 & 9 & 2 \\
-FPU/core              & \multicolumn{2}{c}{2}                   & \multicolumn{2}{c}{2}       & \multicolumn{2}{c}{2}                & \multicolumn{2}{c}{?} \\
+                         & \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Haswell} & \multicolumn{2}{c}{Power8} & \multicolumn{2}{c}{ARMv7} \\
+		          \hline
+add                    &  3 & 1 & 3 & 0.8 & 6 & 1 & 5 & 2  \\
+mul                    &  5 & 1 & 5 & 0.5 & 6 & 1 & 5 & 2\\
+FMA                   &  - & -  & 5 & 0.5  & 6 & 1 & 9 & 2 \\
+FPU/core           & \multicolumn{2}{c}{2}                   & \multicolumn{2}{c}{2}       & \multicolumn{2}{c}{2}                & \multicolumn{2}{c}{?} \\
 		             \hline
 \end{tabular}
 \end{center}
