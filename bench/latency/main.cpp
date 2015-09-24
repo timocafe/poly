@@ -10,6 +10,12 @@
 #include "poly/poly.h"
 
 double poly_exp(double x){
+/*
+    if(x>709.8 )
+	return HUGE_VAL;
+    if(x<-708.4)
+	return 0;
+*/
     long long int twok = ((1023 + ((long long int)(1.4426950408889634 * x))) << (52));
     x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;
     return poly::bruteforce<poly::coeffP6>(x)*poly::bruteforce<poly::coeffP2_4>(x)*poly::bruteforce<poly::coeffP2_5>(x)* (*(double *)(&twok));
