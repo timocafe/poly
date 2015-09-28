@@ -15,8 +15,8 @@ namespace poly {
         std::string  generate() const ;
         std::string const name() const;
         std::string const coefficient() const;
-        int const iteration() const;
-        int const degree() const;
+        int  iteration() const;
+        int  degree() const;
         std::string const tag() const; //every decompostion is unique the tag also
     protected:
         std::string n; // name of the method

@@ -30,7 +30,7 @@ namespace poly{
                 s.push_back(method("horner_kth",name_coeff,o,i));
         }
 
-        const int size(){return s.size();}
+        int size(){return s.size();}
 
         auto operator[](int i) -> decltype(this->s[i]){
             assert(i < s.size());

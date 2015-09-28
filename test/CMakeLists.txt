@@ -2,7 +2,7 @@
 
 file(GLOB poly_test_src "poly/*.cpp")
 
-cmake_policy(SET CMP0037 OLD)
+#cmake_policy(SET CMP0037 OLD)
 
 foreach(files ${poly_test_src})
     string(REPLACE ".cpp" "" tmp ${files})
