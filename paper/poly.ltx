@@ -6,7 +6,7 @@
 \usepackage{tikz}
 \usetikzlibrary{snakes,arrows,shapes}
 
-\title{Polynomial Evaluation on modern CPU architectures}
+\title{Polynomial Evaluation on Intel Haswell architecture, applied to the elementary function $e^x$}
 
 \author[rvt]{T. Ewart }
 \ead{timothee.ewart@epfl.ch}
@@ -33,10 +33,10 @@
 \begin{abstract}
 
 In the evaluation of the elementary functions $e.g.$ $e^x$, the challenge consists to compute with the maximum performance
-a polynomial of low degree polynomial ($e.g.$ 10) in a small $x$-range, where the coefficients are known in advance.
+a polynomial of low degree ($e.g.$ 10) in a small $x$-range, where the coefficients are known in advance.
 In this paper, we evaluate the main methods of the literature and we complete 
 this work by the factorisation evaluation, that is surprisingly  neglected in the literature. 
-We focus our evaluation  on the last modern processors of Intel(SandyBridge Haswell)/IBM(Power8)/ARM(V8) where several computational units are available, and may maximise the computing throughput. We show experimentally, for a polynomial of degree 10, the factorisation scheme combined with usual approach is the is the fastest.
+We focus our evaluation on the last modern processors of Intel Haswell where several computational units are available, and may maximise the computing throughput. We show experimentally, for a polynomial of degree 10, the factorisation scheme combined with usual approach is the fastest.
 \end{abstract}
 
 
@@ -55,7 +55,6 @@ We focus our evaluation  on the last modern processors of Intel(SandyBridge Hasw
 $ \lfloor log(n) \rfloor + \upsilon(n)$ multiplications where  $\upsilon(n)$ number of ones in the binary representation of $n$
 \subsection{Brute force}
 ... evaluate polynomial \ref{P0}  at $x = x_0$ ... using evaluation of power as described previously  $n$ addition, $2n-1$ multiplication
-... degree parallelism $n$
 \subsection{Horner method: classical - $1^{st}$-order}
 .... the most classical .... \textit{"Horner's rule"} .... evaluate polynomial \ref{P0} at $x = x_0$
 
@@ -92,24 +91,33 @@ P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
 \end{eqnarray}
 $n$ multiplication, $n$ additions, remark pattern design for FMA
 
-
-%\subsection{Adaptation of coefficients}
-%
-%Pam modify the coefficient exemple quadratic:
-%
-%\begin{eqnarray}
-%P_2(x) =a_0+a_1x+a_2x^2, a_i \neq 0  \nonumber \\
-%P_0(x) = x\left(x+\frac{a_1}{a_2}\right) \nonumber \\
-%P_2(x) = a_2P_0(x)+a_0
-%\end{eqnarray}
-%3 multiplications , 2 additions TO  2 mull 2 add 1 div (can calculate before)
 \subsection{factorization}
 factorize the polynomial (outside), get produce of linear or quadratic if complex-root. combinaison different method $e.g.$ 
 $k$ factor gives $k-1$ factor multiplication, factor depends of the method of multiplications. 
 
+\subsection{number of operations}
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{l c c c }
+	\hline
+		             & addition & multiplication & parallelism \\
+Brute force            &  $n$       & $2n-1$    & n \\
+Horner $k^{th}$-order  & $n+k-1$ & $n$         & k \\
+Estrin                    & $n$        & $n$         &   \\
+Factorization        &    combinaison            &   combinaison       &\# factors\\    
+	\hline
+
+\end{tabular}
+\end{center}
+\caption{Complexity and number of operation of the different algorithms of evaluation of the polynomial. \label{default}}
+\end{table}%
+
+
 \subsection{Notations}
 
 $P^{n}_{m}$ polynomial of degree $n$, $m$ indicate the method ( $e = \textrm{Estrin}$, $h^k = \textrm{Horner at the the $k$ order}$, $b = \textrm{Brute Force}$) how we compute
+
 
 
 \subsection{Combinatory}
@@ -117,27 +125,38 @@ $P^{n}_{m}$ polynomial of degree $n$, $m$ indicate the method ( $e = \textrm{Est
 Starting point  Polynomial degree 10 approximation $e^x$ no real root, complex only, 5 pair conjugate, 5 quadratic. How many factorization  scheme? Partition of 10
 into even summands  (equivalent decomposition of 5 "multiply by 2"). $P^{10} = P^6P^4 = P^6P^2P^2 = P^4P^4P^2 = P^4P^2P^2P^2 = P^2P^2P^2P^2P^2 $.
 Multiplication commutative. Every polynomial degree+1 method of evaluation (bruteforce + estrin + horner kth = degree-1) (horner kth=degree equivalent order one).
-if $P^n \P^m$ and $n!=m$ so $n \times m$ possibilitties. if $n=m$,  ${n+k-1 \choose k} $ possibilities (and not ${n \choose k}$ because repetitions are allowed ). On the present example 231 possibilities. Automatic program than generate
-all the possibilities, get all the factorisation scheme
+if $P^n P^m$ and $n!=m$ so $n \times m$ possibilitties. if $n=m$,  ${n+k-1 \choose k} $ possibilities (and not ${n \choose k}$ because repetitions are allowed ). On the present example 231 possibilities.  Program generates all the possibilities, get all the factorisation scheme.
+
+\subsection{Elementary function: $e^x$}
+\begin{eqnarray}
+e^x & = & 2^k e^y \nonumber \\
+      & = & 2^k P(y) 
+\end{eqnarray}
 
 \section{Processor \& methods}
-\subsection{Intel SandyBridge/Haswell architecture}
+\subsection{Intel Haswell architecture}
 blabla
 
 \subsection{Latency, throughput }
-Latency: number of cycle needed to execute a single instruction. Throughput: number of cycle needed to execute the same instruction.
-e.g. Haswell add double precision latency 3 cycle, throughput 1 cycle. mean 2 independents additions takes 4 cycles where 6 if they are independents. 
-From the 231 possibilities difficult to determine what will be the fastest method due to the interaction latency throughput. 
+
+The latency of an instruction is the delay that the instruction generates in a dependency chain. 
+For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruction can start executing
+2 clock cycles after a previous FMUL. A reciprocal throughput of 0.33 for ADD means that the execution units can handle 3 integer additions per clock cycle.
+
+
+The throughput is the maximum number of instructions of the same kind that can be executed per clock cycle
+when the operands of each instruction are independent of the preceding instructions.
+
 
 \subsection{measurement tool}
 IACA measure latency/throughput of C++ code, kernel that is pinned by marks into the code.  
-
+return latency/throughput and bottleneck of the mark code.
 \subsection{Programming model}
 C++ basic recursive meta-programming (like template factorial ), all models are written with fairplay. Assembly check, look good.
-Fine control of the code but compiler as the final word, and can do strong optimisation. 
+Fine control of the code but compiler as the final word, and can do strong optimisation, specially catch FMA pattern.
 
 \subsection{ASM quality}
-
+Simple evaluate the number of move compare 
 \begin{figure}
 \subfloat[]
 {
@@ -280,15 +299,14 @@ Fine control of the code but compiler as the final word, and can do strong optim
 \section{Results}
 
 \begin{table}[htdp]
-\caption{Latency/Throughput add/mul/fma on the targeting architecture}
+\caption{Latency/Throughput add/mul/fma on the Haswell architecture}
 \begin{center}
-\begin{tabular}{l c c c c c c c  c}
-                         & \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Haswell} & \multicolumn{2}{c}{Power8} & \multicolumn{2}{c}{ARMv7} \\
+\begin{tabular}{l c c }
+                         & Latency & Throughput  \\
 		          \hline
-add                    &  3 & 1 & 3 & 0.8 & 6 & 1 & 5 & 2  \\
-mul                    &  5 & 1 & 5 & 0.5 & 6 & 1 & 5 & 2\\
-FMA                   &  - & -  & 5 & 0.5  & 6 & 1 & 9 & 2 \\
-FPU/core           & \multicolumn{2}{c}{2}                   & \multicolumn{2}{c}{2}       & \multicolumn{2}{c}{2}                & \multicolumn{2}{c}{?} \\
+add                    &  3 & 0.8     \\
+mul                    &   5 & 0.5   \\
+FMA                   &   5 & 0.5    \\
 		             \hline
 \end{tabular}
 \end{center}
@@ -305,29 +323,26 @@ FPU/core           & \multicolumn{2}{c}{2}                   & \multicolumn{2}{c
 
 
 \begin{table}[htdp]
-\caption{Latency [cycle] of the different algorithms for a polynomial of degree 10}
 \begin{center}
-\begin{tabular}{l c c c  c}
-		             & SandyBridge & Haswell & Power8 & ARMv7 \\
-		             \hline
-Brute force            &  54  & 38 & 56 &  60 \\
-Factorisation         &\cellcolor{green}44  & 39 & \cellcolor{green}32  & \cellcolor{green}31 \\
-Factorisation-Pan &  44  & 39 & 32 & 32 \\
-Horner$^{1st}$     &  99  & 58 & 72 & 65 \\
-Horner$^{2nd}$    &  69  & 43 & 54 & 90 \\
-Horner$^{3rd}$     &  63  & 42 & 54 & 50\\
-Horner$^{4th}$     &  60  & 39 & 54 & 50\\
-Horner$^{5th}$     &  67  & 49 & 79 & 52\\
-Horner$^{6th}$     &  65  & 44 & 79 & 67\\
-Horner$^{7th}$     &  73  & 44 & 91 & 60\\
-Horner$^{8th}$     &  74  & 44 & 81 & 74\\
-Horner$^{9th}$     &  82  & 38 & 96 & 74\\
-Horner$^{10th}$   &  79  & 38 & 92 & 74\\
-Estrin                    &  61  & \cellcolor{green}34 & 76 & 86 \\
-		             \hline
+\begin{tabular}{c c c c}
+\hline
+rank & algorithm & latency [cycle] & throughput [cycle] \\ 
+1 & $P^2_b P^4_b P^4_b$ & 42 & 35.00  \\
+2 &  $P^2_e P^4_b P^4_b$ & 42 & 35.00  \\
+3 &  $P^6_{h^5} P^4_b       $ & 42 & 36.65  \\
+4 &  $P^2_b P^4_b P^4_e$ & 43 & 35.85  \\
+5 &  $P^2_e P^4_b P^4_e$ & 43 & 36.30  \\
+6 &  $P^2_{h^1} P^4_{h^1} P^4_{h^3}$ & 43 & 36.15  \\
+7 &  $P^6_{h^5} P^4_e $ & 43 & 37.00  \\
+8 &  $P^6_{h^5} P^2_{h^1} P^2_{h^1} $ & 43 & 37.00  \\
+9 &  $P^6_{h^4} P^2_b P^2_{h^1} $ & 46 & 39.20  \\
+10 &  $P^6_{h^4} P^2_2 P^2_{h^1} $ & 46 & 39.20  \\
+138 & $P^{10}_e$ & 60 & 52.05 \\
+231 & $P^{10}_{h^1}$ & 83 & 75.05 \\
+\hline
 \end{tabular}
 \end{center}
-\label{default}
+\caption{Rank and Latency/throughput [cycle] of the  exponential, evaluated with different algorithms for the evaluation of the polynomial of degree 10. \label{LTR_EXP}}
 \end{table}%
 
 \section{Conclusions}

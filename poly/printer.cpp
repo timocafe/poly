@@ -51,6 +51,40 @@ namespace poly{
         return ps;
     }
 
+    std::ostream& printer::lib(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
+        time_t t = time(NULL);
+        tm* timePtr = localtime(&t);
+        ps << "//\n";
+        ps << "// " << tag + "_test.cpp"  <<  "\n";
+        ps << "//\n";
+        ps << "// Created by Ewart Timothée, " << timePtr->tm_mday
+        <<"/"<< timePtr->tm_mon+1
+        <<"/"<< timePtr->tm_year+1900 <<"\n";
+        ps << "// Copyright (c) Ewart Timothée. All rights reserved.\n";
+        ps << "//\n";
+        ps << "// This file is generated automatically, do not edit!\n";
+        ps << "// TAG: " << tag << "\n";
+        ps << "// Helper:\n";
+        ps << "//     h = Horner, e = Estrin, b = BruteForce\n";
+        ps << "//     The number indicates the order for Horner\n";
+        ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
+        ps << "//\n";
+        ps << "#include \"poly/poly.h\"\n";
+        ps << "\n";
+        ps << "namespace poly { \n";
+        ps << "    double exp(double x){\n";
+        ps << "        long long int twok = ((1023 + ((long long int)(1.4426950408889634 * x))) << (52));\n";
+        ps << "        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;\n";
+        ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
+        ps << "        return y;\n";
+        ps << "    }\n";
+        ps << "    double reset(double x, double y){return x;}\n";        
+        ps << "} //end namespace \n";
+        ps << "\n";
+        return ps;
+    }
+
+    
     std::ostream& printer::test(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
         time_t t = time(NULL);
         tm* timePtr = localtime(&t);
@@ -112,8 +146,8 @@ namespace poly{
         for(auto t = v.begin(); t != v.end(); ++t){
             std::string tag((*t).tag());
             std::ostringstream buf;
-            p(buf,(*t).generate(),tag);
-//            p.test(buf,(*t).generate(),tag);
+           // p(buf,(*t).generate(),tag);
+            p.lib(buf,(*t).generate(),tag);
             print<poly::file>(buf,tag);
         }
     }

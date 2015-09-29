@@ -20,6 +20,7 @@ namespace poly{
     struct printer{
         std::ostream& operator()(std::ostream& ps, std::string const& produce, std::string const& tag) const;
         std::ostream& test(std::ostream& ps, std::string const& produce, std::string const& tag) const;
+        std::ostream& lib(std::ostream& ps, std::string const& produce, std::string const& tag) const;
     };
     
     void helper_printer(std::vector<produce> const & v);
