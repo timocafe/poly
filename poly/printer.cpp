@@ -104,12 +104,14 @@ namespace poly{
         ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
         ps << "//\n";
         ps << "\n";
+        ps << "#include <iostream>\n";
         ps << "#include <random>\n";
         ps << "#include <cmath>\n";
         ps << "#define BOOST_TEST_MODULE poly\n";
         ps << "#include <boost/test/unit_test.hpp>\n";
         ps << "#include \"poly/poly.h\"\n";
         ps << "\n";
+        ps << "double error(0), rms(0);\n";
         ps << "BOOST_AUTO_TEST_CASE("+tag+"_test){\n";
         ps << "    std::random_device rd;\n";
         ps << "    std::mt19937 gen(rd());\n";
@@ -121,7 +123,11 @@ namespace poly{
         ps << "        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        BOOST_REQUIRE_CLOSE(y, ref, 0.001);\n";
+        ps << "        error = std::abs(y-ref)/ref;\n";
+        ps << "        rms += error * error;\n";
         ps << "    }\n";
+        ps << "    rms/=100;\n";
+        ps << "    std::cout << std::sqrt(rms) <<  std::endl;\n";
         ps <<"}\n";
         return ps;
     }
@@ -147,7 +153,7 @@ namespace poly{
             std::string tag((*t).tag());
             std::ostringstream buf;
            // p(buf,(*t).generate(),tag);
-            p.lib(buf,(*t).generate(),tag);
+            p.test(buf,(*t).generate(),tag);
             print<poly::file>(buf,tag);
         }
     }
