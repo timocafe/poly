@@ -81,7 +81,7 @@ namespace poly{
         ps << "\n";
         ps << "    double exp(double x){\n";
         ps << "        long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));\n";
-        ps << "        x -= ((double)((int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;\n";
+        ps << "        x -= ((double)((long long int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        return y;\n";
         ps << "    }\n";
@@ -90,7 +90,7 @@ namespace poly{
         return ps;
     }
 
-    
+
     std::ostream& printer::test(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
         time_t t = time(NULL);
         tm* timePtr = localtime(&t);

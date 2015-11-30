@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.7.1)  4 SEP 2015 15:14
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.20)  21 SEP 2015 20:38
 entering extended mode
- restricted \write18 enabled.
- file:line:error style messages enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **poly.ltx
 (./poly.ltx
@@ -652,41 +651,41 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 {/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (31.15855pt too wide) in alignment at lines 86--92
+Overfull \hbox (20.60304pt too wide) in alignment at lines 86--92
  [][][] []
  []
 
 [2]
-Overfull \hbox (21.86613pt too wide) in paragraph at lines 170--273
+Overfull \hbox (21.86613pt too wide) in paragraph at lines 173--276
 [][][][] 
  []
 
 
-Underfull \hbox (badness 3942) in paragraph at lines 273--273
+Underfull \hbox (badness 3942) in paragraph at lines 276--276
 []\OT1/cmr/m/n/8 Figure 1: |(a) clas-si-cal Horner (57/5.5 [cy-cle]), (b) Es-tr
 in (32/7.1 [cy-cle]), (c)
  []
 
 Package epstopdf Info: Source file: <plot/figures/pLTSBHS.eps>
-(epstopdf)                    date: 2015-09-04 14:52:35
+(epstopdf)                    date: 2015-09-07 22:20:53
 (epstopdf)                    size: 32654 bytes
 (epstopdf)             Output file: <plot/figures/pLTSBHS-eps-converted-to.pdf>
 
-(epstopdf)                    date: 2015-09-04 14:57:03
+(epstopdf)                    date: 2015-09-07 22:20:53
 (epstopdf)                    size: 14015 bytes
-(epstopdf)             Command: <repstopdf --outfile=plot/figures/pLTSBHS-eps-c
-onverted-to.pdf plot/figures/pLTSBHS.eps>
-(epstopdf)             \includegraphics on input line 298.
+(epstopdf)             Command: <epstopdf --outfile=plot/figures/pLTSBHS-eps-co
+nverted-to.pdf plot/figures/pLTSBHS.eps>
+(epstopdf)             \includegraphics on input line 301.
 Package epstopdf Info: Output file is already uptodate.
-<plot/figures/pLTSBHS-eps-converted-to.pdf, id=26, 361.35pt x 252.945pt>
+<plot/figures/pLTSBHS-eps-converted-to.pdf, id=25, 361.35pt x 252.945pt>
 File: plot/figures/pLTSBHS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use plot/figures/pLTSBHS-eps-converted-to.pdf>
 Package pdftex.def Info: plot/figures/pLTSBHS-eps-converted-to.pdf used on inpu
-t line 298.
+t line 301.
 (pdftex.def)             Requested size: 361.34912pt x 252.94438pt.
 
-Overfull \hbox (16.34912pt too wide) in paragraph at lines 298--299
+Overfull \hbox (16.34912pt too wide) in paragraph at lines 301--302
 [][] 
  []
 
@@ -700,8 +699,8 @@ LaTeX Warning: There were multiply-defined labels.
  ) 
 Here is how much of TeX's memory you used:
  14766 strings out of 493315
- 304036 string characters out of 6137905
- 417395 words of memory out of 5000000
+ 304036 string characters out of 6137903
+ 417442 words of memory out of 5000000
  17896 multiletter control sequences out of 15000+600000
  10782 words of font info for 41 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
@@ -723,7 +722,7 @@ e/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2013/t
 exmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive/2013/tex
 mf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on poly.pdf (5 pages, 210744 bytes).
+Output written on poly.pdf (5 pages, 209642 bytes).
 PDF statistics:
  100 PDF objects out of 1000 (max. 8388607)
  72 compressed objects within 1 object stream
