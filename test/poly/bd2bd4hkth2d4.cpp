@@ -35,12 +35,12 @@ BOOST_AUTO_TEST_CASE(bd2bd4hkth2d4_test){
         double x = dis(gen);
         double ref = std::exp(x);
         long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));
-        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;
+        x -= ((double)((long long int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;
         double y = poly::bruteforce<poly::coeffP2_5>(x)*poly::bruteforce<poly::coeffP4_1>(x)*poly::horner_kth<poly::coeffP4_2,2>(x)* (*(double *)(&twok));
         BOOST_REQUIRE_CLOSE(y, ref, 0.001);
         error = std::abs(y-ref)/ref;
         rms += error * error;
     }
     rms/=100;
-    std::cout << std::sqrt(rms) <<  std::endl;
+    std::cout << "bd2bd4hkth2d4" << " rms :"  << std::sqrt(rms) <<  std::endl;
 }

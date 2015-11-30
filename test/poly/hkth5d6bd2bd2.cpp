@@ -35,12 +35,12 @@ BOOST_AUTO_TEST_CASE(hkth5d6bd2bd2_test){
         double x = dis(gen);
         double ref = std::exp(x);
         long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));
-        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;
+        x -= ((double)((long long int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;
         double y = poly::horner_kth<poly::coeffP6,5>(x)*poly::bruteforce<poly::coeffP2_4>(x)*poly::bruteforce<poly::coeffP2_5>(x)* (*(double *)(&twok));
         BOOST_REQUIRE_CLOSE(y, ref, 0.001);
         error = std::abs(y-ref)/ref;
         rms += error * error;
     }
     rms/=100;
-    std::cout << std::sqrt(rms) <<  std::endl;
+    std::cout << "hkth5d6bd2bd2" << " rms :"  << std::sqrt(rms) <<  std::endl;
 }

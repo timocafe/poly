@@ -35,12 +35,12 @@ BOOST_AUTO_TEST_CASE(ed4bd2ed2hkth1d2_test){
         double x = dis(gen);
         double ref = std::exp(x);
         long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));
-        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;
+        x -= ((double)((long long int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;
         double y = poly::estrin<poly::coeffP4_1>(x)*poly::bruteforce<poly::coeffP2_3>(x)*poly::estrin<poly::coeffP2_4>(x)*poly::horner_kth<poly::coeffP2_5,1>(x)* (*(double *)(&twok));
         BOOST_REQUIRE_CLOSE(y, ref, 0.001);
         error = std::abs(y-ref)/ref;
         rms += error * error;
     }
     rms/=100;
-    std::cout << std::sqrt(rms) <<  std::endl;
+    std::cout << "ed4bd2ed2hkth1d2" << " rms :"  << std::sqrt(rms) <<  std::endl;
 }
