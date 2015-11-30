@@ -11,6 +11,7 @@
 
 namespace poly{
 
+
     std::ostream& printer::operator()(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
         time_t t = time(NULL);
         tm* timePtr = localtime(&t);
@@ -71,14 +72,19 @@ namespace poly{
         ps << "//\n";
         ps << "#include \"poly/poly.h\"\n";
         ps << "\n";
-        ps << "namespace poly { \n";
+        ps << "namespace poly {\n";
+        ps << "    inline double sse_floor(double a) {\n";
+        ps << "        double b;\n";
+        ps << "        asm (\"roundsd $1,%1,%0 \" :\"=x\"(b) :\"x\"(a));\n";
+        ps << "        return b;\n";
+        ps << "    }\n";
+        ps << "\n";
         ps << "    double exp(double x){\n";
-        ps << "        long long int twok = ((1023 + ((long long int)(1.4426950408889634 * x))) << (52));\n";
-        ps << "        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;\n";
+        ps << "        long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));\n";
+        ps << "        x -= ((double)((int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        return y;\n";
         ps << "    }\n";
-        ps << "    double reset(double x, double y){return x;}\n";        
         ps << "} //end namespace \n";
         ps << "\n";
         return ps;
@@ -112,6 +118,13 @@ namespace poly{
         ps << "#include \"poly/poly.h\"\n";
         ps << "\n";
         ps << "double error(0), rms(0);\n";
+        ps << "\n";
+        ps << "    inline double sse_floor(double a) {\n";
+        ps << "        double b;\n";
+        ps << "        asm (\"roundsd $1,%1,%0 \" :\"=x\"(b) :\"x\"(a));\n";
+        ps << "        return b;\n";
+        ps << "    }\n";
+        ps << "\n";
         ps << "BOOST_AUTO_TEST_CASE("+tag+"_test){\n";
         ps << "    std::random_device rd;\n";
         ps << "    std::mt19937 gen(rd());\n";
@@ -119,8 +132,8 @@ namespace poly{
         ps << "    for (int i = 0; i < 100; ++i){\n";
         ps << "        double x = dis(gen);\n";
         ps << "        double ref = std::exp(x);\n";
-        ps << "        long long int twok = ((1023 + ((long long int)(1.4426950408889634 * x))) << (52));\n";
-        ps << "        x -= ((double)((int)(1.4426950408889634 * x)))*0.6931471805599453;\n";
+        ps << "        long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));\n";
+        ps << "        x -= ((double)((int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        BOOST_REQUIRE_CLOSE(y, ref, 0.001);\n";
         ps << "        error = std::abs(y-ref)/ref;\n";
