@@ -34,8 +34,9 @@ BOOST_AUTO_TEST_CASE(hkth7d8bd2_test){
     for (int i = 0; i < 100; ++i){
         double x = dis(gen);
         double ref = std::exp(x);
-        long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));
-        x -= ((double)((long long int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;
+        const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));
+        const long long int twok = (1023+tmp) << 52;
+        x -= ((double)(tmp))*0.6931471805599453;
         double y = poly::horner_kth<poly::coeffP8,7>(x)*poly::bruteforce<poly::coeffP2_5>(x)* (*(double *)(&twok));
         BOOST_REQUIRE_CLOSE(y, ref, 0.001);
         error = std::abs(y-ref)/ref;

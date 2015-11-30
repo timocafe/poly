@@ -80,8 +80,9 @@ namespace poly{
         ps << "    }\n";
         ps << "\n";
         ps << "    double exp(double x){\n";
-        ps << "        long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));\n";
-        ps << "        x -= ((double)((long long int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;\n";
+        ps << "        const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));\n";
+        ps << "        const long long int twok = (1023 + tmp) << 52;\n";
+        ps << "        x -= ((double)(tmp))*0.6931471805599453;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        return y;\n";
         ps << "    }\n";
@@ -132,8 +133,9 @@ namespace poly{
         ps << "    for (int i = 0; i < 100; ++i){\n";
         ps << "        double x = dis(gen);\n";
         ps << "        double ref = std::exp(x);\n";
-        ps << "        long long int twok = ((1023 + ((long long int)sse_floor(1.4426950408889634 * x))) << (52));\n";
-        ps << "        x -= ((double)((long long int)sse_floor(1.4426950408889634 * x)))*0.6931471805599453;\n";
+        ps << "        const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));\n";
+        ps << "        const long long int twok = (1023+tmp) << 52;\n";
+        ps << "        x -= ((double)(tmp))*0.6931471805599453;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        BOOST_REQUIRE_CLOSE(y, ref, 0.001);\n";
         ps << "        error = std::abs(y-ref)/ref;\n";
