@@ -102,6 +102,7 @@ namespace poly{
         ps << "        const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));\n";
         ps << "        const long long int twok = (1023 + tmp) << 52;\n";
         ps << "        x -= ((double)(tmp))*0.6931471805599453;\n";
+        ps << "        x -= ((double)(tmp))*1.42860682030941723212E-6;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        uint64_t n = as_uint64(y);\n";
         ps << "        n &= mask1;\n";
@@ -257,6 +258,7 @@ namespace poly{
         ps << "        const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));\n";
         ps << "        const long long int twok = (1023 + tmp) << 52;\n";
         ps << "        x -= ((double)(tmp))*0.6931471805599453;\n";
+        ps << "        x -= ((double)(tmp))*1.42860682030941723212E-6;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        uint64_t n = as_uint64(y);\n";
         ps << "        n &= mask1;\n";
@@ -316,6 +318,12 @@ namespace poly{
                 std::string tag("test_"+(*t).tag());
                 std::ostringstream buf;
                 p.test(buf,(*t).generate(),tag);
+                print<poly::file>(buf,tag);
+            }
+            {
+                std::string tag((*t).tag());
+                std::ostringstream buf;
+                p.lib(buf,(*t).generate(),tag);
                 print<poly::file>(buf,tag);
             }
         }
