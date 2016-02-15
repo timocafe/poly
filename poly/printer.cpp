@@ -71,6 +71,8 @@ namespace poly{
         ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
         ps << "//\n";
         ps << "#include <limits>\n";
+        ps << "#include <string.h>\n";
+        ps << "#include <cmath>\n";
         ps << "#include \"poly/poly.h\"\n";
         ps << "\n";
         ps << "namespace poly {\n";

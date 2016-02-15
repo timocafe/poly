@@ -1,8 +1,8 @@
 
 
-file(GLOB poly_test_src "poly/*.cpp")
+file(GLOB test_src "poly/test_*.cpp")
 
-foreach(files ${poly_test_src})
+foreach(files ${test_src})
     string(REPLACE ".cpp" "" tmp ${files})
     string(REPLACE "${CMAKE_SOURCE_DIR}/test/poly/" "" exe ${tmp})
     add_executable(${exe} ${files})
