@@ -309,7 +309,7 @@ namespace poly{
         time_t t = time(NULL);
         tm* timePtr = localtime(&t);
         ps << "//\n";
-        ps << "// " << tag + "_test.cpp"  <<  "\n";
+        ps << "// " << tag + ".cpp"  <<  "\n";
         ps << "//\n";
         ps << "// Created by Ewart Timothée, " << timePtr->tm_mday
         <<"/"<< timePtr->tm_mon+1
@@ -324,9 +324,6 @@ namespace poly{
         ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
         ps << "//\n";
         ps << "\n";
-        ps << "#include \"cyme.h\" \n";
-        ps << "\n";
-        ps << "namespace cyme {\n";
         ps << "    template<class T, cyme::simd O, int N>\n";
         ps << "    struct experiment_exp{\n";
         ps << "        static forceinline vec_simd<T,O,N> exp(vec_simd<T,O,N> x){\n";
@@ -360,34 +357,32 @@ namespace poly{
         ps << "            return x;\n";
         ps << "        }\n";
         ps << "    };\n";
-        ps << "} \\\\ end namespace \n";
+        ps << "} // end namespace\n";
         ps << "\n";
         ps << "    typedef double v8float __attribute((vector_size(32)));\n";
         ps << "    typedef double v4double __attribute((vector_size(32)));\n";
         ps << "    typedef double v4float __attribute((vector_size(16)));\n";
         ps << "    typedef double v2double __attribute((vector_size(16)));\n";
         ps << "\n";
-        ps << "extern \"C\" {\n";
-        ps << "    inline v4double v4dexp(v4double a){\n";
+        ps << "    v4double v4dexp(v4double a){\n";
         ps << "        cyme::vec_simd<double,cyme::avx,1> tmp(a);\n";
-        ps << "        return experiment_exp<double,cyme::avx,1>::exp(tmp).xmm;\n";
+        ps << "        return cyme::experiment_exp<double,cyme::avx,1>::exp(tmp).xmm;\n";
         ps << "    }\n";
         ps << "\n";
-        ps << "    inline v2double v2dexp(v2double a){\n";
+        ps << "    v2double v2dexp(v2double a){\n";
         ps << "        cyme::vec_simd<double,cyme::sse,1> tmp(a);\n";
-        ps << "        return experiment_exp<double,cyme::sse,1>::exp(tmp).xmm;\n";
+        ps << "        return cyme::experiment_exp<double,cyme::sse,1>::exp(tmp).xmm;\n";
         ps << "    }\n";
         ps << "\n";
-        ps << "    inline v8float v8fexp(v8float a){\n";
+        ps << "    v8float v8fexp(v8float a){\n";
         ps << "        cyme::vec_simd<float,cyme::avx,1> tmp(a);\n";
-        ps << "        return experiment_exp<float,cyme::avx,1>::exp(tmp).xmm;\n";
+        ps << "        return cyme::experiment_exp<float,cyme::avx,1>::exp(tmp).xmm;\n";
         ps << "    }\n";
         ps << "\n";
-        ps << "    inline v4float v4fexp(v4float a){\n";
+        ps << "    v4float v4fexp(v4float a){\n";
         ps << "        cyme::vec_simd<float,cyme::sse,1> tmp(a);\n";
-        ps << "        return experiment_exp<float,cyme::sse,1>::exp(tmp).xmm;\n";
+        ps << "        return cyme::experiment_exp<float,cyme::sse,1>::exp(tmp).xmm;\n";
         ps << "    }\n";
-        ps << "} \\\\ end extern c \n";
         return ps;
 }
 
