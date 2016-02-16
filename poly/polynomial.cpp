@@ -11,6 +11,14 @@ namespace poly {
             return "poly::"+name()+"<poly::"+coefficient()+">(x)";
     }
 
+    std::string method::cyme_generate() const{
+        if(name()=="horner_kth")
+            return "poly::"+name()+"<T,O,N,poly::"+coefficient()+","+std::to_string(iteration())+">(x)";
+        else
+            return "poly::"+name()+"<T,O,N,poly::"+coefficient()+">(x)";
+    }
+
+
     std::string const method::name() const{
         return n;
     }
@@ -44,6 +52,14 @@ namespace poly {
         std::string evaluation;
         for(auto it = v.begin(); it != v.end(); ++it)
             evaluation += it->generate()+"*";
+        evaluation.pop_back(); // renove the last "*"
+        evaluation += "";
+        return evaluation;
+    }
+    std::string const produce::cyme_generate() const{
+        std::string evaluation;
+        for(auto it = v.begin(); it != v.end(); ++it)
+            evaluation += it->cyme_generate()+"*";
         evaluation.pop_back(); // renove the last "*"
         evaluation += "";
         return evaluation;

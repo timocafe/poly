@@ -17,7 +17,8 @@ namespace poly{
 
     template<>
     struct coeffP10<0>{
-        const static inline double coefficient() {return 1.0000000000000002114940639705245276038539149099858;}
+        const static inline double coefficient() {return 1;}
+        //const static inline double coefficient() {return 1.0000000000000002114940639705245276038539149099858;}
     };
 
     template<>

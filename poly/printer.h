@@ -23,6 +23,7 @@ namespace poly{
         std::ostream& lib(std::ostream& ps, std::string const& produce, std::string const& tag) const;
         std::ostream& bench_serial(std::ostream& ps, std::string const& produce, std::string const& tag) const;
         std::ostream& bench_cyme(std::ostream& ps, std::string const& produce, std::string const& tag) const;
+        std::ostream& cyme_vlib(std::ostream& ps, std::string const& produce, std::string const& tag) const;
     };
     
     void helper_printer(std::vector<produce> const & v);

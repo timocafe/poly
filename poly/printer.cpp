@@ -305,27 +305,119 @@ namespace poly{
 //        return ps;
 //    }
 
+    std::ostream& printer::cyme_vlib(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
+        time_t t = time(NULL);
+        tm* timePtr = localtime(&t);
+        ps << "//\n";
+        ps << "// " << tag + "_test.cpp"  <<  "\n";
+        ps << "//\n";
+        ps << "// Created by Ewart Timothée, " << timePtr->tm_mday
+        <<"/"<< timePtr->tm_mon+1
+        <<"/"<< timePtr->tm_year+1900 <<"\n";
+        ps << "// Copyright (c) Ewart Timothée. All rights reserved.\n";
+        ps << "//\n";
+        ps << "// This file is generated automatically, do not edit!\n";
+        ps << "// TAG: " << tag << "\n";
+        ps << "// Helper:\n";
+        ps << "//     h = Horner, e = Estrin, b = BruteForce\n";
+        ps << "//     The number indicates the order for Horner\n";
+        ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
+        ps << "//\n";
+        ps << "\n";
+        ps << "#include \"cyme.h\" \n";
+        ps << "\n";
+        ps << "namespace cyme {\n";
+        ps << "    template<class T, cyme::simd O, int N>\n";
+        ps << "    struct experiment_exp{\n";
+        ps << "        static forceinline vec_simd<T,O,N> exp(vec_simd<T,O,N> x){\n";
+        ps << "            vec_simd<T,O,N> mask0(~(fabs(x) > vec_simd<T,O,N>(exp_limits<T>::max_range())));\n";
+        ps << "            vec_simd<T,O,N> mask1(x < vec_simd<T,O,N>(exp_limits<T>::max_range()));\n";
+        ps << "            vec_simd<T,O,N> mask2(std::numeric_limits<T>::infinity());\n";
+        ps << "            /* calculate k,  k = (int)floor(a); p = (float)k; */\n";
+        ps << "            vec_simd<T,O,N> log2e(1.4426950408889634073599);\n";
+        ps << "            vec_simd<T,O,N> y(x*log2e);\n";
+        ps << "            vec_simd<int,O,N> k = floor(y); // k int\n";
+        ps << "            vec_simd<T,O,N> p(cast<T,O>(k)); // k float\n";
+        ps << "            /* x -= p * log2; */\n";
+        ps << "            vec_simd<T,O,N> c1(6.93145751953125E-1);\n";
+        ps << "            vec_simd<T,O,N> c2(1.42860682030941723212E-6);\n";
+        ps << "#ifdef __FMA__\n";
+        ps << "            x = negatemuladd(p,c1,x);\n";
+        ps << "            x = negatemuladd(p,c2,x);\n";
+        ps << "#else\n";
+        ps << "            x -= p*c1;\n";
+        ps << "            x -= p*c2; // this corection I do not know ><\n";
+        ps << "#endif\n";
+        ps << "            /* Compute e^x using a polynomial approximation */\n";
+        ps << "            x = "+ produce +";\n";
+        ps << "            /* p = 2^k; */\n";
+        ps << "            p = twok<T,O,N>(k);\n";
+        ps << "            /* e^x = 2^k * e^y */\n";
+        ps << "            x *= p;\n";
+        ps << "            x &= mask0;\n";
+        ps << "            mask2 &= ~mask1;\n";
+        ps << "            x |= mask2;\n";
+        ps << "            return x;\n";
+        ps << "        }\n";
+        ps << "    };\n";
+        ps << "} \\\\ end namespace \n";
+        ps << "\n";
+        ps << "    typedef double v8float __attribute((vector_size(32)));\n";
+        ps << "    typedef double v4double __attribute((vector_size(32)));\n";
+        ps << "    typedef double v4float __attribute((vector_size(16)));\n";
+        ps << "    typedef double v2double __attribute((vector_size(16)));\n";
+        ps << "\n";
+        ps << "extern \"C\" {\n";
+        ps << "    inline v4double v4dexp(v4double a){\n";
+        ps << "        cyme::vec_simd<double,cyme::avx,1> tmp(a);\n";
+        ps << "        return experiment_exp<double,cyme::avx,1>::exp(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "\n";
+        ps << "    inline v2double v2dexp(v2double a){\n";
+        ps << "        cyme::vec_simd<double,cyme::sse,1> tmp(a);\n";
+        ps << "        return experiment_exp<double,cyme::sse,1>::exp(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "\n";
+        ps << "    inline v8float v8fexp(v8float a){\n";
+        ps << "        cyme::vec_simd<float,cyme::avx,1> tmp(a);\n";
+        ps << "        return experiment_exp<float,cyme::avx,1>::exp(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "\n";
+        ps << "    inline v4float v4fexp(v4float a){\n";
+        ps << "        cyme::vec_simd<float,cyme::sse,1> tmp(a);\n";
+        ps << "        return experiment_exp<float,cyme::sse,1>::exp(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "} \\\\ end extern c \n";
+        return ps;
+}
+
     void helper_printer(std::vector<produce> const & v){
         printer p;
         for(auto t = v.begin(); t != v.end(); ++t){
-            {
-                std::string tag("benchmark_"+(*t).tag());
+
+                std::string tag("cyme_"+(*t).tag());
                 std::ostringstream buf;
-                p.bench_serial(buf,(*t).generate(),tag);
-                print<poly::file>(buf,tag);
-            }
-            {
-                std::string tag("test_"+(*t).tag());
-                std::ostringstream buf;
-                p.test(buf,(*t).generate(),tag);
-                print<poly::file>(buf,tag);
-            }
-            {
-                std::string tag((*t).tag());
-                std::ostringstream buf;
-                p.lib(buf,(*t).generate(),tag);
-                print<poly::file>(buf,tag);
-            }
+                p.cyme_vlib(buf,(*t).cyme_generate(),tag);
+                print<poly::screen>(buf,tag);
+
+//            {
+//                std::string tag("benchmark_"+(*t).tag());
+//                std::ostringstream buf;
+//                p.bench_serial(buf,(*t).generate(),tag);
+//                print<poly::file>(buf,tag);
+//            }
+//            {
+//                std::string tag("test_"+(*t).tag());
+//                std::ostringstream buf;
+//                p.test(buf,(*t).generate(),tag);
+//                print<poly::file>(buf,tag);
+//            }
+//            {
+//                std::string tag((*t).tag());
+//                std::ostringstream buf;
+//                p.lib(buf,(*t).generate(),tag);
+//                print<poly::file>(buf,tag);
+//            }
         }
     }
 }

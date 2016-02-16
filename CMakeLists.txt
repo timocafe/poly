@@ -13,7 +13,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR})
 add_subdirectory (poly)
 #test
-add_subdirectory (test)
+#add_subdirectory (test)
 #bench
-add_subdirectory (bench)
+#add_subdirectory (bench)
 

@@ -13,6 +13,7 @@ namespace poly {
                int d = 0, int i=0):n(m),c(o),order(d),it(i){}
         ~method(){};
         std::string  generate() const ;
+        std::string  cyme_generate() const ;
         std::string const name() const;
         std::string const coefficient() const;
         int  iteration() const;
@@ -30,6 +31,7 @@ namespace poly {
         produce(std::string const & tag = std::string()):t(tag){}
         void add(method const& p);
         std::string const generate() const;
+        std::string const cyme_generate() const;
         std::string const tag() const;
     private:
         std::vector<method> v;
