@@ -362,9 +362,9 @@ namespace poly{
         ps << "    };\n";
         ps << "} // end namespace\n";
         ps << "\n";
-        ps << "    typedef double v8float __attribute((vector_size(32)));\n";
+        ps << "    typedef float v8float __attribute((vector_size(32)));\n";
         ps << "    typedef double v4double __attribute((vector_size(32)));\n";
-        ps << "    typedef double v4float __attribute((vector_size(16)));\n";
+        ps << "    typedef float v4float __attribute((vector_size(16)));\n";
         ps << "    typedef double v2double __attribute((vector_size(16)));\n";
         ps << "\n";
         ps << "    v4double v4dexp(v4double a){\n";
