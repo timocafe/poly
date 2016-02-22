@@ -41,14 +41,15 @@
         return x;
     }
     double poly_exp(double x){
-        uint64_t mask1 = (fabs(x) > 700);
+        uint64_t mask1 = (fabs(x) > 704);
         mask1 = (mask1-1);
-        uint64_t mask2 = (x < 700);
+        uint64_t mask2 = (x < 704);
         mask2 = ~(mask2-1);
         uint64_t mask3 = as_uint64(std::numeric_limits<double>::infinity());
         const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));
         const long long int twok = (1023 + tmp) << 52;
         x -= ((double)(tmp))*0.6931471805599453;
+        x -= ((double)(tmp))*1.42860682030941723212E-6;
         double y = poly::estrin<poly::coeffP4_1>(x)*poly::bruteforce<poly::coeffP2_3>(x)*poly::horner_kth<poly::coeffP2_4,1>(x)*poly::horner_kth<poly::coeffP2_5,1>(x)* (*(double *)(&twok));
         uint64_t n = as_uint64(y);
         n &= mask1;
@@ -64,7 +65,7 @@ int main(int argc, char* argv[]){
         std::vector<double> res(size);
         std::random_device rd;
         std::mt19937 gen(rd());
-        std::uniform_real_distribution<> dis(-700,700);
+        std::uniform_real_distribution<> dis(-704,704);
         auto rand = std::bind(dis, gen);
         std::generate(buffer.begin(), buffer.end(), rand);
         double * __restrict p_0 = &res[0];

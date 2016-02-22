@@ -324,6 +324,9 @@ namespace poly{
         ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
         ps << "//\n";
         ps << "\n";
+        ps << "#include \"cyme/cyme.h\"\n";
+        ps << "namespace cyme {\n";
+        ps << "\n";
         ps << "    template<class T, cyme::simd O, int N>\n";
         ps << "    struct experiment_exp{\n";
         ps << "        static forceinline vec_simd<T,O,N> exp(vec_simd<T,O,N> x){\n";
@@ -393,7 +396,7 @@ namespace poly{
                 std::string tag("cyme_"+(*t).tag());
                 std::ostringstream buf;
                 p.cyme_vlib(buf,(*t).cyme_generate(),tag);
-                print<poly::screen>(buf,tag);
+                print<poly::file>(buf,tag);
 
 //            {
 //                std::string tag("benchmark_"+(*t).tag());
