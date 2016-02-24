@@ -16,6 +16,6 @@ add_subdirectory (poly)
 #test
 #add_subdirectory (test)
 #bench
-#add_subdirectory (bench)
-add_subdirectory (libv)
+ add_subdirectory (bench)
+#add_subdirectory (libv)
 

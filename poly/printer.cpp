@@ -393,10 +393,10 @@ namespace poly{
         printer p;
         for(auto t = v.begin(); t != v.end(); ++t){
 
-                std::string tag("cyme_"+(*t).tag());
-                std::ostringstream buf;
-                p.cyme_vlib(buf,(*t).cyme_generate(),tag);
-                print<poly::file>(buf,tag);
+//                std::string tag("cyme_"+(*t).tag());
+//                std::ostringstream buf;
+//                p.cyme_vlib(buf,(*t).cyme_generate(),tag);
+//                print<poly::file>(buf,tag);
 
 //            {
 //                std::string tag("benchmark_"+(*t).tag());
@@ -410,12 +410,12 @@ namespace poly{
 //                p.test(buf,(*t).generate(),tag);
 //                print<poly::file>(buf,tag);
 //            }
-//            {
-//                std::string tag((*t).tag());
-//                std::ostringstream buf;
-//                p.lib(buf,(*t).generate(),tag);
-//                print<poly::file>(buf,tag);
-//            }
+            {
+                std::string tag((*t).tag());
+                std::ostringstream buf;
+                p.lib(buf,(*t).generate(),tag);
+                print<poly::file>(buf,tag);
+            }
         }
     }
 }
