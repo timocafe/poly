@@ -101,7 +101,7 @@ namespace poly{
         ps << "        uint64_t mask3 = as_uint64(std::numeric_limits<double>::infinity());\n";
         ps << "        const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));\n";
         ps << "        const long long int twok = (1023 + tmp) << 52;\n";
-        ps << "        x -= ((double)(tmp))*0.6931471805599453;\n";
+        ps << "        x -= ((double)(tmp))*6.93145751953125E-1;\n";
         ps << "        x -= ((double)(tmp))*1.42860682030941723212E-6;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        uint64_t n = as_uint64(y);\n";
@@ -257,7 +257,7 @@ namespace poly{
         ps << "        uint64_t mask3 = as_uint64(std::numeric_limits<double>::infinity());\n";
         ps << "        const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));\n";
         ps << "        const long long int twok = (1023 + tmp) << 52;\n";
-        ps << "        x -= ((double)(tmp))*0.6931471805599453;\n";
+        ps << "        x -= ((double)(tmp))*6.93145751953125E-1;\n";
         ps << "        x -= ((double)(tmp))*1.42860682030941723212E-6;\n";
         ps << "        double y = " + produce +  "* (*(double *)(&twok));\n";
         ps << "        uint64_t n = as_uint64(y);\n";
@@ -339,7 +339,7 @@ namespace poly{
         ps << "            vec_simd<int,O,N> k = floor(y); // k int\n";
         ps << "            vec_simd<T,O,N> p(cast<T,O>(k)); // k float\n";
         ps << "            /* x -= p * log2; */\n";
-        ps << "            vec_simd<T,O,N> c1(6.93145751953125E-1);\n";
+        ps << "            vec_simd<T,O,N> c1(6.93145751953125E-1);\n"; // very sensitive precision eplose if 0.693145
         ps << "            vec_simd<T,O,N> c2(1.42860682030941723212E-6);\n";
         ps << "#ifdef __FMA__\n";
         ps << "            x = negatemuladd(p,c1,x);\n";

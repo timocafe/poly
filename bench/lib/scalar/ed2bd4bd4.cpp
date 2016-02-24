@@ -42,7 +42,7 @@ namespace poly {
         uint64_t mask3 = as_uint64(std::numeric_limits<double>::infinity());
         const long long int tmp((long long int)sse_floor(1.4426950408889634 * x));
         const long long int twok = (1023 + tmp) << 52;
-        x -= ((double)(tmp))*0.6931471805599453;
+        x -= ((double)(tmp))*6.93145751953125E-1;
         x -= ((double)(tmp))*1.42860682030941723212E-6;
         double y = poly::estrin<poly::coeffP2_5>(x)*poly::bruteforce<poly::coeffP4_1>(x)*poly::bruteforce<poly::coeffP4_2>(x)* (*(double *)(&twok));
         uint64_t n = as_uint64(y);
