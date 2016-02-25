@@ -26,5 +26,7 @@ hkth7d8bd2 hkth7d8ed2 hkth7d8hkth1d2 hkth8d10 hkth9d10)
 
 foreach(i ${libexp})
     add_executable(scalar_ulp_${i} main_scalar.cpp)
+    add_executable(vector_ulp_${i} main_vector.cpp)
     target_link_libraries(scalar_ulp_${i} "${CMAKE_BINARY_DIR}/bench/lib/scalar/libscalar_${i}.a")
+    target_link_libraries(vector_ulp_${i} "${CMAKE_BINARY_DIR}/bench/lib/vector/libvector_${i}.a")
 endforeach()
