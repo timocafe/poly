@@ -2,3 +2,4 @@
  add_subdirectory (lib/vector)
  add_subdirectory (ulp)
  add_subdirectory (throughput)
+ add_subdirectory (latency)
