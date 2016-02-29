@@ -216,7 +216,7 @@ void run_looped_karg_kernels(harness &H) {
     size_t n_inner=100;
 
  // typedef tvalue_list<op_enum, arith_op::add, arith_op::mul, arith_op::exp> ops;
-    typedef tvalue_list<op_enum, arith_op::add, arith_op::mul, arith_op::exp, arith_op::poly_exp> ops;
+    typedef tvalue_list<op_enum, arith_op::poly_exp> ops;
     ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
 
     {
