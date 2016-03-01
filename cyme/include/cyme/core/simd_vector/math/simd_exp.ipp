@@ -38,11 +38,18 @@ namespace cyme{
     template<class T, cyme::simd O, int N,std::size_t n>
     struct Remez_exp{
         static forceinline vec_simd<T,O,N> exp(vec_simd<T,O,N> const& a){
-                return poly::estrin<T,O,N,poly::coeffP2_5>(a)*poly::horner_kth<T,O,N,poly::coeffP4_1,1>(a)
-                                                             *poly::horner_kth<T,O,N,poly::coeffP4_2,2>(a);
-         //       return poly::bruteforce<T,O,N,poly::coeffP10>(a); // helper_horner<T,O,N,coeff_remez_exp,n>::horner(a);
-         //       return poly::horner_kth<T,O,N,poly::coeffP10,1>(a);
-         //       return poly::estrin<T,O,N,poly::coeffP10>(a);
+                  return poly::horner_kth<T,O,N,poly::coeffP2_1,1>(a)*
+                         poly::horner_kth<T,O,N,poly::coeffP2_2,1>(a)*
+                         poly::horner_kth<T,O,N,poly::coeffP2_3,1>(a)*
+                         poly::horner_kth<T,O,N,poly::coeffP2_4,1>(a)*
+                         poly::horner_kth<T,O,N,poly::coeffP2_5,1>(a);
+         //      return poly::estrin<T,O,N,poly::coeffP2_5>(a)*poly::horner_kth<T,O,N,poly::coeffP4_1,1>(a) *poly::horner_kth<T,O,N,poly::coeffP4_2,2>(a);
+         //      return poly::bruteforce<T,O,N,poly::coeffP10>(a); // helper_horner<T,O,N,coeff_remez_exp,n>::horner(a);
+         //      return poly::horner_kth<T,O,N,poly::coeffP10,1>(a);
+         //      return poly::estrin<T,O,N,poly::coeffP10>(a);
+         //      return poly::bruteforce<T,O,N,poly::coeffP6>(a)*poly::bruteforce<T,O,N,poly::coeffP4_3>(a);
+         //      return poly::estrin<T,O,N,poly::coeffP2_5>(a)*poly::estrin<T,O,N,poly::coeffP4_1>(a)*poly::estrin<T,O,N,poly::coeffP4_2>(a);
+
         }
     };
 

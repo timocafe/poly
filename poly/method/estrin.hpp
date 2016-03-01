@@ -11,6 +11,18 @@
 
 namespace poly{
 
+    /** compute the maximum value of iteration comming from 3.6 m = int(log2(degree)) */
+    template <unsigned long long n>
+    struct log2 {
+        enum { value=1+log2<n/2>::value };
+    };
+
+    /** particular case*/
+    template <>
+    struct log2<1> {
+        enum { value=0 };
+    };
+
     /** general test case, i is lower than the degree of the polynomial */
     template<template <int> class C,int i, bool b1 = (i<=poly_order<C>::value), bool b2 = (i == poly_order<C>::value)>
     struct binomial_helper{
@@ -41,7 +53,7 @@ namespace poly{
     template<template <int> class C, int i, int n>
     struct helper_estrin{
         static inline double estrin(double const x){
-            return helper_estrin<C,i,n-1>::estrin(x) + pow<2*n>(x)*helper_estrin<C,i+(1<<n),n-1>::estrin(x);
+            return helper_estrin<C,i,n-1>::estrin(x) + pow<(1<<n)>(x)*helper_estrin<C,i+(1<<n),n-1>::estrin(x);
         }
     };
 
@@ -57,7 +69,7 @@ namespace poly{
 
     template<template <int> class C>
     inline double estrin(double const x){
-        return helper_estrin<C,0,poly_order<C>::value>::estrin(x);
+        return helper_estrin<C,0, log2<poly_order<C>::value>::value >::estrin(x);
     }
 
 }

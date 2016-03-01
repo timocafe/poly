@@ -28,6 +28,19 @@
 #define POLY_ESTRIN_IPP
 
 namespace poly{
+
+    /** compute the maximum value of iteration comming from 3.6 m = int(log2(degree)) */
+    template <unsigned long long n>
+    struct log2 {
+        enum { value=1+log2<n/2>::value };
+    };
+
+    /** particular case*/
+    template <>
+    struct log2<1> {
+        enum { value=0 };
+    };
+
     /** general test case, i is lower than the degree of the polynomial */
     template<class T, cyme::simd O, int N, template <class,int> class C,int i,
              bool b1 = (i<=poly_order<C>::value), bool b2 = (i == poly_order<C>::value)>
@@ -74,7 +87,7 @@ namespace poly{
 #ifdef __FMA__
             return muladd(cyme::pow<T,O,N,2*n>(x),helper_estrin<T,O,N,C,i+(1<<n),n-1>::estrin(x),helper_estrin<T,O,N,C,i,n-1>::estrin(x));
 #else
-            return helper_estrin<T,O,N,C,i,n-1>::estrin(x) + cyme::pow<T,O,N,2*n>(x)*helper_estrin<T,O,N,C,i+(1<<n),n-1>::estrin(x);
+            return helper_estrin<T,O,N,C,i,n-1>::estrin(x) + cyme::pow<T,O,N,(1<<n)>(x)*helper_estrin<T,O,N,C,i+(1<<n),n-1>::estrin(x);
 #endif
         }
     };
@@ -92,7 +105,7 @@ namespace poly{
 
     template<class T, cyme::simd O, int N,template <class,int> class C>
     inline cyme::vec_simd<T,O,N> estrin(cyme::vec_simd<T,O,N> const& x){
-        return helper_estrin<T,O,N,C,0,poly_order<C>::value>::estrin(x);
+        return helper_estrin<T,O,N,C,0, log2<poly_order<C>::value>::value >::estrin(x);
     }
 
 }
