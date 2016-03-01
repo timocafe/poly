@@ -22,7 +22,7 @@ include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/cyme/include)
 add_subdirectory (poly)
 #test
-#add_subdirectory (test)
+add_subdirectory (test)
 #bench
 add_subdirectory (llc)
 add_subdirectory (bench)

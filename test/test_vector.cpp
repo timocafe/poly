@@ -12,7 +12,7 @@ typedef double v4double __attribute((vector_size(32)));
 v4double v4dexp(v4double a);
 
 int main(int argc, char * argv[]){
-    bool b(true);
+    bool b(0);
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<> dis(-700,700);
@@ -45,7 +45,7 @@ int main(int argc, char * argv[]){
     }
 
     if(max > 15)
-        b = false;
+        b = 1;
 
     return b;
 }
