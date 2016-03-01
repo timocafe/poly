@@ -1,7 +1,3 @@
-b/bench/latency/CMakeFiles
-b/bench/latency/cmake_install.cmake
-b/bench/latency/CTestTestfile.cmake
-b/bench/latency/Makefile
 b/bench/latency/scalar_vector_latency_bd10 scalar::exp 72.8463 vector::exp 73.1697
 b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2bd2 scalar::exp 60.4631 vector::exp 63.728
 b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2ed2 scalar::exp 60.4694 vector::exp 63.0531
