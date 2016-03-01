@@ -17,14 +17,14 @@ done
 }
 
 function latency {
-for i in $1/bench/latency/*
+for i in $1/bench/latency/$2_latency_*
 do
    RES=$(./${i})
    echo ${i} ${RES}
 done
 }
 
-latency "${1}"
+latency "${1}" "scalar_vector"
 ulp "${1}" "scalar"
 ulp "${1}" "vector"
 throughput "${1}" "scalar"
