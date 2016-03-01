@@ -5,15 +5,41 @@ use strict;
 my %table=();
 
 while (<>) {
-   my ($bench,$algo,$count)=(m'.*/([a-zA-Z]*_[a-zA-Z]*)_(\w+)\s+(\w+)');
+    if (/latency/) {
+    my ($algo,$scalar,$vector)=(m'.*latency_(\w+).*scalar::exp\s+(\S+).*vector::exp\s+(\S+)');
+        $table{$algo}{'scalar_latency'}=''.$scalar;
+        $table{$algo}{'vector_latency'}=''.$vector;
+    }
+    else {
+    my ($bench,$algo,$count)=(m'.*/([a-zA-Z]*_[a-zA-Z]*)_(\w+)\s+(\S+)');
 
-   $table{$algo}{$bench}=$count;
+    $table{$algo}{$bench}=''.$count;
+    }
 }
+
+print << '__header';
+<table>
+<tbody>
+<tr>
+<th>Algorithm</th>
+<th>Scalar ULP</th>
+<th>Scalar Throughput</th>
+<th>Scalar Latency</th>
+<th>Vector ULP</th>
+<th>Vector Throughput</th>
+<th>Vector Latency</th>
+</tr>
+__header
 
 for my $key (keys %table) {
-   my ($su,$st,$vu,$vt)=@{$table{$key}}{'scalar_ulp','scalar_throughput','vector_ulp','vector_throughput'};
+    my ($su,$st,$sl,$vu,$vt,$vl)=@{$table{$key}}{'scalar_ulp','scalar_throughput','scalar_latency','vector_ulp','vector_throughput','vector_latency'};
 
-   print "<tr>\n";
-   print "<td>$_</td>\n" foreach ($key,$su,$st,$vu,$vt);
-   print "</tr>\n";
+    print "<tr>\n";
+    print "<td><center>$_</center></td>\n" foreach ($key,$su,$st,$sl,$vu,$vt,$vl);
+    print "</tr>\n";
 }
+
+print << '__footer';
+</tbody>
+</table>
+__footer
