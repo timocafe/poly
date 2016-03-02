@@ -3,12 +3,14 @@
 
 #include <cstddef>
 #include <stdexcept>
-//#include <cmath>
-//#include <mathimf.h>
-//#include <altivec.h>
+#ifdef __PPC64__
+#include <altivec.h>
+#endif
+#ifdef __X86__
 #include <immintrin.h>
-#include "llc/ll_common.h"
+#endif
 
+#include "llc/ll_common.h"
 #include "poly/poly.h"
 
 namespace arith_op {
