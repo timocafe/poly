@@ -85,7 +85,7 @@ namespace poly{
         typedef typename helper_estrin<T,O,N,C,i,n-1>::helper_type helper_type;
         static inline helper_type estrin(cyme::vec_simd<T,O,N> const& x){
 #ifdef __FMA__
-            return muladd(cyme::pow<T,O,N,2*n>(x),helper_estrin<T,O,N,C,i+(1<<n),n-1>::estrin(x),helper_estrin<T,O,N,C,i,n-1>::estrin(x));
+            return muladd(cyme::pow<T,O,N,(1<<n)>(x),helper_estrin<T,O,N,C,i+(1<<n),n-1>::estrin(x),helper_estrin<T,O,N,C,i,n-1>::estrin(x));
 #else
             return helper_estrin<T,O,N,C,i,n-1>::estrin(x) + cyme::pow<T,O,N,(1<<n)>(x)*helper_estrin<T,O,N,C,i+(1<<n),n-1>::estrin(x);
 #endif

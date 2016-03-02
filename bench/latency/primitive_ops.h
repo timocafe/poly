@@ -3,7 +3,7 @@
 
 #include <cstddef>
 #include <stdexcept>
-#include <cmath>
+//#include <cmath>
 //#include <mathimf.h>
 //#include <altivec.h>
 #include <immintrin.h>
@@ -12,7 +12,7 @@
 #include "poly/poly.h"
 
 namespace arith_op {
-    enum arith_op { add,mul,sub,sqrt,fma,div,exp,v2exp,v4exp,v4dexp,poly_exp};
+    enum arith_op { add,mul,sub,sqrt,fma,div,exp,imf,svml4d,v4dexp,poly_exp};
 }
 
 /** Typedefs for 128-bit SIMD vectors */
@@ -22,6 +22,7 @@ typedef double v2double __attribute((vector_size(16)));
 typedef double v4double __attribute((vector_size(32)));
 
 extern "C"{v4double __svml_exp4(v4double v1);}
+extern "C"{extern double  exp(double v1);}
 extern "C"{v2double __svml_exp2(v2double v1);}
 
 v4double v4dexp(v4double v1);
@@ -110,17 +111,23 @@ struct primitive_op_default<arith_op::exp> {
     ALWAYS_INLINE static void run(V &a1,...) { a1=exp(a1); }
     static constexpr bool is_specialized=false; 
 };
-
+/*
 template <>
 struct primitive_op_default<arith_op::v2exp> {
     template <typename V>
     ALWAYS_INLINE static void run(V &a1,...) { a1=__svml_exp2(a1); }
     static constexpr bool is_specialized=false; 
 };
-
+*/
+template <>
+struct primitive_op_default<arith_op::imf> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=exp(a1); }
+    static constexpr bool is_specialized=false; 
+};
 
 template <>
-struct primitive_op_default<arith_op::v4exp> {
+struct primitive_op_default<arith_op::svml4d> {
     template <typename V>
     ALWAYS_INLINE static void run(V &a1,...) { a1=__svml_exp4(a1); }
     static constexpr bool is_specialized=false; 

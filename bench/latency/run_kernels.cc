@@ -205,7 +205,7 @@ template <op_enum OP> using run_v2double_looped_karg = run_kernels<kernel_looped
 template <op_enum OP> using run_v4double_looped_karg = run_kernels<kernel_looped_karg,v4double,OP,ksizes>;
 
 template <typename harness>
-void run_looped_karg_kernels(harness &H) {
+void run_looped_karg_kernels(harness &H, std::string const name) {
     run_setup();
 
     float f1(1.1),f2(1.1),f3(1.1);
@@ -214,16 +214,32 @@ void run_looped_karg_kernels(harness &H) {
     set_default_operands(f1,f2,f3,d1,d2,d3);
 
     size_t n_inner=100;
+    
+    
+    if(name.compare("myexp")==0){
+        typedef tvalue_list<op_enum, arith_op::poly_exp> ops;
+        ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
+        
+        {
+            typedef tvalue_list<op_enum,arith_op::v4dexp> vops; 
+            v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
+            vops::template for_each<run_v4double_looped_karg>::run(std::cout,"default",H,n_inner,v4d1,v4d2,v4d3);
+        }
+    }else if(name.compare("vendor")==0){
+        typedef tvalue_list<op_enum, arith_op::imf> ops;
+        ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
+        
+        {
+            typedef tvalue_list<op_enum,arith_op::svml4d> vops; 
+            v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
+            vops::template for_each<run_v4double_looped_karg>::run(std::cout,"default",H,n_inner,v4d1,v4d2,v4d3);
+        }
+
+    }else{
+        std::cerr << " I do not know ! " << std::endl;
+    }
 
  // typedef tvalue_list<op_enum, arith_op::add, arith_op::mul, arith_op::exp> ops;
-    typedef tvalue_list<op_enum, arith_op::poly_exp> ops;
-    ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
-
-    {
-        typedef tvalue_list<op_enum,arith_op::v4dexp> vops; 
-        v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
-        vops::template for_each<run_v4double_looped_karg>::run(std::cout,"default",H,n_inner,v4d1,v4d2,v4d3);
-    }
 /*
     {
         typedef tvalue_list<op_enum, arith_op::v2exp > vops; 
@@ -294,6 +310,7 @@ void run_argdep_karg_kernels(harness &H) {
 
 int main(int argc,char **argv) {
     /* dispatch on combination of counter and kernel */
+/*
     enum which_counter { perf_cycle, perf_op } counter=perf_cycle;
     enum which_kernel { looped_karg, looped_seq, dep_seq, argdep_karg } kernel=looped_karg;
 
@@ -322,8 +339,12 @@ int main(int argc,char **argv) {
     case perf_op:    ev=perf_event_hw(PERF_COUNT_HW_INSTRUCTIONS); break;
     default:         return 1; // should not happen
     }
+*/
+    std::string name = argv[1];
+    perf_event ev=perf_event_hw(PERF_COUNT_HW_CPU_CYCLES);
     ll_harness<ll_counter<generic_perf>,HARNESS_ARGS> H(ev);
-
+    run_looped_karg_kernels(H,name);
+/*
     switch (kernel) {
     case looped_karg: run_looped_karg_kernels(H); break;
     case argdep_karg: run_argdep_karg_kernels(H); break;
@@ -331,6 +352,6 @@ int main(int argc,char **argv) {
     case dep_seq:     run_dep_seq_kernels(H); break;
     default:          return 1; // should not happen
     }
-
+*/
     return 0;
 }

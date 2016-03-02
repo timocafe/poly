@@ -15,8 +15,8 @@ struct name_tbl_entry { int op; const char *name; } name_tbl[]={
                                                                 { arith_op::sqrt, "sqrt" },
                                                                 { arith_op::exp , "exp" },
                                                                 { arith_op::poly_exp , "scalar::exp" },
-                                                                { arith_op::v2exp , "v2exp" },
-                                                                { arith_op::v4exp , "v4exp" },
+                                                                { arith_op::svml4d , "svml4d" },
+                                                                { arith_op::imf , "imf" },
                                                                 { arith_op::v4dexp,  "vector::exp" },
                                                                 // terminal entry
                                                                 { 0,0 }
