@@ -35,6 +35,6 @@ int main(int argc, char * argv[]){
     end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double,std::nano> elapsed_seconds_poly_exp = end-start;
     std::cout << elapsed_seconds_poly_exp.count()/helper::size << std::endl;
-
+    std::cout << vo[123];
     return 0;
 }
