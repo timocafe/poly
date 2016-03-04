@@ -7,10 +7,6 @@
 
 extern "C"{extern double  exp(double v1);}
 
-namespace poly {
-   double exp(double);
-}
-
 struct helper{
     const static int size = 0xffffff; 
 };
@@ -35,6 +31,6 @@ int main(int argc, char * argv[]){
     end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double,std::nano> elapsed_seconds_poly_exp = end-start;
     std::cout << elapsed_seconds_poly_exp.count()/helper::size << std::endl;
-    std::cout << vo[123];
+    std::cout << vo[123]; //else compiler optimnize and remove the call to exp
     return 0;
 }

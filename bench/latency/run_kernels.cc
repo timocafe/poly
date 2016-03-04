@@ -36,7 +36,7 @@ typedef arith_op::arith_op op_enum;
 
 template <> std::string type_name<v4float>() { return "v4f"; }
 template <> std::string type_name<v2double>() { return "v2d"; }
-template <> std::string type_name<v4double>() { return "v4d"; }
+//template <> std::string type_name<v4double>() { return "v4d"; }
 
 std::ostream &emit_header(std::ostream &O) {
  // O << "op,\tlatency [cycle]\n";
@@ -202,7 +202,7 @@ template <op_enum OP> using run_double_looped_karg = run_kernels<kernel_looped_k
 
 template <op_enum OP> using run_v4float_looped_karg = run_kernels<kernel_looped_karg,v4float,OP,ksizes>;
 template <op_enum OP> using run_v2double_looped_karg = run_kernels<kernel_looped_karg,v2double,OP,ksizes>;
-template <op_enum OP> using run_v4double_looped_karg = run_kernels<kernel_looped_karg,v4double,OP,ksizes>;
+//template <op_enum OP> using run_v4double_looped_karg = run_kernels<kernel_looped_karg,v4double,OP,ksizes>;
 
 template <typename harness>
 void run_looped_karg_kernels(harness &H, std::string const name) {
@@ -217,22 +217,44 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
     
     
     if(name.compare("myexp")==0){
-        typedef tvalue_list<op_enum, arith_op::poly_exp> ops;
+        typedef tvalue_list<op_enum,arith_op::poly_exp> ops;
         ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
         
         {
+#ifdef __X86_64__
             typedef tvalue_list<op_enum,arith_op::v4dexp> vops; 
             v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
             vops::template for_each<run_v4double_looped_karg>::run(std::cout,"default",H,n_inner,v4d1,v4d2,v4d3);
+#endif
+
+#ifdef __PPC64__
+            typedef tvalue_list<op_enum,arith_op::v2dexp> vops; 
+            v2double v2d1={d1,d1},v2d2={d2,d2},v2d3={d3,d3};
+            vops::template for_each<run_v2double_looped_karg>::run(std::cout,"default",H,n_inner,v2d1,v2d2,v2d3);
+#endif
         }
     }else if(name.compare("vendor")==0){
+#ifdef __X86_64__
         typedef tvalue_list<op_enum, arith_op::imf> ops;
         ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
-        
+#endif
+
+#ifdef __PPC64__
+        typedef tvalue_list<op_enum, arith_op::mass> ops;
+        ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
+#endif
         {
+#ifdef __X86_64__
             typedef tvalue_list<op_enum,arith_op::svml4d> vops; 
             v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
             vops::template for_each<run_v4double_looped_karg>::run(std::cout,"default",H,n_inner,v4d1,v4d2,v4d3);
+#endif
+
+#ifdef __PPC64__
+            typedef tvalue_list<op_enum,arith_op::massv> vops; 
+            v2double v2d1={d1,d1},v2d2={d2,d2},v2d3={d3,d3};
+            vops::template for_each<run_v2double_looped_karg>::run(std::cout,"default",H,n_inner,v2d1,v2d2,v2d3);
+#endif
         }
 
     }else{

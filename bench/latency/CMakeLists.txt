@@ -2,6 +2,18 @@
 foreach(i ${libexp})
     add_executable(scalar_vector_latency_${i} cxx_demangle.cc primitive_ops.cc run_kernels.cc)
     target_link_libraries(scalar_vector_latency_${i} scalar_${i})
+    if (CMAKE_SYSTEM_PROCESSOR MATCHES "(x86)|(X86)")
     target_link_libraries(scalar_vector_latency_${i} vector_${i})
     target_link_libraries(scalar_vector_latency_${i} llc -lsvml -limf)
+    endif()
+    
+    if (CMAKE_SYSTEM_PROCESSOR MATCHES "(ppc64le)")
+    target_link_libraries(scalar_vector_latency_${i} vector_${i})
+    target_link_libraries(scalar_vector_latency_${i} llc /opt/ibm/xlmass/8.1.3/lib/libmass.a /opt/ibm/xlmass/8.1.3/lib/libmass_simdp8.a)
+    target_link_libraries(scalar_vector_latency_${i} /opt/ibm/xlmass/8.1.3/lib/libmassvp8.a
+                                                     /opt/ibm/xlmass/8.1.3/lib/libmass_simdp8.a
+                                                     /opt/ibm/xlmass/8.1.3/lib/libmass.a
+                                                     /opt/ibm/xlmass/8.1.3/lib/libmassv.a )
+    endif()
+    target_link_libraries(scalar_vector_latency_${i} llc)
 endforeach()

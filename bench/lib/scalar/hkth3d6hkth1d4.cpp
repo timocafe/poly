@@ -1,7 +1,7 @@
 //
 // hkth3d6hkth1d4_test.cpp
 //
-// Created by Ewart Timothée, 24/2/2016
+// Created by Ewart Timothée, 2/3/2016
 // Copyright (c) Ewart Timothée. All rights reserved.
 //
 // This file is generated automatically, do not edit!
@@ -14,12 +14,18 @@
 #include <limits>
 #include <string.h>
 #include <cmath>
+#include <iostream>
 #include "poly/poly.h"
 
 namespace poly {
     inline double sse_floor(double a) {
         double b;
+        #ifdef __x86_64__
         asm ("roundsd $1,%1,%0 " :"=x"(b) :"x"(a));
+        #endif
+        #ifdef __PPC64__
+        asm ("frim %0,%1 " :"=d"(b) :"d"(a));
+        #endif
         return b;
     }
 

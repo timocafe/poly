@@ -73,12 +73,18 @@ namespace poly{
         ps << "#include <limits>\n";
         ps << "#include <string.h>\n";
         ps << "#include <cmath>\n";
+        ps << "#include <iostream>\n";
         ps << "#include \"poly/poly.h\"\n";
         ps << "\n";
         ps << "namespace poly {\n";
         ps << "    inline double sse_floor(double a) {\n";
         ps << "        double b;\n";
+        ps << "        #ifdef __x86_64__\n";
         ps << "        asm (\"roundsd $1,%1,%0 \" :\"=x\"(b) :\"x\"(a));\n";
+        ps << "        #endif\n";
+        ps << "        #ifdef __PPC64__\n";
+        ps << "        asm (\"frim %0,%1 \" :\"=d\"(b) :\"d\"(a));\n";
+        ps << "        #endif\n";
         ps << "        return b;\n";
         ps << "    }\n";
         ps << "\n";
@@ -362,6 +368,7 @@ namespace poly{
         ps << "    };\n";
         ps << "} // end namespace\n";
         ps << "\n";
+        ps << "#ifdef __X86_64__\n";
         ps << "    typedef float v8float __attribute((vector_size(32)));\n";
         ps << "    typedef double v4double __attribute((vector_size(32)));\n";
         ps << "    typedef float v4float __attribute((vector_size(16)));\n";
@@ -386,6 +393,21 @@ namespace poly{
         ps << "        cyme::vec_simd<float,cyme::sse,1> tmp(a);\n";
         ps << "        return cyme::experiment_exp<float,cyme::sse,1>::exp(tmp).xmm;\n";
         ps << "    }\n";
+        ps << "#endif\n";
+        ps << "#ifdef __PPC64__\n";
+        ps << "    typedef float v4float __attribute((vector_size(16)));\n";
+        ps << "    typedef double v2double __attribute((vector_size(16)));\n";
+        ps << "\n";
+        ps << "    v2double v2dexp(v2double a){\n";
+        ps << "        cyme::vec_simd<double,cyme::vmx,1> tmp(a);\n";
+        ps << "        return cyme::experiment_exp<double,cyme::vmx,1>::exp(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "\n";
+        ps << "    v4float v4fexp(v4float a){\n";
+        ps << "        cyme::vec_simd<float,cyme::vmx,1> tmp(a);\n";
+        ps << "        return cyme::experiment_exp<float,cyme::vmx,1>::exp(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "#endif\n";
         return ps;
 }
 
@@ -393,10 +415,10 @@ namespace poly{
         printer p;
         for(auto t = v.begin(); t != v.end(); ++t){
 
-//                std::string tag("cyme_"+(*t).tag());
-//                std::ostringstream buf;
-//                p.cyme_vlib(buf,(*t).cyme_generate(),tag);
-//                print<poly::file>(buf,tag);
+                std::string tag((*t).tag());
+                std::ostringstream buf;
+                p.cyme_vlib(buf,(*t).cyme_generate(),tag);
+                print<poly::file>(buf,tag);
 
 //            {
 //                std::string tag("benchmark_"+(*t).tag());
@@ -410,12 +432,12 @@ namespace poly{
 //                p.test(buf,(*t).generate(),tag);
 //                print<poly::file>(buf,tag);
 //            }
-            {
-                std::string tag((*t).tag());
-                std::ostringstream buf;
-                p.lib(buf,(*t).generate(),tag);
-                print<poly::file>(buf,tag);
-            }
+//          {
+//              std::string tag((*t).tag());
+//              std::ostringstream buf;
+//              p.lib(buf,(*t).generate(),tag);
+//              print<poly::file>(buf,tag);
+//          }
         }
     }
 }

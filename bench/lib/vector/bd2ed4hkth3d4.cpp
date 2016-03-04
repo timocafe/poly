@@ -1,7 +1,7 @@
 //
 // bd2ed4hkth3d4.cpp
 //
-// Created by Ewart Timothée, 24/2/2016
+// Created by Ewart Timothée, 4/3/2016
 // Copyright (c) Ewart Timothée. All rights reserved.
 //
 // This file is generated automatically, do not edit!
@@ -50,6 +50,7 @@ namespace cyme {
     };
 } // end namespace
 
+#ifdef __X86_64__
     typedef float v8float __attribute((vector_size(32)));
     typedef double v4double __attribute((vector_size(32)));
     typedef float v4float __attribute((vector_size(16)));
@@ -74,3 +75,18 @@ namespace cyme {
         cyme::vec_simd<float,cyme::sse,1> tmp(a);
         return cyme::experiment_exp<float,cyme::sse,1>::exp(tmp).xmm;
     }
+#endif
+#ifdef __PPC64__
+    typedef float v4float __attribute((vector_size(16)));
+    typedef double v2double __attribute((vector_size(16)));
+
+    v2double v2dexp(v2double a){
+        cyme::vec_simd<double,cyme::vmx,1> tmp(a);
+        return cyme::experiment_exp<double,cyme::vmx,1>::exp(tmp).xmm;
+    }
+
+    v4float v4fexp(v4float a){
+        cyme::vec_simd<float,cyme::vmx,1> tmp(a);
+        return cyme::experiment_exp<float,cyme::vmx,1>::exp(tmp).xmm;
+    }
+#endif

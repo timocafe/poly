@@ -23,7 +23,7 @@ namespace cyme
 #   define CYME_VERSION_PATCH 0
 
     /** The current SCM revision. */
-#   define CYME_VERSION_REVISION 0xa4bdfab
+#   define CYME_VERSION_REVISION 0x8439005
 
     /** The current binary interface. */
 #   define CYME_VERSION_ABI 1

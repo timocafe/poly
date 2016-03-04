@@ -1,10 +1,11 @@
 #include <iostream>
 #include <limits>
 #include <random>
-#include <cmath>
 #include <algorithm>
 #include <chrono>
 #include <boost/math/special_functions/next.hpp>
+
+extern "C"{extern double  exp(double v1);}
 
 namespace poly {
    double exp(double);
@@ -28,12 +29,19 @@ int main(int argc, char * argv[]){
     std::chrono::time_point<std::chrono::high_resolution_clock> start, end;
     start = std::chrono::high_resolution_clock::now();
 
-    for(int i=0; i<helper::size; ++i)
+    for(int i=0; i<helper::size; ++i){
+    #ifdef EXP_VENDOR
+        vo[i] = exp(vi[i]);
+    #else
         vo[i] = poly::exp(vi[i]);
+    #endif
+    }
 
     end = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double,std::nano> elapsed_seconds_poly_exp = end-start;
     std::cout << elapsed_seconds_poly_exp.count()/helper::size << std::endl;
+    double res = std::accumulate(vo.begin(),vo.end(),0.);
+    std::cerr << res; //else compiler optimnize and remove the call to exp
 
     return 0;
 }
