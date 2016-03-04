@@ -11,7 +11,7 @@
 typedef double v4double __attribute((vector_size(32)));
 typedef double v2double __attribute((vector_size(16)));
 
-#ifdef __X86_64__
+#ifdef __x86_64__
 extern "C"{v4double __svml_exp4(v4double v1);} //svml
 v4double v4dexp(v4double a);
 static const int size = 4;
@@ -54,13 +54,13 @@ int main(int argc, char * argv[]){
     start = std::chrono::high_resolution_clock::now();
 
     for(int i=0; i<helper::size; ++i){
-        #if EXP_VENDOR && __X86_64__
+        #if EXP_VENDOR && __x86_64__
         vo[i] = __svml_exp4(vi[i]);
         #elif EXP_VENDOR && __PPC64__
         vo[i] = expd2(vi[i]);
         #elif __PPC64__
         vo[i] = v2dexp(vi[i]);
-        #elif __X86_64__
+        #elif __x86_64__
         vo[i] = v4dexp(vi[i]);
         #endif
     }
