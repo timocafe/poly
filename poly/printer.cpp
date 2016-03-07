@@ -368,7 +368,7 @@ namespace poly{
         ps << "    };\n";
         ps << "} // end namespace\n";
         ps << "\n";
-        ps << "#ifdef __X86_64__\n";
+        ps << "#ifdef __x86_64__\n";
         ps << "    typedef float v8float __attribute((vector_size(32)));\n";
         ps << "    typedef double v4double __attribute((vector_size(32)));\n";
         ps << "    typedef float v4float __attribute((vector_size(16)));\n";

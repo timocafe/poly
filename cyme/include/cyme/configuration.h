@@ -31,7 +31,7 @@
 #if !defined(__CYME_SIMD_VALUE__)
 #if defined(__PPC64__) 
 #define  __CYME_SIMD_VALUE__ vmx
-#elif defined(__X86_64__) 
+#elif defined(__x86_64__) 
 #define  __CYME_SIMD_VALUE__ avx
 #endif
 #endif

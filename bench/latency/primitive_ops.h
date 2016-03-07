@@ -30,10 +30,11 @@ typedef double v2double __attribute((vector_size(16)));
 typedef double v8float __attribute((vector_size(32)));
 typedef double v4double __attribute((vector_size(32)));
 #endif
-
+#ifdef __PPC64__
+extern "C"{vector double expd2(vector double vx);} //mass
+#endif
 extern "C"{v2double __svml_exp2(v2double v1);} // svml
 extern "C"{v4double __svml_exp4(v4double v1);} // svml
-extern "C"{vector double expd2(vector double vx);} //mass
 extern "C"{extern double exp(double v1);} // imf
 v2double v2dexp(v2double);
 v4double v4dexp(v4double);
@@ -53,7 +54,7 @@ struct v_or_s_zero<v2double> {
     constexpr static v2double value={0.,0.};
 };
  
-#ifdef __X86_64__
+#ifdef __x86_64__
 template <>
 struct v_or_s_zero<v4double> {
     constexpr static v4double value={0.,0.,0.,0.};

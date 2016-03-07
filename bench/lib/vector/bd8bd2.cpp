@@ -50,7 +50,7 @@ namespace cyme {
     };
 } // end namespace
 
-#ifdef __X86_64__
+#ifdef __x86_64__
     typedef float v8float __attribute((vector_size(32)));
     typedef double v4double __attribute((vector_size(32)));
     typedef float v4float __attribute((vector_size(16)));
