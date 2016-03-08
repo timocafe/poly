@@ -1,0 +1,94 @@
+reset
+RATIO=1
+set terminal postscript eps enhanced color solid font 16
+set out "figures/pLTSBHS.eps"
+
+set size ratio RATIO
+set key top right
+
+set multiplot
+set origin 0.0,0.0
+set yrange [0:20]
+set xrange [60:100]
+
+
+set xtics 10
+set mxtics 2
+
+set ytics 10
+set mytics 2
+
+set xlabel "Latency [cycle]"
+set ylabel "Throughput [cycle]"
+
+set style line 1  lc rgb '#CF2E31' pt 0 lw 2 #red
+#NA
+set style line 2 lc rgb '#3333FF' pt 1 lw 2 lt 1 # blue
+set style line 21 lc rgb '#3333FF' pt 1 lw 2 lt 2 # blue dash
+set style line 3 lc rgb '#1D9A2F' pt 1 lw 2 lt 1 # green
+set style line 31 lc rgb '#1D9A2F' pt 1 lw 2 lt 2 # green dash
+set style line 4 lc rgb '#FF358B' pt 1 lw 2 lt 1 # pink
+set style line 41 lc rgb '#FF358B' pt 1 lw 2 lt 2 # pink dash
+set style line 5 lc rgb '#01B0F0' pt 1 lw 2 lt 1 # light blue
+set style line 51 lc rgb '#01B0F0' pt 1 lw 2 lt 2 # light blue dash
+set style line 6 lc rgb '#000000' pt 1 lw 2 lt 1 # black
+set style line 61 lc rgb '#000000' pt 1 lw 2 lt 2 # black dash
+set style line 7 lc rgb '#C03000' pt 1 lw 2 lt 1 # vermillon
+set style line 71 lc rgb '#C03000' pt 1 lw 2 lt 2 # vermillon dash
+
+set object 1 rect from 20,0 to 40,20
+
+set grid noxtics noytics noztics front
+
+#set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_e}' at 92,97
+#set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 1}}' at 83,84
+plot "H_LT" using 7:6 ls 2 title "Haswell vec."
+replot "H_LT" using 4:3 ls 4 title "Haswell sca. "
+replot "SB_LT" using 7:6 ls 3 title "SandyBridge vec."
+replot "SB_LT" using 4:3 ls 7 title "SandyBridge sca."
+
+
+#go for the smaller plot (zoom)
+#set origin 0.17,0.5
+#set size 0.40,0.40
+
+#set xrange [ 20 : 40 ]
+#set yrange [ 0 : 20 ]
+
+#set xtics 10
+#set mxtics 10
+#set ytics 10
+#set mytics 10
+
+#box
+#set object 1 rect from 20,20 to 40,40
+
+#HS
+#set arrow to 26,7 from 32,7.35 linestyle 6
+#set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 9}}' at 22,7
+
+#set arrow to 26,5 from 32,7.10 linestyle 6
+#set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{e}' at 22,4
+
+#set arrow to 30,4 from 33,6.45 linestyle 6
+#set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 4}}' at 26,2
+
+#set arrow to 34,4 from 36,6.05 linestyle 6
+#set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 3}}' at 33,2
+
+#SB
+#set arrow to 34,14 from 39,17.5 linestyle 6
+#set label '{/Helvetica-oblique P@^{{/Helvetica 2}}_{b}P@^{{/Helvetica 4}}_{b}P@^{{/Helvetica 4}}_{b}' at 30,12
+
+#set arrow to 32,17 from 39,19.2 linestyle 6
+#set label '{/Helvetica-oblique P@^{{/Helvetica 6}}_{b}P@^{{/Helvetica 4}}_{b}' at 27,16
+
+
+#set xlabel ""
+#set ylabel ""
+
+#plot "joined_sort_HS" using 2:3 ls 2 notitle, "joined_sort_HS" using 4:5 ls 4 notitle
+
+
+set nomultiplot
+
