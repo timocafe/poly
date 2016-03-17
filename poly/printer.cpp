@@ -11,6 +11,20 @@
 
 namespace poly{
 
+//    std::ostream& printer::operator()(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
+//
+//        ps <<"  template <> \n";
+//        ps <<"  struct primitive_op_default<arith_op::"+tag+">{ \n";
+//        ps <<"      template <typename V>\n";
+//        ps <<"     ALWAYS_INLINE static void run(V &a1, ...) {\n";
+//        ps <<"        long long int twok = ((1023 + ((long long int)(1.4426950408889634 * a1))) << (52));\n";
+//        ps <<"        a1 -= ((double)((int)(1.4426950408889634 * a1)))*0.6931471805599453;\n";
+//        ps <<"        a1 = " + produce +  "* (*(double *)(&twok));\n";
+//        ps <<"     };\n";
+//        ps <<"     static constexpr bool is_specialized=false;\n";
+//        ps <<"  };\n";
+//        return ps;
+//    }
 
     std::ostream& printer::operator()(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
         time_t t = time(NULL);
@@ -121,6 +135,40 @@ namespace poly{
         return ps;
     }
 
+    std::ostream& printer::serial_lib_poly(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
+        time_t t = time(NULL);
+        tm* timePtr = localtime(&t);
+        ps << "//\n";
+        ps << "// " << tag + "_test.cpp"  <<  "\n";
+        ps << "//\n";
+        ps << "// Created by Ewart Timothée, " << timePtr->tm_mday
+        <<"/"<< timePtr->tm_mon+1
+        <<"/"<< timePtr->tm_year+1900 <<"\n";
+        ps << "// Copyright (c) Ewart Timothée. All rights reserved.\n";
+        ps << "//\n";
+        ps << "// This file is generated automatically, do not edit!\n";
+        ps << "// TAG: " << tag << "\n";
+        ps << "// Helper:\n";
+        ps << "//     h = Horner, e = Estrin, b = BruteForce\n";
+        ps << "//     The number indicates the order for Horner\n";
+        ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
+        ps << "//\n";
+        ps << "#include <limits>\n";
+        ps << "#include <string.h>\n";
+        ps << "#include <cmath>\n";
+        ps << "#include <iostream>\n";
+        ps << "#include \"poly/poly.h\"\n";
+        ps << "\n";
+        ps << "namespace poly {\n";
+        ps << "    double poly(double x){\n";
+        ps << "        double y = " + produce +";\n";
+        ps << "        return y;\n";
+        ps << "    }\n";
+        ps << "} //end namespace \n";
+        ps << "\n";
+        return ps;
+    }
+
 
     std::ostream& printer::test(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
         time_t t = time(NULL);
@@ -207,6 +255,79 @@ namespace poly{
         return ps;
     }
 
+    std::ostream& printer::cyme_vlib_poly(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
+        time_t t = time(NULL);
+        tm* timePtr = localtime(&t);
+        ps << "//\n";
+        ps << "// " << tag + ".cpp"  <<  "\n";
+        ps << "//\n";
+        ps << "// Created by Ewart Timothée, " << timePtr->tm_mday
+        <<"/"<< timePtr->tm_mon+1
+        <<"/"<< timePtr->tm_year+1900 <<"\n";
+        ps << "// Copyright (c) Ewart Timothée. All rights reserved.\n";
+        ps << "//\n";
+        ps << "// This file is generated automatically, do not edit!\n";
+        ps << "// TAG: " << tag << "\n";
+        ps << "// Helper:\n";
+        ps << "//     h = Horner, e = Estrin, b = BruteForce\n";
+        ps << "//     The number indicates the order for Horner\n";
+        ps << "//     e.g. h1h3 indicates a produce of polynomial with Horner order 1 and 3\n";
+        ps << "//\n";
+        ps << "\n";
+        ps << "#include \"cyme/cyme.h\"\n";
+        ps << "namespace cyme {\n";
+        ps << "\n";
+        ps << "    template<class T, cyme::simd O, int N>\n";
+        ps << "    struct experiment_poly{\n";
+        ps << "        static forceinline vec_simd<T,O,N> poly(vec_simd<T,O,N> x){\n";
+        ps << "            x = "+ produce +";\n";
+        ps << "            return x;\n";
+        ps << "        }\n";
+        ps << "    };\n";
+        ps << "} // end namespace\n";
+        ps << "\n";
+        ps << "#ifdef __x86_64__\n";
+        ps << "    typedef float v8float __attribute((vector_size(32)));\n";
+        ps << "    typedef double v4double __attribute((vector_size(32)));\n";
+        ps << "    typedef float v4float __attribute((vector_size(16)));\n";
+        ps << "    typedef double v2double __attribute((vector_size(16)));\n";
+        ps << "\n";
+        ps << "    v4double v4dpoly(v4double a){\n";
+        ps << "        cyme::vec_simd<double,cyme::avx,1> tmp(a);\n";
+        ps << "        return cyme::experiment_poly<double,cyme::avx,1>::poly(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "\n";
+        ps << "    v2double v2dpoly(v2double a){\n";
+        ps << "        cyme::vec_simd<double,cyme::sse,1> tmp(a);\n";
+        ps << "        return cyme::experiment_poly<double,cyme::sse,1>::poly(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "\n";
+        ps << "    v8float v8fpoly(v8float a){\n";
+        ps << "        cyme::vec_simd<float,cyme::avx,1> tmp(a);\n";
+        ps << "        return cyme::experiment_poly<float,cyme::avx,1>::poly(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "\n";
+        ps << "    v4float v4fpoly(v4float a){\n";
+        ps << "        cyme::vec_simd<float,cyme::sse,1> tmp(a);\n";
+        ps << "        return cyme::experiment_poly<float,cyme::sse,1>::poly(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "#endif\n";
+        ps << "#ifdef __PPC64__\n";
+        ps << "    typedef float v4float __attribute((vector_size(16)));\n";
+        ps << "    typedef double v2double __attribute((vector_size(16)));\n";
+        ps << "\n";
+        ps << "    v2double v2dpoly(v2double a){\n";
+        ps << "        cyme::vec_simd<double,cyme::vmx,1> tmp(a);\n";
+        ps << "        return cyme::experiment_poly<double,cyme::vmx,1>::poly(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "\n";
+        ps << "    v4float v4fpoly(v4float a){\n";
+        ps << "        cyme::vec_simd<float,cyme::vmx,1> tmp(a);\n";
+        ps << "        return cyme::experiment_poly<float,cyme::vmx,1>::poly(tmp).xmm;\n";
+        ps << "    }\n";
+        ps << "#endif\n";
+        return ps;
+}
 
     std::ostream& printer::bench_serial(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
         time_t t = time(NULL);
@@ -296,20 +417,6 @@ namespace poly{
         ps <<"}\n";
         return ps;
     }
-//    std::ostream& printer::operator()(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
-//
-//        ps <<"  template <> \n";
-//        ps <<"  struct primitive_op_default<arith_op::"+tag+">{ \n";
-//        ps <<"      template <typename V>\n";
-//        ps <<"     ALWAYS_INLINE static void run(V &a1, ...) {\n";
-//        ps <<"        long long int twok = ((1023 + ((long long int)(1.4426950408889634 * a1))) << (52));\n";
-//        ps <<"        a1 -= ((double)((int)(1.4426950408889634 * a1)))*0.6931471805599453;\n";
-//        ps <<"        a1 = " + produce +  "* (*(double *)(&twok));\n";
-//        ps <<"     };\n";
-//        ps <<"     static constexpr bool is_specialized=false;\n";
-//        ps <<"  };\n";
-//        return ps;
-//    }
 
     std::ostream& printer::cyme_vlib(std::ostream &ps, std::string const& produce, std::string const& tag ) const {
         time_t t = time(NULL);
@@ -415,9 +522,14 @@ namespace poly{
         printer p;
         for(auto t = v.begin(); t != v.end(); ++t){
 
+//              std::string tag((*t).tag());
+//              std::ostringstream buf;
+//              p.cyme_vlib(buf,(*t).cyme_generate(),tag);
+//              print<poly::file>(buf,tag);
+         
                 std::string tag((*t).tag());
                 std::ostringstream buf;
-                p.cyme_vlib(buf,(*t).cyme_generate(),tag);
+                p.serial_lib_poly(buf,(*t).generate(),tag);
                 print<poly::file>(buf,tag);
 
 //            {
