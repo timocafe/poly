@@ -1,0 +1,9 @@
+
+    add_executable(tool_scalar_boundary_throughput main_scalar_boundary.cpp)
+    add_executable(tool_scalar_twok_throughput main_scalar_twok.cpp)
+    add_executable(tool_vector_boundary_throughput main_vector_boundary.cpp)
+    add_executable(tool_vector_twok_throughput main_vector_twok.cpp)
+    target_link_libraries(tool_scalar_boundary_throughput scalar_boundary)
+    target_link_libraries(tool_scalar_twok_throughput  scalar_twok)
+    target_link_libraries(tool_vector_boundary_throughput vector_boundary)
+    target_link_libraries(tool_vector_twok_throughput vector_twok)

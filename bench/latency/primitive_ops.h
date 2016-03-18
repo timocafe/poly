@@ -14,7 +14,9 @@
 #include "poly/poly.h"
 
 namespace arith_op {
-      enum arith_op { add,mul,sub,sqrt,fma,div,exp,imf,mass,massv,svml2d,svml4d,v2dexp,v4dexp,poly_exp};
+      enum arith_op { add,mul,sub,sqrt,fma,div,exp,imf,mass,massv,svml2d,svml4d,v2dpoly,
+                      v4dpoly,v2dexp,v4dexp,poly_poly,poly_exp,v2dtwok,v4dtwok,v2dboundary,v4dboundary,
+                      poly_twok,poly_boundary};
 }
 
 /** Typedefs for 128-bit SIMD vectors */
@@ -38,6 +40,15 @@ extern "C"{v4double __svml_exp4(v4double v1);} // svml
 extern "C"{extern double exp(double v1);} // imf
 v2double v2dexp(v2double);
 v4double v4dexp(v4double);
+
+v2double v2dpoly(v2double);
+v4double v4dpoly(v4double);
+
+v2double v2dtwok(v2double);
+v4double v4dtwok(v4double);
+
+v2double v2dboundary(v2double);
+v4double v4dboundary(v4double);
 
 template <typename FP>
 struct v_or_s_zero {
@@ -64,6 +75,9 @@ struct v_or_s_zero<v4double> {
 //declaration
 namespace poly {
 	double exp(double x);
+	double poly(double x);
+	double twok(double x);
+	double boundary(double x);
 }
 
 /** Generic value sink
@@ -162,6 +176,20 @@ struct primitive_op_default<arith_op::massv> {
 };
 
 template <>
+struct primitive_op_default<arith_op::v2dpoly> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=v2dpoly(a1); }
+    static constexpr bool is_specialized=false; 
+};
+
+template <>
+struct primitive_op_default<arith_op::v4dpoly> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=v4dpoly(a1); }
+    static constexpr bool is_specialized=false;
+};
+
+template <>
 struct primitive_op_default<arith_op::v2dexp> {
     template <typename V>
     ALWAYS_INLINE static void run(V &a1,...) { a1=v2dexp(a1); }
@@ -176,9 +204,58 @@ struct primitive_op_default<arith_op::v4dexp> {
 };
 
 template <>
+struct primitive_op_default<arith_op::v2dtwok> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=v2dtwok(a1); }
+    static constexpr bool is_specialized=false; 
+};
+
+template <>
+struct primitive_op_default<arith_op::v4dtwok> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=v4dtwok(a1); }
+    static constexpr bool is_specialized=false; 
+};
+
+template <>
+struct primitive_op_default<arith_op::v2dboundary> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=v2dboundary(a1); }
+    static constexpr bool is_specialized=false; 
+};
+
+template <>
+struct primitive_op_default<arith_op::v4dboundary> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=v4dboundary(a1); }
+    static constexpr bool is_specialized=false; 
+};
+
+template <>
+struct primitive_op_default<arith_op::poly_poly> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=poly::poly(a1); }
+    static constexpr bool is_specialized=false; 
+};
+
+template <>
 struct primitive_op_default<arith_op::poly_exp> {
     template <typename V>
     ALWAYS_INLINE static void run(V &a1,...) { a1=poly::exp(a1); }
+    static constexpr bool is_specialized=false; 
+};
+
+template <>
+struct primitive_op_default<arith_op::poly_twok> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=poly::twok(a1); }
+    static constexpr bool is_specialized=false; 
+};
+
+template <>
+struct primitive_op_default<arith_op::poly_boundary> {
+    template <typename V>
+    ALWAYS_INLINE static void run(V &a1,...) { a1=poly::boundary(a1); }
     static constexpr bool is_specialized=false; 
 };
 
