@@ -49,9 +49,6 @@ hkth5d6hkth1d2hkth1d2 hkth5d6hkth1d4 hkth5d6hkth2d4 hkth5d6hkth3d4 hkth5d8bd2 hk
 hkth7d8bd2 hkth7d8ed2 hkth7d8hkth1d2 hkth8d10 hkth9d10)
 
 add_subdirectory (poly)
-#test
-add_subdirectory (test)
-#bench
 add_subdirectory (llc)
 add_subdirectory (bench)
-
+add_subdirectory (test)

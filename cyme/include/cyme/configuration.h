@@ -33,6 +33,8 @@
 #define  __CYME_SIMD_VALUE__ vmx
 #elif defined(__x86_64__) 
 #define  __CYME_SIMD_VALUE__ avx
+#elif defined(__aarch64__) 
+#define  __CYME_SIMD_VALUE__ neon
 #endif
 #endif
 

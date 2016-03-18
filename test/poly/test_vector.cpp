@@ -15,7 +15,7 @@ int main(int argc, char * argv[]){
     bool b(0);
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(-700,700);
+    std::uniform_real_distribution<> dis(0,std::log(2));
     v4double v1,v2;
     double x[4];
     double ref[4];
