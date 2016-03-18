@@ -1,0 +1,6 @@
+ add_subdirectory (exp/scalar)
+ add_subdirectory (exp/vector)
+ add_subdirectory (poly/scalar)
+ add_subdirectory (poly/vector)
+ add_subdirectory (tool/scalar)
+ add_subdirectory (tool/vector)
