@@ -257,7 +257,7 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
 #endif
 
 #ifdef __PPC64__
-            typedef tvalue_list<op_enum,arith_op::v2dtwok,arith_op::v4dboundary> vops; 
+            typedef tvalue_list<op_enum,arith_op::v2dtwok,arith_op::v2dboundary> vops; 
             v2double v2d1={d1,d1},v2d2={d2,d2},v2d3={d3,d3};
             vops::template for_each<run_v2double_looped_karg>::run(std::cout,"default",H,n_inner,v2d1,v2d2,v2d3);
 #endif

@@ -9,6 +9,7 @@
 typedef double v4double __attribute((vector_size(32)));
 
 //declaration of the function
+v4double v2dexp(v4double a);
 v4double v4dexp(v4double a);
 
 int main(int argc, char * argv[]){
@@ -29,7 +30,12 @@ int main(int argc, char * argv[]){
         v1[2] = x[2] = dis(gen);
         v1[3] = x[3] = dis(gen);
 
+        #ifdef __x86_64__ 
         v2 = v4dexp(v1);
+        #endif 
+        #ifdef __PPC64__ 
+        v2 = v2dexp(v1);
+        #endif 
 
         ref[0] = std::exp(x[0]);
         ref[1] = std::exp(x[1]);
