@@ -11,7 +11,7 @@ while (<>) {
         $table{$algo}{'vector_latency'}=''.$vector;
     }
     else {
-    my ($bench,$algo,$count)=(m'.*/([a-zA-Z]*_[a-zA-Z]*)_(\w+)\s+(\S+)');
+    my ($function,$bench,$algo,$count)=(m'.*/([a-zA-Z]*)_([a-zA-Z]*_[a-zA-Z]*)_(\w+)\s+(\S+)');
 
     $table{$algo}{$bench}=''.$count;
     }
