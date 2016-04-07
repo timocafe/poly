@@ -1,0 +1,1386 @@
+b/bench/ulp/poly/poly_scalar_ulp_bd10 2
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2bd2bd2bd2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2bd2bd2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2bd2bd2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2bd2ed2ed2 7
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2bd2ed2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2bd2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2ed2ed2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2ed2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd4bd4 10
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd4ed4 10
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd4hkth1d4 10
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2bd4hkth3d4 10
+b/bench/ulp/poly/poly_scalar_ulp_bd2ed2ed2ed2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2ed2ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2ed2ed2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2ed2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2ed4ed4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2ed4hkth1d4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2ed4hkth2d4 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2ed4hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2hkth1d2hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2hkth1d4hkth1d4 8
+b/bench/ulp/poly/poly_scalar_ulp_bd2hkth1d4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2hkth1d4hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2hkth2d4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd2hkth2d4hkth3d4 10
+b/bench/ulp/poly/poly_scalar_ulp_bd2hkth3d4hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd4bd2bd2bd2 10
+b/bench/ulp/poly/poly_scalar_ulp_bd4bd2bd2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd4bd2bd2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd4bd2ed2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd4bd2ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd4bd2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd4ed2ed2ed2 11
+b/bench/ulp/poly/poly_scalar_ulp_bd4ed2ed2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_bd4ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd4hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd6bd2bd2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd6bd2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_bd6bd2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd6bd4 8
+b/bench/ulp/poly/poly_scalar_ulp_bd6ed2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd6ed2hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_bd6ed4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd6hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd6hkth1d4 9
+b/bench/ulp/poly/poly_scalar_ulp_bd6hkth2d4 8
+b/bench/ulp/poly/poly_scalar_ulp_bd6hkth3d4 8
+b/bench/ulp/poly/poly_scalar_ulp_bd8bd2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd8ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_bd8hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_ed10 2
+b/bench/ulp/poly/poly_scalar_ulp_ed2bd4bd4 10
+b/bench/ulp/poly/poly_scalar_ulp_ed2bd4ed4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2bd4hkth1d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2bd4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2bd4hkth3d4 10
+b/bench/ulp/poly/poly_scalar_ulp_ed2ed2ed2ed2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2ed2ed2ed2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_ed2ed2ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2ed2hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2ed4ed4 10
+b/bench/ulp/poly/poly_scalar_ulp_ed2ed4hkth1d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2ed4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2ed4hkth3d4 10
+b/bench/ulp/poly/poly_scalar_ulp_ed2hkth1d2hkth1d2hkth1d2hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_ed2hkth1d4hkth1d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2hkth1d4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2hkth1d4hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2hkth2d4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2hkth2d4hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_ed2hkth3d4hkth3d4 10
+b/bench/ulp/poly/poly_scalar_ulp_ed4bd2bd2bd2 10
+b/bench/ulp/poly/poly_scalar_ulp_ed4bd2bd2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_ed4bd2bd2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_ed4bd2ed2ed2 10
+b/bench/ulp/poly/poly_scalar_ulp_ed4bd2ed2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_ed4bd2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_ed4ed2ed2ed2 10
+b/bench/ulp/poly/poly_scalar_ulp_ed4ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_ed4ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_ed4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_ed6bd2bd2 8
+b/bench/ulp/poly/poly_scalar_ulp_ed6bd2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_ed6bd2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_ed6bd4 8
+b/bench/ulp/poly/poly_scalar_ulp_ed6ed2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_ed6ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_ed6ed4 8
+b/bench/ulp/poly/poly_scalar_ulp_ed6hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_ed6hkth1d4 7
+b/bench/ulp/poly/poly_scalar_ulp_ed6hkth2d4 7
+b/bench/ulp/poly/poly_scalar_ulp_ed6hkth3d4 8
+b/bench/ulp/poly/poly_scalar_ulp_ed8bd2 7
+b/bench/ulp/poly/poly_scalar_ulp_ed8ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_ed8hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d10 2
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2bd4bd4 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2bd4ed4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2bd4hkth1d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2bd4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2bd4hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2ed4ed4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2ed4hkth1d4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2ed4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2ed4hkth3d4 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2hkth1d4hkth1d4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2hkth1d4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2hkth1d4hkth3d4 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2hkth2d4hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2hkth2d4hkth3d4 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d2hkth3d4hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4bd2bd2bd2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4bd2bd2ed2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4bd2bd2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4bd2ed2ed2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4bd2ed2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4bd2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4ed2ed2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d4hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6bd2bd2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6bd2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6bd2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6bd4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6ed2ed2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6ed2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6ed4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6hkth1d4 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6hkth2d4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d6hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d8bd2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d8ed2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth1d8hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d10 2
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4bd2bd2bd2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4bd2bd2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4bd2bd2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4bd2ed2ed2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4bd2ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4bd2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4ed2ed2ed2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4ed2ed2hkth1d2 11
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d4hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6bd2bd2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6bd2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6bd2hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6bd4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6ed2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6ed2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6ed4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6hkth1d4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6hkth2d4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d6hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d8bd2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d8ed2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth2d8hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d10 2
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4bd2bd2bd2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4bd2bd2ed2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4bd2bd2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4bd2ed2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4bd2ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4bd2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4ed2ed2ed2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4ed2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6bd2bd2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6bd2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6bd2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6bd4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6ed2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6ed2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6ed4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6hkth1d4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6hkth2d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d6hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d8bd2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d8ed2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth3d8hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d10 2
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6bd2bd2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6bd2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6bd2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6bd4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6ed2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6ed2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6ed4 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6hkth1d2hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6hkth1d4 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6hkth2d4 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d6hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d8bd2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d8ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth4d8hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d10 2
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6bd2bd2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6bd2ed2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6bd2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6bd4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6ed2ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6ed2hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6ed4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6hkth1d4 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6hkth2d4 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d6hkth3d4 9
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d8bd2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d8ed2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth5d8hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth6d10 2
+b/bench/ulp/poly/poly_scalar_ulp_hkth6d8bd2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth6d8ed2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth6d8hkth1d2 8
+b/bench/ulp/poly/poly_scalar_ulp_hkth7d10 2
+b/bench/ulp/poly/poly_scalar_ulp_hkth7d8bd2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth7d8ed2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth7d8hkth1d2 7
+b/bench/ulp/poly/poly_scalar_ulp_hkth8d10 3
+b/bench/ulp/poly/poly_scalar_ulp_hkth9d10 2
+b/bench/ulp/poly/poly_vector_ulp_bd10 3
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2bd2bd2bd2 8
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2bd2bd2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2bd2bd2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2bd2ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2bd2ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2bd2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2ed2ed2ed2 8
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2bd2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_bd2bd4bd4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2bd4ed4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2bd4hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2bd4hkth2d4 10
+b/bench/ulp/poly/poly_vector_ulp_bd2bd4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2ed2ed2ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2ed2ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2ed2ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2ed2hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd2ed4ed4 10
+b/bench/ulp/poly/poly_vector_ulp_bd2ed4hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2ed4hkth2d4 10
+b/bench/ulp/poly/poly_vector_ulp_bd2ed4hkth3d4 10
+b/bench/ulp/poly/poly_vector_ulp_bd2hkth1d2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_bd2hkth1d4hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2hkth1d4hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2hkth1d4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2hkth2d4hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2hkth2d4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd2hkth3d4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd4bd2bd2bd2 10
+b/bench/ulp/poly/poly_vector_ulp_bd4bd2bd2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_bd4bd2bd2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd4bd2ed2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_bd4bd2ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd4bd2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd4ed2ed2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_bd4ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd4ed2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_bd4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_bd6bd2bd2 8
+b/bench/ulp/poly/poly_vector_ulp_bd6bd2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_bd6bd2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd6bd4 8
+b/bench/ulp/poly/poly_vector_ulp_bd6ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_bd6ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_bd6ed4 8
+b/bench/ulp/poly/poly_vector_ulp_bd6hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_bd6hkth1d4 7
+b/bench/ulp/poly/poly_vector_ulp_bd6hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_bd6hkth3d4 8
+b/bench/ulp/poly/poly_vector_ulp_bd8bd2 8
+b/bench/ulp/poly/poly_vector_ulp_bd8ed2 7
+b/bench/ulp/poly/poly_vector_ulp_bd8hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_ed10 3
+b/bench/ulp/poly/poly_vector_ulp_ed2bd4bd4 10
+b/bench/ulp/poly/poly_vector_ulp_ed2bd4ed4 10
+b/bench/ulp/poly/poly_vector_ulp_ed2bd4hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_ed2bd4hkth2d4 10
+b/bench/ulp/poly/poly_vector_ulp_ed2bd4hkth3d4 10
+b/bench/ulp/poly/poly_vector_ulp_ed2ed2ed2ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_ed2ed2ed2ed2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_ed2ed2ed2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_ed2ed2hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_ed2ed4ed4 9
+b/bench/ulp/poly/poly_vector_ulp_ed2ed4hkth1d4 10
+b/bench/ulp/poly/poly_vector_ulp_ed2ed4hkth2d4 10
+b/bench/ulp/poly/poly_vector_ulp_ed2ed4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_ed2hkth1d2hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_ed2hkth1d4hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_ed2hkth1d4hkth2d4 10
+b/bench/ulp/poly/poly_vector_ulp_ed2hkth1d4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_ed2hkth2d4hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_ed2hkth2d4hkth3d4 10
+b/bench/ulp/poly/poly_vector_ulp_ed2hkth3d4hkth3d4 10
+b/bench/ulp/poly/poly_vector_ulp_ed4bd2bd2bd2 9
+b/bench/ulp/poly/poly_vector_ulp_ed4bd2bd2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_ed4bd2bd2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_ed4bd2ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_ed4bd2ed2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_ed4bd2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_ed4ed2ed2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_ed4ed2ed2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_ed4ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_ed4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_ed6bd2bd2 9
+b/bench/ulp/poly/poly_vector_ulp_ed6bd2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_ed6bd2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_ed6bd4 8
+b/bench/ulp/poly/poly_vector_ulp_ed6ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_ed6ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_ed6ed4 9
+b/bench/ulp/poly/poly_vector_ulp_ed6hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_ed6hkth1d4 8
+b/bench/ulp/poly/poly_vector_ulp_ed6hkth2d4 8
+b/bench/ulp/poly/poly_vector_ulp_ed6hkth3d4 8
+b/bench/ulp/poly/poly_vector_ulp_ed8bd2 8
+b/bench/ulp/poly/poly_vector_ulp_ed8ed2 8
+b/bench/ulp/poly/poly_vector_ulp_ed8hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d10 3
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2bd4bd4 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2bd4ed4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2bd4hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2bd4hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2bd4hkth3d4 11
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2ed4ed4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2ed4hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2ed4hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2ed4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2hkth1d4hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2hkth1d4hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2hkth1d4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2hkth2d4hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2hkth2d4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d2hkth3d4hkth3d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4bd2bd2bd2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4bd2bd2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4bd2bd2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4bd2ed2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4bd2ed2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4bd2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4ed2ed2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4ed2ed2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4ed2hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6bd2bd2 7
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6bd2ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6bd2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6bd4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6ed2ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6ed2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6ed4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6hkth1d4 7
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth1d6hkth3d4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d8bd2 7
+b/bench/ulp/poly/poly_vector_ulp_hkth1d8ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth1d8hkth1d2 7
+b/bench/ulp/poly/poly_vector_ulp_hkth2d10 3
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4bd2bd2bd2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4bd2bd2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4bd2bd2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4bd2ed2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4bd2ed2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4bd2hkth1d2hkth1d2 11
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4ed2ed2ed2 11
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4ed2ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4ed2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth2d4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6bd2bd2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6bd2ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6bd2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6bd4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6ed2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6ed4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6hkth1d4 7
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6hkth2d4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth2d6hkth3d4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth2d8bd2 7
+b/bench/ulp/poly/poly_vector_ulp_hkth2d8ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth2d8hkth1d2 7
+b/bench/ulp/poly/poly_vector_ulp_hkth3d10 3
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4bd2bd2bd2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4bd2bd2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4bd2bd2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4bd2ed2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4bd2ed2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4bd2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4ed2ed2ed2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4ed2ed2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4ed2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth3d4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6bd2bd2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6bd2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6bd2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6bd4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6ed2ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6ed2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6ed4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6hkth1d2hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6hkth1d4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6hkth2d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth3d6hkth3d4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d8bd2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d8ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth3d8hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth4d10 4
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6bd2bd2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6bd2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6bd2hkth1d2 10
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6bd4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6ed4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6hkth1d4 7
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6hkth2d4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth4d6hkth3d4 8
+b/bench/ulp/poly/poly_vector_ulp_hkth4d8bd2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth4d8ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth4d8hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth5d10 4
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6bd2bd2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6bd2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6bd2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6bd4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6ed2ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6ed2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6ed4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6hkth1d2hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6hkth1d4 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6hkth2d4 10
+b/bench/ulp/poly/poly_vector_ulp_hkth5d6hkth3d4 10
+b/bench/ulp/poly/poly_vector_ulp_hkth5d8bd2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth5d8ed2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth5d8hkth1d2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth6d10 4
+b/bench/ulp/poly/poly_vector_ulp_hkth6d8bd2 8
+b/bench/ulp/poly/poly_vector_ulp_hkth6d8ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth6d8hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth7d10 4
+b/bench/ulp/poly/poly_vector_ulp_hkth7d8bd2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth7d8ed2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth7d8hkth1d2 9
+b/bench/ulp/poly/poly_vector_ulp_hkth8d10 4
+b/bench/ulp/poly/poly_vector_ulp_hkth9d10 4
+b/bench/throughput/poly/poly_scalar_throughput_bd10 5.77497
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2bd2bd2bd2 5.98795
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2bd2bd2ed2 5.94706
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2bd2bd2hkth1d2 5.96225
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2bd2ed2ed2 5.96668
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2bd2ed2hkth1d2 5.96901
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2bd2hkth1d2hkth1d2 5.97341
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2ed2ed2ed2 5.9478
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2ed2ed2hkth1d2 5.95114
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2ed2hkth1d2hkth1d2 5.95653
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd2hkth1d2hkth1d2hkth1d2 6.00498
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd4bd4 5.99173
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd4ed4 5.51178
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd4hkth1d4 5.60235
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd4hkth2d4 6.06607
+b/bench/throughput/poly/poly_scalar_throughput_bd2bd4hkth3d4 5.7712
+b/bench/throughput/poly/poly_scalar_throughput_bd2ed2ed2ed2ed2 5.94029
+b/bench/throughput/poly/poly_scalar_throughput_bd2ed2ed2ed2hkth1d2 5.97179
+b/bench/throughput/poly/poly_scalar_throughput_bd2ed2ed2hkth1d2hkth1d2 6.00581
+b/bench/throughput/poly/poly_scalar_throughput_bd2ed2hkth1d2hkth1d2hkth1d2 5.99562
+b/bench/throughput/poly/poly_scalar_throughput_bd2ed4ed4 5.89661
+b/bench/throughput/poly/poly_scalar_throughput_bd2ed4hkth1d4 5.52726
+b/bench/throughput/poly/poly_scalar_throughput_bd2ed4hkth2d4 5.82896
+b/bench/throughput/poly/poly_scalar_throughput_bd2ed4hkth3d4 5.58318
+b/bench/throughput/poly/poly_scalar_throughput_bd2hkth1d2hkth1d2hkth1d2hkth1d2 6.10634
+b/bench/throughput/poly/poly_scalar_throughput_bd2hkth1d4hkth1d4 5.78508
+b/bench/throughput/poly/poly_scalar_throughput_bd2hkth1d4hkth2d4 6.05908
+b/bench/throughput/poly/poly_scalar_throughput_bd2hkth1d4hkth3d4 5.78839
+b/bench/throughput/poly/poly_scalar_throughput_bd2hkth2d4hkth2d4 6.14182
+b/bench/throughput/poly/poly_scalar_throughput_bd2hkth2d4hkth3d4 6.10672
+b/bench/throughput/poly/poly_scalar_throughput_bd2hkth3d4hkth3d4 5.76513
+b/bench/throughput/poly/poly_scalar_throughput_bd4bd2bd2bd2 5.51652
+b/bench/throughput/poly/poly_scalar_throughput_bd4bd2bd2ed2 5.47365
+b/bench/throughput/poly/poly_scalar_throughput_bd4bd2bd2hkth1d2 5.51888
+b/bench/throughput/poly/poly_scalar_throughput_bd4bd2ed2ed2 5.49414
+b/bench/throughput/poly/poly_scalar_throughput_bd4bd2ed2hkth1d2 5.55503
+b/bench/throughput/poly/poly_scalar_throughput_bd4bd2hkth1d2hkth1d2 5.5873
+b/bench/throughput/poly/poly_scalar_throughput_bd4ed2ed2ed2 5.47944
+b/bench/throughput/poly/poly_scalar_throughput_bd4ed2ed2hkth1d2 5.55037
+b/bench/throughput/poly/poly_scalar_throughput_bd4ed2hkth1d2hkth1d2 5.52883
+b/bench/throughput/poly/poly_scalar_throughput_bd4hkth1d2hkth1d2hkth1d2 5.70681
+b/bench/throughput/poly/poly_scalar_throughput_bd6bd2bd2 5.72804
+b/bench/throughput/poly/poly_scalar_throughput_bd6bd2ed2 5.74967
+b/bench/throughput/poly/poly_scalar_throughput_bd6bd2hkth1d2 5.71463
+b/bench/throughput/poly/poly_scalar_throughput_bd6bd4 5.57716
+b/bench/throughput/poly/poly_scalar_throughput_bd6ed2ed2 5.73929
+b/bench/throughput/poly/poly_scalar_throughput_bd6ed2hkth1d2 5.72238
+b/bench/throughput/poly/poly_scalar_throughput_bd6ed4 5.5449
+b/bench/throughput/poly/poly_scalar_throughput_bd6hkth1d2hkth1d2 5.70888
+b/bench/throughput/poly/poly_scalar_throughput_bd6hkth1d4 5.69738
+b/bench/throughput/poly/poly_scalar_throughput_bd6hkth2d4 5.69966
+b/bench/throughput/poly/poly_scalar_throughput_bd6hkth3d4 5.73113
+b/bench/throughput/poly/poly_scalar_throughput_bd8bd2 5.68451
+b/bench/throughput/poly/poly_scalar_throughput_bd8ed2 5.68353
+b/bench/throughput/poly/poly_scalar_throughput_bd8hkth1d2 5.70941
+b/bench/throughput/poly/poly_scalar_throughput_ed10 5.31386
+b/bench/throughput/poly/poly_scalar_throughput_ed2bd4bd4 5.98755
+b/bench/throughput/poly/poly_scalar_throughput_ed2bd4ed4 5.48977
+b/bench/throughput/poly/poly_scalar_throughput_ed2bd4hkth1d4 5.54298
+b/bench/throughput/poly/poly_scalar_throughput_ed2bd4hkth2d4 6.08575
+b/bench/throughput/poly/poly_scalar_throughput_ed2bd4hkth3d4 5.78741
+b/bench/throughput/poly/poly_scalar_throughput_ed2ed2ed2ed2ed2 5.95197
+b/bench/throughput/poly/poly_scalar_throughput_ed2ed2ed2ed2hkth1d2 5.97433
+b/bench/throughput/poly/poly_scalar_throughput_ed2ed2ed2hkth1d2hkth1d2 6.00364
+b/bench/throughput/poly/poly_scalar_throughput_ed2ed2hkth1d2hkth1d2hkth1d2 6.00281
+b/bench/throughput/poly/poly_scalar_throughput_ed2ed4ed4 5.8664
+b/bench/throughput/poly/poly_scalar_throughput_ed2ed4hkth1d4 5.50857
+b/bench/throughput/poly/poly_scalar_throughput_ed2ed4hkth2d4 5.84938
+b/bench/throughput/poly/poly_scalar_throughput_ed2ed4hkth3d4 5.58182
+b/bench/throughput/poly/poly_scalar_throughput_ed2hkth1d2hkth1d2hkth1d2hkth1d2 6.10312
+b/bench/throughput/poly/poly_scalar_throughput_ed2hkth1d4hkth1d4 5.77194
+b/bench/throughput/poly/poly_scalar_throughput_ed2hkth1d4hkth2d4 6.04943
+b/bench/throughput/poly/poly_scalar_throughput_ed2hkth1d4hkth3d4 5.80421
+b/bench/throughput/poly/poly_scalar_throughput_ed2hkth2d4hkth2d4 6.16651
+b/bench/throughput/poly/poly_scalar_throughput_ed2hkth2d4hkth3d4 6.14228
+b/bench/throughput/poly/poly_scalar_throughput_ed2hkth3d4hkth3d4 5.78874
+b/bench/throughput/poly/poly_scalar_throughput_ed4bd2bd2bd2 5.5104
+b/bench/throughput/poly/poly_scalar_throughput_ed4bd2bd2ed2 5.51767
+b/bench/throughput/poly/poly_scalar_throughput_ed4bd2bd2hkth1d2 5.50601
+b/bench/throughput/poly/poly_scalar_throughput_ed4bd2ed2ed2 5.48435
+b/bench/throughput/poly/poly_scalar_throughput_ed4bd2ed2hkth1d2 5.50707
+b/bench/throughput/poly/poly_scalar_throughput_ed4bd2hkth1d2hkth1d2 5.54361
+b/bench/throughput/poly/poly_scalar_throughput_ed4ed2ed2ed2 5.5322
+b/bench/throughput/poly/poly_scalar_throughput_ed4ed2ed2hkth1d2 5.5503
+b/bench/throughput/poly/poly_scalar_throughput_ed4ed2hkth1d2hkth1d2 5.63577
+b/bench/throughput/poly/poly_scalar_throughput_ed4hkth1d2hkth1d2hkth1d2 5.74231
+b/bench/throughput/poly/poly_scalar_throughput_ed6bd2bd2 5.42297
+b/bench/throughput/poly/poly_scalar_throughput_ed6bd2ed2 5.49982
+b/bench/throughput/poly/poly_scalar_throughput_ed6bd2hkth1d2 5.48994
+b/bench/throughput/poly/poly_scalar_throughput_ed6bd4 5.39439
+b/bench/throughput/poly/poly_scalar_throughput_ed6ed2ed2 5.39847
+b/bench/throughput/poly/poly_scalar_throughput_ed6ed2hkth1d2 5.41043
+b/bench/throughput/poly/poly_scalar_throughput_ed6ed4 5.41869
+b/bench/throughput/poly/poly_scalar_throughput_ed6hkth1d2hkth1d2 5.52084
+b/bench/throughput/poly/poly_scalar_throughput_ed6hkth1d4 5.35807
+b/bench/throughput/poly/poly_scalar_throughput_ed6hkth2d4 5.60564
+b/bench/throughput/poly/poly_scalar_throughput_ed6hkth3d4 5.51329
+b/bench/throughput/poly/poly_scalar_throughput_ed8bd2 5.52333
+b/bench/throughput/poly/poly_scalar_throughput_ed8ed2 5.52751
+b/bench/throughput/poly/poly_scalar_throughput_ed8hkth1d2 5.53631
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d10 7.18921
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2bd4bd4 6.01807
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2bd4ed4 5.61911
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2bd4hkth1d4 5.53465
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2bd4hkth2d4 6.08457
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2bd4hkth3d4 5.79976
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2ed4ed4 5.96719
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2ed4hkth1d4 5.49734
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2ed4hkth2d4 5.83437
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2ed4hkth3d4 5.57281
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 6.10415
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2hkth1d4hkth1d4 5.73016
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2hkth1d4hkth2d4 6.05719
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2hkth1d4hkth3d4 5.90552
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2hkth2d4hkth2d4 6.17907
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2hkth2d4hkth3d4 6.11182
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d2hkth3d4hkth3d4 5.7698
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4bd2bd2bd2 5.84902
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4bd2bd2ed2 5.87663
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4bd2bd2hkth1d2 5.77751
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4bd2ed2ed2 5.84046
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4bd2ed2hkth1d2 5.81036
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4bd2hkth1d2hkth1d2 5.58157
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4ed2ed2ed2 5.85539
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4ed2ed2hkth1d2 5.81424
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4ed2hkth1d2hkth1d2 5.59017
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d4hkth1d2hkth1d2hkth1d2 5.54584
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6bd2bd2 6.09374
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6bd2ed2 6.09641
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6bd2hkth1d2 6.05441
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6bd4 6.15244
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6ed2ed2 6.11667
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6ed2hkth1d2 6.01425
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6ed4 6.16439
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6hkth1d2hkth1d2 6.02686
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6hkth1d4 6.08543
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6hkth2d4 6.09692
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d6hkth3d4 6.20629
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d8bd2 6.87274
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d8ed2 6.90014
+b/bench/throughput/poly/poly_scalar_throughput_hkth1d8hkth1d2 6.865
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d10 6.34857
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4bd2bd2bd2 5.94478
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4bd2bd2ed2 5.88566
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4bd2bd2hkth1d2 5.93829
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4bd2ed2ed2 5.92403
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4bd2ed2hkth1d2 5.92175
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4bd2hkth1d2hkth1d2 6.00436
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4ed2ed2ed2 5.92169
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4ed2ed2hkth1d2 5.94883
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4ed2hkth1d2hkth1d2 5.99259
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d4hkth1d2hkth1d2hkth1d2 5.99203
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6bd2bd2 6.16932
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6bd2ed2 6.11605
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6bd2hkth1d2 6.01984
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6bd4 5.99519
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6ed2ed2 6.13343
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6ed2hkth1d2 6.07418
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6ed4 5.93933
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6hkth1d2hkth1d2 6.00925
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6hkth1d4 5.95647
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6hkth2d4 6.10395
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d6hkth3d4 6.15516
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d8bd2 6.3654
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d8ed2 6.34223
+b/bench/throughput/poly/poly_scalar_throughput_hkth2d8hkth1d2 6.33759
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d10 6.46118
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4bd2bd2bd2 5.60126
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4bd2bd2ed2 5.59279
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4bd2bd2hkth1d2 5.54934
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4bd2ed2ed2 5.55577
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4bd2ed2hkth1d2 5.57576
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4bd2hkth1d2hkth1d2 5.55988
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4ed2ed2ed2 5.60726
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4ed2ed2hkth1d2 5.66909
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4ed2hkth1d2hkth1d2 5.55173
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d4hkth1d2hkth1d2hkth1d2 5.67718
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6bd2bd2 6.51189
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6bd2ed2 6.50442
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6bd2hkth1d2 6.45201
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6bd4 6.42747
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6ed2ed2 6.51104
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6ed2hkth1d2 6.46246
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6ed4 6.37875
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6hkth1d2hkth1d2 6.42775
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6hkth1d4 6.46528
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6hkth2d4 6.44396
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d6hkth3d4 6.40732
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d8bd2 5.9784
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d8ed2 6.00044
+b/bench/throughput/poly/poly_scalar_throughput_hkth3d8hkth1d2 5.97173
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d10 5.95822
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6bd2bd2 5.74522
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6bd2ed2 5.73283
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6bd2hkth1d2 5.91366
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6bd4 6.51597
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6ed2ed2 5.7252
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6ed2hkth1d2 5.87984
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6ed4 5.60164
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6hkth1d2hkth1d2 5.78146
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6hkth1d4 5.6606
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6hkth2d4 5.87224
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d6hkth3d4 6.69794
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d8bd2 6.4289
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d8ed2 6.43805
+b/bench/throughput/poly/poly_scalar_throughput_hkth4d8hkth1d2 6.39234
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d10 6.85007
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6bd2bd2 6.2274
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6bd2ed2 6.20574
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6bd2hkth1d2 6.11711
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6bd4 6.13629
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6ed2ed2 6.18376
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6ed2hkth1d2 6.1353
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6ed4 6.18929
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6hkth1d2hkth1d2 6.12186
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6hkth1d4 6.14618
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6hkth2d4 6.22797
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d6hkth3d4 6.13465
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d8bd2 6.47507
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d8ed2 6.50254
+b/bench/throughput/poly/poly_scalar_throughput_hkth5d8hkth1d2 6.44267
+b/bench/throughput/poly/poly_scalar_throughput_hkth6d10 6.04945
+b/bench/throughput/poly/poly_scalar_throughput_hkth6d8bd2 6.07087
+b/bench/throughput/poly/poly_scalar_throughput_hkth6d8ed2 6.09539
+b/bench/throughput/poly/poly_scalar_throughput_hkth6d8hkth1d2 6.03761
+b/bench/throughput/poly/poly_scalar_throughput_hkth7d10 6.44259
+b/bench/throughput/poly/poly_scalar_throughput_hkth7d8bd2 7.05723
+b/bench/throughput/poly/poly_scalar_throughput_hkth7d8ed2 7.08287
+b/bench/throughput/poly/poly_scalar_throughput_hkth7d8hkth1d2 7.03906
+b/bench/throughput/poly/poly_scalar_throughput_hkth8d10 6.42351
+b/bench/throughput/poly/poly_scalar_throughput_hkth9d10 6.38417
+b/bench/throughput/poly/poly_vector_throughput_bd10 9.80461
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2bd2bd2bd2 9.77
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2bd2bd2ed2 9.72476
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2bd2bd2hkth1d2 9.77532
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2bd2ed2ed2 9.45619
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2bd2ed2hkth1d2 9.40923
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2bd2hkth1d2hkth1d2 9.26266
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2ed2ed2ed2 9.0352
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2ed2ed2hkth1d2 9.15923
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2ed2hkth1d2hkth1d2 8.99529
+b/bench/throughput/poly/poly_vector_throughput_bd2bd2hkth1d2hkth1d2hkth1d2 8.81043
+b/bench/throughput/poly/poly_vector_throughput_bd2bd4bd4 8.99289
+b/bench/throughput/poly/poly_vector_throughput_bd2bd4ed4 8.98539
+b/bench/throughput/poly/poly_vector_throughput_bd2bd4hkth1d4 8.68886
+b/bench/throughput/poly/poly_vector_throughput_bd2bd4hkth2d4 8.57772
+b/bench/throughput/poly/poly_vector_throughput_bd2bd4hkth3d4 9.21293
+b/bench/throughput/poly/poly_vector_throughput_bd2ed2ed2ed2ed2 8.88205
+b/bench/throughput/poly/poly_vector_throughput_bd2ed2ed2ed2hkth1d2 8.81184
+b/bench/throughput/poly/poly_vector_throughput_bd2ed2ed2hkth1d2hkth1d2 8.8773
+b/bench/throughput/poly/poly_vector_throughput_bd2ed2hkth1d2hkth1d2hkth1d2 8.51496
+b/bench/throughput/poly/poly_vector_throughput_bd2ed4ed4 9.19998
+b/bench/throughput/poly/poly_vector_throughput_bd2ed4hkth1d4 9.03512
+b/bench/throughput/poly/poly_vector_throughput_bd2ed4hkth2d4 8.43565
+b/bench/throughput/poly/poly_vector_throughput_bd2ed4hkth3d4 8.90616
+b/bench/throughput/poly/poly_vector_throughput_bd2hkth1d2hkth1d2hkth1d2hkth1d2 8.58899
+b/bench/throughput/poly/poly_vector_throughput_bd2hkth1d4hkth1d4 8.66752
+b/bench/throughput/poly/poly_vector_throughput_bd2hkth1d4hkth2d4 7.95286
+b/bench/throughput/poly/poly_vector_throughput_bd2hkth1d4hkth3d4 8.52909
+b/bench/throughput/poly/poly_vector_throughput_bd2hkth2d4hkth2d4 7.81944
+b/bench/throughput/poly/poly_vector_throughput_bd2hkth2d4hkth3d4 8.45802
+b/bench/throughput/poly/poly_vector_throughput_bd2hkth3d4hkth3d4 9.20652
+b/bench/throughput/poly/poly_vector_throughput_bd4bd2bd2bd2 9.67836
+b/bench/throughput/poly/poly_vector_throughput_bd4bd2bd2ed2 9.58859
+b/bench/throughput/poly/poly_vector_throughput_bd4bd2bd2hkth1d2 9.65926
+b/bench/throughput/poly/poly_vector_throughput_bd4bd2ed2ed2 9.38482
+b/bench/throughput/poly/poly_vector_throughput_bd4bd2ed2hkth1d2 9.50436
+b/bench/throughput/poly/poly_vector_throughput_bd4bd2hkth1d2hkth1d2 9.30673
+b/bench/throughput/poly/poly_vector_throughput_bd4ed2ed2ed2 8.97997
+b/bench/throughput/poly/poly_vector_throughput_bd4ed2ed2hkth1d2 9.09497
+b/bench/throughput/poly/poly_vector_throughput_bd4ed2hkth1d2hkth1d2 8.86695
+b/bench/throughput/poly/poly_vector_throughput_bd4hkth1d2hkth1d2hkth1d2 8.93941
+b/bench/throughput/poly/poly_vector_throughput_bd6bd2bd2 9.70721
+b/bench/throughput/poly/poly_vector_throughput_bd6bd2ed2 9.50806
+b/bench/throughput/poly/poly_vector_throughput_bd6bd2hkth1d2 9.68302
+b/bench/throughput/poly/poly_vector_throughput_bd6bd4 9.13012
+b/bench/throughput/poly/poly_vector_throughput_bd6ed2ed2 9.3698
+b/bench/throughput/poly/poly_vector_throughput_bd6ed2hkth1d2 9.49431
+b/bench/throughput/poly/poly_vector_throughput_bd6ed4 9.29865
+b/bench/throughput/poly/poly_vector_throughput_bd6hkth1d2hkth1d2 9.28885
+b/bench/throughput/poly/poly_vector_throughput_bd6hkth1d4 9.01408
+b/bench/throughput/poly/poly_vector_throughput_bd6hkth2d4 8.822
+b/bench/throughput/poly/poly_vector_throughput_bd6hkth3d4 9.13575
+b/bench/throughput/poly/poly_vector_throughput_bd8bd2 10.2291
+b/bench/throughput/poly/poly_vector_throughput_bd8ed2 10.2625
+b/bench/throughput/poly/poly_vector_throughput_bd8hkth1d2 10.3382
+b/bench/throughput/poly/poly_vector_throughput_ed10 7.57553
+b/bench/throughput/poly/poly_vector_throughput_ed2bd4bd4 9.1821
+b/bench/throughput/poly/poly_vector_throughput_ed2bd4ed4 8.69057
+b/bench/throughput/poly/poly_vector_throughput_ed2bd4hkth1d4 8.85732
+b/bench/throughput/poly/poly_vector_throughput_ed2bd4hkth2d4 8.6578
+b/bench/throughput/poly/poly_vector_throughput_ed2bd4hkth3d4 8.91842
+b/bench/throughput/poly/poly_vector_throughput_ed2ed2ed2ed2ed2 8.10303
+b/bench/throughput/poly/poly_vector_throughput_ed2ed2ed2ed2hkth1d2 8.23458
+b/bench/throughput/poly/poly_vector_throughput_ed2ed2ed2hkth1d2hkth1d2 8.1466
+b/bench/throughput/poly/poly_vector_throughput_ed2ed2hkth1d2hkth1d2hkth1d2 8.2256
+b/bench/throughput/poly/poly_vector_throughput_ed2ed4ed4 9.02157
+b/bench/throughput/poly/poly_vector_throughput_ed2ed4hkth1d4 8.67372
+b/bench/throughput/poly/poly_vector_throughput_ed2ed4hkth2d4 8.45646
+b/bench/throughput/poly/poly_vector_throughput_ed2ed4hkth3d4 8.29599
+b/bench/throughput/poly/poly_vector_throughput_ed2hkth1d2hkth1d2hkth1d2hkth1d2 8.41471
+b/bench/throughput/poly/poly_vector_throughput_ed2hkth1d4hkth1d4 8.24042
+b/bench/throughput/poly/poly_vector_throughput_ed2hkth1d4hkth2d4 7.82404
+b/bench/throughput/poly/poly_vector_throughput_ed2hkth1d4hkth3d4 7.97665
+b/bench/throughput/poly/poly_vector_throughput_ed2hkth2d4hkth2d4 8.25208
+b/bench/throughput/poly/poly_vector_throughput_ed2hkth2d4hkth3d4 8.21498
+b/bench/throughput/poly/poly_vector_throughput_ed2hkth3d4hkth3d4 9.34595
+b/bench/throughput/poly/poly_vector_throughput_ed4bd2bd2bd2 9.63158
+b/bench/throughput/poly/poly_vector_throughput_ed4bd2bd2ed2 8.92015
+b/bench/throughput/poly/poly_vector_throughput_ed4bd2bd2hkth1d2 8.87894
+b/bench/throughput/poly/poly_vector_throughput_ed4bd2ed2ed2 8.5509
+b/bench/throughput/poly/poly_vector_throughput_ed4bd2ed2hkth1d2 9.07329
+b/bench/throughput/poly/poly_vector_throughput_ed4bd2hkth1d2hkth1d2 9.0147
+b/bench/throughput/poly/poly_vector_throughput_ed4ed2ed2ed2 8.4253
+b/bench/throughput/poly/poly_vector_throughput_ed4ed2ed2hkth1d2 8.77451
+b/bench/throughput/poly/poly_vector_throughput_ed4ed2hkth1d2hkth1d2 8.48377
+b/bench/throughput/poly/poly_vector_throughput_ed4hkth1d2hkth1d2hkth1d2 9.15569
+b/bench/throughput/poly/poly_vector_throughput_ed6bd2bd2 8.55636
+b/bench/throughput/poly/poly_vector_throughput_ed6bd2ed2 8.46485
+b/bench/throughput/poly/poly_vector_throughput_ed6bd2hkth1d2 8.62696
+b/bench/throughput/poly/poly_vector_throughput_ed6bd4 8.10486
+b/bench/throughput/poly/poly_vector_throughput_ed6ed2ed2 7.8135
+b/bench/throughput/poly/poly_vector_throughput_ed6ed2hkth1d2 8.21158
+b/bench/throughput/poly/poly_vector_throughput_ed6ed4 7.62565
+b/bench/throughput/poly/poly_vector_throughput_ed6hkth1d2hkth1d2 8.78713
+b/bench/throughput/poly/poly_vector_throughput_ed6hkth1d4 8.78547
+b/bench/throughput/poly/poly_vector_throughput_ed6hkth2d4 8.66316
+b/bench/throughput/poly/poly_vector_throughput_ed6hkth3d4 7.64942
+b/bench/throughput/poly/poly_vector_throughput_ed8bd2 9.46903
+b/bench/throughput/poly/poly_vector_throughput_ed8ed2 8.56175
+b/bench/throughput/poly/poly_vector_throughput_ed8hkth1d2 8.67176
+b/bench/throughput/poly/poly_vector_throughput_hkth1d10 9.7885
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2bd4bd4 10.3912
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2bd4ed4 9.71415
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2bd4hkth1d4 8.61334
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2bd4hkth2d4 8.78012
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2bd4hkth3d4 9.02549
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2ed4ed4 9.17994
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2ed4hkth1d4 8.60011
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2ed4hkth2d4 8.271
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2ed4hkth3d4 8.54712
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 8.08814
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2hkth1d4hkth1d4 8.13921
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2hkth1d4hkth2d4 8.10591
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2hkth1d4hkth3d4 8.10134
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2hkth2d4hkth2d4 7.8886
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2hkth2d4hkth3d4 8.34689
+b/bench/throughput/poly/poly_vector_throughput_hkth1d2hkth3d4hkth3d4 8.75538
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4bd2bd2bd2 8.96166
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4bd2bd2ed2 8.68932
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4bd2bd2hkth1d2 8.88404
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4bd2ed2ed2 8.55266
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4bd2ed2hkth1d2 8.5718
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4bd2hkth1d2hkth1d2 8.54756
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4ed2ed2ed2 8.40079
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4ed2ed2hkth1d2 8.44635
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4ed2hkth1d2hkth1d2 8.22018
+b/bench/throughput/poly/poly_vector_throughput_hkth1d4hkth1d2hkth1d2hkth1d2 8.07839
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6bd2bd2 9.18255
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6bd2ed2 8.57023
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6bd2hkth1d2 8.95113
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6bd4 9.48583
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6ed2ed2 8.76223
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6ed2hkth1d2 8.7073
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6ed4 9.4275
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6hkth1d2hkth1d2 8.54385
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6hkth1d4 8.29525
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6hkth2d4 8.24723
+b/bench/throughput/poly/poly_vector_throughput_hkth1d6hkth3d4 9.03258
+b/bench/throughput/poly/poly_vector_throughput_hkth1d8bd2 9.22469
+b/bench/throughput/poly/poly_vector_throughput_hkth1d8ed2 9.4102
+b/bench/throughput/poly/poly_vector_throughput_hkth1d8hkth1d2 8.89011
+b/bench/throughput/poly/poly_vector_throughput_hkth2d10 8.12212
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4bd2bd2bd2 8.88649
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4bd2bd2ed2 8.77686
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4bd2bd2hkth1d2 8.80177
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4bd2ed2ed2 8.34607
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4bd2ed2hkth1d2 8.60025
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4bd2hkth1d2hkth1d2 8.75465
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4ed2ed2ed2 8.05507
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4ed2ed2hkth1d2 8.25636
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4ed2hkth1d2hkth1d2 7.89506
+b/bench/throughput/poly/poly_vector_throughput_hkth2d4hkth1d2hkth1d2hkth1d2 8.49364
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6bd2bd2 9.0371
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6bd2ed2 8.58989
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6bd2hkth1d2 8.74672
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6bd4 8.82976
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6ed2ed2 8.03591
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6ed2hkth1d2 8.17701
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6ed4 8.50344
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6hkth1d2hkth1d2 8.38704
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6hkth1d4 8.70698
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6hkth2d4 7.80202
+b/bench/throughput/poly/poly_vector_throughput_hkth2d6hkth3d4 9.00167
+b/bench/throughput/poly/poly_vector_throughput_hkth2d8bd2 9.08592
+b/bench/throughput/poly/poly_vector_throughput_hkth2d8ed2 8.75692
+b/bench/throughput/poly/poly_vector_throughput_hkth2d8hkth1d2 8.64393
+b/bench/throughput/poly/poly_vector_throughput_hkth3d10 7.84997
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4bd2bd2bd2 9.17537
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4bd2bd2ed2 8.93682
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4bd2bd2hkth1d2 8.8817
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4bd2ed2ed2 8.49184
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4bd2ed2hkth1d2 9.13094
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4bd2hkth1d2hkth1d2 8.58868
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4ed2ed2ed2 8.50292
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4ed2ed2hkth1d2 8.59215
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4ed2hkth1d2hkth1d2 9.35914
+b/bench/throughput/poly/poly_vector_throughput_hkth3d4hkth1d2hkth1d2hkth1d2 8.37521
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6bd2bd2 9.37724
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6bd2ed2 8.94776
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6bd2hkth1d2 8.94473
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6bd4 8.72795
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6ed2ed2 8.88182
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6ed2hkth1d2 8.73763
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6ed4 8.6415
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6hkth1d2hkth1d2 8.79442
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6hkth1d4 8.82594
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6hkth2d4 8.80607
+b/bench/throughput/poly/poly_vector_throughput_hkth3d6hkth3d4 8.58031
+b/bench/throughput/poly/poly_vector_throughput_hkth3d8bd2 8.51519
+b/bench/throughput/poly/poly_vector_throughput_hkth3d8ed2 8.76457
+b/bench/throughput/poly/poly_vector_throughput_hkth3d8hkth1d2 8.27431
+b/bench/throughput/poly/poly_vector_throughput_hkth4d10 8.69342
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6bd2bd2 10.0242
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6bd2ed2 9.67252
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6bd2hkth1d2 9.24516
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6bd4 9.0053
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6ed2ed2 9.19553
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6ed2hkth1d2 9.4117
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6ed4 8.75007
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6hkth1d2hkth1d2 9.13467
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6hkth1d4 9.0342
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6hkth2d4 8.70158
+b/bench/throughput/poly/poly_vector_throughput_hkth4d6hkth3d4 8.70238
+b/bench/throughput/poly/poly_vector_throughput_hkth4d8bd2 8.87492
+b/bench/throughput/poly/poly_vector_throughput_hkth4d8ed2 9.14108
+b/bench/throughput/poly/poly_vector_throughput_hkth4d8hkth1d2 9.7013
+b/bench/throughput/poly/poly_vector_throughput_hkth5d10 9.72367
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6bd2bd2 10.3454
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6bd2ed2 9.73535
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6bd2hkth1d2 9.74858
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6bd4 10.2957
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6ed2ed2 9.92953
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6ed2hkth1d2 9.47736
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6ed4 10.3511
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6hkth1d2hkth1d2 9.56067
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6hkth1d4 9.22142
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6hkth2d4 10.1088
+b/bench/throughput/poly/poly_vector_throughput_hkth5d6hkth3d4 9.62035
+b/bench/throughput/poly/poly_vector_throughput_hkth5d8bd2 10.2351
+b/bench/throughput/poly/poly_vector_throughput_hkth5d8ed2 10.6767
+b/bench/throughput/poly/poly_vector_throughput_hkth5d8hkth1d2 9.11171
+b/bench/throughput/poly/poly_vector_throughput_hkth6d10 10.3682
+b/bench/throughput/poly/poly_vector_throughput_hkth6d8bd2 10.7195
+b/bench/throughput/poly/poly_vector_throughput_hkth6d8ed2 9.78181
+b/bench/throughput/poly/poly_vector_throughput_hkth6d8hkth1d2 10.4401
+b/bench/throughput/poly/poly_vector_throughput_hkth7d10 11.77
+b/bench/throughput/poly/poly_vector_throughput_hkth7d8bd2 12.8882
+b/bench/throughput/poly/poly_vector_throughput_hkth7d8ed2 12.7152
+b/bench/throughput/poly/poly_vector_throughput_hkth7d8hkth1d2 12.6662
+b/bench/throughput/poly/poly_vector_throughput_hkth8d10 10.9448
+b/bench/throughput/poly/poly_vector_throughput_hkth9d10 13.0145
+b/bench/latency/scalar_vector_latency_bd10 scalar::poly 36.5686 vector::poly 47.1374
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2bd2 scalar::poly 37.5649 vector::poly 41.3143
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2ed2 scalar::poly 37.5531 vector::poly 40.988
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2hkth1d2 scalar::poly 37.5591 vector::poly 40.7026
+b/bench/latency/scalar_vector_latency_bd2bd2bd2ed2ed2 scalar::poly 37.5489 vector::poly 39.6129
+b/bench/latency/scalar_vector_latency_bd2bd2bd2ed2hkth1d2 scalar::poly 37.5574 vector::poly 40.5389
+b/bench/latency/scalar_vector_latency_bd2bd2bd2hkth1d2hkth1d2 scalar::poly 37.5451 vector::poly 39.9934
+b/bench/latency/scalar_vector_latency_bd2bd2ed2ed2ed2 scalar::poly 37.5589 vector::poly 40.1243
+b/bench/latency/scalar_vector_latency_bd2bd2ed2ed2hkth1d2 scalar::poly 37.5457 vector::poly 39.9766
+b/bench/latency/scalar_vector_latency_bd2bd2ed2hkth1d2hkth1d2 scalar::poly 37.5497 vector::poly 39.9774
+b/bench/latency/scalar_vector_latency_bd2bd2hkth1d2hkth1d2hkth1d2 scalar::poly 37.5377 vector::poly 39.0709
+b/bench/latency/scalar_vector_latency_bd2bd4bd4 scalar::poly 38.236 vector::poly 40.3109
+b/bench/latency/scalar_vector_latency_bd2bd4ed4 scalar::poly 31.8717 vector::poly 40.096
+b/bench/latency/scalar_vector_latency_bd2bd4hkth1d4 scalar::poly 31.4791 vector::poly 39.9731
+b/bench/latency/scalar_vector_latency_bd2bd4hkth2d4 scalar::poly 42.5126 vector::poly 39.3477
+b/bench/latency/scalar_vector_latency_bd2bd4hkth3d4 scalar::poly 37.4331 vector::poly 39.938
+b/bench/latency/scalar_vector_latency_bd2ed2ed2ed2ed2 scalar::poly 37.5609 vector::poly 39.1474
+b/bench/latency/scalar_vector_latency_bd2ed2ed2ed2hkth1d2 scalar::poly 37.5631 vector::poly 39.0249
+b/bench/latency/scalar_vector_latency_bd2ed2ed2hkth1d2hkth1d2 scalar::poly 37.5569 vector::poly 38.6991
+b/bench/latency/scalar_vector_latency_bd2ed2hkth1d2hkth1d2hkth1d2 scalar::poly 37.5397 vector::poly 38.952
+b/bench/latency/scalar_vector_latency_bd2ed4ed4 scalar::poly 32.2249 vector::poly 27.5403
+b/bench/latency/scalar_vector_latency_bd2ed4hkth1d4 scalar::poly 31.4786 vector::poly 28.2283
+b/bench/latency/scalar_vector_latency_bd2ed4hkth2d4 scalar::poly 36.5571 vector::poly 28.5906
+b/bench/latency/scalar_vector_latency_bd2ed4hkth3d4 scalar::poly 31.9597 vector::poly 30.65
+b/bench/latency/scalar_vector_latency_bd2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::poly 37.1591 vector::poly 38.9694
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth1d4 scalar::poly 37.04 vector::poly 26.6954
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth2d4 scalar::poly 42.4466 vector::poly 25.9169
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth3d4 scalar::poly 37.8474 vector::poly 29.3531
+b/bench/latency/scalar_vector_latency_bd2hkth2d4hkth2d4 scalar::poly 42.6903 vector::poly 26.596
+b/bench/latency/scalar_vector_latency_bd2hkth2d4hkth3d4 scalar::poly 42.2566 vector::poly 32.5834
+b/bench/latency/scalar_vector_latency_bd2hkth3d4hkth3d4 scalar::poly 37.3226 vector::poly 37.4651
+b/bench/latency/scalar_vector_latency_bd4bd2bd2bd2 scalar::poly 31.454 vector::poly 46.188
+b/bench/latency/scalar_vector_latency_bd4bd2bd2ed2 scalar::poly 31.4694 vector::poly 45.9857
+b/bench/latency/scalar_vector_latency_bd4bd2bd2hkth1d2 scalar::poly 31.5771 vector::poly 45.9657
+b/bench/latency/scalar_vector_latency_bd4bd2ed2ed2 scalar::poly 31.4623 vector::poly 45.58
+b/bench/latency/scalar_vector_latency_bd4bd2ed2hkth1d2 scalar::poly 31.5746 vector::poly 45.5663
+b/bench/latency/scalar_vector_latency_bd4bd2hkth1d2hkth1d2 scalar::poly 31.4374 vector::poly 45.4731
+b/bench/latency/scalar_vector_latency_bd4ed2ed2ed2 scalar::poly 31.4669 vector::poly 45.4011
+b/bench/latency/scalar_vector_latency_bd4ed2ed2hkth1d2 scalar::poly 31.5951 vector::poly 45.0863
+b/bench/latency/scalar_vector_latency_bd4ed2hkth1d2hkth1d2 scalar::poly 31.4177 vector::poly 45.2574
+b/bench/latency/scalar_vector_latency_bd4hkth1d2hkth1d2hkth1d2 scalar::poly 31.1254 vector::poly 45.3783
+b/bench/latency/scalar_vector_latency_bd6bd2bd2 scalar::poly 36.6797 vector::poly 46.6374
+b/bench/latency/scalar_vector_latency_bd6bd2ed2 scalar::poly 36.6686 vector::poly 45.9123
+b/bench/latency/scalar_vector_latency_bd6bd2hkth1d2 scalar::poly 37.6591 vector::poly 46.2383
+b/bench/latency/scalar_vector_latency_bd6bd4 scalar::poly 33.1426 vector::poly 40.2206
+b/bench/latency/scalar_vector_latency_bd6ed2ed2 scalar::poly 36.6697 vector::poly 46.578
+b/bench/latency/scalar_vector_latency_bd6ed2hkth1d2 scalar::poly 37.6426 vector::poly 46.2546
+b/bench/latency/scalar_vector_latency_bd6ed4 scalar::poly 32.3034 vector::poly 40.2183
+b/bench/latency/scalar_vector_latency_bd6hkth1d2hkth1d2 scalar::poly 37.512 vector::poly 46.3049
+b/bench/latency/scalar_vector_latency_bd6hkth1d4 scalar::poly 36.4186 vector::poly 40.35
+b/bench/latency/scalar_vector_latency_bd6hkth2d4 scalar::poly 37.3566 vector::poly 40.2797
+b/bench/latency/scalar_vector_latency_bd6hkth3d4 scalar::poly 36.4994 vector::poly 40.8354
+b/bench/latency/scalar_vector_latency_bd8bd2 scalar::poly 36.7097 vector::poly 52.3909
+b/bench/latency/scalar_vector_latency_bd8ed2 scalar::poly 36.7146 vector::poly 52.1766
+b/bench/latency/scalar_vector_latency_bd8hkth1d2 scalar::poly 36.6937 vector::poly 52.4734
+b/bench/latency/scalar_vector_latency_ed10 scalar::poly 26.116 vector::poly 17.0497
+b/bench/latency/scalar_vector_latency_ed2bd4bd4 scalar::poly 38.2571 vector::poly 40.7666
+b/bench/latency/scalar_vector_latency_ed2bd4ed4 scalar::poly 31.874 vector::poly 39.1437
+b/bench/latency/scalar_vector_latency_ed2bd4hkth1d4 scalar::poly 31.472 vector::poly 38.778
+b/bench/latency/scalar_vector_latency_ed2bd4hkth2d4 scalar::poly 42.5183 vector::poly 39.0214
+b/bench/latency/scalar_vector_latency_ed2bd4hkth3d4 scalar::poly 37.4194 vector::poly 40.0583
+b/bench/latency/scalar_vector_latency_ed2ed2ed2ed2ed2 scalar::poly 37.5326 vector::poly 27.5234
+b/bench/latency/scalar_vector_latency_ed2ed2ed2ed2hkth1d2 scalar::poly 37.558 vector::poly 26.9623
+b/bench/latency/scalar_vector_latency_ed2ed2ed2hkth1d2hkth1d2 scalar::poly 37.5371 vector::poly 27.2254
+b/bench/latency/scalar_vector_latency_ed2ed2hkth1d2hkth1d2hkth1d2 scalar::poly 37.5237 vector::poly 26.798
+b/bench/latency/scalar_vector_latency_ed2ed4ed4 scalar::poly 32.226 vector::poly 25.0966
+b/bench/latency/scalar_vector_latency_ed2ed4hkth1d4 scalar::poly 31.4711 vector::poly 26.7169
+b/bench/latency/scalar_vector_latency_ed2ed4hkth2d4 scalar::poly 36.5529 vector::poly 24.4197
+b/bench/latency/scalar_vector_latency_ed2ed4hkth3d4 scalar::poly 31.9611 vector::poly 28.3329
+b/bench/latency/scalar_vector_latency_ed2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::poly 37.152 vector::poly 26.8563
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth1d4 scalar::poly 37.0437 vector::poly 25.3963
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth2d4 scalar::poly 42.4577 vector::poly 25.4609
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth3d4 scalar::poly 37.8663 vector::poly 26.976
+b/bench/latency/scalar_vector_latency_ed2hkth2d4hkth2d4 scalar::poly 42.6929 vector::poly 31.006
+b/bench/latency/scalar_vector_latency_ed2hkth2d4hkth3d4 scalar::poly 42.252 vector::poly 28.2134
+b/bench/latency/scalar_vector_latency_ed2hkth3d4hkth3d4 scalar::poly 37.3351 vector::poly 36.6143
+b/bench/latency/scalar_vector_latency_ed4bd2bd2bd2 scalar::poly 31.4809 vector::poly 34.4311
+b/bench/latency/scalar_vector_latency_ed4bd2bd2ed2 scalar::poly 31.466 vector::poly 33.0737
+b/bench/latency/scalar_vector_latency_ed4bd2bd2hkth1d2 scalar::poly 31.5814 vector::poly 32.7717
+b/bench/latency/scalar_vector_latency_ed4bd2ed2ed2 scalar::poly 31.4591 vector::poly 33.0974
+b/bench/latency/scalar_vector_latency_ed4bd2ed2hkth1d2 scalar::poly 31.5851 vector::poly 33.7734
+b/bench/latency/scalar_vector_latency_ed4bd2hkth1d2hkth1d2 scalar::poly 31.418 vector::poly 34.3817
+b/bench/latency/scalar_vector_latency_ed4ed2ed2ed2 scalar::poly 31.4649 vector::poly 27.5003
+b/bench/latency/scalar_vector_latency_ed4ed2ed2hkth1d2 scalar::poly 31.5931 vector::poly 34.1283
+b/bench/latency/scalar_vector_latency_ed4ed2hkth1d2hkth1d2 scalar::poly 31.4234 vector::poly 26.9549
+b/bench/latency/scalar_vector_latency_ed4hkth1d2hkth1d2hkth1d2 scalar::poly 31.1291 vector::poly 32.7649
+b/bench/latency/scalar_vector_latency_ed6bd2bd2 scalar::poly 30.5154 vector::poly 26.4343
+b/bench/latency/scalar_vector_latency_ed6bd2ed2 scalar::poly 30.5343 vector::poly 27.3803
+b/bench/latency/scalar_vector_latency_ed6bd2hkth1d2 scalar::poly 30.7811 vector::poly 28.2529
+b/bench/latency/scalar_vector_latency_ed6bd4 scalar::poly 31.0846 vector::poly 33.3846
+b/bench/latency/scalar_vector_latency_ed6ed2ed2 scalar::poly 30.5326 vector::poly 21.9143
+b/bench/latency/scalar_vector_latency_ed6ed2hkth1d2 scalar::poly 30.786 vector::poly 21.9357
+b/bench/latency/scalar_vector_latency_ed6ed4 scalar::poly 26.9849 vector::poly 19.3206
+b/bench/latency/scalar_vector_latency_ed6hkth1d2hkth1d2 scalar::poly 30.8554 vector::poly 24.876
+b/bench/latency/scalar_vector_latency_ed6hkth1d4 scalar::poly 31.2914 vector::poly 25.3131
+b/bench/latency/scalar_vector_latency_ed6hkth2d4 scalar::poly 36.3991 vector::poly 22.3737
+b/bench/latency/scalar_vector_latency_ed6hkth3d4 scalar::poly 32.5089 vector::poly 27.8097
+b/bench/latency/scalar_vector_latency_ed8bd2 scalar::poly 31.3011 vector::poly 29.9077
+b/bench/latency/scalar_vector_latency_ed8ed2 scalar::poly 31.3083 vector::poly 24.0743
+b/bench/latency/scalar_vector_latency_ed8hkth1d2 scalar::poly 31.3377 vector::poly 27.9409
+b/bench/latency/scalar_vector_latency_hkth1d10 scalar::poly 60.004 vector::poly 51.4517
+b/bench/latency/scalar_vector_latency_hkth1d2bd4bd4 scalar::poly 38.2646 vector::poly 41.1917
+b/bench/latency/scalar_vector_latency_hkth1d2bd4ed4 scalar::poly 31.6414 vector::poly 40.6646
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth1d4 scalar::poly 31.3677 vector::poly 38.9171
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth2d4 scalar::poly 42.3266 vector::poly 39.1649
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth3d4 scalar::poly 37.348 vector::poly 40.1329
+b/bench/latency/scalar_vector_latency_hkth1d2ed4ed4 scalar::poly 32.9554 vector::poly 24.7606
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth1d4 scalar::poly 31.3606 vector::poly 26.2997
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth2d4 scalar::poly 36.46 vector::poly 23.9209
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth3d4 scalar::poly 31.6994 vector::poly 28.3971
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::poly 37.1514 vector::poly 25.5851
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth1d4 scalar::poly 37.0411 vector::poly 25.3766
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth2d4 scalar::poly 42.4203 vector::poly 26.0869
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth3d4 scalar::poly 37.5903 vector::poly 26.3714
+b/bench/latency/scalar_vector_latency_hkth1d2hkth2d4hkth2d4 scalar::poly 43.2 vector::poly 26.5974
+b/bench/latency/scalar_vector_latency_hkth1d2hkth2d4hkth3d4 scalar::poly 42.5646 vector::poly 28.7223
+b/bench/latency/scalar_vector_latency_hkth1d2hkth3d4hkth3d4 scalar::poly 37.2883 vector::poly 35.5983
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2bd2 scalar::poly 32.6351 vector::poly 33.084
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2ed2 scalar::poly 32.6386 vector::poly 33.3071
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2hkth1d2 scalar::poly 31.4803 vector::poly 33.2189
+b/bench/latency/scalar_vector_latency_hkth1d4bd2ed2ed2 scalar::poly 32.6394 vector::poly 33.078
+b/bench/latency/scalar_vector_latency_hkth1d4bd2ed2hkth1d2 scalar::poly 31.4943 vector::poly 32.9906
+b/bench/latency/scalar_vector_latency_hkth1d4bd2hkth1d2hkth1d2 scalar::poly 31.8737 vector::poly 33.2374
+b/bench/latency/scalar_vector_latency_hkth1d4ed2ed2ed2 scalar::poly 32.6377 vector::poly 32.4234
+b/bench/latency/scalar_vector_latency_hkth1d4ed2ed2hkth1d2 scalar::poly 31.486 vector::poly 31.9291
+b/bench/latency/scalar_vector_latency_hkth1d4ed2hkth1d2hkth1d2 scalar::poly 31.8697 vector::poly 32.2189
+b/bench/latency/scalar_vector_latency_hkth1d4hkth1d2hkth1d2hkth1d2 scalar::poly 31.8754 vector::poly 32.1929
+b/bench/latency/scalar_vector_latency_hkth1d6bd2bd2 scalar::poly 42.038 vector::poly 38.7826
+b/bench/latency/scalar_vector_latency_hkth1d6bd2ed2 scalar::poly 42.0351 vector::poly 38.5117
+b/bench/latency/scalar_vector_latency_hkth1d6bd2hkth1d2 scalar::poly 42.2443 vector::poly 38.6386
+b/bench/latency/scalar_vector_latency_hkth1d6bd4 scalar::poly 42.1709 vector::poly 34.9586
+b/bench/latency/scalar_vector_latency_hkth1d6ed2ed2 scalar::poly 42.0394 vector::poly 39.0069
+b/bench/latency/scalar_vector_latency_hkth1d6ed2hkth1d2 scalar::poly 42.244 vector::poly 39.3749
+b/bench/latency/scalar_vector_latency_hkth1d6ed4 scalar::poly 42.2911 vector::poly 31.8697
+b/bench/latency/scalar_vector_latency_hkth1d6hkth1d2hkth1d2 scalar::poly 42.2934 vector::poly 38.8569
+b/bench/latency/scalar_vector_latency_hkth1d6hkth1d4 scalar::poly 42.112 vector::poly 32.7551
+b/bench/latency/scalar_vector_latency_hkth1d6hkth2d4 scalar::poly 42.1514 vector::poly 32.0374
+b/bench/latency/scalar_vector_latency_hkth1d6hkth3d4 scalar::poly 42.604 vector::poly 34.6154
+b/bench/latency/scalar_vector_latency_hkth1d8bd2 scalar::poly 54.1866 vector::poly 44.9814
+b/bench/latency/scalar_vector_latency_hkth1d8ed2 scalar::poly 54.1857 vector::poly 45.9031
+b/bench/latency/scalar_vector_latency_hkth1d8hkth1d2 scalar::poly 54.176 vector::poly 44.998
+b/bench/latency/scalar_vector_latency_hkth2d10 scalar::poly 48.1483 vector::poly 31.8869
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2bd2 scalar::poly 36.618 vector::poly 33.3474
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2ed2 scalar::poly 36.6094 vector::poly 32.1111
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2hkth1d2 scalar::poly 36.504 vector::poly 32.1994
+b/bench/latency/scalar_vector_latency_hkth2d4bd2ed2ed2 scalar::poly 36.614 vector::poly 33.3554
+b/bench/latency/scalar_vector_latency_hkth2d4bd2ed2hkth1d2 scalar::poly 36.4989 vector::poly 33.42
+b/bench/latency/scalar_vector_latency_hkth2d4bd2hkth1d2hkth1d2 scalar::poly 36.4226 vector::poly 32.5
+b/bench/latency/scalar_vector_latency_hkth2d4ed2ed2ed2 scalar::poly 36.6249 vector::poly 32.1969
+b/bench/latency/scalar_vector_latency_hkth2d4ed2ed2hkth1d2 scalar::poly 36.4971 vector::poly 32.2174
+b/bench/latency/scalar_vector_latency_hkth2d4ed2hkth1d2hkth1d2 scalar::poly 36.4311 vector::poly 32.2257
+b/bench/latency/scalar_vector_latency_hkth2d4hkth1d2hkth1d2hkth1d2 scalar::poly 36.5529 vector::poly 32.2046
+b/bench/latency/scalar_vector_latency_hkth2d6bd2bd2 scalar::poly 42.3943 vector::poly 33.4137
+b/bench/latency/scalar_vector_latency_hkth2d6bd2ed2 scalar::poly 42.3766 vector::poly 32.2606
+b/bench/latency/scalar_vector_latency_hkth2d6bd2hkth1d2 scalar::poly 42.2706 vector::poly 32.2329
+b/bench/latency/scalar_vector_latency_hkth2d6bd4 scalar::poly 42.2611 vector::poly 34.5986
+b/bench/latency/scalar_vector_latency_hkth2d6ed2ed2 scalar::poly 42.398 vector::poly 32.1317
+b/bench/latency/scalar_vector_latency_hkth2d6ed2hkth1d2 scalar::poly 42.2737 vector::poly 32.168
+b/bench/latency/scalar_vector_latency_hkth2d6ed4 scalar::poly 42.2591 vector::poly 25.5611
+b/bench/latency/scalar_vector_latency_hkth2d6hkth1d2hkth1d2 scalar::poly 42.338 vector::poly 32.2034
+b/bench/latency/scalar_vector_latency_hkth2d6hkth1d4 scalar::poly 42.3894 vector::poly 29.018
+b/bench/latency/scalar_vector_latency_hkth2d6hkth2d4 scalar::poly 42.1251 vector::poly 25.2506
+b/bench/latency/scalar_vector_latency_hkth2d6hkth3d4 scalar::poly 42.4991 vector::poly 36.306
+b/bench/latency/scalar_vector_latency_hkth2d8bd2 scalar::poly 48.2574 vector::poly 35.5086
+b/bench/latency/scalar_vector_latency_hkth2d8ed2 scalar::poly 48.2583 vector::poly 32.1731
+b/bench/latency/scalar_vector_latency_hkth2d8hkth1d2 scalar::poly 48.1697 vector::poly 32.0963
+b/bench/latency/scalar_vector_latency_hkth3d10 scalar::poly 48.328 vector::poly 32.1177
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2bd2 scalar::poly 32.7146 vector::poly 39.7471
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2ed2 scalar::poly 32.7043 vector::poly 40.1734
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2hkth1d2 scalar::poly 32.1626 vector::poly 40.4851
+b/bench/latency/scalar_vector_latency_hkth3d4bd2ed2ed2 scalar::poly 32.7043 vector::poly 39.1391
+b/bench/latency/scalar_vector_latency_hkth3d4bd2ed2hkth1d2 scalar::poly 32.1691 vector::poly 44.9003
+b/bench/latency/scalar_vector_latency_hkth3d4bd2hkth1d2hkth1d2 scalar::poly 31.7663 vector::poly 39.6766
+b/bench/latency/scalar_vector_latency_hkth3d4ed2ed2ed2 scalar::poly 32.6946 vector::poly 38.6969
+b/bench/latency/scalar_vector_latency_hkth3d4ed2ed2hkth1d2 scalar::poly 32.1743 vector::poly 38.4249
+b/bench/latency/scalar_vector_latency_hkth3d4ed2hkth1d2hkth1d2 scalar::poly 31.764 vector::poly 43.234
+b/bench/latency/scalar_vector_latency_hkth3d4hkth1d2hkth1d2hkth1d2 scalar::poly 32.4946 vector::poly 38.5669
+b/bench/latency/scalar_vector_latency_hkth3d6bd2bd2 scalar::poly 48.4011 vector::poly 43.7831
+b/bench/latency/scalar_vector_latency_hkth3d6bd2ed2 scalar::poly 48.3914 vector::poly 42.1037
+b/bench/latency/scalar_vector_latency_hkth3d6bd2hkth1d2 scalar::poly 48.4377 vector::poly 43.6257
+b/bench/latency/scalar_vector_latency_hkth3d6bd4 scalar::poly 48.4383 vector::poly 36.896
+b/bench/latency/scalar_vector_latency_hkth3d6ed2ed2 scalar::poly 48.4003 vector::poly 41.8546
+b/bench/latency/scalar_vector_latency_hkth3d6ed2hkth1d2 scalar::poly 48.4391 vector::poly 42.66
+b/bench/latency/scalar_vector_latency_hkth3d6ed4 scalar::poly 48.5366 vector::poly 38.6194
+b/bench/latency/scalar_vector_latency_hkth3d6hkth1d2hkth1d2 scalar::poly 48.4174 vector::poly 42.5946
+b/bench/latency/scalar_vector_latency_hkth3d6hkth1d4 scalar::poly 48.2783 vector::poly 40.0126
+b/bench/latency/scalar_vector_latency_hkth3d6hkth2d4 scalar::poly 48.4417 vector::poly 40.29
+b/bench/latency/scalar_vector_latency_hkth3d6hkth3d4 scalar::poly 48.5777 vector::poly 39.3723
+b/bench/latency/scalar_vector_latency_hkth3d8bd2 scalar::poly 43.1097 vector::poly 39.5011
+b/bench/latency/scalar_vector_latency_hkth3d8ed2 scalar::poly 42.9217 vector::poly 36.368
+b/bench/latency/scalar_vector_latency_hkth3d8hkth1d2 scalar::poly 42.5046 vector::poly 38.4986
+b/bench/latency/scalar_vector_latency_hkth4d10 scalar::poly 42.3537 vector::poly 36.4737
+b/bench/latency/scalar_vector_latency_hkth4d6bd2bd2 scalar::poly 37.4491 vector::poly 50.2717
+b/bench/latency/scalar_vector_latency_hkth4d6bd2ed2 scalar::poly 37.4446 vector::poly 46.366
+b/bench/latency/scalar_vector_latency_hkth4d6bd2hkth1d2 scalar::poly 37.6457 vector::poly 44.6083
+b/bench/latency/scalar_vector_latency_hkth4d6bd4 scalar::poly 48.5463 vector::poly 41.266
+b/bench/latency/scalar_vector_latency_hkth4d6ed2ed2 scalar::poly 37.4483 vector::poly 42.87
+b/bench/latency/scalar_vector_latency_hkth4d6ed2hkth1d2 scalar::poly 37.6311 vector::poly 42.7406
+b/bench/latency/scalar_vector_latency_hkth4d6ed4 scalar::poly 36.7526 vector::poly 40.8943
+b/bench/latency/scalar_vector_latency_hkth4d6hkth1d2hkth1d2 scalar::poly 36.646 vector::poly 42.4389
+b/bench/latency/scalar_vector_latency_hkth4d6hkth1d4 scalar::poly 37.0594 vector::poly 42.9354
+b/bench/latency/scalar_vector_latency_hkth4d6hkth2d4 scalar::poly 37.8114 vector::poly 39.0603
+b/bench/latency/scalar_vector_latency_hkth4d6hkth3d4 scalar::poly 48.5066 vector::poly 44.4877
+b/bench/latency/scalar_vector_latency_hkth4d8bd2 scalar::poly 48.3137 vector::poly 43.1309
+b/bench/latency/scalar_vector_latency_hkth4d8ed2 scalar::poly 48.3206 vector::poly 45.3203
+b/bench/latency/scalar_vector_latency_hkth4d8hkth1d2 scalar::poly 48.3089 vector::poly 48.7777
+b/bench/latency/scalar_vector_latency_hkth5d10 scalar::poly 54.1051 vector::poly 55.5151
+b/bench/latency/scalar_vector_latency_hkth5d6bd2bd2 scalar::poly 42.4446 vector::poly 55.3829
+b/bench/latency/scalar_vector_latency_hkth5d6bd2ed2 scalar::poly 42.4266 vector::poly 54.91
+b/bench/latency/scalar_vector_latency_hkth5d6bd2hkth1d2 scalar::poly 42.3206 vector::poly 51.914
+b/bench/latency/scalar_vector_latency_hkth5d6bd4 scalar::poly 43.354 vector::poly 52.8771
+b/bench/latency/scalar_vector_latency_hkth5d6ed2ed2 scalar::poly 42.4391 vector::poly 54.8937
+b/bench/latency/scalar_vector_latency_hkth5d6ed2hkth1d2 scalar::poly 42.324 vector::poly 52.7571
+b/bench/latency/scalar_vector_latency_hkth5d6ed4 scalar::poly 43.0849 vector::poly 52.1774
+b/bench/latency/scalar_vector_latency_hkth5d6hkth1d2hkth1d2 scalar::poly 42.5626 vector::poly 52.1237
+b/bench/latency/scalar_vector_latency_hkth5d6hkth1d4 scalar::poly 42.364 vector::poly 48.9103
+b/bench/latency/scalar_vector_latency_hkth5d6hkth2d4 scalar::poly 42.4177 vector::poly 52.224
+b/bench/latency/scalar_vector_latency_hkth5d6hkth3d4 scalar::poly 42.3434 vector::poly 52.5786
+b/bench/latency/scalar_vector_latency_hkth5d8bd2 scalar::poly 49.4389 vector::poly 52.4663
+b/bench/latency/scalar_vector_latency_hkth5d8ed2 scalar::poly 49.4371 vector::poly 56.1969
+b/bench/latency/scalar_vector_latency_hkth5d8hkth1d2 scalar::poly 49.4249 vector::poly 48.7469
+b/bench/latency/scalar_vector_latency_hkth6d10 scalar::poly 42.3606 vector::poly 55.3817
+b/bench/latency/scalar_vector_latency_hkth6d8bd2 scalar::poly 44.2477 vector::poly 55.9346
+b/bench/latency/scalar_vector_latency_hkth6d8ed2 scalar::poly 44.2589 vector::poly 54.6511
+b/bench/latency/scalar_vector_latency_hkth6d8hkth1d2 scalar::poly 43.2634 vector::poly 55.092
+b/bench/latency/scalar_vector_latency_hkth7d10 scalar::poly 48.2117 vector::poly 69.6806
+b/bench/latency/scalar_vector_latency_hkth7d8bd2 scalar::poly 54.2037 vector::poly 71.3874
+b/bench/latency/scalar_vector_latency_hkth7d8ed2 scalar::poly 54.206 vector::poly 71.2614
+b/bench/latency/scalar_vector_latency_hkth7d8hkth1d2 scalar::poly 54.1931 vector::poly 70.0731
+b/bench/latency/scalar_vector_latency_hkth8d10 scalar::poly 44.0683 vector::poly 61.8126
+b/bench/latency/scalar_vector_latency_hkth9d10 scalar::poly 43.1937 vector::poly 73.7766
+b/bench/latency/scalar_vector_latency_bd10 scalar::poly 36.5763 vector::poly 47.1451
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2bd2 scalar::poly 37.5557 vector::poly 41.3183
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2ed2 scalar::poly 37.5554 vector::poly 40.9477
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2hkth1d2 scalar::poly 37.552 vector::poly 40.714
+b/bench/latency/scalar_vector_latency_bd2bd2bd2ed2ed2 scalar::poly 37.5377 vector::poly 39.62
+b/bench/latency/scalar_vector_latency_bd2bd2bd2ed2hkth1d2 scalar::poly 37.5694 vector::poly 40.5371
+b/bench/latency/scalar_vector_latency_bd2bd2bd2hkth1d2hkth1d2 scalar::poly 37.5446 vector::poly 40.0149
+b/bench/latency/scalar_vector_latency_bd2bd2ed2ed2ed2 scalar::poly 37.5637 vector::poly 40.1217
+b/bench/latency/scalar_vector_latency_bd2bd2ed2ed2hkth1d2 scalar::poly 37.5569 vector::poly 39.98
+b/bench/latency/scalar_vector_latency_bd2bd2ed2hkth1d2hkth1d2 scalar::poly 37.5506 vector::poly 39.982
+b/bench/latency/scalar_vector_latency_bd2bd2hkth1d2hkth1d2hkth1d2 scalar::poly 37.5423 vector::poly 39.0903
+b/bench/latency/scalar_vector_latency_bd2bd4bd4 scalar::poly 38.2497 vector::poly 40.3277
+b/bench/latency/scalar_vector_latency_bd2bd4ed4 scalar::poly 31.8794 vector::poly 40.0963
+b/bench/latency/scalar_vector_latency_bd2bd4hkth1d4 scalar::poly 31.4837 vector::poly 39.9909
+b/bench/latency/scalar_vector_latency_bd2bd4hkth2d4 scalar::poly 42.5211 vector::poly 39.3569
+b/bench/latency/scalar_vector_latency_bd2bd4hkth3d4 scalar::poly 37.4183 vector::poly 39.9394
+b/bench/latency/scalar_vector_latency_bd2ed2ed2ed2ed2 scalar::poly 37.5466 vector::poly 39.1626
+b/bench/latency/scalar_vector_latency_bd2ed2ed2ed2hkth1d2 scalar::poly 37.5514 vector::poly 39.0394
+b/bench/latency/scalar_vector_latency_bd2ed2ed2hkth1d2hkth1d2 scalar::poly 37.5531 vector::poly 38.6974
+b/bench/latency/scalar_vector_latency_bd2ed2hkth1d2hkth1d2hkth1d2 scalar::poly 37.5391 vector::poly 38.9417
+b/bench/latency/scalar_vector_latency_bd2ed4ed4 scalar::poly 32.226 vector::poly 27.5503
+b/bench/latency/scalar_vector_latency_bd2ed4hkth1d4 scalar::poly 31.4746 vector::poly 28.2117
+b/bench/latency/scalar_vector_latency_bd2ed4hkth2d4 scalar::poly 36.5529 vector::poly 28.5737
+b/bench/latency/scalar_vector_latency_bd2ed4hkth3d4 scalar::poly 31.9646 vector::poly 30.6531
+b/bench/latency/scalar_vector_latency_bd2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::poly 37.1551 vector::poly 38.9637
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth1d4 scalar::poly 37.0469 vector::poly 26.6957
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth2d4 scalar::poly 42.4743 vector::poly 25.924
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth3d4 scalar::poly 37.8377 vector::poly 29.3723
+b/bench/latency/scalar_vector_latency_bd2hkth2d4hkth2d4 scalar::poly 42.6751 vector::poly 26.5789
+b/bench/latency/scalar_vector_latency_bd2hkth2d4hkth3d4 scalar::poly 42.2551 vector::poly 32.5923
+b/bench/latency/scalar_vector_latency_bd2hkth3d4hkth3d4 scalar::poly 37.3246 vector::poly 37.502
+b/bench/latency/scalar_vector_latency_bd4bd2bd2bd2 scalar::poly 31.4534 vector::poly 46.1963
+b/bench/latency/scalar_vector_latency_bd4bd2bd2ed2 scalar::poly 31.4503 vector::poly 45.9811
+b/bench/latency/scalar_vector_latency_bd4bd2bd2hkth1d2 scalar::poly 31.5877 vector::poly 45.9583
+b/bench/latency/scalar_vector_latency_bd4bd2ed2ed2 scalar::poly 31.4477 vector::poly 45.5751
+b/bench/latency/scalar_vector_latency_bd4bd2ed2hkth1d2 scalar::poly 31.566 vector::poly 45.576
+b/bench/latency/scalar_vector_latency_bd4bd2hkth1d2hkth1d2 scalar::poly 31.4194 vector::poly 45.4866
+b/bench/latency/scalar_vector_latency_bd4ed2ed2ed2 scalar::poly 31.4697 vector::poly 45.4097
+b/bench/latency/scalar_vector_latency_bd4ed2ed2hkth1d2 scalar::poly 31.5794 vector::poly 45.0891
+b/bench/latency/scalar_vector_latency_bd4ed2hkth1d2hkth1d2 scalar::poly 31.4249 vector::poly 45.254
+b/bench/latency/scalar_vector_latency_bd4hkth1d2hkth1d2hkth1d2 scalar::poly 31.1289 vector::poly 45.398
+b/bench/latency/scalar_vector_latency_bd6bd2bd2 scalar::poly 36.6626 vector::poly 46.6394
+b/bench/latency/scalar_vector_latency_bd6bd2ed2 scalar::poly 36.6637 vector::poly 45.9006
+b/bench/latency/scalar_vector_latency_bd6bd2hkth1d2 scalar::poly 37.6606 vector::poly 46.2386
+b/bench/latency/scalar_vector_latency_bd6bd4 scalar::poly 33.1389 vector::poly 40.2229
+b/bench/latency/scalar_vector_latency_bd6ed2ed2 scalar::poly 36.6477 vector::poly 46.5914
+b/bench/latency/scalar_vector_latency_bd6ed2hkth1d2 scalar::poly 37.6511 vector::poly 46.2611
+b/bench/latency/scalar_vector_latency_bd6ed4 scalar::poly 32.2897 vector::poly 40.6114
+b/bench/latency/scalar_vector_latency_bd6hkth1d2hkth1d2 scalar::poly 37.5154 vector::poly 46.3094
+b/bench/latency/scalar_vector_latency_bd6hkth1d4 scalar::poly 36.4346 vector::poly 40.3477
+b/bench/latency/scalar_vector_latency_bd6hkth2d4 scalar::poly 37.3637 vector::poly 40.28
+b/bench/latency/scalar_vector_latency_bd6hkth3d4 scalar::poly 36.5026 vector::poly 40.8414
+b/bench/latency/scalar_vector_latency_bd8bd2 scalar::poly 36.7051 vector::poly 52.3929
+b/bench/latency/scalar_vector_latency_bd8ed2 scalar::poly 36.7166 vector::poly 52.1623
+b/bench/latency/scalar_vector_latency_bd8hkth1d2 scalar::poly 36.6869 vector::poly 52.4849
+b/bench/latency/scalar_vector_latency_ed10 scalar::poly 26.1166 vector::poly 17.032
+b/bench/latency/scalar_vector_latency_ed2bd4bd4 scalar::poly 38.264 vector::poly 40.7906
+b/bench/latency/scalar_vector_latency_ed2bd4ed4 scalar::poly 31.8866 vector::poly 39.1331
+b/bench/latency/scalar_vector_latency_ed2bd4hkth1d4 scalar::poly 31.4769 vector::poly 38.7811
+b/bench/latency/scalar_vector_latency_ed2bd4hkth2d4 scalar::poly 42.5046 vector::poly 39.0266
+b/bench/latency/scalar_vector_latency_ed2bd4hkth3d4 scalar::poly 37.416 vector::poly 40.0497
+b/bench/latency/scalar_vector_latency_ed2ed2ed2ed2ed2 scalar::poly 37.5603 vector::poly 27.5254
+b/bench/latency/scalar_vector_latency_ed2ed2ed2ed2hkth1d2 scalar::poly 37.5677 vector::poly 26.9597
+b/bench/latency/scalar_vector_latency_ed2ed2ed2hkth1d2hkth1d2 scalar::poly 37.5346 vector::poly 27.2243
+b/bench/latency/scalar_vector_latency_ed2ed2hkth1d2hkth1d2hkth1d2 scalar::poly 37.5403 vector::poly 26.7814
+b/bench/latency/scalar_vector_latency_ed2ed4ed4 scalar::poly 32.2257 vector::poly 25.0937
+b/bench/latency/scalar_vector_latency_ed2ed4hkth1d4 scalar::poly 31.4694 vector::poly 26.7026
+b/bench/latency/scalar_vector_latency_ed2ed4hkth2d4 scalar::poly 36.5489 vector::poly 24.4291
+b/bench/latency/scalar_vector_latency_ed2ed4hkth3d4 scalar::poly 31.972 vector::poly 28.324
+b/bench/latency/scalar_vector_latency_ed2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::poly 37.1603 vector::poly 26.85
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth1d4 scalar::poly 37.0414 vector::poly 25.406
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth2d4 scalar::poly 42.4526 vector::poly 25.4669
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth3d4 scalar::poly 37.8637 vector::poly 26.9643
+b/bench/latency/scalar_vector_latency_ed2hkth2d4hkth2d4 scalar::poly 42.6831 vector::poly 31.0066
+b/bench/latency/scalar_vector_latency_ed2hkth2d4hkth3d4 scalar::poly 42.2509 vector::poly 28.2137
+b/bench/latency/scalar_vector_latency_ed2hkth3d4hkth3d4 scalar::poly 37.3297 vector::poly 36.6334
+b/bench/latency/scalar_vector_latency_ed4bd2bd2bd2 scalar::poly 31.4651 vector::poly 34.4337
+b/bench/latency/scalar_vector_latency_ed4bd2bd2ed2 scalar::poly 31.452 vector::poly 33.0709
+b/bench/latency/scalar_vector_latency_ed4bd2bd2hkth1d2 scalar::poly 31.594 vector::poly 32.7814
+b/bench/latency/scalar_vector_latency_ed4bd2ed2ed2 scalar::poly 31.4566 vector::poly 33.0957
+b/bench/latency/scalar_vector_latency_ed4bd2ed2hkth1d2 scalar::poly 31.5791 vector::poly 33.798
+b/bench/latency/scalar_vector_latency_ed4bd2hkth1d2hkth1d2 scalar::poly 31.4246 vector::poly 34.3674
+b/bench/latency/scalar_vector_latency_ed4ed2ed2ed2 scalar::poly 31.4514 vector::poly 27.5086
+b/bench/latency/scalar_vector_latency_ed4ed2ed2hkth1d2 scalar::poly 31.5834 vector::poly 34.1134
+b/bench/latency/scalar_vector_latency_ed4ed2hkth1d2hkth1d2 scalar::poly 31.4157 vector::poly 26.9537
+b/bench/latency/scalar_vector_latency_ed4hkth1d2hkth1d2hkth1d2 scalar::poly 31.1271 vector::poly 32.762
+b/bench/latency/scalar_vector_latency_ed6bd2bd2 scalar::poly 30.5277 vector::poly 26.4431
+b/bench/latency/scalar_vector_latency_ed6bd2ed2 scalar::poly 30.5251 vector::poly 27.3637
+b/bench/latency/scalar_vector_latency_ed6bd2hkth1d2 scalar::poly 30.7771 vector::poly 28.3643
+b/bench/latency/scalar_vector_latency_ed6bd4 scalar::poly 31.0911 vector::poly 33.3789
+b/bench/latency/scalar_vector_latency_ed6ed2ed2 scalar::poly 30.5414 vector::poly 21.9377
+b/bench/latency/scalar_vector_latency_ed6ed2hkth1d2 scalar::poly 30.7843 vector::poly 21.9286
+b/bench/latency/scalar_vector_latency_ed6ed4 scalar::poly 26.9786 vector::poly 19.3014
+b/bench/latency/scalar_vector_latency_ed6hkth1d2hkth1d2 scalar::poly 30.8583 vector::poly 24.8686
+b/bench/latency/scalar_vector_latency_ed6hkth1d4 scalar::poly 31.2814 vector::poly 25.3114
+b/bench/latency/scalar_vector_latency_ed6hkth2d4 scalar::poly 36.4023 vector::poly 22.3663
+b/bench/latency/scalar_vector_latency_ed6hkth3d4 scalar::poly 32.5186 vector::poly 27.824
+b/bench/latency/scalar_vector_latency_ed8bd2 scalar::poly 31.3143 vector::poly 29.886
+b/bench/latency/scalar_vector_latency_ed8ed2 scalar::poly 31.3023 vector::poly 24.0491
+b/bench/latency/scalar_vector_latency_ed8hkth1d2 scalar::poly 31.33 vector::poly 27.958
+b/bench/latency/scalar_vector_latency_hkth1d10 scalar::poly 60.004 vector::poly 51.4483
+b/bench/latency/scalar_vector_latency_hkth1d2bd4bd4 scalar::poly 38.2483 vector::poly 41.1837
+b/bench/latency/scalar_vector_latency_hkth1d2bd4ed4 scalar::poly 31.6311 vector::poly 40.678
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth1d4 scalar::poly 31.37 vector::poly 38.9183
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth2d4 scalar::poly 42.3177 vector::poly 39.1394
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth3d4 scalar::poly 37.3423 vector::poly 40.134
+b/bench/latency/scalar_vector_latency_hkth1d2ed4ed4 scalar::poly 32.9563 vector::poly 24.7394
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth1d4 scalar::poly 31.3677 vector::poly 26.31
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth2d4 scalar::poly 36.4609 vector::poly 23.8897
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth3d4 scalar::poly 31.6957 vector::poly 28.6806
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::poly 37.1663 vector::poly 25.5837
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth1d4 scalar::poly 37.0411 vector::poly 25.37
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth2d4 scalar::poly 42.4237 vector::poly 26.0743
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth3d4 scalar::poly 37.5969 vector::poly 26.3717
+b/bench/latency/scalar_vector_latency_hkth1d2hkth2d4hkth2d4 scalar::poly 43.2214 vector::poly 26.6083
+b/bench/latency/scalar_vector_latency_hkth1d2hkth2d4hkth3d4 scalar::poly 42.5629 vector::poly 28.7191
+b/bench/latency/scalar_vector_latency_hkth1d2hkth3d4hkth3d4 scalar::poly 37.2903 vector::poly 35.6089
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2bd2 scalar::poly 32.6391 vector::poly 33.0811
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2ed2 scalar::poly 32.64 vector::poly 33.3089
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2hkth1d2 scalar::poly 31.4763 vector::poly 33.23
+b/bench/latency/scalar_vector_latency_hkth1d4bd2ed2ed2 scalar::poly 32.6386 vector::poly 33.0877
+b/bench/latency/scalar_vector_latency_hkth1d4bd2ed2hkth1d2 scalar::poly 31.4757 vector::poly 32.9934
+b/bench/latency/scalar_vector_latency_hkth1d4bd2hkth1d2hkth1d2 scalar::poly 31.876 vector::poly 33.2243
+b/bench/latency/scalar_vector_latency_hkth1d4ed2ed2ed2 scalar::poly 32.6349 vector::poly 32.3891
+b/bench/latency/scalar_vector_latency_hkth1d4ed2ed2hkth1d2 scalar::poly 31.468 vector::poly 31.9334
+b/bench/latency/scalar_vector_latency_hkth1d4ed2hkth1d2hkth1d2 scalar::poly 31.8729 vector::poly 32.206
+b/bench/latency/scalar_vector_latency_hkth1d4hkth1d2hkth1d2hkth1d2 scalar::poly 31.8746 vector::poly 32.1969
+b/bench/latency/scalar_vector_latency_hkth1d6bd2bd2 scalar::poly 42.0329 vector::poly 38.7794
+b/bench/latency/scalar_vector_latency_hkth1d6bd2ed2 scalar::poly 42.0323 vector::poly 38.5149
+b/bench/latency/scalar_vector_latency_hkth1d6bd2hkth1d2 scalar::poly 42.2489 vector::poly 38.6303
+b/bench/latency/scalar_vector_latency_hkth1d6bd4 scalar::poly 42.1663 vector::poly 34.9509
+b/bench/latency/scalar_vector_latency_hkth1d6ed2ed2 scalar::poly 42.0366 vector::poly 38.9937
+b/bench/latency/scalar_vector_latency_hkth1d6ed2hkth1d2 scalar::poly 42.2443 vector::poly 39.1343
+b/bench/latency/scalar_vector_latency_hkth1d6ed4 scalar::poly 42.1697 vector::poly 32.0994
+b/bench/latency/scalar_vector_latency_hkth1d6hkth1d2hkth1d2 scalar::poly 42.2469 vector::poly 38.5269
+b/bench/latency/scalar_vector_latency_hkth1d6hkth1d4 scalar::poly 42.1114 vector::poly 32.0054
+b/bench/latency/scalar_vector_latency_hkth1d6hkth2d4 scalar::poly 42.1634 vector::poly 32.0406
+b/bench/latency/scalar_vector_latency_hkth1d6hkth3d4 scalar::poly 42.6054 vector::poly 34.7006
+b/bench/latency/scalar_vector_latency_hkth1d8bd2 scalar::poly 54.1834 vector::poly 44.9549
+b/bench/latency/scalar_vector_latency_hkth1d8ed2 scalar::poly 54.1803 vector::poly 45.9037
+b/bench/latency/scalar_vector_latency_hkth1d8hkth1d2 scalar::poly 54.1814 vector::poly 44.9934
+b/bench/latency/scalar_vector_latency_hkth2d10 scalar::poly 48.1454 vector::poly 31.8994
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2bd2 scalar::poly 36.6131 vector::poly 33.3509
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2ed2 scalar::poly 36.6191 vector::poly 32.1071
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2hkth1d2 scalar::poly 36.5026 vector::poly 32.202
+b/bench/latency/scalar_vector_latency_hkth2d4bd2ed2ed2 scalar::poly 36.6189 vector::poly 33.3566
+b/bench/latency/scalar_vector_latency_hkth2d4bd2ed2hkth1d2 scalar::poly 36.5083 vector::poly 33.4251
+b/bench/latency/scalar_vector_latency_hkth2d4bd2hkth1d2hkth1d2 scalar::poly 36.4229 vector::poly 32.512
+b/bench/latency/scalar_vector_latency_hkth2d4ed2ed2ed2 scalar::poly 36.6091 vector::poly 32.1963
+b/bench/latency/scalar_vector_latency_hkth2d4ed2ed2hkth1d2 scalar::poly 36.5003 vector::poly 32.2131
+b/bench/latency/scalar_vector_latency_hkth2d4ed2hkth1d2hkth1d2 scalar::poly 36.4206 vector::poly 32.2254
+b/bench/latency/scalar_vector_latency_hkth2d4hkth1d2hkth1d2hkth1d2 scalar::poly 36.5503 vector::poly 32.2034
+b/bench/latency/scalar_vector_latency_hkth2d6bd2bd2 scalar::poly 42.3863 vector::poly 33.4214
+b/bench/latency/scalar_vector_latency_hkth2d6bd2ed2 scalar::poly 42.3851 vector::poly 32.2583
+b/bench/latency/scalar_vector_latency_hkth2d6bd2hkth1d2 scalar::poly 42.2694 vector::poly 32.2354
+b/bench/latency/scalar_vector_latency_hkth2d6bd4 scalar::poly 42.2629 vector::poly 34.6106
+b/bench/latency/scalar_vector_latency_hkth2d6ed2ed2 scalar::poly 42.3929 vector::poly 32.1377
+b/bench/latency/scalar_vector_latency_hkth2d6ed2hkth1d2 scalar::poly 42.2631 vector::poly 32.1694
+b/bench/latency/scalar_vector_latency_hkth2d6ed4 scalar::poly 42.2557 vector::poly 25.5509
+b/bench/latency/scalar_vector_latency_hkth2d6hkth1d2hkth1d2 scalar::poly 42.3374 vector::poly 32.2046
+b/bench/latency/scalar_vector_latency_hkth2d6hkth1d4 scalar::poly 42.4074 vector::poly 29.0063
+b/bench/latency/scalar_vector_latency_hkth2d6hkth2d4 scalar::poly 42.1429 vector::poly 25.258
+b/bench/latency/scalar_vector_latency_hkth2d6hkth3d4 scalar::poly 42.5071 vector::poly 36.2906
+b/bench/latency/scalar_vector_latency_hkth2d8bd2 scalar::poly 48.2537 vector::poly 35.4926
+b/bench/latency/scalar_vector_latency_hkth2d8ed2 scalar::poly 48.2451 vector::poly 32.1706
+b/bench/latency/scalar_vector_latency_hkth2d8hkth1d2 scalar::poly 48.1603 vector::poly 32.106
+b/bench/latency/scalar_vector_latency_hkth3d10 scalar::poly 48.342 vector::poly 32.1266
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2bd2 scalar::poly 32.7123 vector::poly 39.7651
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2ed2 scalar::poly 32.7146 vector::poly 40.1714
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2hkth1d2 scalar::poly 32.1749 vector::poly 40.4769
+b/bench/latency/scalar_vector_latency_hkth3d4bd2ed2ed2 scalar::poly 32.7077 vector::poly 39.1906
+b/bench/latency/scalar_vector_latency_hkth3d4bd2ed2hkth1d2 scalar::poly 32.172 vector::poly 44.9046
+b/bench/latency/scalar_vector_latency_hkth3d4bd2hkth1d2hkth1d2 scalar::poly 31.7634 vector::poly 39.6694
+b/bench/latency/scalar_vector_latency_hkth3d4ed2ed2ed2 scalar::poly 32.7083 vector::poly 38.6943
+b/bench/latency/scalar_vector_latency_hkth3d4ed2ed2hkth1d2 scalar::poly 32.1777 vector::poly 38.4251
+b/bench/latency/scalar_vector_latency_hkth3d4ed2hkth1d2hkth1d2 scalar::poly 31.7669 vector::poly 43.2637
+b/bench/latency/scalar_vector_latency_hkth3d4hkth1d2hkth1d2hkth1d2 scalar::poly 32.4914 vector::poly 38.5671
+b/bench/latency/scalar_vector_latency_hkth3d6bd2bd2 scalar::poly 48.4071 vector::poly 43.7797
+b/bench/latency/scalar_vector_latency_hkth3d6bd2ed2 scalar::poly 48.396 vector::poly 42.0889
+b/bench/latency/scalar_vector_latency_hkth3d6bd2hkth1d2 scalar::poly 48.4429 vector::poly 43.6414
+b/bench/latency/scalar_vector_latency_hkth3d6bd4 scalar::poly 48.4214 vector::poly 36.908
+b/bench/latency/scalar_vector_latency_hkth3d6ed2ed2 scalar::poly 48.402 vector::poly 41.8534
+b/bench/latency/scalar_vector_latency_hkth3d6ed2hkth1d2 scalar::poly 48.4223 vector::poly 42.6729
+b/bench/latency/scalar_vector_latency_hkth3d6ed4 scalar::poly 48.5269 vector::poly 38.5891
+b/bench/latency/scalar_vector_latency_hkth3d6hkth1d2hkth1d2 scalar::poly 48.4137 vector::poly 42.602
+b/bench/latency/scalar_vector_latency_hkth3d6hkth1d4 scalar::poly 48.2826 vector::poly 39.9949
+b/bench/latency/scalar_vector_latency_hkth3d6hkth2d4 scalar::poly 48.3311 vector::poly 40.3411
+b/bench/latency/scalar_vector_latency_hkth3d6hkth3d4 scalar::poly 48.462 vector::poly 36.8026
+b/bench/latency/scalar_vector_latency_hkth3d8bd2 scalar::poly 42.9177 vector::poly 39.4269
+b/bench/latency/scalar_vector_latency_hkth3d8ed2 scalar::poly 42.918 vector::poly 36.3749
+b/bench/latency/scalar_vector_latency_hkth3d8hkth1d2 scalar::poly 42.5034 vector::poly 38.5514
+b/bench/latency/scalar_vector_latency_hkth4d10 scalar::poly 42.3494 vector::poly 36.4769
+b/bench/latency/scalar_vector_latency_hkth4d6bd2bd2 scalar::poly 37.4423 vector::poly 50.2483
+b/bench/latency/scalar_vector_latency_hkth4d6bd2ed2 scalar::poly 37.4457 vector::poly 46.3666
+b/bench/latency/scalar_vector_latency_hkth4d6bd2hkth1d2 scalar::poly 37.6549 vector::poly 44.6146
+b/bench/latency/scalar_vector_latency_hkth4d6bd4 scalar::poly 48.5637 vector::poly 41.256
+b/bench/latency/scalar_vector_latency_hkth4d6ed2ed2 scalar::poly 37.4466 vector::poly 42.8569
+b/bench/latency/scalar_vector_latency_hkth4d6ed2hkth1d2 scalar::poly 37.6331 vector::poly 42.7363
+b/bench/latency/scalar_vector_latency_hkth4d6ed4 scalar::poly 36.7437 vector::poly 40.898
+b/bench/latency/scalar_vector_latency_hkth4d6hkth1d2hkth1d2 scalar::poly 36.6511 vector::poly 42.4429
+b/bench/latency/scalar_vector_latency_hkth4d6hkth1d4 scalar::poly 37.0537 vector::poly 42.9263
+b/bench/latency/scalar_vector_latency_hkth4d6hkth2d4 scalar::poly 37.8074 vector::poly 39.0609
+b/bench/latency/scalar_vector_latency_hkth4d6hkth3d4 scalar::poly 48.5103 vector::poly 44.5383
+b/bench/latency/scalar_vector_latency_hkth4d8bd2 scalar::poly 48.3117 vector::poly 43.0689
+b/bench/latency/scalar_vector_latency_hkth4d8ed2 scalar::poly 48.3149 vector::poly 45.32
+b/bench/latency/scalar_vector_latency_hkth4d8hkth1d2 scalar::poly 48.3137 vector::poly 48.7611
+b/bench/latency/scalar_vector_latency_hkth5d10 scalar::poly 54.102 vector::poly 55.4957
+b/bench/latency/scalar_vector_latency_hkth5d6bd2bd2 scalar::poly 42.4406 vector::poly 55.802
+b/bench/latency/scalar_vector_latency_hkth5d6bd2ed2 scalar::poly 42.4146 vector::poly 54.8986
+b/bench/latency/scalar_vector_latency_hkth5d6bd2hkth1d2 scalar::poly 42.5643 vector::poly 51.7366
+b/bench/latency/scalar_vector_latency_hkth5d6bd4 scalar::poly 43.3491 vector::poly 52.9023
+b/bench/latency/scalar_vector_latency_hkth5d6ed2ed2 scalar::poly 42.4157 vector::poly 54.8923
+b/bench/latency/scalar_vector_latency_hkth5d6ed2hkth1d2 scalar::poly 42.3174 vector::poly 52.7554
+b/bench/latency/scalar_vector_latency_hkth5d6ed4 scalar::poly 43.0917 vector::poly 52.1366
+b/bench/latency/scalar_vector_latency_hkth5d6hkth1d2hkth1d2 scalar::poly 42.5697 vector::poly 52.1349
+b/bench/latency/scalar_vector_latency_hkth5d6hkth1d4 scalar::poly 42.4089 vector::poly 48.9014
+b/bench/latency/scalar_vector_latency_hkth5d6hkth2d4 scalar::poly 42.4186 vector::poly 52.2266
+b/bench/latency/scalar_vector_latency_hkth5d6hkth3d4 scalar::poly 42.3571 vector::poly 52.5963
+b/bench/latency/scalar_vector_latency_hkth5d8bd2 scalar::poly 49.4374 vector::poly 52.4791
+b/bench/latency/scalar_vector_latency_hkth5d8ed2 scalar::poly 49.4357 vector::poly 56.2134
+b/bench/latency/scalar_vector_latency_hkth5d8hkth1d2 scalar::poly 49.4329 vector::poly 48.7449
+b/bench/latency/scalar_vector_latency_hkth6d10 scalar::poly 42.3486 vector::poly 55.5389
+b/bench/latency/scalar_vector_latency_hkth6d8bd2 scalar::poly 44.2603 vector::poly 55.9717
+b/bench/latency/scalar_vector_latency_hkth6d8ed2 scalar::poly 44.2571 vector::poly 54.638
+b/bench/latency/scalar_vector_latency_hkth6d8hkth1d2 scalar::poly 43.2686 vector::poly 55.0966
+b/bench/latency/scalar_vector_latency_hkth7d10 scalar::poly 48.2063 vector::poly 69.6971
+b/bench/latency/scalar_vector_latency_hkth7d8bd2 scalar::poly 54.206 vector::poly 71.4046
+b/bench/latency/scalar_vector_latency_hkth7d8ed2 scalar::poly 54.206 vector::poly 71.254
+b/bench/latency/scalar_vector_latency_hkth7d8hkth1d2 scalar::poly 54.1914 vector::poly 70.078
+b/bench/latency/scalar_vector_latency_hkth8d10 scalar::poly 44.0811 vector::poly 61.8177
+b/bench/latency/scalar_vector_latency_hkth9d10 scalar::poly 43.1946 vector::poly 73.7726
