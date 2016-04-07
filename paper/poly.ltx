@@ -6,13 +6,16 @@
 \usepackage{tikz}
 \usetikzlibrary{snakes,arrows,shapes}
 
-\title{Polynomial Evaluation on Intel Haswell architecture, applied to the elementary function $e^x$}
+\title{Polynomial evaluation on super scalar architecture, applied to the elementary function $e^x$}
 
 \author[rvt]{T. Ewart }
 \ead{timothee.ewart@epfl.ch}
 
 \author[rvt]{S. Yates}
 \ead{sam.yates@epfl.ch}
+
+%\author[rvt]{F.  Sch\"urmann }
+%\ead{felix.schuermann@epfl.ch}
 
 \author[rvt]{F. Delalondre}
 \ead{fabien.delalondre@epfl.ch}
@@ -32,15 +35,40 @@
 
 \begin{abstract}
 
-In the evaluation of the elementary functions $e.g.$ $e^x$, the challenge consists to compute with the maximum performance
-a polynomial of low degree ($e.g.$ 10) in a small $x$-range, where the coefficients are known in advance.
-In this paper, we evaluate the main methods of the literature and we complete 
-this work by the factorisation evaluation, that is surprisingly  neglected in the literature. 
-We focus our evaluation on the last modern processors of Intel Haswell where several computational units are available, and may maximise the computing throughput. We show experimentally, for a polynomial of degree 10, the factorisation scheme combined with usual approach is the fastest.
+%The polynomial evaluation is a main field of computer science, and it has  been massively studied.
+%In this paper, we focused on the benchmarking of the polynomial evaluation of the main algorithms
+%of literature on the last processor of IBM and Intel.
+%
+%Modern processors are super scalar and out of order, therefor the performance of the polynomial evaluation 
+%will depend of the degree of parallelism of the algorithm, to maximise
+%the pipelines and floating point unit usage. The performance will be achieved, 
+%if the algorithm has massive degree of parallelism.
+%
+%
+%The art of polynomial evaluation is well know and well documented in the literature. The performance of a polynomial evaluation
+%depends on two factor, the efficiency of the algorithm 
+
+
+The polynomial evaluation of small degree polynomial is critical for the computation of the  elementary functions. 
+It has been  massively studied, and it is well documented. In this paper, we have evaluated the main methods  of the 
+literature, and we have completed this work by the factorisation evaluation,  that is surprisingly  neglected in the literature.  
+This work has been focused on the last modern processors of  Intel and IBM, amongst others, several computational units are available.
+Moreover, we have applied our work on the elementary $e^x$ that  requires, in the current implementation,
+an evaluation  of a polynomial of degree 10 for a satisfying precision.
+
+
 \end{abstract}
 
 
 \maketitle
+
+\section{Superscalar processor}
+
+idea Agerwala and Cocke (1987) [Dispatch multiple instructions every cycle]
+but prefer definitiion Lam (1990) [Execute multiple operations in parallel]
+...two main idea: Execute instructions concurently and independently in separate pipelines .... 
+Improve throughput of concurrent pipelines by allowing out-of-order execution 
+
 
 \section{State of the art}
  In evaluating the polynomial,
@@ -89,7 +117,7 @@ P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
                &+&  x_0^8(a_8  + a_9 x_0 + x_0^2 (a_{10} + a_{11}x_0) + x_0^4 ((a_{12}+a_{13}x_0 +x_0^2(a_{14}+a_{15}x_0)))))  \nonumber \\
                & &\dots
 \end{eqnarray}
-$n$ multiplication, $n$ additions, remark pattern design for FMA
+$n$ multiplication, $n$ additions, remark pattern design for FMA. All $c_i^j$ are independent.
 
 \subsection{factorization}
 factorize the polynomial (outside), get produce of linear or quadratic if complex-root. combinaison different method $e.g.$ 
@@ -103,14 +131,14 @@ $k$ factor gives $k-1$ factor multiplication, factor depends of the method of mu
 	\hline
 		             & addition & multiplication & parallelism \\
 Brute force            &  $n$       & $2n-1$    & n \\
-Horner $k^{th}$-order  & $n+k-1$ & $n$         & k \\
-Estrin                    & $n$        & $n$         &   \\
+Horner $k^{th}$-order  & $n+k-1$ & $n$   & k \\
+Estrin                    & $n$        & $n$          &   \\
 Factorization        &    combinaison            &   combinaison       &\# factors\\    
 	\hline
 
 \end{tabular}
 \end{center}
-\caption{Complexity and number of operation of the different algorithms of evaluation of the polynomial. \label{default}}
+\caption{ number of operation of the different algorithms of evaluation of the polynomial of degree $n$. \label{default}}
 \end{table}%
 
 
@@ -134,8 +162,12 @@ e^x & = & 2^k e^y \nonumber \\
 \end{eqnarray}
 
 \section{Processor \& methods}
-\subsection{Intel Haswell architecture}
-blabla
+\subsection{Intel SandyBridge and Haswell architecture}
+blabla - focus on VPU and execution pipelines (two port for x86)
+
+\subsection{IBM Power 7/8 architecture}
+blabla - focus on VPU and execution pipelines (two port for x86)
+
 
 \subsection{Latency, throughput }
 
@@ -147,8 +179,14 @@ For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruc
 The throughput is the maximum number of instructions of the same kind that can be executed per clock cycle
 when the operands of each instruction are independent of the preceding instructions.
 
+\subsection{Precision}
+
+The precision computed by the Unite of Least Precision (ULP), the gap between two different, but as close as possible, floating-point numbers.
 
 \subsection{measurement tool}
+we develop our own tool
+latency: explain from power8 paper
+throughput: basic loop wi
 IACA measure latency/throughput of C++ code, kernel that is pinned by marks into the code.  
 return latency/throughput and bottleneck of the mark code.
 \subsection{Programming model}
@@ -298,15 +336,16 @@ Simple evaluate the number of move compare
 
 \section{Results}
 
-\begin{table}[htdp]
+\begin{table}[ht]
 \caption{Latency/Throughput add/mul/fma on the Haswell architecture}
 \begin{center}
-\begin{tabular}{l c c }
-                         & Latency & Throughput  \\
+\begin{tabular}{l c c c c c c }
+			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Haswell}  & \multicolumn{2}{c}{Power 7/8}\\ 
+                         & Lat.  & Thr. & Lat. & Thr. & Lat. & Thr.  \\
 		          \hline
-add                    &  3 & 0.8     \\
-mul                    &   5 & 0.5   \\
-FMA                   &   5 & 0.5    \\
+add                   &  3 & 1  &  3 & 0.8 &  6 & 1     \\
+mul                   &  5 & 1  &   5 & 0.5 &  6 & 1   \\
+FMA                 &   -  & -  &   5 & 0.5  &  6 & 1   \\
 		             \hline
 \end{tabular}
 \end{center}
@@ -322,7 +361,7 @@ FMA                   &   5 & 0.5    \\
 
 
 
-\begin{table}[htdp]
+\begin{table}[ht]
 \begin{center}
 \begin{tabular}{c c c c}
 \hline

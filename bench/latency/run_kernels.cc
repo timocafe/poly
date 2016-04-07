@@ -214,12 +214,12 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
     set_default_operands(f1,f2,f3,d1,d2,d3);
 
     size_t n_inner=100;
-    
-    
+
+
     if(name.compare("exp")==0){
         typedef tvalue_list<op_enum,arith_op::poly_exp> ops;
         ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
-        
+
         {
 #ifdef __x86_64__
             typedef tvalue_list<op_enum,arith_op::v4dexp> vops; 
