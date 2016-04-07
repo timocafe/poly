@@ -25,12 +25,13 @@ endfunction()
 
 # Try modern and gcc-like first, thence xlc etc.
 
-first_cxx_flag_of(CXX_DIALECT_OPT_CXX03    -std=c++03    -qlevel=extended)
-first_cxx_flag_of(CXX_DIALECT_OPT_CXX03EXT -std=gnu++03  -qlevel=extended)
-first_cxx_flag_of(CXX_DIALECT_OPT_CXX11    -std=c++11  -qlevel=extc1x)
-first_cxx_flag_of(CXX_DIALECT_OPT_CXX14EXT -std=c++11  -qlevel=extc1x)
-first_cxx_flag_of(CXX_DIALECT_OPT_CXX14    -std=c++14    -std=c++1y    -qlevel=extc1x)
-first_cxx_flag_of(CXX_DIALECT_OPT_CXX14EXT -std=gnu++14  -std=gnu++1y  -qlevel=extc1x)
+#first_cxx_flag_of(CXX_DIALECT_OPT_CXX03    -std=c++03    -qlevel=extended)
+#first_cxx_flag_of(CXX_DIALECT_OPT_CXX03EXT -std=gnu++03  -qlevel=extended)
+#first_cxx_flag_of(CXX_DIALECT_OPT_CXX11    -std=c++11  -qlevel=extc1x)
+#first_cxx_flag_of(CXX_DIALECT_OPT_CXX14EXT -std=c++11  -qlevel=extc1x)
+#first_cxx_flag_of(CXX_DIALECT_OPT_CXX14    -std=c++14    -std=c++1y    -qlevel=extc1x)
+#first_cxx_flag_of(CXX_DIALECT_OPT_CXX14EXT -std=gnu++14  -std=gnu++1y  -qlevel=extc1x)
+first_cxx_flag_of(CXX_DIALECT_OPT_CXX11 -std=gnu++11)
 
 # -march=native on x86 is equivalent to -mcpu=native on PPC.
 first_cxx_flag_of(COMPILER_OPT_ARCH_NATIVE -march=native -mcpu=native  -qarch=auto)
