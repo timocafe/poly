@@ -1,0 +1,49 @@
+reset
+RATIO=1
+set terminal postscript eps enhanced color solid font 16
+set out "figures/test.eps"
+
+set size ratio RATIO
+set key top left
+
+set multiplot
+set origin 0.0,0.0
+set yrange [0:20]
+set xrange [0:100]
+
+
+set xtics 20
+set mxtics 2
+
+set ytics 20
+set mytics 2
+
+set xlabel "Latency [cycle]"
+set ylabel "Throughput [cycle]"
+
+set style line 1  lc rgb '#CF2E31' pt 0 lw 2 #red
+#NA
+set style line 2 lc rgb '#3333FF' pt 1 lw 2 lt 1 # blue
+set style line 21 lc rgb '#3333FF' pt 1 lw 2 lt 2 # blue dash
+set style line 3 lc rgb '#1D9A2F' pt 1 lw 2 lt 1 # green
+set style line 31 lc rgb '#1D9A2F' pt 1 lw 2 lt 2 # green dash
+set style line 4 lc rgb '#FF358B' pt 1 lw 2 lt 1 # pink
+set style line 41 lc rgb '#FF358B' pt 1 lw 2 lt 2 # pink dash
+set style line 5 lc rgb '#01B0F0' pt 1 lw 2 lt 1 # light blue
+set style line 51 lc rgb '#01B0F0' pt 1 lw 2 lt 2 # light blue dash
+set style line 6 lc rgb '#000000' pt 1 lw 2 lt 1 # black
+set style line 61 lc rgb '#000000' pt 1 lw 2 lt 2 # black dash
+set style line 7 lc rgb '#C03000' pt 1 lw 2 lt 1 # vermillon
+set style line 71 lc rgb '#C03000' pt 1 lw 2 lt 2 # vermillon dash
+
+set grid noxtics noytics noztics front
+
+set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_e}' at 92,97
+set label '{/Helvetica-oblique P@^{{/Helvetica 10}}_{h^{/Helvetica 1}}' at 83,84
+
+  plot "data_sb" using 7:6 ls 2 title "SandyBridge"
+replot "data_hw" using 7:6 ls 3 title "Haswell"
+replot "data_p7" using 7:6 ls 4 title "Power7"
+replot "data_p8" using 7:6 ls 5 title "Power8"
+
+

@@ -4,6 +4,9 @@
 \usepackage[table]{xcolor}
 \usepackage{subfig}
 \usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows, calc, positioning, patterns, pgfplots.polar}
+
 \usetikzlibrary{snakes,arrows,shapes}
 
 \title{Polynomial evaluation on super scalar architecture, applied to the elementary function $e^x$}
@@ -49,10 +52,10 @@
 %depends on two factor, the efficiency of the algorithm 
 
 
-The polynomial evaluation of small degree polynomial is critical for the computation of the  elementary functions. 
-It has been  massively studied, and it is well documented. In this paper, we have evaluated the main methods  of the 
-literature, and we have completed this work by the factorisation evaluation,  that is surprisingly  neglected in the literature.  
-This work has been focused on the last modern processors of  Intel and IBM, amongst others, several computational units are available.
+The polynomial evaluation of small degree polynomials is critical for the computation of elementary functions. 
+It has been massively studied, and is well documented. In this paper, we have evaluated the existing methods for polynomial evaluation,
+ and we have completed this work by factorisation evaluation, which is surprisingly neglected in the literature.  
+This work has been focused on the most recent processors of  Intel and IBM, amongst others, several computational units are available.
 Moreover, we have applied our work on the elementary $e^x$ that  requires, in the current implementation,
 an evaluation  of a polynomial of degree 10 for a satisfying precision.
 
@@ -181,7 +184,11 @@ when the operands of each instruction are independent of the preceding instructi
 
 \subsection{Precision}
 
-The precision computed by the Unite of Least Precision (ULP), the gap between two different, but as close as possible, floating-point numbers.
+The precision computed by the Unite of Least Precision (ULP).
+
+The original definition: ulp(x) is the gap between the two floating-point number nearest $x$, even is $x$ is one of them.
+
+Precision for the exponential .... depends only polynomial evaluation .... no error on $2^k$ and boundaries.
 
 \subsection{measurement tool}
 we develop our own tool
@@ -189,9 +196,16 @@ latency: explain from power8 paper
 throughput: basic loop wi
 IACA measure latency/throughput of C++ code, kernel that is pinned by marks into the code.  
 return latency/throughput and bottleneck of the mark code.
+
+\subsubsection{validation}
+measure the basic instructions $\times, +$ and FMA compare to vendor number or agner number [cite]
+ 
+
 \subsection{Programming model}
 C++ basic recursive meta-programming (like template factorial ), all models are written with fairplay. Assembly check, look good.
 Fine control of the code but compiler as the final word, and can do strong optimisation, specially catch FMA pattern.
+Vectorial (SIMD) version used our DSL cyme (the DSL does FMA and evaluate the power following the scheme described in previous section),
+ normal one code the algo but let the the compiler performed FMA or evaluate the power, following is scheme.
 
 \subsection{ASM quality}
 Simple evaluate the number of move compare 
@@ -336,6 +350,15 @@ Simple evaluate the number of move compare
 
 \section{Results}
 
+
+\subsection{polynomials}
+build th. model difficult, to make a prediction [cite simulator] outside our knowledge.
+Simple model easy for latency and the Horner method order 1...
+
+horner order 1 -> 10 mul/add or FMA  with dependency = 10 * latency of mul/add or FMA... it works all platform see table..
+produce of two quadratic horner large degree fix the time 6* latency of mul/add or FMA... + the final mul (dependency) it works.
+
+
 \begin{table}[ht]
 \caption{Latency/Throughput add/mul/fma on the Haswell architecture}
 \begin{center}
@@ -351,6 +374,9 @@ FMA                 &   -  & -  &   5 & 0.5  &  6 & 1   \\
 \end{center}
 \label{default}
 \end{table}%
+
+
+
 
 
 
