@@ -1,0 +1,15 @@
+binwidth = 1
+binstart = -100
+# set width of single bins in histogram
+set boxwidth 0.2*binwidth
+# set fill style of bins
+set style fill solid 0.5
+
+helper_l(x) = (x+binwidth*(floor(($7-binstart)/binwidth)+0.5)+binstart)
+helper_t(x) = (x+binwidth*(floor(($6-binstart)/binwidth)+0.5)+binstart)
+
+plot 'data1' u (helper_l(0)):(1.0) smooth freq w boxes  ls 1 t "P_1"
+replot 'data2' u (helper_l(0.18)):(1.0) smooth freq w boxes  ls 2 t "P_1P_2"
+replot 'data3' u (helper_l(0.38)):(1.0) smooth freq w boxes  ls 3 t "P_1P_2P_3"
+replot 'data4' u (helper_l(0.58)):(1.0) smooth freq w boxes  ls 4 t "P_1P_2P_3P_4"
+replot 'data5' u (helper_l(0.78)):(1.0) smooth freq w boxes  ls 5 t "P_1P_2P_3P_4P_5"
