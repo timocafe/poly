@@ -4,6 +4,8 @@
 \usepackage[table]{xcolor}
 \usepackage{subfig}
 \usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{epstopdf}
 \usepackage{pgfplots}
 \usetikzlibrary{arrows, calc, positioning, patterns, pgfplots.polar}
 
@@ -30,7 +32,7 @@
 \address[rvt]{Blue Brain Project, Campus Biotech, Ch. des Mines 9. CH-1212 Gen\`eve}
 
 
-\graphicspath{{plot/figures/}} %do not forget the / at the end
+\graphicspath{{plot/figures/}{../res_poly/figures/}} %do not forget the / at the end
 
 \newcommand{\R}{\mathbb{R}}
 
@@ -130,13 +132,13 @@ $k$ factor gives $k-1$ factor multiplication, factor depends of the method of mu
 
 \begin{table}[h!]
 \begin{center}
-\begin{tabular}{l c c c }
+\begin{tabular}{l c c  }
 	\hline
-		             & addition & multiplication & parallelism \\
-Brute force            &  $n$       & $2n-1$    & n \\
-Horner $k^{th}$-order  & $n+k-1$ & $n$   & k \\
-Estrin                    & $n$        & $n$          &   \\
-Factorization        &    combinaison            &   combinaison       &\# factors\\    
+		             & addition & multiplication \\
+Brute force            &  $n$       & $2n-1$     \\
+Horner $k^{th}$-order  & $n+k-1$ & $n$   \\
+Estrin                    & $n$        & $n$             \\
+Factorization        &    combinaison            &   combinaison   \\    
 	\hline
 
 \end{tabular}
@@ -364,11 +366,11 @@ produce of two quadratic horner large degree fix the time 6* latency of mul/add 
 \begin{center}
 \begin{tabular}{l c c c c c c }
 			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Haswell}  & \multicolumn{2}{c}{Power 7/8}\\ 
-                         & Lat.  & Thr. & Lat. & Thr. & Lat. & Thr.  \\
+                         & Thr.  & Lat. & Thr. & Lat. & Thr. & Lat.  \\
 		          \hline
-add                   &  3 & 1  &  3 & 0.8 &  6 & 1     \\
-mul                   &  5 & 1  &   5 & 0.5 &  6 & 1   \\
-FMA                 &   -  & -  &   5 & 0.5  &  6 & 1   \\
+add                   &  1 & 3  &   0.8 & 3 &  1 & 6     \\
+mul                   &  1 & 5  &   0.5 & 5 &  1 & 6   \\
+FMA                 &   -  & -  &   0.5 & 5  &  1 & 6   \\
 		             \hline
 \end{tabular}
 \end{center}
@@ -376,13 +378,14 @@ FMA                 &   -  & -  &   5 & 0.5  &  6 & 1   \\
 \end{table}%
 
 
-
-
-
-
 \begin{figure}[h]
-\includegraphics{pLTSBHS.eps} 
-\caption{Latency/Throughput for SandyBridge \& Haswell}
+\mbox{
+\hspace{-2cm}
+\includegraphics[scale=0.7]{allht_scalar.eps} 
+\hspace{-2.5cm}
+\includegraphics[scale=0.7]{allht_vector.eps}
+}
+\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right}
 \end{figure}
 
 
