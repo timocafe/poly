@@ -8,7 +8,7 @@ set key top left
 #set multiplot
 set origin 0.0,0.0
 set yrange [2:14]
-set xrange [10:90]
+set xrange [20:81]
 
 
 set xtics 10
