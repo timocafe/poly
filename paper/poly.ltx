@@ -6,7 +6,10 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{epstopdf}
+\usepackage{amsmath}
 \usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage[linesnumbered,lined,boxed,commentsnumbered]{algorithm2e}
 \usetikzlibrary{arrows, calc, positioning, patterns, pgfplots.polar}
 
 \usetikzlibrary{snakes,arrows,shapes}
@@ -32,9 +35,11 @@
 \address[rvt]{Blue Brain Project, Campus Biotech, Ch. des Mines 9. CH-1212 Gen\`eve}
 
 
-\graphicspath{{plot/figures/}{../res_poly/figures/}} %do not forget the / at the end
+\graphicspath{{plot/figures/}{../res_poly/figures/}{graph/}} %do not forget the / at the end
 
 \newcommand{\R}{\mathbb{R}}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 \begin{document}
 
@@ -147,6 +152,7 @@ Factorization        &    combinaison            &   combinaison   \\
 \end{table}%
 
 
+
 \subsection{Notations}
 
 $P^{n}_{m}$ polynomial of degree $n$, $m$ indicate the method ( $e = \textrm{Estrin}$, $h^k = \textrm{Horner at the the $k$ order}$, $b = \textrm{Brute Force}$) how we compute
@@ -161,10 +167,101 @@ Multiplication commutative. Every polynomial degree+1 method of evaluation (brut
 if $P^n P^m$ and $n!=m$ so $n \times m$ possibilitties. if $n=m$,  ${n+k-1 \choose k} $ possibilities (and not ${n \choose k}$ because repetitions are allowed ). On the present example 231 possibilities.  Program generates all the possibilities, get all the factorisation scheme.
 
 \subsection{Elementary function: $e^x$}
+
+
+$\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] \textrm{  with } k \in \mathbb{N} \nonumber$
 \begin{eqnarray}
-e^x & = & 2^k e^y \nonumber \\
-      & = & 2^k P(y) 
+    x  & = & y + k ln 2  \nonumber \\
+e^x  &= & 2^k e^y \nonumber \\
+       &=&  2^k P(y) \label{exponential_formula} 
 \end{eqnarray}
+$P(y)$ is approximation polynomial of $e^y$ in the interval $[0,ln2]$. Plenty of method Remez algorithm [cite], Pade approximat  [cite]. What about the 
+the series expensioms ? NO !!!! Taylor goes to infinite so by fixing a given limit becomes truncated Taylor seires, the precision will be limited to  0,
+ and the error increase as soon as $x \rightarrow ln 2$.
+ 
+ $P(y)$ determined, we apply our 231 schemes to evaluate it.
+ 
+\subsubsection{ from x to k and y}
+From equation \ref{exponential_formula}  one equation two unknows, how to do ? A bit of math, from previsously 
+$\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] \textrm{  with } k \in \mathbb{N} \nonumber $
+\begin{eqnarray}
+x & = & y + k ln 2  \nonumber \\
+\floor*{\frac{x}{ln2}} & = &  \underbrace{ \floor*{\frac{y}{ln 2}}}_{=0} + \underbrace{\floor*{k}}_{=k} \nonumber \\
+			      & = & k 
+\end{eqnarray} 
+$k$  is determinate and consequently $y$.
+
+\begin{algorithm}[H]
+ \KwData{$x$ floating point number}
+ \KwResult{$k$ signed integer and $y$ floating point number}
+$ k =  \floor*{\frac{x}{ln2}} $ \;
+\tcc{For rounding issue $-k \times ln2$ correction: in two steps}
+$y = x - k\times6.93145751953125 \times  10^{-1}$\;
+$y = x - k\times1.42860682030941723212  \times 10^{-6}$\;
+ \textbf{return} $k$ and $y$\;
+ \caption{$2^k$ evaluation algorithm. Note the operation  interpret\_as\_double interprets $k$ as a double it is not a cast operation.}
+\end{algorithm}
+
+\subsubsection{$2^k$ fast evaluation}
+compute $2^k$ first idea in mind left bit shift , working until 63 and need expensive integer floating point conversion with error propagation.
+Solution using floating point representation, number can be represented exactly under the following form:
+
+\begin{eqnarray}
+x = -1^s \times (1+F) \times 2^{e+bias}
+\end{eqnarray}
+
+$s$ sign bit, $e + bias $ is the exponent (11 bits), it is bias (engineering sense of the world). It it biased to facilitate comparison, two complementary method make think harder
+bias = 1023 and e belongs [-1022,1023]. $F$ is the fraction (53 bits) $\sum_{n=1}^{p-1} bit_n \times 2^{-n}$. So ... compute $2^k$ set up bit to 0, 
+
+\begin{algorithm}[H]
+ \KwData{$k$ signed integer}
+ \KwResult{$2^k$ as double}
+ $ k = (1023 + k) << 52 $\;
+ \textbf{return} interpret\_as\_double($k$)\;
+ \caption{$2^k$ evaluation algorithm. Note the operation  interpret\_as\_double interprets $k$ as a double it is not a cast operation.}
+\end{algorithm}
+
+
+
+\subsubsection{boundary}
+
+\begin{table}[ht]
+\caption{Boundary of the exponential }
+\begin{center}
+\begin{tabular}{l c c c c c c }
+$x$                         & $-\infty$  &$+\infty$ & 0 & NaN & $> max$  & $< max$  \\
+		          \hline
+$e^x$                   &  0 & $+\infty$  & 1 & NaN & $+\infty$   & 0 \\
+		             \hline
+\end{tabular}
+\end{center}
+\caption{The number 1 as a specific binary representation in binary number  \label{boundary}}
+\end{table}%
+
+compute without branching because, branching may be "slow" and it does not exist for SIMD.
+following bit trick algorithm:
+
+\begin{algorithm}[H]
+ \KwData{$x$ floating point number}
+ \KwResult{$e^x$ with correct boundary condition (table \ref{boundary})}
+ \tcc{  inequality operator return false (0) or  true (-1)}
+ $mask0 = \neg(|x| > max)$\;   
+ $mask1 = x < max$\;
+ $mask2 =  +\infty$\;
+ \textbf{Compute}: $y = e^x$\;
+ $y \,\, \&= mask0$\;
+ $mask3  \,\, \&= \neg mask1$\;
+ $y \,\, |= mask2$\;
+ \textbf{return} $y$\;
+ \caption{Boundary condition algorithm}
+\end{algorithm}
+
+
+
+\begin{figure}[h]
+\includegraphics[scale=0.4]{618px-IEEE_754_Double_Floating_Point_Format} 
+\caption{double precision floating point number using IEEE-754 norm \label{doubleIEEE}}
+\end{figure}
 
 \section{Processor \& methods}
 \subsection{Intel SandyBridge and Haswell architecture}
@@ -172,7 +269,6 @@ blabla - focus on VPU and execution pipelines (two port for x86)
 
 \subsection{IBM Power 7/8 architecture}
 blabla - focus on VPU and execution pipelines (two port for x86)
-
 
 \subsection{Latency, throughput }
 
@@ -193,6 +289,41 @@ The original definition: ulp(x) is the gap between the two floating-point number
 Precision for the exponential .... depends only polynomial evaluation .... no error on $2^k$ and boundaries.
 
 \subsection{measurement tool}
+
+In order to help HPC specialists wishing to optimise scientific applications on new system close to peak performance, it is useful to
+provide a performance summary of latency of the most widely-used instructions.
+Such an evaluation is not trivial due to the large number of variables which may impact the measurements. 
+Therefore, the approach used within this study consists of performing indirect measurements by mapping the instructions associated to their
+mnemonics into a for loop whose unroll factor was parameterizable (between 1 and 5). 
+To avoid introducing some operation throughput effect which would corrupt the measurement of latency, a dependency between instructions 
+throughout the loop iterations has been artificially enforced. 
+
+Within this study, all benchmarks were compiled using GCC 
+and repeated 100 times. The results of this experiment are reported in Figure \ref{fig.LATENCY_OPS} in function of the used unroll factor.  
+The experimental data has been fit to a linear distribution ($y=ax+b$ where $a$ corresponds to the slope of the curve which is equal to 100 times the actual 
+latency of the instruction). 
+Latency measurements have been carried out for both single and double precisions and for both scalar and vectorial implementations of the following operators: +, $\times$, $/$, FMA, $\sqrt{x}$ and $e^x$). For the specific case of the vectorial $e^x$ instruction, calls to IBM MASSV library were used.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.7]{platency.eps} %\vspace{-1cm}
+\caption{Value of latencies using a linear approximation for vectorial double precision instructions on Power8: $+$. 
+The slop $a$ represents the latency of the instructions. The residual $b$ of 60 cycle in 0, corresponds to the the additional workload in cycle introduced 
+by the program/processor. 
+\label{fig.LATENCY_OPS}}
+\end{center}
+\end{figure}
+
+
+These results complement the work of \cite{POWER8Thorsten} or Agner [cite]
+
+% by on the one hand making an explicit distinction 
+%between scalar and vectorial instructions and, on the other hand providing results of complex mathematical operations 
+%such as $\sqrt{x}$ and $e^x$ (Table \ref{LATENCY_OPS}). 
+
+
+
+
+
 we develop our own tool
 latency: explain from power8 paper
 throughput: basic loop wi
@@ -360,6 +491,9 @@ Simple model easy for latency and the Horner method order 1...
 horner order 1 -> 10 mul/add or FMA  with dependency = 10 * latency of mul/add or FMA... it works all platform see table..
 produce of two quadratic horner large degree fix the time 6* latency of mul/add or FMA... + the final mul (dependency) it works.
 
+\subsection{exponentials}
+
+give results compare to vendors intel svml and mass
 
 \begin{table}[ht]
 \caption{Latency/Throughput add/mul/fma on the Haswell architecture}
