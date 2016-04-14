@@ -25,12 +25,12 @@ set style line 5 lc rgb '#01B0F0' pt 7 lw 2 lt 1 # light blue
 set style line 6 lc rgb '#000000' pt 7 lw 2 lt 1 # black
 set style line 7 lc rgb '#C03000' pt 7 lw 2 lt 1 # vermillon
 
-fit f1(x) "mass/out_mass" using 1:14 via a1,b1
-fit f2(x) "mass/out_mass" using 1:15 via a2,b2
-fit f3(x) "mass/out_mass" using 1:16 via a3,b3
+fit f1(x) "latency_mnemonic/out_latency_mnemonic" using 1:14 via a1,b1
+fit f2(x) "latency_mnemonic/out_latency_mnemonic" using 1:15 via a2,b2
+fit f3(x) "latency_mnemonic/out_latency_mnemonic" using 1:16 via a3,b3
 
-fit f1(x) "mass/out_mass" using 1:14 via a1,b1
+fit f1(x) "latency_mnemonic/out_latency_mnemonic" using 1:14 via a1,b1
 set out "figures/platency.eps";plot f1(x)/100  ls 1 w l notitle
-set out "figures/platency.eps";replot "mass/out_mass"  using 1:($14/100) ls 1 title 'vectorial add mnemonic'
+set out "figures/platency.eps";replot "latency_mnemonic/out_latency_mnemonic"  using 1:($14/100) ls 1 title 'vectorial add mnemonic'
 
 set terminal pop

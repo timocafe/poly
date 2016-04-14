@@ -15,7 +15,7 @@ set style fill solid 1
 
 helper_t(x) = (x+binwidth*(floor(($6)/binwidth)+binstart))
 
-set ylabel "Count"
+set ylabel "Frequency"
 set xlabel "Throughput [cycle]"
 
 set style line 1  lc rgb '#CF2E31' pt 5 lw 5 lt 1 #red

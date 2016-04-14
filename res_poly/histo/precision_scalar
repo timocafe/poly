@@ -1,0 +1,39 @@
+# set terminal png transparent nocrop enhanced size 450,320 font "arial,8" 
+# set output 'smooth.1.png'
+reset
+RATIO=1
+set terminal postscript eps enhanced color solid font 16
+set boxwidth 0.5 absolute
+set key top left
+set size ratio RATIO
+n = 13.
+min=0.
+max=12.
+width = (max-min)/n
+hist(x,width,offset)=width*floor(x/width)+offset
+set boxwidth width*0.15
+set style fill solid 0.5
+
+set xlabel "ULP"
+set ylabel "Count"
+set xtics in offset 0.7,0
+
+set style line 1  lc rgb '#CF2E31' pt 0 lw 2 #red
+#NA
+set style line 2 lc rgb '#3333FF' pt 1 lw 2 lt 1 # blue
+set style line 21 lc rgb '#3333FF' pt 1 lw 2 lt 2 # blue dash
+set style line 3 lc rgb '#1D9A2F' pt 1 lw 2 lt 1 # green
+set style line 31 lc rgb '#1D9A2F' pt 1 lw 2 lt 2 # green dash
+set style line 4 lc rgb '#FF358B' pt 1 lw 2 lt 1 # pink
+set style line 41 lc rgb '#FF358B' pt 1 lw 2 lt 2 # pink dash
+set style line 5 lc rgb '#01B0F0' pt 1 lw 2 lt 1 # light blue
+set style line 51 lc rgb '#01B0F0' pt 1 lw 2 lt 2 # light blue dash
+set style line 6 lc rgb '#000000' pt 1 lw 2 lt 1 # black
+set style line 61 lc rgb '#000000' pt 1 lw 2 lt 2 # black dash
+set style line 7 lc rgb '#C03000' pt 1 lw 2 lt 1 # vermillon
+set style line 71 lc rgb '#C03000' pt 1 lw 2 lt 2 # vermillon dash
+## Last datafile plotted: "random-points"
+set out "../figures/all_precision_scalar.eps";plot   [min:max] "data_sb" u (hist($2,width,0)):(1.0) smooth freq  w boxes ls 2 t "SandyBridge"
+set out "../figures/all_precision_scalar.eps";replot [min:max] "data_hw" u (hist($2,width,0.2)):(1.0):xtic(5) smooth freq  w boxes ls 3 t "Haswell"
+set out "../figures/all_precision_scalar.eps";replot [min:max] "data_p7" u (hist($2,width,0.4)):(1.0) smooth freq  w boxes ls 4 t "Power7"
+set out "../figures/all_precision_scalar.eps";replot [min:max] "data_p8" u (hist($2,width,0.6)):(1.0) smooth freq  w boxes ls 5 t "Power8"
