@@ -1,0 +1,1386 @@
+b/bench/ulp/exp/exp_scalar_ulp_bd10 2
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2bd2bd2bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2bd2bd2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2bd2bd2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2bd2ed2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2bd2ed2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2bd2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2ed2ed2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2ed2ed2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2ed2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd4bd4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd4ed4 10
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd4hkth1d4 8
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd4hkth2d4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2bd4hkth3d4 10
+b/bench/ulp/exp/exp_scalar_ulp_bd2ed2ed2ed2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2ed2ed2ed2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd2ed2ed2hkth1d2hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_bd2ed2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd2ed4ed4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2ed4hkth1d4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2ed4hkth2d4 10
+b/bench/ulp/exp/exp_scalar_ulp_bd2ed4hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2hkth1d2hkth1d2hkth1d2hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_bd2hkth1d4hkth1d4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2hkth1d4hkth2d4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2hkth1d4hkth3d4 8
+b/bench/ulp/exp/exp_scalar_ulp_bd2hkth2d4hkth2d4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd2hkth2d4hkth3d4 10
+b/bench/ulp/exp/exp_scalar_ulp_bd2hkth3d4hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_bd4bd2bd2bd2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd4bd2bd2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd4bd2bd2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd4bd2ed2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd4bd2ed2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd4bd2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd4ed2ed2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd4ed2ed2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd4ed2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd4hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd6bd2bd2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd6bd2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_bd6bd2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_bd6bd4 8
+b/bench/ulp/exp/exp_scalar_ulp_bd6ed2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd6ed2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd6ed4 8
+b/bench/ulp/exp/exp_scalar_ulp_bd6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd6hkth1d4 8
+b/bench/ulp/exp/exp_scalar_ulp_bd6hkth2d4 7
+b/bench/ulp/exp/exp_scalar_ulp_bd6hkth3d4 8
+b/bench/ulp/exp/exp_scalar_ulp_bd8bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd8ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_bd8hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed10 2
+b/bench/ulp/exp/exp_scalar_ulp_ed2bd4bd4 10
+b/bench/ulp/exp/exp_scalar_ulp_ed2bd4ed4 10
+b/bench/ulp/exp/exp_scalar_ulp_ed2bd4hkth1d4 10
+b/bench/ulp/exp/exp_scalar_ulp_ed2bd4hkth2d4 9
+b/bench/ulp/exp/exp_scalar_ulp_ed2bd4hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_ed2ed2ed2ed2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed2ed2ed2ed2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_ed2ed2ed2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_ed2ed2hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_ed2ed4ed4 10
+b/bench/ulp/exp/exp_scalar_ulp_ed2ed4hkth1d4 8
+b/bench/ulp/exp/exp_scalar_ulp_ed2ed4hkth2d4 9
+b/bench/ulp/exp/exp_scalar_ulp_ed2ed4hkth3d4 8
+b/bench/ulp/exp/exp_scalar_ulp_ed2hkth1d2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed2hkth1d4hkth1d4 9
+b/bench/ulp/exp/exp_scalar_ulp_ed2hkth1d4hkth2d4 10
+b/bench/ulp/exp/exp_scalar_ulp_ed2hkth1d4hkth3d4 10
+b/bench/ulp/exp/exp_scalar_ulp_ed2hkth2d4hkth2d4 9
+b/bench/ulp/exp/exp_scalar_ulp_ed2hkth2d4hkth3d4 10
+b/bench/ulp/exp/exp_scalar_ulp_ed2hkth3d4hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_ed4bd2bd2bd2 10
+b/bench/ulp/exp/exp_scalar_ulp_ed4bd2bd2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_ed4bd2bd2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_ed4bd2ed2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_ed4bd2ed2hkth1d2 11
+b/bench/ulp/exp/exp_scalar_ulp_ed4bd2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_ed4ed2ed2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_ed4ed2ed2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_ed4ed2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed4hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_ed6bd2bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6bd2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6bd2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6bd4 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6ed2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6ed2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6ed4 9
+b/bench/ulp/exp/exp_scalar_ulp_ed6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6hkth1d4 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6hkth2d4 8
+b/bench/ulp/exp/exp_scalar_ulp_ed6hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_ed8bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_ed8ed2 7
+b/bench/ulp/exp/exp_scalar_ulp_ed8hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d10 2
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2bd4bd4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2bd4ed4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2bd4hkth1d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2bd4hkth2d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2bd4hkth3d4 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2ed4ed4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2ed4hkth1d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2ed4hkth2d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2ed4hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2hkth1d4hkth1d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2hkth1d4hkth2d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2hkth1d4hkth3d4 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2hkth2d4hkth2d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2hkth2d4hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d2hkth3d4hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4bd2bd2bd2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4bd2bd2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4bd2bd2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4bd2ed2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4bd2ed2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4bd2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4ed2ed2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4ed2ed2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4ed2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6bd2bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6bd2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6bd2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6bd4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6ed2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6ed2hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6ed4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6hkth1d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6hkth2d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d6hkth3d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d8bd2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d8ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth1d8hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d10 2
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4bd2bd2bd2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4bd2bd2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4bd2bd2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4bd2ed2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4bd2ed2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4bd2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4ed2ed2ed2 11
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4ed2ed2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4ed2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6bd2bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6bd2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6bd2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6bd4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6ed2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6ed2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6ed4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6hkth1d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6hkth2d4 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d6hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d8bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d8ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth2d8hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d10 2
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4bd2bd2bd2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4bd2bd2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4bd2bd2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4bd2ed2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4bd2ed2hkth1d2 12
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4bd2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4ed2ed2ed2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4ed2ed2hkth1d2 10
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4ed2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d4hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6bd2bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6bd2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6bd2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6bd4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6ed2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6ed2hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6ed4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6hkth1d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6hkth2d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d6hkth3d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d8bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d8ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth3d8hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d10 3
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6bd2bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6bd2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6bd2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6bd4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6ed2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6ed2hkth1d2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6ed4 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6hkth1d4 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6hkth2d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d6hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d8bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d8ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth4d8hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d10 2
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6bd2bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6bd2ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6bd2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6bd4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6ed2ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6ed2hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6ed4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6hkth1d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6hkth2d4 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d6hkth3d4 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d8bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d8ed2 9
+b/bench/ulp/exp/exp_scalar_ulp_hkth5d8hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth6d10 2
+b/bench/ulp/exp/exp_scalar_ulp_hkth6d8bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth6d8ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth6d8hkth1d2 7
+b/bench/ulp/exp/exp_scalar_ulp_hkth7d10 2
+b/bench/ulp/exp/exp_scalar_ulp_hkth7d8bd2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth7d8ed2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth7d8hkth1d2 8
+b/bench/ulp/exp/exp_scalar_ulp_hkth8d10 3
+b/bench/ulp/exp/exp_scalar_ulp_hkth9d10 3
+b/bench/ulp/exp/exp_vector_ulp_bd10 3
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2bd2bd2bd2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2bd2bd2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2bd2bd2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2bd2ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2bd2ed2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2bd2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2ed2ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2ed2ed2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2ed2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_bd2bd4bd4 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd4ed4 10
+b/bench/ulp/exp/exp_vector_ulp_bd2bd4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_bd2bd4hkth2d4 10
+b/bench/ulp/exp/exp_vector_ulp_bd2bd4hkth3d4 9
+b/bench/ulp/exp/exp_vector_ulp_bd2ed2ed2ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2ed2ed2ed2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2ed2ed2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_bd2ed2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_bd2ed4ed4 9
+b/bench/ulp/exp/exp_vector_ulp_bd2ed4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_bd2ed4hkth2d4 10
+b/bench/ulp/exp/exp_vector_ulp_bd2ed4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_bd2hkth1d2hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd2hkth1d4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_bd2hkth1d4hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_bd2hkth1d4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_bd2hkth2d4hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_bd2hkth2d4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_bd2hkth3d4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_bd4bd2bd2bd2 9
+b/bench/ulp/exp/exp_vector_ulp_bd4bd2bd2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_bd4bd2bd2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_bd4bd2ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_bd4bd2ed2hkth1d2 11
+b/bench/ulp/exp/exp_vector_ulp_bd4bd2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd4ed2ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_bd4ed2ed2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_bd4ed2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_bd4hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd6bd2bd2 8
+b/bench/ulp/exp/exp_vector_ulp_bd6bd2ed2 8
+b/bench/ulp/exp/exp_vector_ulp_bd6bd2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_bd6bd4 9
+b/bench/ulp/exp/exp_vector_ulp_bd6ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_bd6ed2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd6ed4 9
+b/bench/ulp/exp/exp_vector_ulp_bd6hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_bd6hkth1d4 8
+b/bench/ulp/exp/exp_vector_ulp_bd6hkth2d4 8
+b/bench/ulp/exp/exp_vector_ulp_bd6hkth3d4 8
+b/bench/ulp/exp/exp_vector_ulp_bd8bd2 8
+b/bench/ulp/exp/exp_vector_ulp_bd8ed2 8
+b/bench/ulp/exp/exp_vector_ulp_bd8hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_ed10 3
+b/bench/ulp/exp/exp_vector_ulp_ed2bd4bd4 11
+b/bench/ulp/exp/exp_vector_ulp_ed2bd4ed4 9
+b/bench/ulp/exp/exp_vector_ulp_ed2bd4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed2bd4hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed2bd4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_ed2ed2ed2ed2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_ed2ed2ed2ed2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_ed2ed2ed2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_ed2ed2hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_ed2ed4ed4 11
+b/bench/ulp/exp/exp_vector_ulp_ed2ed4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed2ed4hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed2ed4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_ed2hkth1d2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_ed2hkth1d4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed2hkth1d4hkth2d4 10
+b/bench/ulp/exp/exp_vector_ulp_ed2hkth1d4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_ed2hkth2d4hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed2hkth2d4hkth3d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed2hkth3d4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_ed4bd2bd2bd2 10
+b/bench/ulp/exp/exp_vector_ulp_ed4bd2bd2ed2 11
+b/bench/ulp/exp/exp_vector_ulp_ed4bd2bd2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_ed4bd2ed2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_ed4bd2ed2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_ed4bd2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_ed4ed2ed2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_ed4ed2ed2hkth1d2 11
+b/bench/ulp/exp/exp_vector_ulp_ed4ed2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_ed4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_ed6bd2bd2 9
+b/bench/ulp/exp/exp_vector_ulp_ed6bd2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_ed6bd2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_ed6bd4 8
+b/bench/ulp/exp/exp_vector_ulp_ed6ed2ed2 8
+b/bench/ulp/exp/exp_vector_ulp_ed6ed2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_ed6ed4 8
+b/bench/ulp/exp/exp_vector_ulp_ed6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_ed6hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed6hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_ed6hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_ed8bd2 8
+b/bench/ulp/exp/exp_vector_ulp_ed8ed2 8
+b/bench/ulp/exp/exp_vector_ulp_ed8hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d10 3
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2bd4bd4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2bd4ed4 10
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2bd4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2bd4hkth2d4 10
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2bd4hkth3d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2ed4ed4 10
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2ed4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2ed4hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2ed4hkth3d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2hkth1d4hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2hkth1d4hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2hkth1d4hkth3d4 11
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2hkth2d4hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2hkth2d4hkth3d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d2hkth3d4hkth3d4 10
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4bd2bd2bd2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4bd2bd2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4bd2bd2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4bd2ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4bd2ed2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4bd2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4ed2ed2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4ed2ed2hkth1d2 11
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4ed2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d4hkth1d2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6bd2bd2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6bd2ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6bd2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6bd4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6ed2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6ed4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6hkth1d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6hkth2d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d6hkth3d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d8bd2 7
+b/bench/ulp/exp/exp_vector_ulp_hkth1d8ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth1d8hkth1d2 7
+b/bench/ulp/exp/exp_vector_ulp_hkth2d10 3
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4bd2bd2bd2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4bd2bd2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4bd2bd2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4bd2ed2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4bd2ed2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4bd2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4ed2ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4ed2ed2hkth1d2 11
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4ed2hkth1d2hkth1d2 11
+b/bench/ulp/exp/exp_vector_ulp_hkth2d4hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6bd2bd2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6bd2ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6bd2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6bd4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6ed2ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6ed2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6ed4 10
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6hkth1d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6hkth2d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d6hkth3d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d8bd2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d8ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth2d8hkth1d2 7
+b/bench/ulp/exp/exp_vector_ulp_hkth3d10 3
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4bd2bd2bd2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4bd2bd2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4bd2bd2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4bd2ed2ed2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4bd2ed2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4bd2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4ed2ed2ed2 11
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4ed2ed2hkth1d2 11
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4ed2hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth3d4hkth1d2hkth1d2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6bd2bd2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6bd2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6bd2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6bd4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6ed2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6ed4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6hkth1d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6hkth2d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d6hkth3d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth3d8bd2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth3d8ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth3d8hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d10 3
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6bd2bd2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6bd2ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6bd2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6bd4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6ed2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6ed2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6ed4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6hkth1d2hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6hkth1d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6hkth2d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d6hkth3d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d8bd2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth4d8ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth4d8hkth1d2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth5d10 4
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6bd2bd2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6bd2ed2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6bd2hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6bd4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6ed2ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6ed2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6ed4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6hkth1d2hkth1d2 10
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6hkth1d4 8
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6hkth2d4 10
+b/bench/ulp/exp/exp_vector_ulp_hkth5d6hkth3d4 9
+b/bench/ulp/exp/exp_vector_ulp_hkth5d8bd2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth5d8ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth5d8hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth6d10 3
+b/bench/ulp/exp/exp_vector_ulp_hkth6d8bd2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth6d8ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth6d8hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth7d10 4
+b/bench/ulp/exp/exp_vector_ulp_hkth7d8bd2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth7d8ed2 8
+b/bench/ulp/exp/exp_vector_ulp_hkth7d8hkth1d2 9
+b/bench/ulp/exp/exp_vector_ulp_hkth8d10 4
+b/bench/ulp/exp/exp_vector_ulp_hkth9d10 4
+b/bench/throughput/exp/exp_scalar_throughput_bd10 44.5495
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2bd2bd2bd2 45.7723
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2bd2bd2ed2 46.2679
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2bd2bd2hkth1d2 45.0409
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2bd2ed2ed2 45.7662
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2bd2ed2hkth1d2 44.8379
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2bd2hkth1d2hkth1d2 45.5557
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2ed2ed2ed2 46.0489
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2ed2ed2hkth1d2 44.9035
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2ed2hkth1d2hkth1d2 42.6702
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd2hkth1d2hkth1d2hkth1d2 44.8028
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd4bd4 46.6356
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd4ed4 44.9895
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd4hkth1d4 43.0935
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd4hkth2d4 41.0443
+b/bench/throughput/exp/exp_scalar_throughput_bd2bd4hkth3d4 44.9004
+b/bench/throughput/exp/exp_scalar_throughput_bd2ed2ed2ed2ed2 45.5846
+b/bench/throughput/exp/exp_scalar_throughput_bd2ed2ed2ed2hkth1d2 44.894
+b/bench/throughput/exp/exp_scalar_throughput_bd2ed2ed2hkth1d2hkth1d2 45.4142
+b/bench/throughput/exp/exp_scalar_throughput_bd2ed2hkth1d2hkth1d2hkth1d2 44.7931
+b/bench/throughput/exp/exp_scalar_throughput_bd2ed4ed4 47.9252
+b/bench/throughput/exp/exp_scalar_throughput_bd2ed4hkth1d4 43.0809
+b/bench/throughput/exp/exp_scalar_throughput_bd2ed4hkth2d4 41.5146
+b/bench/throughput/exp/exp_scalar_throughput_bd2ed4hkth3d4 41.3779
+b/bench/throughput/exp/exp_scalar_throughput_bd2hkth1d2hkth1d2hkth1d2hkth1d2 45.2919
+b/bench/throughput/exp/exp_scalar_throughput_bd2hkth1d4hkth1d4 44.0979
+b/bench/throughput/exp/exp_scalar_throughput_bd2hkth1d4hkth2d4 44.085
+b/bench/throughput/exp/exp_scalar_throughput_bd2hkth1d4hkth3d4 43.8067
+b/bench/throughput/exp/exp_scalar_throughput_bd2hkth2d4hkth2d4 45.1636
+b/bench/throughput/exp/exp_scalar_throughput_bd2hkth2d4hkth3d4 44.4533
+b/bench/throughput/exp/exp_scalar_throughput_bd2hkth3d4hkth3d4 38.1166
+b/bench/throughput/exp/exp_scalar_throughput_bd4bd2bd2bd2 35.5022
+b/bench/throughput/exp/exp_scalar_throughput_bd4bd2bd2ed2 35.6019
+b/bench/throughput/exp/exp_scalar_throughput_bd4bd2bd2hkth1d2 39.5881
+b/bench/throughput/exp/exp_scalar_throughput_bd4bd2ed2ed2 35.5403
+b/bench/throughput/exp/exp_scalar_throughput_bd4bd2ed2hkth1d2 39.8498
+b/bench/throughput/exp/exp_scalar_throughput_bd4bd2hkth1d2hkth1d2 44.9321
+b/bench/throughput/exp/exp_scalar_throughput_bd4ed2ed2ed2 35.7637
+b/bench/throughput/exp/exp_scalar_throughput_bd4ed2ed2hkth1d2 37.6751
+b/bench/throughput/exp/exp_scalar_throughput_bd4ed2hkth1d2hkth1d2 44.9939
+b/bench/throughput/exp/exp_scalar_throughput_bd4hkth1d2hkth1d2hkth1d2 44.3467
+b/bench/throughput/exp/exp_scalar_throughput_bd6bd2bd2 43.7733
+b/bench/throughput/exp/exp_scalar_throughput_bd6bd2ed2 43.7349
+b/bench/throughput/exp/exp_scalar_throughput_bd6bd2hkth1d2 38.7769
+b/bench/throughput/exp/exp_scalar_throughput_bd6bd4 43.5875
+b/bench/throughput/exp/exp_scalar_throughput_bd6ed2ed2 44.3477
+b/bench/throughput/exp/exp_scalar_throughput_bd6ed2hkth1d2 34.9699
+b/bench/throughput/exp/exp_scalar_throughput_bd6ed4 41.7323
+b/bench/throughput/exp/exp_scalar_throughput_bd6hkth1d2hkth1d2 38.3961
+b/bench/throughput/exp/exp_scalar_throughput_bd6hkth1d4 44.9831
+b/bench/throughput/exp/exp_scalar_throughput_bd6hkth2d4 35.9657
+b/bench/throughput/exp/exp_scalar_throughput_bd6hkth3d4 39.8481
+b/bench/throughput/exp/exp_scalar_throughput_bd8bd2 42.936
+b/bench/throughput/exp/exp_scalar_throughput_bd8ed2 43.0036
+b/bench/throughput/exp/exp_scalar_throughput_bd8hkth1d2 38.0659
+b/bench/throughput/exp/exp_scalar_throughput_ed10 40.2767
+b/bench/throughput/exp/exp_scalar_throughput_ed2bd4bd4 46.5569
+b/bench/throughput/exp/exp_scalar_throughput_ed2bd4ed4 44.9514
+b/bench/throughput/exp/exp_scalar_throughput_ed2bd4hkth1d4 41.0889
+b/bench/throughput/exp/exp_scalar_throughput_ed2bd4hkth2d4 42.3887
+b/bench/throughput/exp/exp_scalar_throughput_ed2bd4hkth3d4 44.7588
+b/bench/throughput/exp/exp_scalar_throughput_ed2ed2ed2ed2ed2 46.0481
+b/bench/throughput/exp/exp_scalar_throughput_ed2ed2ed2ed2hkth1d2 44.9593
+b/bench/throughput/exp/exp_scalar_throughput_ed2ed2ed2hkth1d2hkth1d2 45.5283
+b/bench/throughput/exp/exp_scalar_throughput_ed2ed2hkth1d2hkth1d2hkth1d2 44.7731
+b/bench/throughput/exp/exp_scalar_throughput_ed2ed4ed4 47.9541
+b/bench/throughput/exp/exp_scalar_throughput_ed2ed4hkth1d4 42.8737
+b/bench/throughput/exp/exp_scalar_throughput_ed2ed4hkth2d4 40.7993
+b/bench/throughput/exp/exp_scalar_throughput_ed2ed4hkth3d4 41.9003
+b/bench/throughput/exp/exp_scalar_throughput_ed2hkth1d2hkth1d2hkth1d2hkth1d2 45.3342
+b/bench/throughput/exp/exp_scalar_throughput_ed2hkth1d4hkth1d4 44.047
+b/bench/throughput/exp/exp_scalar_throughput_ed2hkth1d4hkth2d4 44.1971
+b/bench/throughput/exp/exp_scalar_throughput_ed2hkth1d4hkth3d4 44.4403
+b/bench/throughput/exp/exp_scalar_throughput_ed2hkth2d4hkth2d4 44.7362
+b/bench/throughput/exp/exp_scalar_throughput_ed2hkth2d4hkth3d4 44.4389
+b/bench/throughput/exp/exp_scalar_throughput_ed2hkth3d4hkth3d4 38.2299
+b/bench/throughput/exp/exp_scalar_throughput_ed4bd2bd2bd2 35.4904
+b/bench/throughput/exp/exp_scalar_throughput_ed4bd2bd2ed2 35.5191
+b/bench/throughput/exp/exp_scalar_throughput_ed4bd2bd2hkth1d2 39.5458
+b/bench/throughput/exp/exp_scalar_throughput_ed4bd2ed2ed2 35.2671
+b/bench/throughput/exp/exp_scalar_throughput_ed4bd2ed2hkth1d2 40.154
+b/bench/throughput/exp/exp_scalar_throughput_ed4bd2hkth1d2hkth1d2 44.7048
+b/bench/throughput/exp/exp_scalar_throughput_ed4ed2ed2ed2 35.2614
+b/bench/throughput/exp/exp_scalar_throughput_ed4ed2ed2hkth1d2 40.5888
+b/bench/throughput/exp/exp_scalar_throughput_ed4ed2hkth1d2hkth1d2 44.7297
+b/bench/throughput/exp/exp_scalar_throughput_ed4hkth1d2hkth1d2hkth1d2 44.3546
+b/bench/throughput/exp/exp_scalar_throughput_ed6bd2bd2 40.3349
+b/bench/throughput/exp/exp_scalar_throughput_ed6bd2ed2 41.4412
+b/bench/throughput/exp/exp_scalar_throughput_ed6bd2hkth1d2 43.1829
+b/bench/throughput/exp/exp_scalar_throughput_ed6bd4 35.5542
+b/bench/throughput/exp/exp_scalar_throughput_ed6ed2ed2 41.0564
+b/bench/throughput/exp/exp_scalar_throughput_ed6ed2hkth1d2 43.2444
+b/bench/throughput/exp/exp_scalar_throughput_ed6ed4 42.2323
+b/bench/throughput/exp/exp_scalar_throughput_ed6hkth1d2hkth1d2 34.4345
+b/bench/throughput/exp/exp_scalar_throughput_ed6hkth1d4 43.0827
+b/bench/throughput/exp/exp_scalar_throughput_ed6hkth2d4 44.8721
+b/bench/throughput/exp/exp_scalar_throughput_ed6hkth3d4 35.9157
+b/bench/throughput/exp/exp_scalar_throughput_ed8bd2 37.0521
+b/bench/throughput/exp/exp_scalar_throughput_ed8ed2 36.4773
+b/bench/throughput/exp/exp_scalar_throughput_ed8hkth1d2 34.8581
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d10 49.8969
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2bd4bd4 46.9583
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2bd4ed4 39.6634
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2bd4hkth1d4 42.7218
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2bd4hkth2d4 40.1556
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2bd4hkth3d4 42.6279
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2ed4ed4 48.245
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2ed4hkth1d4 42.6792
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2ed4hkth2d4 40.2912
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2ed4hkth3d4 43.4865
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 45.1971
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2hkth1d4hkth1d4 44.0253
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2hkth1d4hkth2d4 44.3363
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2hkth1d4hkth3d4 43.6006
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2hkth2d4hkth2d4 42.6453
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2hkth2d4hkth3d4 44.2293
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d2hkth3d4hkth3d4 33.2573
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4bd2bd2bd2 43.6559
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4bd2bd2ed2 43.7704
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4bd2bd2hkth1d2 44.1482
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4bd2ed2ed2 44.0177
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4bd2ed2hkth1d2 43.9058
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4bd2hkth1d2hkth1d2 40.1852
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4ed2ed2ed2 43.7184
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4ed2ed2hkth1d2 43.8625
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4ed2hkth1d2hkth1d2 41.7191
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d4hkth1d2hkth1d2hkth1d2 41.556
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6bd2bd2 44.9806
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6bd2ed2 44.6796
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6bd2hkth1d2 44.3891
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6bd4 44.4508
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6ed2ed2 44.6564
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6ed2hkth1d2 44.6374
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6ed4 44.4048
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6hkth1d2hkth1d2 44.3969
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6hkth1d4 44.3015
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6hkth2d4 44.474
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d6hkth3d4 45.1304
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d8bd2 46.203
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d8ed2 46.4982
+b/bench/throughput/exp/exp_scalar_throughput_hkth1d8hkth1d2 46.7264
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d10 47.7894
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4bd2bd2bd2 47.6125
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4bd2bd2ed2 47.1905
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4bd2bd2hkth1d2 47.7767
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4bd2ed2ed2 47.6255
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4bd2ed2hkth1d2 47.7313
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4bd2hkth1d2hkth1d2 45.91
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4ed2ed2ed2 47.4492
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4ed2ed2hkth1d2 47.662
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4ed2hkth1d2hkth1d2 45.8207
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d4hkth1d2hkth1d2hkth1d2 42.9504
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6bd2bd2 44.8622
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6bd2ed2 44.8721
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6bd2hkth1d2 46.7382
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6bd4 36.9724
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6ed2ed2 44.6037
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6ed2hkth1d2 46.8753
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6ed4 37.201
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6hkth1d2hkth1d2 44.3287
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6hkth1d4 46.546
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6hkth2d4 45.4029
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d6hkth3d4 35.3265
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d8bd2 36.0197
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d8ed2 35.9917
+b/bench/throughput/exp/exp_scalar_throughput_hkth2d8hkth1d2 46.1114
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d10 48.1145
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4bd2bd2bd2 39.29
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4bd2bd2ed2 39.139
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4bd2bd2hkth1d2 43.5586
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4bd2ed2ed2 39.1884
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4bd2ed2hkth1d2 43.59
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4bd2hkth1d2hkth1d2 42.9702
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4ed2ed2ed2 38.9632
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4ed2ed2hkth1d2 43.1431
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4ed2hkth1d2hkth1d2 42.7353
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d4hkth1d2hkth1d2hkth1d2 38.9066
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6bd2bd2 47.2728
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6bd2ed2 47.5117
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6bd2hkth1d2 42.2965
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6bd4 44.5362
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6ed2ed2 47.5995
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6ed2hkth1d2 41.8675
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6ed4 43.6263
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6hkth1d2hkth1d2 40.793
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6hkth1d4 48.5654
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6hkth2d4 47.0763
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d6hkth3d4 46.7134
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d8bd2 35.8879
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d8ed2 35.547
+b/bench/throughput/exp/exp_scalar_throughput_hkth3d8hkth1d2 44.2075
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d10 46.0864
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6bd2bd2 40.3766
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6bd2ed2 40.236
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6bd2hkth1d2 37.6513
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6bd4 47.2307
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6ed2ed2 40.6323
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6ed2hkth1d2 37.721
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6ed4 39.9988
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6hkth1d2hkth1d2 37.7997
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6hkth1d4 45.5972
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6hkth2d4 45.688
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d6hkth3d4 46.189
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d8bd2 37.5215
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d8ed2 39.0875
+b/bench/throughput/exp/exp_scalar_throughput_hkth4d8hkth1d2 47.5884
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d10 49.0558
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6bd2bd2 42.0404
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6bd2ed2 41.7324
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6bd2hkth1d2 43.8565
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6bd4 45.213
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6ed2ed2 42.1121
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6ed2hkth1d2 44.3628
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6ed4 44.1419
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6hkth1d2hkth1d2 43.2352
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6hkth1d4 46.7961
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6hkth2d4 36.3015
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d6hkth3d4 44.242
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d8bd2 47.969
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d8ed2 47.8996
+b/bench/throughput/exp/exp_scalar_throughput_hkth5d8hkth1d2 45.0517
+b/bench/throughput/exp/exp_scalar_throughput_hkth6d10 46.526
+b/bench/throughput/exp/exp_scalar_throughput_hkth6d8bd2 43.438
+b/bench/throughput/exp/exp_scalar_throughput_hkth6d8ed2 43.0564
+b/bench/throughput/exp/exp_scalar_throughput_hkth6d8hkth1d2 44.7118
+b/bench/throughput/exp/exp_scalar_throughput_hkth7d10 47.9339
+b/bench/throughput/exp/exp_scalar_throughput_hkth7d8bd2 47.081
+b/bench/throughput/exp/exp_scalar_throughput_hkth7d8ed2 45.8859
+b/bench/throughput/exp/exp_scalar_throughput_hkth7d8hkth1d2 48.2109
+b/bench/throughput/exp/exp_scalar_throughput_hkth8d10 46.2412
+b/bench/throughput/exp/exp_scalar_throughput_hkth9d10 42.4468
+b/bench/throughput/exp/exp_vector_throughput_bd10 56.5159
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2bd2bd2bd2 39.0324
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2bd2bd2ed2 38.4836
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2bd2bd2hkth1d2 29.3301
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2bd2ed2ed2 38.3838
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2bd2ed2hkth1d2 39.1118
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2bd2hkth1d2hkth1d2 39.335
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2ed2ed2ed2 29.1952
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2ed2ed2hkth1d2 27.5789
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2ed2hkth1d2hkth1d2 38.924
+b/bench/throughput/exp/exp_vector_throughput_bd2bd2hkth1d2hkth1d2hkth1d2 29.1772
+b/bench/throughput/exp/exp_vector_throughput_bd2bd4bd4 28.8615
+b/bench/throughput/exp/exp_vector_throughput_bd2bd4ed4 53.8475
+b/bench/throughput/exp/exp_vector_throughput_bd2bd4hkth1d4 39.4944
+b/bench/throughput/exp/exp_vector_throughput_bd2bd4hkth2d4 29.931
+b/bench/throughput/exp/exp_vector_throughput_bd2bd4hkth3d4 54.5372
+b/bench/throughput/exp/exp_vector_throughput_bd2ed2ed2ed2ed2 28.7148
+b/bench/throughput/exp/exp_vector_throughput_bd2ed2ed2ed2hkth1d2 29.7186
+b/bench/throughput/exp/exp_vector_throughput_bd2ed2ed2hkth1d2hkth1d2 29.4419
+b/bench/throughput/exp/exp_vector_throughput_bd2ed2hkth1d2hkth1d2hkth1d2 29.2587
+b/bench/throughput/exp/exp_vector_throughput_bd2ed4ed4 50.8745
+b/bench/throughput/exp/exp_vector_throughput_bd2ed4hkth1d4 36.2921
+b/bench/throughput/exp/exp_vector_throughput_bd2ed4hkth2d4 51.5765
+b/bench/throughput/exp/exp_vector_throughput_bd2ed4hkth3d4 51.3455
+b/bench/throughput/exp/exp_vector_throughput_bd2hkth1d2hkth1d2hkth1d2hkth1d2 39.062
+b/bench/throughput/exp/exp_vector_throughput_bd2hkth1d4hkth1d4 35.6928
+b/bench/throughput/exp/exp_vector_throughput_bd2hkth1d4hkth2d4 26.7018
+b/bench/throughput/exp/exp_vector_throughput_bd2hkth1d4hkth3d4 51.1595
+b/bench/throughput/exp/exp_vector_throughput_bd2hkth2d4hkth2d4 51.1682
+b/bench/throughput/exp/exp_vector_throughput_bd2hkth2d4hkth3d4 51.2979
+b/bench/throughput/exp/exp_vector_throughput_bd2hkth3d4hkth3d4 22.546
+b/bench/throughput/exp/exp_vector_throughput_bd4bd2bd2bd2 40.8888
+b/bench/throughput/exp/exp_vector_throughput_bd4bd2bd2ed2 40.8635
+b/bench/throughput/exp/exp_vector_throughput_bd4bd2bd2hkth1d2 40.8825
+b/bench/throughput/exp/exp_vector_throughput_bd4bd2ed2ed2 40.746
+b/bench/throughput/exp/exp_vector_throughput_bd4bd2ed2hkth1d2 41.1683
+b/bench/throughput/exp/exp_vector_throughput_bd4bd2hkth1d2hkth1d2 30.4939
+b/bench/throughput/exp/exp_vector_throughput_bd4ed2ed2ed2 31.5579
+b/bench/throughput/exp/exp_vector_throughput_bd4ed2ed2hkth1d2 30.794
+b/bench/throughput/exp/exp_vector_throughput_bd4ed2hkth1d2hkth1d2 31.2519
+b/bench/throughput/exp/exp_vector_throughput_bd4hkth1d2hkth1d2hkth1d2 30.6806
+b/bench/throughput/exp/exp_vector_throughput_bd6bd2bd2 56.1217
+b/bench/throughput/exp/exp_vector_throughput_bd6bd2ed2 55.9405
+b/bench/throughput/exp/exp_vector_throughput_bd6bd2hkth1d2 41.0368
+b/bench/throughput/exp/exp_vector_throughput_bd6bd4 54.3201
+b/bench/throughput/exp/exp_vector_throughput_bd6ed2ed2 56.0731
+b/bench/throughput/exp/exp_vector_throughput_bd6ed2hkth1d2 56.4025
+b/bench/throughput/exp/exp_vector_throughput_bd6ed4 29.2445
+b/bench/throughput/exp/exp_vector_throughput_bd6hkth1d2hkth1d2 56.361
+b/bench/throughput/exp/exp_vector_throughput_bd6hkth1d4 53.9927
+b/bench/throughput/exp/exp_vector_throughput_bd6hkth2d4 54.6679
+b/bench/throughput/exp/exp_vector_throughput_bd6hkth3d4 54.3881
+b/bench/throughput/exp/exp_vector_throughput_bd8bd2 57.6275
+b/bench/throughput/exp/exp_vector_throughput_bd8ed2 57.7657
+b/bench/throughput/exp/exp_vector_throughput_bd8hkth1d2 33.1711
+b/bench/throughput/exp/exp_vector_throughput_ed10 35.9782
+b/bench/throughput/exp/exp_vector_throughput_ed2bd4bd4 39.7117
+b/bench/throughput/exp/exp_vector_throughput_ed2bd4ed4 29.2741
+b/bench/throughput/exp/exp_vector_throughput_ed2bd4hkth1d4 21.4958
+b/bench/throughput/exp/exp_vector_throughput_ed2bd4hkth2d4 39.3473
+b/bench/throughput/exp/exp_vector_throughput_ed2bd4hkth3d4 29.0971
+b/bench/throughput/exp/exp_vector_throughput_ed2ed2ed2ed2ed2 35.4087
+b/bench/throughput/exp/exp_vector_throughput_ed2ed2ed2ed2hkth1d2 36.2678
+b/bench/throughput/exp/exp_vector_throughput_ed2ed2ed2hkth1d2hkth1d2 23.8231
+b/bench/throughput/exp/exp_vector_throughput_ed2ed2hkth1d2hkth1d2hkth1d2 35.9724
+b/bench/throughput/exp/exp_vector_throughput_ed2ed4ed4 37.5249
+b/bench/throughput/exp/exp_vector_throughput_ed2ed4hkth1d4 49.1883
+b/bench/throughput/exp/exp_vector_throughput_ed2ed4hkth2d4 50.4508
+b/bench/throughput/exp/exp_vector_throughput_ed2ed4hkth3d4 50.8125
+b/bench/throughput/exp/exp_vector_throughput_ed2hkth1d2hkth1d2hkth1d2hkth1d2 35.8284
+b/bench/throughput/exp/exp_vector_throughput_ed2hkth1d4hkth1d4 27.1411
+b/bench/throughput/exp/exp_vector_throughput_ed2hkth1d4hkth2d4 35.8834
+b/bench/throughput/exp/exp_vector_throughput_ed2hkth1d4hkth3d4 35.9851
+b/bench/throughput/exp/exp_vector_throughput_ed2hkth2d4hkth2d4 50.9882
+b/bench/throughput/exp/exp_vector_throughput_ed2hkth2d4hkth3d4 36.393
+b/bench/throughput/exp/exp_vector_throughput_ed2hkth3d4hkth3d4 21.5508
+b/bench/throughput/exp/exp_vector_throughput_ed4bd2bd2bd2 52.4304
+b/bench/throughput/exp/exp_vector_throughput_ed4bd2bd2ed2 36.6772
+b/bench/throughput/exp/exp_vector_throughput_ed4bd2bd2hkth1d2 37.2414
+b/bench/throughput/exp/exp_vector_throughput_ed4bd2ed2ed2 37.8044
+b/bench/throughput/exp/exp_vector_throughput_ed4bd2ed2hkth1d2 52.5443
+b/bench/throughput/exp/exp_vector_throughput_ed4bd2hkth1d2hkth1d2 52.4252
+b/bench/throughput/exp/exp_vector_throughput_ed4ed2ed2ed2 35.253
+b/bench/throughput/exp/exp_vector_throughput_ed4ed2ed2hkth1d2 36.9581
+b/bench/throughput/exp/exp_vector_throughput_ed4ed2hkth1d2hkth1d2 23.1676
+b/bench/throughput/exp/exp_vector_throughput_ed4hkth1d2hkth1d2hkth1d2 26.7288
+b/bench/throughput/exp/exp_vector_throughput_ed6bd2bd2 50.594
+b/bench/throughput/exp/exp_vector_throughput_ed6bd2ed2 36.4455
+b/bench/throughput/exp/exp_vector_throughput_ed6bd2hkth1d2 51.1777
+b/bench/throughput/exp/exp_vector_throughput_ed6bd4 27.1446
+b/bench/throughput/exp/exp_vector_throughput_ed6ed2ed2 24.7262
+b/bench/throughput/exp/exp_vector_throughput_ed6ed2hkth1d2 42.787
+b/bench/throughput/exp/exp_vector_throughput_ed6ed4 48.9064
+b/bench/throughput/exp/exp_vector_throughput_ed6hkth1d2hkth1d2 35.6875
+b/bench/throughput/exp/exp_vector_throughput_ed6hkth1d4 34.5601
+b/bench/throughput/exp/exp_vector_throughput_ed6hkth2d4 49.3233
+b/bench/throughput/exp/exp_vector_throughput_ed6hkth3d4 35.9923
+b/bench/throughput/exp/exp_vector_throughput_ed8bd2 38.1692
+b/bench/throughput/exp/exp_vector_throughput_ed8ed2 24.2508
+b/bench/throughput/exp/exp_vector_throughput_ed8hkth1d2 36.5799
+b/bench/throughput/exp/exp_vector_throughput_hkth1d10 39.9309
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2bd4bd4 28.7379
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2bd4ed4 29.3073
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2bd4hkth1d4 53.9703
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2bd4hkth2d4 30.3862
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2bd4hkth3d4 40.3381
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2ed4ed4 25.7081
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2ed4hkth1d4 49.2271
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2ed4hkth2d4 50.3176
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2ed4hkth3d4 51.4211
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 26.4469
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2hkth1d4hkth1d4 25.603
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2hkth1d4hkth2d4 27.1176
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2hkth1d4hkth3d4 50.7395
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2hkth2d4hkth2d4 50.7713
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2hkth2d4hkth3d4 51.1722
+b/bench/throughput/exp/exp_vector_throughput_hkth1d2hkth3d4hkth3d4 40.4907
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4bd2bd2bd2 36.6042
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4bd2bd2ed2 26.8621
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4bd2bd2hkth1d2 26.9636
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4bd2ed2ed2 26.9782
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4bd2ed2hkth1d2 27.0574
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4bd2hkth1d2hkth1d2 36.6705
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4ed2ed2ed2 27.2353
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4ed2ed2hkth1d2 27.5649
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4ed2hkth1d2hkth1d2 36.8054
+b/bench/throughput/exp/exp_vector_throughput_hkth1d4hkth1d2hkth1d2hkth1d2 36.9192
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6bd2bd2 31.3362
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6bd2ed2 28.5295
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6bd2hkth1d2 38.089
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6bd4 27.9737
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6ed2ed2 28.3066
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6ed2hkth1d2 32.415
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6ed4 27.6909
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6hkth1d2hkth1d2 38.3507
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6hkth1d4 36.6329
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6hkth2d4 30.9129
+b/bench/throughput/exp/exp_vector_throughput_hkth1d6hkth3d4 27.6867
+b/bench/throughput/exp/exp_vector_throughput_hkth1d8bd2 39.8247
+b/bench/throughput/exp/exp_vector_throughput_hkth1d8ed2 30.3868
+b/bench/throughput/exp/exp_vector_throughput_hkth1d8hkth1d2 40.0315
+b/bench/throughput/exp/exp_vector_throughput_hkth2d10 36.7491
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4bd2bd2bd2 51.8858
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4bd2bd2ed2 51.8916
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4bd2bd2hkth1d2 27.6394
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4bd2ed2ed2 36.9335
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4bd2ed2hkth1d2 27.4043
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4bd2hkth1d2hkth1d2 36.9173
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4ed2ed2ed2 36.9619
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4ed2ed2hkth1d2 27.4748
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4ed2hkth1d2hkth1d2 27.4312
+b/bench/throughput/exp/exp_vector_throughput_hkth2d4hkth1d2hkth1d2hkth1d2 36.6959
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6bd2bd2 51.9858
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6bd2ed2 37.0644
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6bd2hkth1d2 28.7806
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6bd4 20.091
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6ed2ed2 28.5401
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6ed2hkth1d2 37.3603
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6ed4 50.8692
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6hkth1d2hkth1d2 37.1888
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6hkth1d4 50.1776
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6hkth2d4 51.0167
+b/bench/throughput/exp/exp_vector_throughput_hkth2d6hkth3d4 36.5635
+b/bench/throughput/exp/exp_vector_throughput_hkth2d8bd2 28.7253
+b/bench/throughput/exp/exp_vector_throughput_hkth2d8ed2 28.5857
+b/bench/throughput/exp/exp_vector_throughput_hkth2d8hkth1d2 34.2667
+b/bench/throughput/exp/exp_vector_throughput_hkth3d10 27.9717
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4bd2bd2bd2 30.9265
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4bd2bd2ed2 30.8138
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4bd2bd2hkth1d2 40.2969
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4bd2ed2ed2 40.3019
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4bd2ed2hkth1d2 55.5977
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4bd2hkth1d2hkth1d2 54.9517
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4ed2ed2ed2 29.3567
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4ed2ed2hkth1d2 40.3639
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4ed2hkth1d2hkth1d2 30.6654
+b/bench/throughput/exp/exp_vector_throughput_hkth3d4hkth1d2hkth1d2hkth1d2 29.3056
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6bd2bd2 55.3849
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6bd2ed2 31.1787
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6bd2hkth1d2 27.4621
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6bd4 38.9084
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6ed2ed2 31.0676
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6ed2hkth1d2 36.4558
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6ed4 32.9291
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6hkth1d2hkth1d2 35.0991
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6hkth1d4 53.5581
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6hkth2d4 39.0224
+b/bench/throughput/exp/exp_vector_throughput_hkth3d6hkth3d4 53.5543
+b/bench/throughput/exp/exp_vector_throughput_hkth3d8bd2 53.8611
+b/bench/throughput/exp/exp_vector_throughput_hkth3d8ed2 38.9509
+b/bench/throughput/exp/exp_vector_throughput_hkth3d8hkth1d2 53.3907
+b/bench/throughput/exp/exp_vector_throughput_hkth4d10 23.4584
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6bd2bd2 55.0905
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6bd2ed2 55.2289
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6bd2hkth1d2 55.5099
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6bd4 53.3551
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6ed2ed2 40.2582
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6ed2hkth1d2 40.3983
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6ed4 52.8895
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6hkth1d2hkth1d2 40.4956
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6hkth1d4 40.4864
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6hkth2d4 53.3689
+b/bench/throughput/exp/exp_vector_throughput_hkth4d6hkth3d4 40.6132
+b/bench/throughput/exp/exp_vector_throughput_hkth4d8bd2 23.3085
+b/bench/throughput/exp/exp_vector_throughput_hkth4d8ed2 24.7737
+b/bench/throughput/exp/exp_vector_throughput_hkth4d8hkth1d2 31.902
+b/bench/throughput/exp/exp_vector_throughput_hkth5d10 23.46
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6bd2bd2 44.5529
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6bd2ed2 28.2634
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6bd2hkth1d2 28.9086
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6bd4 24.0398
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6ed2ed2 28.2509
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6ed2hkth1d2 43.6977
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6ed4 40.8726
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6hkth1d2hkth1d2 24.9735
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6hkth1d4 24.5012
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6hkth2d4 56.2679
+b/bench/throughput/exp/exp_vector_throughput_hkth5d6hkth3d4 41.2634
+b/bench/throughput/exp/exp_vector_throughput_hkth5d8bd2 56.0725
+b/bench/throughput/exp/exp_vector_throughput_hkth5d8ed2 32.0607
+b/bench/throughput/exp/exp_vector_throughput_hkth5d8hkth1d2 33.7162
+b/bench/throughput/exp/exp_vector_throughput_hkth6d10 26.7994
+b/bench/throughput/exp/exp_vector_throughput_hkth6d8bd2 42.8577
+b/bench/throughput/exp/exp_vector_throughput_hkth6d8ed2 33.0914
+b/bench/throughput/exp/exp_vector_throughput_hkth6d8hkth1d2 27.1182
+b/bench/throughput/exp/exp_vector_throughput_hkth7d10 35.6957
+b/bench/throughput/exp/exp_vector_throughput_hkth7d8bd2 30.793
+b/bench/throughput/exp/exp_vector_throughput_hkth7d8ed2 31.9966
+b/bench/throughput/exp/exp_vector_throughput_hkth7d8hkth1d2 32.18
+b/bench/throughput/exp/exp_vector_throughput_hkth8d10 30.7774
+b/bench/throughput/exp/exp_vector_throughput_hkth9d10 33.3133
+b/bench/latency/scalar_vector_latency_bd10 scalar::exp 159.284 vector::exp 161.774
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2bd2 scalar::exp 167.343 vector::exp 126.564
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2ed2 scalar::exp 168.711 vector::exp 120.914
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2hkth1d2 scalar::exp 165.455 vector::exp 143.163
+b/bench/latency/scalar_vector_latency_bd2bd2bd2ed2ed2 scalar::exp 168.509 vector::exp 131.182
+b/bench/latency/scalar_vector_latency_bd2bd2bd2ed2hkth1d2 scalar::exp 165.328 vector::exp 126.372
+b/bench/latency/scalar_vector_latency_bd2bd2bd2hkth1d2hkth1d2 scalar::exp 167.749 vector::exp 130.159
+b/bench/latency/scalar_vector_latency_bd2bd2ed2ed2ed2 scalar::exp 167.514 vector::exp 121.643
+b/bench/latency/scalar_vector_latency_bd2bd2ed2ed2hkth1d2 scalar::exp 163.649 vector::exp 130.427
+b/bench/latency/scalar_vector_latency_bd2bd2ed2hkth1d2hkth1d2 scalar::exp 166.607 vector::exp 129.682
+b/bench/latency/scalar_vector_latency_bd2bd2hkth1d2hkth1d2hkth1d2 scalar::exp 167.971 vector::exp 131.372
+b/bench/latency/scalar_vector_latency_bd2bd4bd4 scalar::exp 159.216 vector::exp 137.643
+b/bench/latency/scalar_vector_latency_bd2bd4ed4 scalar::exp 162.09 vector::exp 186.098
+b/bench/latency/scalar_vector_latency_bd2bd4hkth1d4 scalar::exp 155.369 vector::exp 129.481
+b/bench/latency/scalar_vector_latency_bd2bd4hkth2d4 scalar::exp 162.171 vector::exp 134.006
+b/bench/latency/scalar_vector_latency_bd2bd4hkth3d4 scalar::exp 162.019 vector::exp 154.464
+b/bench/latency/scalar_vector_latency_bd2ed2ed2ed2ed2 scalar::exp 168.481 vector::exp 120.841
+b/bench/latency/scalar_vector_latency_bd2ed2ed2ed2hkth1d2 scalar::exp 165.539 vector::exp 125.782
+b/bench/latency/scalar_vector_latency_bd2ed2ed2hkth1d2hkth1d2 scalar::exp 167.624 vector::exp 133.631
+b/bench/latency/scalar_vector_latency_bd2ed2hkth1d2hkth1d2hkth1d2 scalar::exp 167.303 vector::exp 127.518
+b/bench/latency/scalar_vector_latency_bd2ed4ed4 scalar::exp 158.231 vector::exp 146.466
+b/bench/latency/scalar_vector_latency_bd2ed4hkth1d4 scalar::exp 156.367 vector::exp 129.477
+b/bench/latency/scalar_vector_latency_bd2ed4hkth2d4 scalar::exp 161.207 vector::exp 147.464
+b/bench/latency/scalar_vector_latency_bd2ed4hkth3d4 scalar::exp 165.361 vector::exp 153.165
+b/bench/latency/scalar_vector_latency_bd2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::exp 165.195 vector::exp 128.021
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth1d4 scalar::exp 163.962 vector::exp 116.517
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth2d4 scalar::exp 160.827 vector::exp 111.028
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth3d4 scalar::exp 157.284 vector::exp 153.805
+b/bench/latency/scalar_vector_latency_bd2hkth2d4hkth2d4 scalar::exp 165.167 vector::exp 174.33
+b/bench/latency/scalar_vector_latency_bd2hkth2d4hkth3d4 scalar::exp 164.031 vector::exp 144.485
+b/bench/latency/scalar_vector_latency_bd2hkth3d4hkth3d4 scalar::exp 162.179 vector::exp 126.171
+b/bench/latency/scalar_vector_latency_bd4bd2bd2bd2 scalar::exp 162.475 vector::exp 144.647
+b/bench/latency/scalar_vector_latency_bd4bd2bd2ed2 scalar::exp 162.346 vector::exp 131.589
+b/bench/latency/scalar_vector_latency_bd4bd2bd2hkth1d2 scalar::exp 166.277 vector::exp 133.28
+b/bench/latency/scalar_vector_latency_bd4bd2ed2ed2 scalar::exp 162.406 vector::exp 139.472
+b/bench/latency/scalar_vector_latency_bd4bd2ed2hkth1d2 scalar::exp 166.695 vector::exp 148.615
+b/bench/latency/scalar_vector_latency_bd4bd2hkth1d2hkth1d2 scalar::exp 163.99 vector::exp 134.904
+b/bench/latency/scalar_vector_latency_bd4ed2ed2ed2 scalar::exp 162.302 vector::exp 133.153
+b/bench/latency/scalar_vector_latency_bd4ed2ed2hkth1d2 scalar::exp 166.617 vector::exp 135.879
+b/bench/latency/scalar_vector_latency_bd4ed2hkth1d2hkth1d2 scalar::exp 159.345 vector::exp 136.941
+b/bench/latency/scalar_vector_latency_bd4hkth1d2hkth1d2hkth1d2 scalar::exp 163.679 vector::exp 127.737
+b/bench/latency/scalar_vector_latency_bd6bd2bd2 scalar::exp 161.427 vector::exp 182.693
+b/bench/latency/scalar_vector_latency_bd6bd2ed2 scalar::exp 160.983 vector::exp 179.045
+b/bench/latency/scalar_vector_latency_bd6bd2hkth1d2 scalar::exp 161.652 vector::exp 140.279
+b/bench/latency/scalar_vector_latency_bd6bd4 scalar::exp 158.553 vector::exp 155.382
+b/bench/latency/scalar_vector_latency_bd6ed2ed2 scalar::exp 161.007 vector::exp 166.503
+b/bench/latency/scalar_vector_latency_bd6ed2hkth1d2 scalar::exp 162.646 vector::exp 188.56
+b/bench/latency/scalar_vector_latency_bd6ed4 scalar::exp 154.478 vector::exp 128.983
+b/bench/latency/scalar_vector_latency_bd6hkth1d2hkth1d2 scalar::exp 160.677 vector::exp 165.025
+b/bench/latency/scalar_vector_latency_bd6hkth1d4 scalar::exp 164.665 vector::exp 171.705
+b/bench/latency/scalar_vector_latency_bd6hkth2d4 scalar::exp 162.315 vector::exp 187.799
+b/bench/latency/scalar_vector_latency_bd6hkth3d4 scalar::exp 160.285 vector::exp 183.519
+b/bench/latency/scalar_vector_latency_bd8bd2 scalar::exp 158.203 vector::exp 171.528
+b/bench/latency/scalar_vector_latency_bd8ed2 scalar::exp 158.173 vector::exp 174.098
+b/bench/latency/scalar_vector_latency_bd8hkth1d2 scalar::exp 155.025 vector::exp 153.405
+b/bench/latency/scalar_vector_latency_ed10 scalar::exp 154.564 vector::exp 127.958
+b/bench/latency/scalar_vector_latency_ed2bd4bd4 scalar::exp 157.564 vector::exp 122.072
+b/bench/latency/scalar_vector_latency_ed2bd4ed4 scalar::exp 162.311 vector::exp 129.017
+b/bench/latency/scalar_vector_latency_ed2bd4hkth1d4 scalar::exp 155.457 vector::exp 125.481
+b/bench/latency/scalar_vector_latency_ed2bd4hkth2d4 scalar::exp 162.079 vector::exp 129.514
+b/bench/latency/scalar_vector_latency_ed2bd4hkth3d4 scalar::exp 163.293 vector::exp 140.161
+b/bench/latency/scalar_vector_latency_ed2ed2ed2ed2ed2 scalar::exp 168.73 vector::exp 111.41
+b/bench/latency/scalar_vector_latency_ed2ed2ed2ed2hkth1d2 scalar::exp 166.715 vector::exp 130.183
+b/bench/latency/scalar_vector_latency_ed2ed2ed2hkth1d2hkth1d2 scalar::exp 166.503 vector::exp 105.894
+b/bench/latency/scalar_vector_latency_ed2ed2hkth1d2hkth1d2hkth1d2 scalar::exp 165.965 vector::exp 106.734
+b/bench/latency/scalar_vector_latency_ed2ed4ed4 scalar::exp 157.117 vector::exp 134.997
+b/bench/latency/scalar_vector_latency_ed2ed4hkth1d4 scalar::exp 156.406 vector::exp 165.514
+b/bench/latency/scalar_vector_latency_ed2ed4hkth2d4 scalar::exp 161.895 vector::exp 165.613
+b/bench/latency/scalar_vector_latency_ed2ed4hkth3d4 scalar::exp 163.257 vector::exp 146.351
+b/bench/latency/scalar_vector_latency_ed2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::exp 165.524 vector::exp 117.651
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth1d4 scalar::exp 162.325 vector::exp 113.603
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth2d4 scalar::exp 161.429 vector::exp 115.473
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth3d4 scalar::exp 157.089 vector::exp 121.116
+b/bench/latency/scalar_vector_latency_ed2hkth2d4hkth2d4 scalar::exp 165.199 vector::exp 163.57
+b/bench/latency/scalar_vector_latency_ed2hkth2d4hkth3d4 scalar::exp 163.177 vector::exp 123.569
+b/bench/latency/scalar_vector_latency_ed2hkth3d4hkth3d4 scalar::exp 161.078 vector::exp 139.681
+b/bench/latency/scalar_vector_latency_ed4bd2bd2bd2 scalar::exp 162.327 vector::exp 174.47
+b/bench/latency/scalar_vector_latency_ed4bd2bd2ed2 scalar::exp 162.261 vector::exp 123.687
+b/bench/latency/scalar_vector_latency_ed4bd2bd2hkth1d2 scalar::exp 161.382 vector::exp 120.563
+b/bench/latency/scalar_vector_latency_ed4bd2ed2ed2 scalar::exp 162.561 vector::exp 136.127
+b/bench/latency/scalar_vector_latency_ed4bd2ed2hkth1d2 scalar::exp 166.677 vector::exp 172.967
+b/bench/latency/scalar_vector_latency_ed4bd2hkth1d2hkth1d2 scalar::exp 164.826 vector::exp 170.401
+b/bench/latency/scalar_vector_latency_ed4ed2ed2ed2 scalar::exp 161.728 vector::exp 111.159
+b/bench/latency/scalar_vector_latency_ed4ed2ed2hkth1d2 scalar::exp 166.181 vector::exp 121.2
+b/bench/latency/scalar_vector_latency_ed4ed2hkth1d2hkth1d2 scalar::exp 164.967 vector::exp 124.918
+b/bench/latency/scalar_vector_latency_ed4hkth1d2hkth1d2hkth1d2 scalar::exp 161.559 vector::exp 120.404
+b/bench/latency/scalar_vector_latency_ed6bd2bd2 scalar::exp 158.267 vector::exp 160.463
+b/bench/latency/scalar_vector_latency_ed6bd2ed2 scalar::exp 160.589 vector::exp 130.125
+b/bench/latency/scalar_vector_latency_ed6bd2hkth1d2 scalar::exp 162.948 vector::exp 172.659
+b/bench/latency/scalar_vector_latency_ed6bd4 scalar::exp 156.79 vector::exp 118.818
+b/bench/latency/scalar_vector_latency_ed6ed2ed2 scalar::exp 160.418 vector::exp 103.707
+b/bench/latency/scalar_vector_latency_ed6ed2hkth1d2 scalar::exp 162.965 vector::exp 129.116
+b/bench/latency/scalar_vector_latency_ed6ed4 scalar::exp 155.741 vector::exp 144.219
+b/bench/latency/scalar_vector_latency_ed6hkth1d2hkth1d2 scalar::exp 158.283 vector::exp 127.051
+b/bench/latency/scalar_vector_latency_ed6hkth1d4 scalar::exp 156.248 vector::exp 124.329
+b/bench/latency/scalar_vector_latency_ed6hkth2d4 scalar::exp 164.835 vector::exp 171.115
+b/bench/latency/scalar_vector_latency_ed6hkth3d4 scalar::exp 161.523 vector::exp 127.253
+b/bench/latency/scalar_vector_latency_ed8bd2 scalar::exp 155.698 vector::exp 135.143
+b/bench/latency/scalar_vector_latency_ed8ed2 scalar::exp 154.771 vector::exp 104.741
+b/bench/latency/scalar_vector_latency_ed8hkth1d2 scalar::exp 153.334 vector::exp 126.501
+b/bench/latency/scalar_vector_latency_hkth1d10 scalar::exp 189.285 vector::exp 134.028
+b/bench/latency/scalar_vector_latency_hkth1d2bd4bd4 scalar::exp 158.666 vector::exp 131.087
+b/bench/latency/scalar_vector_latency_hkth1d2bd4ed4 scalar::exp 163.819 vector::exp 134.508
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth1d4 scalar::exp 156.824 vector::exp 165.908
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth2d4 scalar::exp 166.622 vector::exp 140.669
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth3d4 scalar::exp 166.257 vector::exp 145.461
+b/bench/latency/scalar_vector_latency_hkth1d2ed4ed4 scalar::exp 152.589 vector::exp 106.767
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth1d4 scalar::exp 155.148 vector::exp 140.749
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth2d4 scalar::exp 166.308 vector::exp 160.175
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth3d4 scalar::exp 159.784 vector::exp 167.583
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::exp 165.859 vector::exp 111.78
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth1d4 scalar::exp 156.686 vector::exp 110.692
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth2d4 scalar::exp 163.387 vector::exp 127.551
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth3d4 scalar::exp 154.879 vector::exp 147.407
+b/bench/latency/scalar_vector_latency_hkth1d2hkth2d4hkth2d4 scalar::exp 166.325 vector::exp 158.263
+b/bench/latency/scalar_vector_latency_hkth1d2hkth2d4hkth3d4 scalar::exp 163.719 vector::exp 166.601
+b/bench/latency/scalar_vector_latency_hkth1d2hkth3d4hkth3d4 scalar::exp 161.617 vector::exp 145.335
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2bd2 scalar::exp 157.49 vector::exp 112.614
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2ed2 scalar::exp 157.767 vector::exp 123.385
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2hkth1d2 scalar::exp 160.68 vector::exp 128.264
+b/bench/latency/scalar_vector_latency_hkth1d4bd2ed2ed2 scalar::exp 155.129 vector::exp 107.416
+b/bench/latency/scalar_vector_latency_hkth1d4bd2ed2hkth1d2 scalar::exp 159.834 vector::exp 123.147
+b/bench/latency/scalar_vector_latency_hkth1d4bd2hkth1d2hkth1d2 scalar::exp 159.207 vector::exp 113.117
+b/bench/latency/scalar_vector_latency_hkth1d4ed2ed2ed2 scalar::exp 157.687 vector::exp 113.686
+b/bench/latency/scalar_vector_latency_hkth1d4ed2ed2hkth1d2 scalar::exp 155.752 vector::exp 125.141
+b/bench/latency/scalar_vector_latency_hkth1d4ed2hkth1d2hkth1d2 scalar::exp 158.381 vector::exp 124.678
+b/bench/latency/scalar_vector_latency_hkth1d4hkth1d2hkth1d2hkth1d2 scalar::exp 158.191 vector::exp 128.115
+b/bench/latency/scalar_vector_latency_hkth1d6bd2bd2 scalar::exp 160.739 vector::exp 124.328
+b/bench/latency/scalar_vector_latency_hkth1d6bd2ed2 scalar::exp 161.447 vector::exp 132.113
+b/bench/latency/scalar_vector_latency_hkth1d6bd2hkth1d2 scalar::exp 163.095 vector::exp 134.859
+b/bench/latency/scalar_vector_latency_hkth1d6bd4 scalar::exp 162.203 vector::exp 126.722
+b/bench/latency/scalar_vector_latency_hkth1d6ed2ed2 scalar::exp 161.222 vector::exp 126.717
+b/bench/latency/scalar_vector_latency_hkth1d6ed2hkth1d2 scalar::exp 161.208 vector::exp 128.815
+b/bench/latency/scalar_vector_latency_hkth1d6ed4 scalar::exp 162.084 vector::exp 126.055
+b/bench/latency/scalar_vector_latency_hkth1d6hkth1d2hkth1d2 scalar::exp 160.219 vector::exp 129.939
+b/bench/latency/scalar_vector_latency_hkth1d6hkth1d4 scalar::exp 164.533 vector::exp 114.33
+b/bench/latency/scalar_vector_latency_hkth1d6hkth2d4 scalar::exp 162.181 vector::exp 124.268
+b/bench/latency/scalar_vector_latency_hkth1d6hkth3d4 scalar::exp 163.874 vector::exp 126.863
+b/bench/latency/scalar_vector_latency_hkth1d8bd2 scalar::exp 172.725 vector::exp 139.712
+b/bench/latency/scalar_vector_latency_hkth1d8ed2 scalar::exp 174.234 vector::exp 130.793
+b/bench/latency/scalar_vector_latency_hkth1d8hkth1d2 scalar::exp 174.069 vector::exp 134.466
+b/bench/latency/scalar_vector_latency_hkth2d10 scalar::exp 177.753 vector::exp 113.536
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2bd2 scalar::exp 162.372 vector::exp 162.031
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2ed2 scalar::exp 162.214 vector::exp 156.66
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2hkth1d2 scalar::exp 160.228 vector::exp 123.935
+b/bench/latency/scalar_vector_latency_hkth2d4bd2ed2ed2 scalar::exp 162.685 vector::exp 115.507
+b/bench/latency/scalar_vector_latency_hkth2d4bd2ed2hkth1d2 scalar::exp 164.691 vector::exp 112.909
+b/bench/latency/scalar_vector_latency_hkth2d4bd2hkth1d2hkth1d2 scalar::exp 169.333 vector::exp 119.849
+b/bench/latency/scalar_vector_latency_hkth2d4ed2ed2ed2 scalar::exp 158.706 vector::exp 117.099
+b/bench/latency/scalar_vector_latency_hkth2d4ed2ed2hkth1d2 scalar::exp 159.349 vector::exp 113.459
+b/bench/latency/scalar_vector_latency_hkth2d4ed2hkth1d2hkth1d2 scalar::exp 168.344 vector::exp 126.044
+b/bench/latency/scalar_vector_latency_hkth2d4hkth1d2hkth1d2hkth1d2 scalar::exp 162.298 vector::exp 131.487
+b/bench/latency/scalar_vector_latency_hkth2d6bd2bd2 scalar::exp 164.576 vector::exp 166.392
+b/bench/latency/scalar_vector_latency_hkth2d6bd2ed2 scalar::exp 164.873 vector::exp 107.181
+b/bench/latency/scalar_vector_latency_hkth2d6bd2hkth1d2 scalar::exp 165.657 vector::exp 119.418
+b/bench/latency/scalar_vector_latency_hkth2d6bd4 scalar::exp 161.971 vector::exp 112.562
+b/bench/latency/scalar_vector_latency_hkth2d6ed2ed2 scalar::exp 163.074 vector::exp 120.521
+b/bench/latency/scalar_vector_latency_hkth2d6ed2hkth1d2 scalar::exp 165.606 vector::exp 127.086
+b/bench/latency/scalar_vector_latency_hkth2d6ed4 scalar::exp 162.447 vector::exp 148.964
+b/bench/latency/scalar_vector_latency_hkth2d6hkth1d2hkth1d2 scalar::exp 162.303 vector::exp 123.192
+b/bench/latency/scalar_vector_latency_hkth2d6hkth1d4 scalar::exp 171.669 vector::exp 170.107
+b/bench/latency/scalar_vector_latency_hkth2d6hkth2d4 scalar::exp 165.591 vector::exp 162.381
+b/bench/latency/scalar_vector_latency_hkth2d6hkth3d4 scalar::exp 161.135 vector::exp 130.385
+b/bench/latency/scalar_vector_latency_hkth2d8bd2 scalar::exp 169.708 vector::exp 125.529
+b/bench/latency/scalar_vector_latency_hkth2d8ed2 scalar::exp 173.108 vector::exp 136.236
+b/bench/latency/scalar_vector_latency_hkth2d8hkth1d2 scalar::exp 172.406 vector::exp 126.314
+b/bench/latency/scalar_vector_latency_hkth3d10 scalar::exp 179.255 vector::exp 118.565
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2bd2 scalar::exp 161.747 vector::exp 138.203
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2ed2 scalar::exp 161.726 vector::exp 145.261
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2hkth1d2 scalar::exp 158.443 vector::exp 137.756
+b/bench/latency/scalar_vector_latency_hkth3d4bd2ed2ed2 scalar::exp 163.259 vector::exp 142.858
+b/bench/latency/scalar_vector_latency_hkth3d4bd2ed2hkth1d2 scalar::exp 160.879 vector::exp 174.954
+b/bench/latency/scalar_vector_latency_hkth3d4bd2hkth1d2hkth1d2 scalar::exp 157.781 vector::exp 177.55
+b/bench/latency/scalar_vector_latency_hkth3d4ed2ed2ed2 scalar::exp 161.662 vector::exp 135.768
+b/bench/latency/scalar_vector_latency_hkth3d4ed2ed2hkth1d2 scalar::exp 159.007 vector::exp 135.349
+b/bench/latency/scalar_vector_latency_hkth3d4ed2hkth1d2hkth1d2 scalar::exp 159.403 vector::exp 146.365
+b/bench/latency/scalar_vector_latency_hkth3d4hkth1d2hkth1d2hkth1d2 scalar::exp 158.78 vector::exp 129.685
+b/bench/latency/scalar_vector_latency_hkth3d6bd2bd2 scalar::exp 172.214 vector::exp 168.887
+b/bench/latency/scalar_vector_latency_hkth3d6bd2ed2 scalar::exp 170.429 vector::exp 142.701
+b/bench/latency/scalar_vector_latency_hkth3d6bd2hkth1d2 scalar::exp 173.195 vector::exp 145.647
+b/bench/latency/scalar_vector_latency_hkth3d6bd4 scalar::exp 172.66 vector::exp 120.993
+b/bench/latency/scalar_vector_latency_hkth3d6ed2ed2 scalar::exp 171.908 vector::exp 137.903
+b/bench/latency/scalar_vector_latency_hkth3d6ed2hkth1d2 scalar::exp 172.785 vector::exp 141.496
+b/bench/latency/scalar_vector_latency_hkth3d6ed4 scalar::exp 169.628 vector::exp 141.437
+b/bench/latency/scalar_vector_latency_hkth3d6hkth1d2hkth1d2 scalar::exp 173.291 vector::exp 135.879
+b/bench/latency/scalar_vector_latency_hkth3d6hkth1d4 scalar::exp 176.194 vector::exp 159.803
+b/bench/latency/scalar_vector_latency_hkth3d6hkth2d4 scalar::exp 172.303 vector::exp 117.546
+b/bench/latency/scalar_vector_latency_hkth3d6hkth3d4 scalar::exp 172.209 vector::exp 149.526
+b/bench/latency/scalar_vector_latency_hkth3d8bd2 scalar::exp 163.066 vector::exp 150.351
+b/bench/latency/scalar_vector_latency_hkth3d8ed2 scalar::exp 163.05 vector::exp 138.421
+b/bench/latency/scalar_vector_latency_hkth3d8hkth1d2 scalar::exp 160.44 vector::exp 151.208
+b/bench/latency/scalar_vector_latency_hkth4d10 scalar::exp 170.448 vector::exp 125.203
+b/bench/latency/scalar_vector_latency_hkth4d6bd2bd2 scalar::exp 156.529 vector::exp 178.007
+b/bench/latency/scalar_vector_latency_hkth4d6bd2ed2 scalar::exp 156.141 vector::exp 161.496
+b/bench/latency/scalar_vector_latency_hkth4d6bd2hkth1d2 scalar::exp 163.787 vector::exp 175.636
+b/bench/latency/scalar_vector_latency_hkth4d6bd4 scalar::exp 162.629 vector::exp 147.311
+b/bench/latency/scalar_vector_latency_hkth4d6ed2ed2 scalar::exp 156.831 vector::exp 140.196
+b/bench/latency/scalar_vector_latency_hkth4d6ed2hkth1d2 scalar::exp 162.461 vector::exp 145.131
+b/bench/latency/scalar_vector_latency_hkth4d6ed4 scalar::exp 161.124 vector::exp 175.261
+b/bench/latency/scalar_vector_latency_hkth4d6hkth1d2hkth1d2 scalar::exp 159.09 vector::exp 131.525
+b/bench/latency/scalar_vector_latency_hkth4d6hkth1d4 scalar::exp 162.086 vector::exp 144.481
+b/bench/latency/scalar_vector_latency_hkth4d6hkth2d4 scalar::exp 164.739 vector::exp 170.381
+b/bench/latency/scalar_vector_latency_hkth4d6hkth3d4 scalar::exp 172.211 vector::exp 146.421
+b/bench/latency/scalar_vector_latency_hkth4d8bd2 scalar::exp 171.083 vector::exp 132.739
+b/bench/latency/scalar_vector_latency_hkth4d8ed2 scalar::exp 170.174 vector::exp 133.17
+b/bench/latency/scalar_vector_latency_hkth4d8hkth1d2 scalar::exp 171.061 vector::exp 138.671
+b/bench/latency/scalar_vector_latency_hkth5d10 scalar::exp 182.788 vector::exp 144.479
+b/bench/latency/scalar_vector_latency_hkth5d6bd2bd2 scalar::exp 164.877 vector::exp 146.279
+b/bench/latency/scalar_vector_latency_hkth5d6bd2ed2 scalar::exp 164.209 vector::exp 141.137
+b/bench/latency/scalar_vector_latency_hkth5d6bd2hkth1d2 scalar::exp 165.31 vector::exp 158.572
+b/bench/latency/scalar_vector_latency_hkth5d6bd4 scalar::exp 163.801 vector::exp 132.879
+b/bench/latency/scalar_vector_latency_hkth5d6ed2ed2 scalar::exp 162.509 vector::exp 145.652
+b/bench/latency/scalar_vector_latency_hkth5d6ed2hkth1d2 scalar::exp 166.364 vector::exp 157.622
+b/bench/latency/scalar_vector_latency_hkth5d6ed4 scalar::exp 163.571 vector::exp 145.06
+b/bench/latency/scalar_vector_latency_hkth5d6hkth1d2hkth1d2 scalar::exp 163.939 vector::exp 148.325
+b/bench/latency/scalar_vector_latency_hkth5d6hkth1d4 scalar::exp 170.647 vector::exp 146.804
+b/bench/latency/scalar_vector_latency_hkth5d6hkth2d4 scalar::exp 164.208 vector::exp 180.849
+b/bench/latency/scalar_vector_latency_hkth5d6hkth3d4 scalar::exp 160.613 vector::exp 140.672
+b/bench/latency/scalar_vector_latency_hkth5d8bd2 scalar::exp 171.375 vector::exp 159.073
+b/bench/latency/scalar_vector_latency_hkth5d8ed2 scalar::exp 173.5 vector::exp 136.817
+b/bench/latency/scalar_vector_latency_hkth5d8hkth1d2 scalar::exp 169.143 vector::exp 139.551
+b/bench/latency/scalar_vector_latency_hkth6d10 scalar::exp 167.674 vector::exp 148.707
+b/bench/latency/scalar_vector_latency_hkth6d8bd2 scalar::exp 167.233 vector::exp 143.479
+b/bench/latency/scalar_vector_latency_hkth6d8ed2 scalar::exp 166.884 vector::exp 140.563
+b/bench/latency/scalar_vector_latency_hkth6d8hkth1d2 scalar::exp 163.249 vector::exp 141.655
+b/bench/latency/scalar_vector_latency_hkth7d10 scalar::exp 180.299 vector::exp 161.497
+b/bench/latency/scalar_vector_latency_hkth7d8bd2 scalar::exp 174.541 vector::exp 164.548
+b/bench/latency/scalar_vector_latency_hkth7d8ed2 scalar::exp 172.651 vector::exp 160.869
+b/bench/latency/scalar_vector_latency_hkth7d8hkth1d2 scalar::exp 172.735 vector::exp 154.822
+b/bench/latency/scalar_vector_latency_hkth8d10 scalar::exp 170.636 vector::exp 154.729
+b/bench/latency/scalar_vector_latency_hkth9d10 scalar::exp 171.318 vector::exp 174.406
+b/bench/latency/scalar_vector_latency_bd10 scalar::exp 159.561 vector::exp 159.045
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2bd2 scalar::exp 168.312 vector::exp 129.927
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2ed2 scalar::exp 168.445 vector::exp 129.245
+b/bench/latency/scalar_vector_latency_bd2bd2bd2bd2hkth1d2 scalar::exp 163.939 vector::exp 120.94
+b/bench/latency/scalar_vector_latency_bd2bd2bd2ed2ed2 scalar::exp 167.773 vector::exp 127.854
+b/bench/latency/scalar_vector_latency_bd2bd2bd2ed2hkth1d2 scalar::exp 165.44 vector::exp 139.908
+b/bench/latency/scalar_vector_latency_bd2bd2bd2hkth1d2hkth1d2 scalar::exp 167.302 vector::exp 134.081
+b/bench/latency/scalar_vector_latency_bd2bd2ed2ed2ed2 scalar::exp 166.743 vector::exp 125.287
+b/bench/latency/scalar_vector_latency_bd2bd2ed2ed2hkth1d2 scalar::exp 165.549 vector::exp 132.463
+b/bench/latency/scalar_vector_latency_bd2bd2ed2hkth1d2hkth1d2 scalar::exp 167.465 vector::exp 143.491
+b/bench/latency/scalar_vector_latency_bd2bd2hkth1d2hkth1d2hkth1d2 scalar::exp 167.869 vector::exp 130.54
+b/bench/latency/scalar_vector_latency_bd2bd4bd4 scalar::exp 159.339 vector::exp 134.633
+b/bench/latency/scalar_vector_latency_bd2bd4ed4 scalar::exp 161.229 vector::exp 161.99
+b/bench/latency/scalar_vector_latency_bd2bd4hkth1d4 scalar::exp 156.351 vector::exp 129.676
+b/bench/latency/scalar_vector_latency_bd2bd4hkth2d4 scalar::exp 161.203 vector::exp 128.875
+b/bench/latency/scalar_vector_latency_bd2bd4hkth3d4 scalar::exp 163.263 vector::exp 154.119
+b/bench/latency/scalar_vector_latency_bd2ed2ed2ed2ed2 scalar::exp 168.193 vector::exp 121.618
+b/bench/latency/scalar_vector_latency_bd2ed2ed2ed2hkth1d2 scalar::exp 165.579 vector::exp 118.401
+b/bench/latency/scalar_vector_latency_bd2ed2ed2hkth1d2hkth1d2 scalar::exp 167.526 vector::exp 121.013
+b/bench/latency/scalar_vector_latency_bd2ed2hkth1d2hkth1d2hkth1d2 scalar::exp 166.935 vector::exp 119.561
+b/bench/latency/scalar_vector_latency_bd2ed4ed4 scalar::exp 157.364 vector::exp 138.965
+b/bench/latency/scalar_vector_latency_bd2ed4hkth1d4 scalar::exp 155.177 vector::exp 114.665
+b/bench/latency/scalar_vector_latency_bd2ed4hkth2d4 scalar::exp 162.01 vector::exp 152.736
+b/bench/latency/scalar_vector_latency_bd2ed4hkth3d4 scalar::exp 165.342 vector::exp 148.699
+b/bench/latency/scalar_vector_latency_bd2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::exp 164.417 vector::exp 126.725
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth1d4 scalar::exp 162.303 vector::exp 113.925
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth2d4 scalar::exp 162.406 vector::exp 121.655
+b/bench/latency/scalar_vector_latency_bd2hkth1d4hkth3d4 scalar::exp 157.028 vector::exp 173.709
+b/bench/latency/scalar_vector_latency_bd2hkth2d4hkth2d4 scalar::exp 163.612 vector::exp 151.287
+b/bench/latency/scalar_vector_latency_bd2hkth2d4hkth3d4 scalar::exp 167.621 vector::exp 160.679
+b/bench/latency/scalar_vector_latency_bd2hkth3d4hkth3d4 scalar::exp 162.215 vector::exp 127.978
+b/bench/latency/scalar_vector_latency_bd4bd2bd2bd2 scalar::exp 162.239 vector::exp 137.366
+b/bench/latency/scalar_vector_latency_bd4bd2bd2ed2 scalar::exp 161.941 vector::exp 128.853
+b/bench/latency/scalar_vector_latency_bd4bd2bd2hkth1d2 scalar::exp 163.366 vector::exp 136.065
+b/bench/latency/scalar_vector_latency_bd4bd2ed2ed2 scalar::exp 162.285 vector::exp 135.668
+b/bench/latency/scalar_vector_latency_bd4bd2ed2hkth1d2 scalar::exp 166.745 vector::exp 134.64
+b/bench/latency/scalar_vector_latency_bd4bd2hkth1d2hkth1d2 scalar::exp 163.365 vector::exp 137.929
+b/bench/latency/scalar_vector_latency_bd4ed2ed2ed2 scalar::exp 161.535 vector::exp 128.844
+b/bench/latency/scalar_vector_latency_bd4ed2ed2hkth1d2 scalar::exp 166.82 vector::exp 128.15
+b/bench/latency/scalar_vector_latency_bd4ed2hkth1d2hkth1d2 scalar::exp 164.794 vector::exp 139.069
+b/bench/latency/scalar_vector_latency_bd4hkth1d2hkth1d2hkth1d2 scalar::exp 161.849 vector::exp 136.402
+b/bench/latency/scalar_vector_latency_bd6bd2bd2 scalar::exp 158.916 vector::exp 169.74
+b/bench/latency/scalar_vector_latency_bd6bd2ed2 scalar::exp 159.263 vector::exp 160.305
+b/bench/latency/scalar_vector_latency_bd6bd2hkth1d2 scalar::exp 162.573 vector::exp 144.499
+b/bench/latency/scalar_vector_latency_bd6bd4 scalar::exp 158.576 vector::exp 177.535
+b/bench/latency/scalar_vector_latency_bd6ed2ed2 scalar::exp 161.317 vector::exp 148.529
+b/bench/latency/scalar_vector_latency_bd6ed2hkth1d2 scalar::exp 162.602 vector::exp 165.866
+b/bench/latency/scalar_vector_latency_bd6ed4 scalar::exp 155.212 vector::exp 140.708
+b/bench/latency/scalar_vector_latency_bd6hkth1d2hkth1d2 scalar::exp 159.917 vector::exp 179.332
+b/bench/latency/scalar_vector_latency_bd6hkth1d4 scalar::exp 163.645 vector::exp 154.215
+b/bench/latency/scalar_vector_latency_bd6hkth2d4 scalar::exp 162.287 vector::exp 168.633
+b/bench/latency/scalar_vector_latency_bd6hkth3d4 scalar::exp 160.41 vector::exp 151.946
+b/bench/latency/scalar_vector_latency_bd8bd2 scalar::exp 155.997 vector::exp 182.707
+b/bench/latency/scalar_vector_latency_bd8ed2 scalar::exp 158.547 vector::exp 159.498
+b/bench/latency/scalar_vector_latency_bd8hkth1d2 scalar::exp 158.642 vector::exp 153.8
+b/bench/latency/scalar_vector_latency_ed10 scalar::exp 153.733 vector::exp 125.932
+b/bench/latency/scalar_vector_latency_ed2bd4bd4 scalar::exp 159.893 vector::exp 132.947
+b/bench/latency/scalar_vector_latency_ed2bd4ed4 scalar::exp 161.217 vector::exp 143.798
+b/bench/latency/scalar_vector_latency_ed2bd4hkth1d4 scalar::exp 155.971 vector::exp 122.679
+b/bench/latency/scalar_vector_latency_ed2bd4hkth2d4 scalar::exp 156.858 vector::exp 127.216
+b/bench/latency/scalar_vector_latency_ed2bd4hkth3d4 scalar::exp 163.589 vector::exp 130.613
+b/bench/latency/scalar_vector_latency_ed2ed2ed2ed2ed2 scalar::exp 168.355 vector::exp 112.816
+b/bench/latency/scalar_vector_latency_ed2ed2ed2ed2hkth1d2 scalar::exp 163.8 vector::exp 115.444
+b/bench/latency/scalar_vector_latency_ed2ed2ed2hkth1d2hkth1d2 scalar::exp 167.402 vector::exp 122.055
+b/bench/latency/scalar_vector_latency_ed2ed2hkth1d2hkth1d2hkth1d2 scalar::exp 167.752 vector::exp 113.593
+b/bench/latency/scalar_vector_latency_ed2ed4ed4 scalar::exp 157.983 vector::exp 135.021
+b/bench/latency/scalar_vector_latency_ed2ed4hkth1d4 scalar::exp 156.463 vector::exp 142.99
+b/bench/latency/scalar_vector_latency_ed2ed4hkth2d4 scalar::exp 162.117 vector::exp 151.992
+b/bench/latency/scalar_vector_latency_ed2ed4hkth3d4 scalar::exp 165.35 vector::exp 142.007
+b/bench/latency/scalar_vector_latency_ed2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::exp 164.386 vector::exp 117.828
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth1d4 scalar::exp 158.07 vector::exp 115.703
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth2d4 scalar::exp 162.007 vector::exp 118.692
+b/bench/latency/scalar_vector_latency_ed2hkth1d4hkth3d4 scalar::exp 156.093 vector::exp 138.775
+b/bench/latency/scalar_vector_latency_ed2hkth2d4hkth2d4 scalar::exp 164.791 vector::exp 141.657
+b/bench/latency/scalar_vector_latency_ed2hkth2d4hkth3d4 scalar::exp 167.539 vector::exp 126.711
+b/bench/latency/scalar_vector_latency_ed2hkth3d4hkth3d4 scalar::exp 162.143 vector::exp 129.328
+b/bench/latency/scalar_vector_latency_ed4bd2bd2bd2 scalar::exp 161.347 vector::exp 159.365
+b/bench/latency/scalar_vector_latency_ed4bd2bd2ed2 scalar::exp 162.262 vector::exp 119.676
+b/bench/latency/scalar_vector_latency_ed4bd2bd2hkth1d2 scalar::exp 166.091 vector::exp 125.241
+b/bench/latency/scalar_vector_latency_ed4bd2ed2ed2 scalar::exp 162.344 vector::exp 136.091
+b/bench/latency/scalar_vector_latency_ed4bd2ed2hkth1d2 scalar::exp 163.085 vector::exp 146.062
+b/bench/latency/scalar_vector_latency_ed4bd2hkth1d2hkth1d2 scalar::exp 164.816 vector::exp 148.041
+b/bench/latency/scalar_vector_latency_ed4ed2ed2ed2 scalar::exp 162.212 vector::exp 114.575
+b/bench/latency/scalar_vector_latency_ed4ed2ed2hkth1d2 scalar::exp 166.826 vector::exp 123.645
+b/bench/latency/scalar_vector_latency_ed4ed2hkth1d2hkth1d2 scalar::exp 163.287 vector::exp 116.482
+b/bench/latency/scalar_vector_latency_ed4hkth1d2hkth1d2hkth1d2 scalar::exp 162.643 vector::exp 133.082
+b/bench/latency/scalar_vector_latency_ed6bd2bd2 scalar::exp 160.648 vector::exp 153.291
+b/bench/latency/scalar_vector_latency_ed6bd2ed2 scalar::exp 156.764 vector::exp 130.105
+b/bench/latency/scalar_vector_latency_ed6bd2hkth1d2 scalar::exp 163.349 vector::exp 159.955
+b/bench/latency/scalar_vector_latency_ed6bd4 scalar::exp 154.235 vector::exp 115.617
+b/bench/latency/scalar_vector_latency_ed6ed2ed2 scalar::exp 154.209 vector::exp 107.5
+b/bench/latency/scalar_vector_latency_ed6ed2hkth1d2 scalar::exp 163.84 vector::exp 129.092
+b/bench/latency/scalar_vector_latency_ed6ed4 scalar::exp 157.307 vector::exp 145.921
+b/bench/latency/scalar_vector_latency_ed6hkth1d2hkth1d2 scalar::exp 155.313 vector::exp 126.125
+b/bench/latency/scalar_vector_latency_ed6hkth1d4 scalar::exp 156 vector::exp 124.37
+b/bench/latency/scalar_vector_latency_ed6hkth2d4 scalar::exp 165.155 vector::exp 169.599
+b/bench/latency/scalar_vector_latency_ed6hkth3d4 scalar::exp 159.828 vector::exp 111.686
+b/bench/latency/scalar_vector_latency_ed8bd2 scalar::exp 153.876 vector::exp 134.286
+b/bench/latency/scalar_vector_latency_ed8ed2 scalar::exp 155.655 vector::exp 107.584
+b/bench/latency/scalar_vector_latency_ed8hkth1d2 scalar::exp 155.523 vector::exp 127.644
+b/bench/latency/scalar_vector_latency_hkth1d10 scalar::exp 185.947 vector::exp 141.616
+b/bench/latency/scalar_vector_latency_hkth1d2bd4bd4 scalar::exp 160.234 vector::exp 128.649
+b/bench/latency/scalar_vector_latency_hkth1d2bd4ed4 scalar::exp 165.813 vector::exp 143.586
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth1d4 scalar::exp 157.404 vector::exp 185.588
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth2d4 scalar::exp 163.991 vector::exp 127.103
+b/bench/latency/scalar_vector_latency_hkth1d2bd4hkth3d4 scalar::exp 164.636 vector::exp 145.444
+b/bench/latency/scalar_vector_latency_hkth1d2ed4ed4 scalar::exp 160.512 vector::exp 119.524
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth1d4 scalar::exp 155.293 vector::exp 151.028
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth2d4 scalar::exp 161.632 vector::exp 138.669
+b/bench/latency/scalar_vector_latency_hkth1d2ed4hkth3d4 scalar::exp 159.273 vector::exp 161.883
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d2hkth1d2hkth1d2hkth1d2 scalar::exp 165.411 vector::exp 131.999
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth1d4 scalar::exp 162.722 vector::exp 113.758
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth2d4 scalar::exp 162.175 vector::exp 128.469
+b/bench/latency/scalar_vector_latency_hkth1d2hkth1d4hkth3d4 scalar::exp 156.946 vector::exp 166.091
+b/bench/latency/scalar_vector_latency_hkth1d2hkth2d4hkth2d4 scalar::exp 165.439 vector::exp 167.261
+b/bench/latency/scalar_vector_latency_hkth1d2hkth2d4hkth3d4 scalar::exp 163.73 vector::exp 146.686
+b/bench/latency/scalar_vector_latency_hkth1d2hkth3d4hkth3d4 scalar::exp 163.046 vector::exp 145.325
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2bd2 scalar::exp 159.17 vector::exp 131.393
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2ed2 scalar::exp 158.609 vector::exp 117.906
+b/bench/latency/scalar_vector_latency_hkth1d4bd2bd2hkth1d2 scalar::exp 156.085 vector::exp 123.677
+b/bench/latency/scalar_vector_latency_hkth1d4bd2ed2ed2 scalar::exp 157.586 vector::exp 118.268
+b/bench/latency/scalar_vector_latency_hkth1d4bd2ed2hkth1d2 scalar::exp 160.051 vector::exp 118.026
+b/bench/latency/scalar_vector_latency_hkth1d4bd2hkth1d2hkth1d2 scalar::exp 158.919 vector::exp 120.14
+b/bench/latency/scalar_vector_latency_hkth1d4ed2ed2ed2 scalar::exp 158.033 vector::exp 110.945
+b/bench/latency/scalar_vector_latency_hkth1d4ed2ed2hkth1d2 scalar::exp 160.379 vector::exp 115.932
+b/bench/latency/scalar_vector_latency_hkth1d4ed2hkth1d2hkth1d2 scalar::exp 155.307 vector::exp 123.019
+b/bench/latency/scalar_vector_latency_hkth1d4hkth1d2hkth1d2hkth1d2 scalar::exp 158.976 vector::exp 125.799
+b/bench/latency/scalar_vector_latency_hkth1d6bd2bd2 scalar::exp 161.746 vector::exp 133.642
+b/bench/latency/scalar_vector_latency_hkth1d6bd2ed2 scalar::exp 161.425 vector::exp 138.434
+b/bench/latency/scalar_vector_latency_hkth1d6bd2hkth1d2 scalar::exp 175.163 vector::exp 134.48
+b/bench/latency/scalar_vector_latency_hkth1d6bd4 scalar::exp 161.911 vector::exp 129.838
+b/bench/latency/scalar_vector_latency_hkth1d6ed2ed2 scalar::exp 161.804 vector::exp 118.93
+b/bench/latency/scalar_vector_latency_hkth1d6ed2hkth1d2 scalar::exp 160.867 vector::exp 127.841
+b/bench/latency/scalar_vector_latency_hkth1d6ed4 scalar::exp 162.107 vector::exp 118.513
+b/bench/latency/scalar_vector_latency_hkth1d6hkth1d2hkth1d2 scalar::exp 163.109 vector::exp 127.712
+b/bench/latency/scalar_vector_latency_hkth1d6hkth1d4 scalar::exp 161.889 vector::exp 123.037
+b/bench/latency/scalar_vector_latency_hkth1d6hkth2d4 scalar::exp 165.185 vector::exp 118.667
+b/bench/latency/scalar_vector_latency_hkth1d6hkth3d4 scalar::exp 162.688 vector::exp 118.156
+b/bench/latency/scalar_vector_latency_hkth1d8bd2 scalar::exp 174.099 vector::exp 144.839
+b/bench/latency/scalar_vector_latency_hkth1d8ed2 scalar::exp 172.569 vector::exp 134.001
+b/bench/latency/scalar_vector_latency_hkth1d8hkth1d2 scalar::exp 174.076 vector::exp 129.627
+b/bench/latency/scalar_vector_latency_hkth2d10 scalar::exp 178.718 vector::exp 118.931
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2bd2 scalar::exp 162.648 vector::exp 165.587
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2ed2 scalar::exp 163.59 vector::exp 168.043
+b/bench/latency/scalar_vector_latency_hkth2d4bd2bd2hkth1d2 scalar::exp 164.133 vector::exp 127.599
+b/bench/latency/scalar_vector_latency_hkth2d4bd2ed2ed2 scalar::exp 162.601 vector::exp 132.393
+b/bench/latency/scalar_vector_latency_hkth2d4bd2ed2hkth1d2 scalar::exp 162.825 vector::exp 116.552
+b/bench/latency/scalar_vector_latency_hkth2d4bd2hkth1d2hkth1d2 scalar::exp 169.611 vector::exp 114.837
+b/bench/latency/scalar_vector_latency_hkth2d4ed2ed2ed2 scalar::exp 162.427 vector::exp 117.349
+b/bench/latency/scalar_vector_latency_hkth2d4ed2ed2hkth1d2 scalar::exp 159.049 vector::exp 121.469
+b/bench/latency/scalar_vector_latency_hkth2d4ed2hkth1d2hkth1d2 scalar::exp 166.439 vector::exp 117.379
+b/bench/latency/scalar_vector_latency_hkth2d4hkth1d2hkth1d2hkth1d2 scalar::exp 162.351 vector::exp 124.087
+b/bench/latency/scalar_vector_latency_hkth2d6bd2bd2 scalar::exp 163.92 vector::exp 153.87
+b/bench/latency/scalar_vector_latency_hkth2d6bd2ed2 scalar::exp 162.936 vector::exp 109.882
+b/bench/latency/scalar_vector_latency_hkth2d6bd2hkth1d2 scalar::exp 165.64 vector::exp 116.715
+b/bench/latency/scalar_vector_latency_hkth2d6bd4 scalar::exp 162.808 vector::exp 130.67
+b/bench/latency/scalar_vector_latency_hkth2d6ed2ed2 scalar::exp 163.927 vector::exp 124.715
+b/bench/latency/scalar_vector_latency_hkth2d6ed2hkth1d2 scalar::exp 165.582 vector::exp 114.618
+b/bench/latency/scalar_vector_latency_hkth2d6ed4 scalar::exp 163.124 vector::exp 154.35
+b/bench/latency/scalar_vector_latency_hkth2d6hkth1d2hkth1d2 scalar::exp 162.329 vector::exp 117.044
+b/bench/latency/scalar_vector_latency_hkth2d6hkth1d4 scalar::exp 169.805 vector::exp 139.062
+b/bench/latency/scalar_vector_latency_hkth2d6hkth2d4 scalar::exp 165.233 vector::exp 160.253
+b/bench/latency/scalar_vector_latency_hkth2d6hkth3d4 scalar::exp 162.135 vector::exp 131.451
+b/bench/latency/scalar_vector_latency_hkth2d8bd2 scalar::exp 173.392 vector::exp 120.686
+b/bench/latency/scalar_vector_latency_hkth2d8ed2 scalar::exp 170.968 vector::exp 116.355
+b/bench/latency/scalar_vector_latency_hkth2d8hkth1d2 scalar::exp 172.834 vector::exp 126.747
+b/bench/latency/scalar_vector_latency_hkth3d10 scalar::exp 179.237 vector::exp 126.354
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2bd2 scalar::exp 160.976 vector::exp 134.464
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2ed2 scalar::exp 161.733 vector::exp 128.764
+b/bench/latency/scalar_vector_latency_hkth3d4bd2bd2hkth1d2 scalar::exp 159.86 vector::exp 141.002
+b/bench/latency/scalar_vector_latency_hkth3d4bd2ed2ed2 scalar::exp 160.316 vector::exp 138.937
+b/bench/latency/scalar_vector_latency_hkth3d4bd2ed2hkth1d2 scalar::exp 159.551 vector::exp 153.216
+b/bench/latency/scalar_vector_latency_hkth3d4bd2hkth1d2hkth1d2 scalar::exp 161.782 vector::exp 173.13
+b/bench/latency/scalar_vector_latency_hkth3d4ed2ed2ed2 scalar::exp 160.455 vector::exp 126.941
+b/bench/latency/scalar_vector_latency_hkth3d4ed2ed2hkth1d2 scalar::exp 151.672 vector::exp 116.691
+b/bench/latency/scalar_vector_latency_hkth3d4ed2hkth1d2hkth1d2 scalar::exp 159.92 vector::exp 133.168
+b/bench/latency/scalar_vector_latency_hkth3d4hkth1d2hkth1d2hkth1d2 scalar::exp 160.291 vector::exp 131.557
+b/bench/latency/scalar_vector_latency_hkth3d6bd2bd2 scalar::exp 170.427 vector::exp 162.069
+b/bench/latency/scalar_vector_latency_hkth3d6bd2ed2 scalar::exp 170.681 vector::exp 137.694
+b/bench/latency/scalar_vector_latency_hkth3d6bd2hkth1d2 scalar::exp 172.547 vector::exp 127.873
+b/bench/latency/scalar_vector_latency_hkth3d6bd4 scalar::exp 171.926 vector::exp 124.2
+b/bench/latency/scalar_vector_latency_hkth3d6ed2ed2 scalar::exp 169.582 vector::exp 135.978
+b/bench/latency/scalar_vector_latency_hkth3d6ed2hkth1d2 scalar::exp 172.715 vector::exp 130.545
+b/bench/latency/scalar_vector_latency_hkth3d6ed4 scalar::exp 171.13 vector::exp 142.476
+b/bench/latency/scalar_vector_latency_hkth3d6hkth1d2hkth1d2 scalar::exp 172.941 vector::exp 146.633
+b/bench/latency/scalar_vector_latency_hkth3d6hkth1d4 scalar::exp 175.619 vector::exp 154.461
+b/bench/latency/scalar_vector_latency_hkth3d6hkth2d4 scalar::exp 168.925 vector::exp 136.007
+b/bench/latency/scalar_vector_latency_hkth3d6hkth3d4 scalar::exp 172.576 vector::exp 176.535
+b/bench/latency/scalar_vector_latency_hkth3d8bd2 scalar::exp 161.904 vector::exp 151.768
+b/bench/latency/scalar_vector_latency_hkth3d8ed2 scalar::exp 163.072 vector::exp 120.118
+b/bench/latency/scalar_vector_latency_hkth3d8hkth1d2 scalar::exp 161.393 vector::exp 151.582
+b/bench/latency/scalar_vector_latency_hkth4d10 scalar::exp 170.423 vector::exp 128.148
+b/bench/latency/scalar_vector_latency_hkth4d6bd2bd2 scalar::exp 156.819 vector::exp 161.187
+b/bench/latency/scalar_vector_latency_hkth4d6bd2ed2 scalar::exp 156.688 vector::exp 165.156
+b/bench/latency/scalar_vector_latency_hkth4d6bd2hkth1d2 scalar::exp 163.598 vector::exp 187.86
+b/bench/latency/scalar_vector_latency_hkth4d6bd4 scalar::exp 165.478 vector::exp 152.367
+b/bench/latency/scalar_vector_latency_hkth4d6ed2ed2 scalar::exp 156.84 vector::exp 135.271
+b/bench/latency/scalar_vector_latency_hkth4d6ed2hkth1d2 scalar::exp 162.872 vector::exp 139.307
+b/bench/latency/scalar_vector_latency_hkth4d6ed4 scalar::exp 161.374 vector::exp 171.829
+b/bench/latency/scalar_vector_latency_hkth4d6hkth1d2hkth1d2 scalar::exp 157.983 vector::exp 128.605
+b/bench/latency/scalar_vector_latency_hkth4d6hkth1d4 scalar::exp 162.085 vector::exp 144.497
+b/bench/latency/scalar_vector_latency_hkth4d6hkth2d4 scalar::exp 164.921 vector::exp 145.619
+b/bench/latency/scalar_vector_latency_hkth4d6hkth3d4 scalar::exp 167.709 vector::exp 145.444
+b/bench/latency/scalar_vector_latency_hkth4d8bd2 scalar::exp 171.037 vector::exp 134.498
+b/bench/latency/scalar_vector_latency_hkth4d8ed2 scalar::exp 170.491 vector::exp 138.195
+b/bench/latency/scalar_vector_latency_hkth4d8hkth1d2 scalar::exp 172.508 vector::exp 133.786
+b/bench/latency/scalar_vector_latency_hkth5d10 scalar::exp 182.917 vector::exp 143.049
+b/bench/latency/scalar_vector_latency_hkth5d6bd2bd2 scalar::exp 153.829 vector::exp 152.677
+b/bench/latency/scalar_vector_latency_hkth5d6bd2ed2 scalar::exp 165.453 vector::exp 154.871
+b/bench/latency/scalar_vector_latency_hkth5d6bd2hkth1d2 scalar::exp 163.174 vector::exp 141.055
+b/bench/latency/scalar_vector_latency_hkth5d6bd4 scalar::exp 163.4 vector::exp 137.286
+b/bench/latency/scalar_vector_latency_hkth5d6ed2ed2 scalar::exp 158.4 vector::exp 147.573
+b/bench/latency/scalar_vector_latency_hkth5d6ed2hkth1d2 scalar::exp 166.156 vector::exp 157.254
+b/bench/latency/scalar_vector_latency_hkth5d6ed4 scalar::exp 163.631 vector::exp 143.916
+b/bench/latency/scalar_vector_latency_hkth5d6hkth1d2hkth1d2 scalar::exp 164.997 vector::exp 152.311
+b/bench/latency/scalar_vector_latency_hkth5d6hkth1d4 scalar::exp 171.203 vector::exp 154.691
+b/bench/latency/scalar_vector_latency_hkth5d6hkth2d4 scalar::exp 163.572 vector::exp 155.282
+b/bench/latency/scalar_vector_latency_hkth5d6hkth3d4 scalar::exp 162.249 vector::exp 144.711
+b/bench/latency/scalar_vector_latency_hkth5d8bd2 scalar::exp 171.679 vector::exp 170.068
+b/bench/latency/scalar_vector_latency_hkth5d8ed2 scalar::exp 172.892 vector::exp 134.564
+b/bench/latency/scalar_vector_latency_hkth5d8hkth1d2 scalar::exp 171.413 vector::exp 153.079
+b/bench/latency/scalar_vector_latency_hkth6d10 scalar::exp 170.082 vector::exp 151.959
+b/bench/latency/scalar_vector_latency_hkth6d8bd2 scalar::exp 168.201 vector::exp 153.749
+b/bench/latency/scalar_vector_latency_hkth6d8ed2 scalar::exp 163.949 vector::exp 144.002
+b/bench/latency/scalar_vector_latency_hkth6d8hkth1d2 scalar::exp 163.974 vector::exp 141.43
+b/bench/latency/scalar_vector_latency_hkth7d10 scalar::exp 179.139 vector::exp 164.813
+b/bench/latency/scalar_vector_latency_hkth7d8bd2 scalar::exp 175.719 vector::exp 165.266
+b/bench/latency/scalar_vector_latency_hkth7d8ed2 scalar::exp 176.173 vector::exp 169.342
+b/bench/latency/scalar_vector_latency_hkth7d8hkth1d2 scalar::exp 175.667 vector::exp 159.339
+b/bench/latency/scalar_vector_latency_hkth8d10 scalar::exp 171.671 vector::exp 156.133
+b/bench/latency/scalar_vector_latency_hkth9d10 scalar::exp 172.078 vector::exp 164.95
