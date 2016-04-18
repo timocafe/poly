@@ -268,22 +268,39 @@ following bit trick algorithm:
 \end{figure}
 
 \section{Processor \& methods}
-Fid a full review of processors is a hugh work and it is outside the topic of this paper. We focus on the general execution of the processors, but still with enough details
+Perform a full review of processors is a hugh work and it is outside the topic of this paper. We focus on the general execution of the processors, but still with enough details
 to understand our results. Whatever the architecture of the ship the execution of the binary code follows the same logic. Fetch/decode units read a stream of instructions
 from the L1 instructions cache memory and decode them into a series of micro operations that are executed by the processor's parallel executions units.
 
 \subsection{Intel SandyBridge and Broadwell architecture}
-The SandyBridge and Broadwell architecture derived from the core2duo architecture (based on a Pentium M).  For both architectures, the instructions fetch unit bandwidth 
+The SandyBridge and Broadwell architecture derived from the core2duo architecture (based on a Pentium M). Both architecture support the new set of 256 bit vectorial instructions 
+named AVX and AVX2 (Broadwell only).  For both architectures, the instructions fetch unit bandwidth 
 is limited to 16 bytes per clock cycle. The instructions decoding execution is complicated, it is split
 between a predecoder and a decoder. The predecoder job is to detect where the instructions start, a hard task because the size of the instructions vary between 
 1 to 15 bytes. The predecoder also identify the additional field (if available) of the instructions (prefix, ModR/M, SIB, displacement and immediate). Then 4 decoders handle
 the incoming instructions into 1 or more $\mu$ops. Only the first decoder can generate more than one $\mu$op. For SandyBridge, per cycle the decoders will generate 3 to 4  
 $\mu$ops. On Broadwell the generation is stabilised to 4  $\mu$ops. The 16 bytes per clock cycle is a serious limitation, therefore both architecture have a cache memory
-for decoded $\mu$ops after the decoders is presented to avoid limitation of the 16 byte bandwidth. The cache is organised around 32 sets $\times$ 8 ways $\times$ 6 $\mu$ops.
-3 caches lines of 6 $\mu$ops. can be allocated simultaneously for a maximum of 32 bytes of code per cycle. Both architecture have the possibilities to perform the fusion of instructions.
-At this point, $\mu$ops are still in-order. They are now  stored in the re-order buffer (168 entries for SandyBridge and192 entries for Broadwell) where they will be executed on the execution unit in out-of-order mode.
+for decoded $\mu$ops after the decoders is presented to avoid limitation of the 16 byte bandwidth. The effect of the cache memory can double the totale size of  $\mu$ops generated
+ to  bytes of code per cycle. 
+%The cache is organised around 32 sets $\times$ 8 ways $\times$ 6 $\mu$ops.
+%$3 caches lines of 6 $\mu$ops. can be allocated simultaneously for a maximum of 32 bytes of code per cycle. 
+Both architecture have the possibilities to perform the fusion of instructions.
+At this point, $\mu$ops are still in-order. They are now  stored in the re-order buffer (168 entries for SandyBridge and  192 entries for Broadwell) and in fine the reservation station 
+of 54 entries on Sandy Bridge and 60 on Broadwell respectively. At this point the $\mu$ops will be executed on the execution units in out-of-order mode.
+%The out of order execution is now performed on 6 ports on the SandyBridge and 8 port on the Broadwell, however the number of port dedicated for the vectorial addition, multiplications and FMA (Broadwell only) are
+%equal to two, the port 0 and 1 respectively. 
 
-blabla - focus on VPU and execution pipelines (two port for x86)
+The Sandy Bridge has six execution ports, where as. There are tree integer ALUs so that the most common integer operations can execute
+ with a throughput of four instructions per clock cycle (port 0, 1 and 5). Two ports can handle memory read operations (port 2 and 3)
+Port 4 is for memory write. Read/Write can be performed by port 2, 3 and 4 (write only) but the port 4 can not make address calculation.
+The maximum throughput is one unfused $\mu$op on each port per clock cycle.Port 0, 1 and 5 support usual 256 bit vector operations. There are separate ports for multiplication in general purpose registers and vector registers. 
+The integer and floating point vector multiplier on port 0.  These two multipliers can run simultaneously and both are fully pipelined with a throughput of 1 vector operation per clock cycle.%Integer division uses the floating point division unit on port 0. This is the only unit that is not pipelined.
+
+The Broadwell architecture has 8 execution ports.  There are four integer ALUs so that the most common integer operations can execute
+ with a throughput of four instructions per clock cycle. There are three ports that can handle integer vector operations (port 0, 1 and 5).
+ Two ports can handle branches (port 0 and 6).  Two ports can handle memory read operations (port 2 and 3), and one port can handle memory writes (port 4).
+Two ports can handle floating point vector operations (port 0 and 1). The direct consequences  of this larger number of port for floating point operations 
+is a better throughput for vectorial addition (0.8) and vectorial multiplication (0.5) compared to SandyBridge.
 
 \subsection{IBM Power 7/8 architecture}
 blabla - focus on VPU and execution pipelines (two port for x86)
@@ -294,17 +311,17 @@ The latency of an instruction is the delay that the instruction generates in a d
 For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruction can start executing
 2 clock cycles after a previous FMUL. A reciprocal throughput of 0.33 for ADD means that the execution units can handle 3 integer additions per clock cycle.
 
-
 The throughput is the maximum number of instructions of the same kind that can be executed per clock cycle
 when the operands of each instruction are independent of the preceding instructions.
 
 \subsection{Precision}
 
 The precision computed by the Unite of Least Precision (ULP).
-
-The original definition: ulp(x) is the gap between the two floating-point number nearest $x$, even is $x$ is one of them.
-
-Precision for the exponential .... depends only polynomial evaluation .... no error on $2^k$ and boundaries.
+The original definition: \textit{ulp(x) is the gap between the two floating-point number nearest $x$, even is $x$ is one of them.}
+As we described previously the precision for the exponential implementation will depend only on the error of the polynomial evaluation.
+Because the error on the evaluation on the $2^k$ used the hardware representation of the floating point and the boundaries conditions 
+only introduce bit  manipulation trick.  The ULP has been computed using external library, here the boost library more specially the boost::math
+package.
 
 \subsection{measurement tool}
 
