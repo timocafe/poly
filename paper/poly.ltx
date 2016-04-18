@@ -39,6 +39,7 @@
 
 \newcommand{\R}{\mathbb{R}}
 
+
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 \begin{document}
@@ -77,8 +78,11 @@ an evaluation  of a polynomial of degree 10 for a satisfying precision.
 idea Agerwala and Cocke (1987) [Dispatch multiple instructions every cycle]
 but prefer definitiion Lam (1990) [Execute multiple operations in parallel]
 ...two main idea: Execute instructions concurently and independently in separate pipelines .... 
-Improve throughput of concurrent pipelines by allowing out-of-order execution 
+Improve throughput of concurrent pipelines by allowing out-of-order execution ....
+modern processor have at least two independent pipelines .....
 
+complementary to the pipelining of the floating point unit where instructions (mnemonic) ... restart the same operation
+(if no dependency) without waiting the completeness of the previous one
 
 \section{State of the art}
  In evaluating the polynomial,
@@ -264,9 +268,21 @@ following bit trick algorithm:
 \end{figure}
 
 \section{Processor \& methods}
-full review of processors too much and outside the topic of this paper. Just focus on on the computation par core 
-of the ship. 
-\subsection{Intel SandyBridge and Haswell architecture}
+Fid a full review of processors is a hugh work and it is outside the topic of this paper. We focus on the general execution of the processors, but still with enough details
+to understand our results. Whatever the architecture of the ship the execution of the binary code follows the same logic. Fetch/decode units read a stream of instructions
+from the L1 instructions cache memory and decode them into a series of micro operations that are executed by the processor's parallel executions units.
+
+\subsection{Intel SandyBridge and Broadwell architecture}
+The SandyBridge and Broadwell architecture derived from the core2duo architecture (based on a Pentium M).  For both architectures, the instructions fetch unit bandwidth 
+is limited to 16 bytes per clock cycle. The instructions decoding execution is complicated, it is split
+between a predecoder and a decoder. The predecoder job is to detect where the instructions start, a hard task because the size of the instructions vary between 
+1 to 15 bytes. The predecoder also identify the additional field (if available) of the instructions (prefix, ModR/M, SIB, displacement and immediate). Then 4 decoders handle
+the incoming instructions into 1 or more $\mu$ops. Only the first decoder can generate more than one $\mu$op. For SandyBridge, per cycle the decoders will generate 3 to 4  
+$\mu$ops. On Broadwell the generation is stabilised to 4  $\mu$ops. The 16 bytes per clock cycle is a serious limitation, therefore both architecture have a cache memory
+for decoded $\mu$ops after the decoders is presented to avoid limitation of the 16 byte bandwidth. The cache is organised around 32 sets $\times$ 8 ways $\times$ 6 $\mu$ops.
+3 caches lines of 6 $\mu$ops. can be allocated simultaneously for a maximum of 32 bytes of code per cycle. Both architecture have the possibilities to perform the fusion of instructions.
+At this point, $\mu$ops are still in-order. They are now  stored in the re-order buffer (168 entries for SandyBridge and192 entries for Broadwell) where they will be executed on the execution unit in out-of-order mode.
+
 blabla - focus on VPU and execution pipelines (two port for x86)
 
 \subsection{IBM Power 7/8 architecture}
@@ -461,7 +477,7 @@ Simple evaluate the number of move compare
   \draw [->,solid] (3) ..controls (347.72bp,777.18bp) and (392.34bp,748.44bp)  .. (4);
   \draw [->,solid] (9) ..controls (586.61bp,205.32bp) and (551.84bp,228.33bp)  .. (531.0bp,258.0bp) .. controls (473.52bp,339.85bp) and (454.45bp,458.04bp)  .. (10);
   \draw [->,solid] (18) ..controls (544.94bp,570.41bp) and (534.64bp,696.76bp)  .. (2);
-  \draw [->,solid] (2) ..controls (501.25bp,769.1bp) and (494.62bp,756.29bp)  .. (4);
+  \draw [->,solid] (2) ..controls (501.25bp,769.1bp) and (494.62bp,756.29bp)  .. (4);d
   \draw [->,solid] (17) ..controls (377.93bp,83.18bp) and (400.95bp,102.52bp)  .. (417.0bp,124.0bp) .. controls (477.55bp,205.06bp) and (517.78bp,316.76bp)  .. (18);
   \draw [->,solid] (18) ..controls (451.15bp,422.98bp) and (368.62bp,405.8bp)  .. (297.0bp,392.0bp) .. controls (208.31bp,374.91bp) and (178.05bp,395.85bp)  .. (97.0bp,356.0bp) .. controls (91.648bp,353.37bp) and (86.437bp,350.03bp)  .. (12);
   \draw [->,solid] (7) ..controls (716.0bp,393.9bp) and (716.0bp,374.42bp)  .. (8);
@@ -479,7 +495,7 @@ Simple evaluate the number of move compare
 %
 \end{tikzpicture}
 }
-\caption{Haswell mnemonic DAG, (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle]) }
+\caption{Haswell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle]) }
 \end{figure}
 
 
