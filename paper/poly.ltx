@@ -285,25 +285,44 @@ for decoded $\mu$ops after the decoders is presented to avoid limitation of the 
 %The cache is organised around 32 sets $\times$ 8 ways $\times$ 6 $\mu$ops.
 %$3 caches lines of 6 $\mu$ops. can be allocated simultaneously for a maximum of 32 bytes of code per cycle. 
 Both architecture have the possibilities to perform the fusion of instructions.
-At this point, $\mu$ops are still in-order. They are now  stored in the re-order buffer (168 entries for SandyBridge and  192 entries for Broadwell) and in fine the reservation station 
-of 54 entries on Sandy Bridge and 60 on Broadwell respectively. At this point the $\mu$ops will be executed on the execution units in out-of-order mode.
+At this point, $\mu$ops are still in-order. They are now  stored in the re-order buffer (168 entries for SandyBridge and  192 entries for Broadwell) for the renaming of the register,  
+the re-ordering $e.g.$ following a Tomasulo Algorithm, and in fine the reservation station  of 54 entries on Sandy Bridge and 60 on Broadwell respectively. At this last point the $\mu$ops will be executed on the execution units in out-of-order mode.
 %The out of order execution is now performed on 6 ports on the SandyBridge and 8 port on the Broadwell, however the number of port dedicated for the vectorial addition, multiplications and FMA (Broadwell only) are
 %equal to two, the port 0 and 1 respectively. 
 
-The Sandy Bridge has six execution ports, where as. There are tree integer ALUs so that the most common integer operations can execute
+The Sandy Bridge has six execution ports (or terminology execution pipelines). There are tree integer ALUs so that the most common integer operations can execute
  with a throughput of four instructions per clock cycle (port 0, 1 and 5). Two ports can handle memory read operations (port 2 and 3)
 Port 4 is for memory write. Read/Write can be performed by port 2, 3 and 4 (write only) but the port 4 can not make address calculation.
-The maximum throughput is one unfused $\mu$op on each port per clock cycle.Port 0, 1 and 5 support usual 256 bit vector operations. There are separate ports for multiplication in general purpose registers and vector registers. 
-The integer and floating point vector multiplier on port 0.  These two multipliers can run simultaneously and both are fully pipelined with a throughput of 1 vector operation per clock cycle.%Integer division uses the floating point division unit on port 0. This is the only unit that is not pipelined.
+The maximum throughput is one unfused $\mu$op on each port per clock cycle.
+Port 0, 1 and 5 support usual 256 bit vector operations. There are separate ports for multiplication in general purpose registers and vector registers. 
+The integer and floating point vector multiplier on port 0.  These two multipliers can run simultaneously and both are fully pipelined with a throughput of 1 vector operation per clock cycle.
+%Integer division uses the floating point division unit on port 0. This is the only unit that is not pipelined.
 
-The Broadwell architecture has 8 execution ports.  There are four integer ALUs so that the most common integer operations can execute
+The Broadwell architecture has 8 execution ports (or terminology execution pipelines).  There are four integer ALUs so that the most common integer operations can execute
  with a throughput of four instructions per clock cycle. There are three ports that can handle integer vector operations (port 0, 1 and 5).
  Two ports can handle branches (port 0 and 6).  Two ports can handle memory read operations (port 2 and 3), and one port can handle memory writes (port 4).
 Two ports can handle floating point vector operations (port 0 and 1). The direct consequences  of this larger number of port for floating point operations 
 is a better throughput for vectorial addition (0.8) and vectorial multiplication (0.5) compared to SandyBridge.
 
-\subsection{IBM Power 7/8 architecture}
-blabla - focus on VPU and execution pipelines (two port for x86)
+\subsection{IBM Power7 and Power8 architecture}
+The Power8 is the last release of the IBM processor derived from the Power7.
+As x86 architecture Power7/8 support vectorial instructions limited to 128 bit width. 
+For both architecture the Instruction Fetch Unit bandwidth is equal to 32 bytes per clock. Contrary to the X86 architecture the instructions are enconded in the POWER 32-bit
+fixed-width RISC ISA. Therefore 8 inscriptions are pre-decoded into $\mu$ops by the IFU, and store in I-cache of 32 KB (4-way set associative  L1 cache for the Power7 and
+8-way set associative  L1 cache). This operations is performed in 2 cycles. As X86 both architecture can performed fusion of instructions with more facility for the Power8
+If the requesting thread is ready, the  $\mu$ops are bypassed directly the I-cache to the instructions buffer
+still in order). The Power7 has a instructions completion/cycle of 6 compare to 8 of the Power8.
+
+The  $\mu$ops will be managed by the Instructions Sequencing Unit (ISU) doing the renaming in out-of order mode and the dispatch in the various issue queues to
+the executions pipelines. After renaming and the dispatching the $\mu$ops (at least the compute one) are transferred to the UniQueue (as the reservation station fro X86). 
+the UniQueue is implemented as 48-entry queue  (power7) or 64-entry queue (power8) and split into two halves.
+
+The Power7 has 12 executions pipelines, but 5 are dedicated per half UniQueue, each of them executes 3 instructions per cycle, 
+one fixed-point instructions on the Fixed-Point Unit, one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU). One load or simple-fixed instruction on the Load unit (LU) and one scalar/vector instructions to the Vector Scalar Unit. 
+
+The Power8 has 16 execution pipelines, but  6 are dedicated per half UniQueue,  they can execute 4 instructions per cycle; one fixed-point instructions on the Fixed-Point Uni,
+one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU)  and one scalar/vector instructions to the Vector Scalar Unit. The 4 other executions pipelines are dedicated to the cryptography, the branch execution, the condition logical and the decimal floating point operations. 
+
 
 \subsection{Latency, throughput }
 
