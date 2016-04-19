@@ -3,6 +3,7 @@
 \usepackage{amssymb}
 \usepackage[table]{xcolor}
 \usepackage{subfig}
+\usepackage{ytableau}
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{epstopdf}
@@ -161,17 +162,23 @@ Factorization        &    combinaison            &   combinaison   \\
 \end{table}%
 
 \subsection{Notations}
-
-$P^{n}_{m}$ polynomial of degree $n$, $m$ indicate the method ( $e = \textrm{Estrin}$, $h^k = \textrm{Horner at the the $k$ order}$, $b = \textrm{Brute Force}$) how we compute
-
-
+In this section, the following notations are introduced. Any polynomial $P$ is characterized by two parameters, the degree and the method of evaluation. 
+The degree like usual is presented by the indices $n$  whereas the subscript is the method of evaluation. The different method of evaluation are
+the brute force method ($b$), the Horner method at the $k$ order ($h^k$) and Estrin method ($e$). Finally, $P^{6}_{e}$ means a polynomial of degree 6
+evaluated with the method of Estrin, or an other example $P^8_{h^2}$ means a polynomial of degree 8 evaluated with the method of Horner at the order 2.
 
 \subsection{Combinatory}
 
-Starting point  Polynomial degree 10 approximation $e^x$ no real root, complex only, 5 pair conjugate, 5 quadratic. How many factorization  scheme? Partition of 10
-into even summands  (equivalent decomposition of 5 "multiply by 2"). $P^{10} = P^6P^4 = P^6P^2P^2 = P^4P^4P^2 = P^4P^2P^2P^2 = P^2P^2P^2P^2P^2 $.
-Multiplication commutative. Every polynomial degree+1 method of evaluation (bruteforce + estrin + horner kth = degree-1) (horner kth=degree equivalent order one).
-if $P^n P^m$ and $n!=m$ so $n \times m$ possibilitties. if $n=m$,  ${n+k-1 \choose k} $ possibilities (and not ${n \choose k}$ because repetitions are allowed ). On the present example 231 possibilities.  Program generates all the possibilities, get all the factorisation scheme.
+In this study, we are focusing on polynomial evaluation more specially on a specific polynomial of degree 10 where the coefficients are know in advanced. This polynomial 
+is the approximation of $e^x$ with $x \in [0, ln2]$. This polynomial is strictly positive in this range, consequently, it does not have any real roots, but five pairs of conjugate
+root. From this 5 pairs, 5 quadratics polynomial can be built. The produce of this 5 quadratics is a factorization scheme. However, it exists a lot of alternative scheme.
+The starting point of the evaluation is the partition of 10 into even summands which is equivalent of the decomposition of 5 "multiply by 2". In other words the seven partition 
+of 5 are $(5),(4,1),(3,2),(3,1^2),(2^2,1),(2,1^3),(1^5)$ and consequently the partition of 10 into even summands are $(10),(8,2),(6,4),(6,2^2),(4^2,2),(4,2^3),(2^5)$.
+
+Each polynomial $P^n$ has $n+1$ method of evaluation: $P^n_b$, $P^n_e$ and $P^n_{h^{kth}}$ where $kth \in [1,n-1]$ because $P^n_{h^1} = P^n_{h^n}$.
+For every produce of polynomial $P^n P^m$ with $n!=m$, there are $n \times m$ possibilities (the multiplication is commutative). if $n=m$ the number of possibilites
+is ${n+k-1 \choose k} $  and not ${n \choose k}$ because repetitions are allowed. Then, using the previous partition of 10,  it exists 231 possibilities to evaluate 
+the original polynomial $P^{10}$.
 
 \subsection{Elementary function: $e^x$}
 
