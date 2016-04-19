@@ -85,45 +85,47 @@ complementary to the pipelining of the floating point unit where instructions (m
 (if no dependency) without waiting the completeness of the previous one
 
 \section{State of the art}
- In evaluating the polynomial,
+In evaluating the polynomial of degree $n$,
  \begin{eqnarray}
    P(x) = a_0 + a_1 x  + \dots + a_{n} x^{n}, \,\, (a_i  \in \R) \label{P0}
  \end{eqnarray}
- ... Brute force  ... Horner method ... $k^{th}$-order Horner ... Estrin ... adaptation coefficient .... factorisation ... challenge: maximum parallelism and minimise data  hazard pipelining to fill up pipeline, avoid bubble, maximise performance
-
+ a large number of method can be applied. In this study, we selected the most significatives, extracted from the great book of Knuth the art of programming [cite vol 2].
+ This paper focuses on the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method and the factorization associated to the methods, we have just enumerates.
+ The main is challenge of applying this method is maximize the parallelism and minimise the pipelining data hazard, to avoid bubble and consequently deteriorate the performance.
 \section{Algorithms}
 \subsection{Evaluation of Powers}
-... Right-to-left binary method for exponentiation ... not the fastest ... but enough for us ... because did at compile time.  
-$ \lfloor log(n) \rfloor + \upsilon(n)$ multiplications where  $\upsilon(n)$ number of ones in the binary representation of $n$
+The first step to perform polynomial evaluation is the evaluation of the power. Tee simple method consisting of successive multiplication of $x$ has a  complexity of o($n$) multiplication.
+Following the advice of Knuth the Right-to-left binary method for exponentiation is the fastest for our small degree polynomial [cite Knuth chapter]. The method has a complexity 
+o($\lfloor log(n) \rfloor + \upsilon(n)$) multiplications where  $\upsilon(n)$ number of ones in the binary representation of $n$.
 \subsection{Brute force}
-... evaluate polynomial \ref{P0}  at $x = x_0$ ... using evaluation of power as described previously  $n$ addition, $2n-1$ multiplication
+The brute force method simply consists to evaluate the polynomial \ref{P0} term after term sing evaluation of power as described previously.
+The complexity of the algorithm is  $n$ additions and  $2n-1$ multiplications.
 \subsection{Horner method: classical - $1^{st}$-order}
-.... the most classical .... \textit{"Horner's rule"} .... evaluate polynomial \ref{P0} at $x = x_0$
-
+The Horner method at order one is the most classical. It is also very well know under the name \textit{"Horner's rule"}.
+It evaluates recursively the polynomial \ref{P0} at $x = x_0$,
  \begin{eqnarray}
    P(x_0) = a_0 +  x_0 ( a_1  +  x_0 ( a_2 + x_0(  \dots a_{n}  ) ))
   \end{eqnarray}
-Horner rules $n$ multiplications and $n$ additions. Good but data  hazard pipelining 
+The \textit{"Horner's rule"} requires a complexity of $n$ multiplications and $n$ additions or $n$ FMA. The method is efficient,
+but it is inefficient  for the processor because it introduces  data hazard pipelining due to the dependency chain of the recursive process.
 
 \subsection{Horner method: $k^{th}$-order}
-Generalisation of the previous section ... Introduce parallelism ...
-
+The  \textit{"Horner's rule"} can be generated at any order by building new polynomial over $x^k$ [CITE ....]. It is the generalisation of the previous section,
+the main advantage is to introduce parallelism that remove the data hazard specially for high order of $k$
  \begin{eqnarray}
    P(x_0) &=&  Q_0(x_0^k) + Q_1(x_0^k) + \dots + Q_{k-1}(x_0^k) \\
    Q_{k-1}(x_0^k) &=&  x_0^{k-1}(a_{k-1} + x_0^{k}(a_{2k-1} + x_0^{k}(a_{3k-1} + x_0^{k}(\dots a_{m \le n}))))
      \end{eqnarray}
-$n+k-1$ multiplications and $n$ additions, $k$ degree of parallelism. Classical Horner method $k=1$
+This method has $n+k-1$ multiplications and $n$ additions. $k$ degree of parallelism. The classical Horner method correspond to $k=1$
 
 \subsection{Horner method: Estrin}
-Another generalization of Horner's rule:
-
+An alternative to the  generalization of Horner's rule is the Estrin method [cite estrin], described as follow:
 \begin{eqnarray}
 c_i^{(0)} = a_i + x_0  a_{i+1} \\
 c_i^n = c_i^{(n-1)} + x_0^{2^n} c_{i+2^n}^{n-1} \\
 P(x_0) = c_0^n
 \end{eqnarray}
-look like 
-
+A development of the previous equation look likes 
 \begin{eqnarray}
 P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
                &+&  x_0^2(a_2  + a_3 x_0) \nonumber \\
@@ -131,14 +133,18 @@ P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
                &+&  x_0^8(a_8  + a_9 x_0 + x_0^2 (a_{10} + a_{11}x_0) + x_0^4 ((a_{12}+a_{13}x_0 +x_0^2(a_{14}+a_{15}x_0)))))  \nonumber \\
                & &\dots
 \end{eqnarray}
-$n$ multiplication, $n$ additions, remark pattern design for FMA. All $c_i^j$ are independent.
+This method has $n$ multiplication and $n$ additions, but it is a remarkable pattern design for two reasons.
+Every $c_i^j$ can be associated to an independent FMA, as independent it will have a good efficiency on
+super scalar machine (no bubble).
 
 \subsection{factorization}
-factorize the polynomial (outside), get produce of linear or quadratic if complex-root. combinaison different method $e.g.$ 
-$k$ factor gives $k-1$ factor multiplication, factor depends of the method of multiplications. 
+Finally the last method, we will evaluate is the factorization. As we are looking for polynomial with fix coefficients. We compute
+the root of the polynomial using an outside program. Then the roots are recombined into produce of linear polynomial, quadratic if the root 
+are complex and then combinaison of quadratic or linear polynomial. At the end every "new" polynomial can be evaluated by one 
+of the previous described method. This method can introduce a large parallelism and may outperform for superscalar architecture.
 
 \subsection{number of operations}
-
+To conclude this section on algorithm, the complexity of the different method are summarize  in the table \ref{complexity}.
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{l c c  }
@@ -149,13 +155,10 @@ Horner $k^{th}$-order  & $n+k-1$ & $n$   \\
 Estrin                    & $n$        & $n$             \\
 Factorization        &    combinaison            &   combinaison   \\    
 	\hline
-
 \end{tabular}
 \end{center}
-\caption{ number of operation of the different algorithms of evaluation of the polynomial of degree $n$. \label{default}}
+\caption{ number of operation of the different algorithms of evaluation of the polynomial of degree $n$. \label{complexity}}
 \end{table}%
-
-
 
 \subsection{Notations}
 
@@ -317,10 +320,10 @@ The  $\mu$ops will be managed by the Instructions Sequencing Unit (ISU) doing th
 the executions pipelines. After renaming and the dispatching the $\mu$ops (at least the compute one) are transferred to the UniQueue (as the reservation station fro X86). 
 the UniQueue is implemented as 48-entry queue  (power7) or 64-entry queue (power8) and split into two halves.
 
-The Power7 has 12 executions pipelines, but 5 are dedicated per half UniQueue, each of them executes 3 instructions per cycle, 
+The Power7 has 12 executions pipelines, but ? are dedicated per half UniQueue, but  only  3 instructions per cycle can be executed, 
 one fixed-point instructions on the Fixed-Point Unit, one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU). One load or simple-fixed instruction on the Load unit (LU) and one scalar/vector instructions to the Vector Scalar Unit. 
 
-The Power8 has 16 execution pipelines, but  6 are dedicated per half UniQueue,  they can execute 4 instructions per cycle; one fixed-point instructions on the Fixed-Point Uni,
+The Power8 has 16 execution pipelines, but  6 are dedicated per half UniQueue, but  only  4 instructions per cycle can be executed, one fixed-point instructions on the Fixed-Point Uni,
 one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU)  and one scalar/vector instructions to the Vector Scalar Unit. The 4 other executions pipelines are dedicated to the cryptography, the branch execution, the condition logical and the decimal floating point operations. 
 
 
@@ -333,6 +336,8 @@ For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruc
 The throughput is the maximum number of instructions of the same kind that can be executed per clock cycle
 when the operands of each instruction are independent of the preceding instructions.
 
+The latency and the throughput of the main instructions for all platforms are reported in the table \label{latencyvendor}.
+
 \subsection{Precision}
 
 The precision computed by the Unite of Least Precision (ULP).
@@ -344,19 +349,18 @@ package.
 
 \subsection{measurement tool}
 
-In order to help HPC specialists wishing to optimise scientific applications on new system close to peak performance, it is useful to
-provide a performance summary of latency of the most widely-used instructions.
-Such an evaluation is not trivial due to the large number of variables which may impact the measurements. 
+Measure the throughput and the latency is not trivial specially for the latency. A direct measurement is not trivial due 
+to the large number of variables which may impact the measurements. 
 Therefore, the approach used within this study consists of performing indirect measurements by mapping the instructions associated to their
 mnemonics into a for loop whose unroll factor was parameterizable (between 1 and 5). 
 To avoid introducing some operation throughput effect which would corrupt the measurement of latency, a dependency between instructions 
 throughout the loop iterations has been artificially enforced. 
 
-Within this study, all benchmarks were compiled using GCC 
-and repeated 100 times. The results of this experiment are reported in Figure \ref{fig.LATENCY_OPS} in function of the used unroll factor.  
+Within this study, all benchmarks were compiled using GCC and repeated 100 times. The results of this experiment are reported in Figure \ref{fig.LATENCY_OPS} in function of the used unroll factor.  
 The experimental data has been fit to a linear distribution ($y=ax+b$ where $a$ corresponds to the slope of the curve which is equal to 100 times the actual 
-latency of the instruction). 
-Latency measurements have been carried out for both single and double precisions and for both scalar and vectorial implementations of the following operators: +, $\times$, $/$, FMA, $\sqrt{x}$ and $e^x$). For the specific case of the vectorial $e^x$ instruction, calls to IBM MASSV library were used.
+latency of the instruction).  Latency measurements have been carried out for all basic instructions +, $\times$, $/$ and FMA and compare to the 
+vendor results to validate our method with success. Latency of the previous instructions are reported in the table \ref{latencyvendor}.
+
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.7]{platency.eps} %\vspace{-1cm}
@@ -367,35 +371,38 @@ by the program/processor.
 \end{center}
 \end{figure}
 
+\begin{table}[ht]
+\caption{Latency/Throughput add/mul/fma on the Haswell architecture. \label{latencyvendor}}
+\begin{center}
+\begin{tabular}{l c c c c c c }
+			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  & \multicolumn{2}{c}{Power 7/8}\\ 
+                         & Thr.  & Lat. & Thr. & Lat. & Thr. & Lat.  \\
+		          \hline
+add                   &  1 & 3  &   0.8 & 3 &  1 & 6     \\
+mul                   &  1 & 5  &   0.5 & 5 &  1 & 6   \\
+FMA                 &   -  & -  &   0.5 & 5  &  1 & 6   \\
+		             \hline
+\end{tabular}
+\end{center}
+\end{table}%
 
-These results complement the work of \cite{POWER8Thorsten} or Agner [cite]
-
-% by on the one hand making an explicit distinction 
-%between scalar and vectorial instructions and, on the other hand providing results of complex mathematical operations 
-%such as $\sqrt{x}$ and $e^x$ (Table \ref{LATENCY_OPS}). 
-
-
-
-
-
-we develop our own tool
-latency: explain from power8 paper
-throughput: basic loop wi
-IACA measure latency/throughput of C++ code, kernel that is pinned by marks into the code.  
-return latency/throughput and bottleneck of the mark code.
-
-\subsubsection{validation}
-measure the basic instructions $\times, +$ and FMA compare to vendor number or agner number [cite]
- 
+A full review  of all x86 instructions can be found in [CITE agner] where fragmented information can be founded in [CITE p7 and P8] paper.
+To conclude, Intel has released in the last years the IACA tool [CITE]. This tools was nice to perform latency and throughput analysis, and
+do prediction on several Intel processor target. Unfortunately the tools is not anymore maintained since 2012 date of the last release. 
+However, we utilize the tool to generate Direct Acyclic Graph of the polynomial evaluation on the Broadwell platform, figure \ref{DAG}
 
 \subsection{Programming model}
-C++ basic recursive meta-programming (like template factorial ), all models are written with fairplay. Assembly check, look good.
-Fine control of the code but compiler as the final word, and can do strong optimisation, specially catch FMA pattern.
-Vectorial (SIMD) version used our DSL cyme (the DSL does FMA and evaluate the power following the scheme described in previous section),
- normal one code the algo but let the the compiler performed FMA or evaluate the power, following is scheme.
 
-\subsection{ASM quality}
-Simple evaluate the number of move compare 
+Program polynomial evaluation and $e^x$ is not trivial because the code can not be polluted by additional workload, and useless
+instructions. A solution will be to write directly in assembly language, the solution is conceivable although is time consuming. 
+An alternative is meta-programming associated to recursive algorithm. It simplify the generation of all polynomial evaluation
+as soon as all method has been coded. Moreover as the algorithms are generics they can be plugged to any DSL to generate 
+a SIMD code, it is what we did. The algorithm are successively instantiated with the basic type double and a generic vector class coming from the Cyme library.
+To control the quality of our ASM at least on x86 platform we extract the DAG (Figure \ref{DAG}) using the IACA tool. Per example for the evaluation
+of the Horner method of the first order on a polynomial of degree 10. The match is perfect between the theory and the generated assembly.
+
+We insiste all algorithm are generated at compiler time.
+
 \begin{figure}
 \subfloat[]
 {
@@ -531,7 +538,7 @@ Simple evaluate the number of move compare
 %
 \end{tikzpicture}
 }
-\caption{Haswell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle]) }
+\caption{Haswell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
 \end{figure}
 
 
@@ -549,21 +556,6 @@ produce of two quadratic horner large degree fix the time 6* latency of mul/add 
 
 give results compare to vendors intel svml and mass
 
-\begin{table}[ht]
-\caption{Latency/Throughput add/mul/fma on the Haswell architecture}
-\begin{center}
-\begin{tabular}{l c c c c c c }
-			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Haswell}  & \multicolumn{2}{c}{Power 7/8}\\ 
-                         & Thr.  & Lat. & Thr. & Lat. & Thr. & Lat.  \\
-		          \hline
-add                   &  1 & 3  &   0.8 & 3 &  1 & 6     \\
-mul                   &  1 & 5  &   0.5 & 5 &  1 & 6   \\
-FMA                 &   -  & -  &   0.5 & 5  &  1 & 6   \\
-		             \hline
-\end{tabular}
-\end{center}
-\label{default}
-\end{table}%
 
 
 \begin{figure}[h]
