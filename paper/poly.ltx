@@ -173,27 +173,67 @@ In this study, we are focusing on polynomial evaluation more specially on a spec
 is the approximation of $e^x$ with $x \in [0, ln2]$. This polynomial is strictly positive in this range, consequently, it does not have any real roots, but five pairs of conjugate
 root. From this 5 pairs, 5 quadratics polynomial can be built. The produce of this 5 quadratics is a factorization scheme. However, it exists a lot of alternative scheme.
 The starting point of the evaluation is the partition of 10 into even summands which is equivalent of the decomposition of 5 "multiply by 2". In other words the seven partition 
-of 5 are $(5),(4,1),(3,2),(3,1^2),(2^2,1),(2,1^3),(1^5)$ and consequently the partition of 10 into even summands are $(10),(8,2),(6,4),(6,2^2),(4^2,2),(4,2^3),(2^5)$.
+of 5 are $(5),(4,1),(3,2),(3,1^2),(2^2,1),(2,1^3),(1^5)$ and consequently the partition of 10 into even summands are
 
-Each polynomial $P^n$ has $n+1$ method of evaluation: $P^n_b$, $P^n_e$ and $P^n_{h^{kth}}$ where $kth \in [1,n-1]$ because $P^n_{h^1} = P^n_{h^n}$.
-For every produce of polynomial $P^n P^m$ with $n!=m$, there are $n \times m$ possibilities (the multiplication is commutative). if $n=m$ the number of possibilites
-is ${n+k-1 \choose k} $  and not ${n \choose k}$ because repetitions are allowed. Then, using the previous partition of 10,  it exists 231 possibilities to evaluate 
-the original polynomial $P^{10}$.
+\begin{eqnarray}
+ (10),\,(8,2),\,(6,4),\,(6,2^2),\,(4^2,2),\,(4,2^3) \textrm{ and } (2^5) \label{evaluation}
+\end{eqnarray}
+
+To evaluate the number of combination there are three possibilities:
+
+\begin{enumerate}
+\item Each polynomial $P^n$ has $n+1$ method of evaluation: $P^n_b$, $P^n_e$ and $P^n_{h^{kth}}$ where $kth \in [1,n-1]$ because $P^n_{h^1} = P^n_{h^n}$. 
+\item Each polynomial produce $P^n P^m$ with $n!=m$, there are $n \times m$ of evaluation (we do not consider $P^m P^n$  because the multiplication is commutative)
+\item Polynomial produces of same degree $ \prod P^n$ , there are ${m+k-1 \choose k} $  and not ${m \choose k}$ because repetitions are allowed. $m$ is the number of method 
+(so $n+1$) and $k$ is the number of produce.
+\end{enumerate}
+
+Apply this scheme to the equation \ref{evaluation} determines the combinations $S$:
+
+\begin{eqnarray}
+S  &=&  \textrm{card}((10) + (8,2) + (6,4) + (6,2^2) + (4^2,2) + (4,2^3) + (2^5)) \nonumber \\
+    &=& 11 + 9\times3 + 7\times5 + 7\times{4 \choose 2} + 3 \times {6 \choose 2} + 5 \times {5 \choose 3} + {7 \choose 5}  \nonumber \\
+    &=& 231
+\end{eqnarray}
+
+The total number of combination to evaluate the $P^{10}$ is 231.
 
 \subsection{Elementary function: $e^x$}
-
+Small polynomials are intensively utilised in elementary functions, the present study focuses on $e^x$. A possible approach to compute $e^x$ is:
 
 $\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] \textrm{  with } k \in \mathbb{N} \nonumber$
 \begin{eqnarray}
     x  & = & y + k ln 2  \nonumber \\
-e^x  &= & 2^k e^y \nonumber \\
-       &=&  2^k P(y) \label{exponential_formula} 
+e^x  &= & 2^k e^y \nonumber 
+%       &=&  2^k P(y) \label{exponential_formula} 
 \end{eqnarray}
-$P(y)$ is approximation polynomial of $e^y$ in the interval $[0,ln2]$. Plenty of method Remez algorithm [cite], Pade approximat  [cite]. What about the 
-the series expensioms ? NO !!!! Taylor goes to infinite so by fixing a given limit becomes truncated Taylor seires, the precision will be limited to  0,
- and the error increase as soon as $x \rightarrow ln 2$.
- 
- $P(y)$ determined, we apply our 231 schemes to evaluate it.
+
+The restriction of the range to $[0,ln 2]$ simplifies the evaluation of $e^y$. A truncated Taylor series could be a good idea to evaluate $e^y$ in a this range.
+Nevertheless, it's source of large error as  soon as the approximation is fixed. If we consider the Taylor series:
+
+\begin{eqnarray}
+e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Errors}}}_{\text{Exact mathematical formulation}}
+\end{eqnarray}
+
+Here the "Truncation Errors" corresponds of the remainder $R_n$ from the Taylor's Theorem. It can be expressed under an integral or the Lagrange form by:
+\begin{eqnarray}
+R_n & = & \int_{a}^{y} \frac{(y-t)^n}{n!}f^{(n+1)}(t)dt \,\,\, \text{(the integral form)} \\
+	& = & \frac{f^{(n+1)}(c)}{(n+1)!}(y-1)^{n+1}, \,\,\, \forall c \in [a,y] \,\,\, \text{(the Lagrange form)}
+\end{eqnarray}
+For $f(y)=e^y$ and $a=0$, we have $f^{(n+1)}(y)=e^y$, thus
+\begin{eqnarray}
+R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
+       &\leq& \left| \frac{e^y}{(n+1)!} y^{n+1} \right|
+\end{eqnarray}
+
+When $y=ln2$ and $n=10$, $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, it is a large error. To match a error 
+lower than the double precision of the machine we needed $n=16$. An alternative will be to develop the Taylor 
+series around $ln2/2$ but one more time error will be not uniform.
+
+[copy/past Wolfram]The Remez algorithm (Remez 1934), also called the Remez exchange algorithm, is an application of the Chebyshev alternation theorem that constructs the polynomial of best approximation to certain functions under a number of conditions. The Remez algorithm in effect goes a step beyond the minimax approximation algorithm to give a slightly finer solution to an approximation problem. It is an iterator technique.
+
+The determination of the polynomial is determined by an external program like boost. A polynomial of degree 10 gives total satisfaction.
+We will apply the 231 schemes to evaluate it.
  
 \subsubsection{ from x to k and y}
 From equation \ref{exponential_formula}  one equation two unknows, how to do ? A bit of math, from previsously 
