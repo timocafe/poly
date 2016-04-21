@@ -96,42 +96,46 @@ In evaluating the polynomial of degree $n$,
  \begin{eqnarray}
    P(x) = a_0 + a_1 x  + \dots + a_{n} x^{n}, \,\, (a_i  \in \R) \label{P0}
  \end{eqnarray}
- a large number of method can be applied. In this study, we selected the most significative, extracted from the great book of Knuth the art of programming [cite vol 2].
- The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, the factorisation method has been associated to all the  methods previously enumerated. To improove the performance, the main challenge consists to  maximise the parallelism and minimise the pipelining data hazard, to avoid bubble and consequently deteriorate the performance.
+ a large number of methods can be applied. In this study, we selected the most significant, extracted from the seminal work of Knuth [cite vol 2]. %the art of programming [cite vol 2].
+ The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation tachniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximizing the parallelism and minimizing the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
 \section{Algorithms}
 \subsection{Evaluation of Powers}
-The first step to perform polynomial evaluation is the evaluation of the powers.  The simple succession of $x$ multiplication has a  complexity of o($n$).
-Following the advice of Knuth, the Right-to-left binary method for exponentiation is the excellent alternative for our small degree polynomial [cite Knuth chapter]. 
-The method has a complexity o($\lfloor log(n) \rfloor + \upsilon(n)$) multiplications where  $\upsilon(n)$ number of ones in the binary representation of $n$.
+The basic step in performing a polynomial evaluation is the computation of the power function.
+To compute $x^n$, the naive approach would be to multiply $x$ with itself $n$ times in sequence, which has complexity of o($n$).
+Following the advice of Knuth, the Right-to-Left binary method for exponentiation is an excellent alternative for our small degree polynomial [cite Knuth chapter]. 
+The method has a complexity o($\lfloor log(n) \rfloor + \upsilon(n)$) multiplications where  $\upsilon(n)$ is the number of ones in the binary representation of $n$.
 \subsection{Brute force}
-The brute force method simply consists to evaluate the polynomial \ref{P0}, term after term, using evaluation of power as described previously.
-The complexity of the algorithm is  $n$ additions and  $2n-1$ multiplications.
+The brute force method simply consists in evaluating the polynomial~\eqref{P0}, term after term, computing the power function as described above.
+The complexity of the algorithm is $n$ additions and  $2n-1$ multiplications.
 \subsection{Horner method: classical - $1^{st}$-order}
-The Horner method at order one is the most classical. It is also very well know under the name \textit{"Horner's rule"}.
-It evaluates recursively the polynomial \ref{P0} at $x = x_0$,
+The Horner method at order one is the most classical [reference]. It is also very well known under the name \textit{``Horner's rule''}.
+Given an input value $x_0$, it evaluates recursively the polynomial~\eqref{P0} as
  \begin{eqnarray}
-   P(x_0) = a_0 +  x_0 ( a_1  +  x_0 ( a_2 + x_0(  \dots a_{n}  ) ))
+   P(x_0) = a_0 +  x_0 ( a_1  +  x_0 ( a_2 + x_0(  \dots a_{n}  ) )).
   \end{eqnarray}
-The \textit{"Horner's rule"} requires a complexity of $n$ multiplications and $n$ additions or $n$ FMA. The method is efficient,
-but inefficient for the processor point of view, because, it introduces data hazard pipelining due to the dependency chain in the recursive process.
+\textit{``Horner's rule''} has a complexity of $n$ multiplications and $n$ additions, or $n$ Fused Multiply-Add (FMA). The method is efficient,
+but inefficient from the point of view of the processor, because it can introduce pipelining data hazards due to the dependency chain in the recursive process.
 
 \subsection{Horner method: $k^{th}$-order}
-The  \textit{"Horner's rule"} can be generalised at any order by building new polynomials over $x^k$ [CITE ....].
-The main advantage is to introduce parallelism that removes the data hazard specially for high order of $k$
+\textit{``Horner's rule''} can be generalised to an arbitrary order by building new polynomials over $x^k$ instead of $x$ [CITE ....].
+The main advantage is to introduce parallelism that removes the data hazards, especially for high orders of $k$.
+Given a degree of parallelism $k$, Horner's $k^{th}$-order method reads:
  \begin{eqnarray}
    P(x_0) &=&  Q_0(x_0^k) + Q_1(x_0^k) + \dots + Q_{k-1}(x_0^k) \\
    Q_{k-1}(x_0^k) &=&  x_0^{k-1}(a_{k-1} + x_0^{k}(a_{2k-1} + x_0^{k}(a_{3k-1} + x_0^{k}(\dots a_{m \le n}))))
      \end{eqnarray}
-This method has $n+k-1$ multiplications and $n$ additions. $k$ degree of parallelism. The classical Horner method corresponds to $k=1$
+This method hasa complexity of $n+k-1$ multiplications and $n$ additions. The classical Horner method corresponds to $k=1$.
 
 \subsection{Horner method: Estrin}
-An alternative to the  generalization of Horner's rule is the Estrin method [cite estrin], described as follow:
-\begin{eqnarray}
-c_i^{(0)} = a_i + x_0  a_{i+1} \\
-c_i^n = c_i^{(n-1)} + x_0^{2^n} c_{i+2^n}^{n-1} \\
-P(x_0) = c_0^n
-\end{eqnarray}
-A development of the previous equation look likes 
+An alternative to the generalization of Horner's rule is the Estrin method [cite estrin], described as follows:
+\begin{equation}\label{estrin}
+\begin{split}
+c_i^{(0)} &= a_i + x_0  a_{i+1}, \\
+c_i^n     &= c_i^{(n-1)} + x_0^{2^n} c_{i+2^n}^{n-1}, \\
+P(x_0)    &= c_0^n.
+\end{split}
+\end{equation}
+Developing equation~\eqref{estrin} leads to: 
 \begin{eqnarray}
 P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
                &+&  x_0^2(a_2  + a_3 x_0) \nonumber \\
@@ -139,18 +143,33 @@ P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
                &+&  x_0^8(a_8  + a_9 x_0 + x_0^2 (a_{10} + a_{11}x_0) + x_0^4 ((a_{12}+a_{13}x_0 +x_0^2(a_{14}+a_{15}x_0)))))  \nonumber \\
                & &\dots
 \end{eqnarray}
-This method has $n$ multiplication and $n$ additions, but it is a remarkable pattern design for two reasons.
-Every $c_i^j$ can be associated to an independent FMA,  and as independent it will have a good efficiency on
-super scalar machine (no bubble).
+This method has $n$ multiplications and $n$ additions, just like Horner's
+method, but it has a remarkable pattern design for the following reason: every
+$c_i^j$ can be associated to an independent FMA, and by virtue of this
+independence we expect a good efficiency on super scalar machines (i.e. no
+bubbles in the pipeline).
 
 \subsection{Factorization}
-Finally the last method, we will evaluate is the factorization.  We are looking for polynomials with fix coefficients. We compute
-the root of the polynomial using an outside program.  The roots are recombined into produce of linear polynomial or  quadratic if the root
-are complex. From the linear or quadratic, new polynomial can be constructed. At the end every "new" polynomial can be evaluated by one 
-of the previous described method. This method can introduce a large parallelism and may outperform for superscalar architecture.
+Finally we consider the factorization method.
+This method is based on the fundamental algebraic property of polynomials with real coefficients, which states that any polynomial of degree $n$ can be decomposed into a product of $n$ factors
+\begin{equation}\label{factor}
+\prod\limits_{i=1}^n (x - z_i),
+\end{equation}
+where either $z_i \in \mathbb{R}$ or there is a couple of complex conjugate numbers $z_i, z_j \in \mathbb{C}$.
+In this work we only consider polynomials with fixed coefficients known a priori, thus we can compute the root of the polynomials offline using an external program.
+We recall the property that, given two complex conjugate numbers $z_i, z_j$, the product $(x - z_i)(x - z_j)$ factorizes to $x^2 + \alpha x + \beta$ where $\alpha, \beta \in \mathbb{R}$.
+We use this property to rewrite~\eqref{factor} such that it only contains real coefficients by explicitly computing all the products between complex conjugate roots:
+\begin{equation}\label{real-factor}
+\prod\limits_{i=1}^{n-l/2} (x - z_i)\prod\limits_{j=1}^{l/2} (x^2 + \alpha_j x + \beta_j),
+\end{equation}
+where $l$ is the number of complex conjugate roots of the polynomial~\eqref{P0}, with $l<n$ and $l$ always even.
+Instead of only evaluating all the simple factors appearing in~\eqref{real-factor} one-by-one, we consider all their possible combinations into polynomials of higher degree, to test whether a particular sequence of higher degree polynomials yields better results.
+Each higher degree polynomial can be evaluated by one
+of the previously described methods.
+The factorization technique can introduce a large degree of parallelism and may outperform others for superscalar architectures.
 
 \subsection{number of operations}
-To conclude this section on algorithm, the complexity of the different method are summarized  in the table \ref{complexity}.
+To conclude this section on algorithmis, the complexity of the different methods is summarized in Table \ref{complexity}.
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{l c c  }
@@ -159,41 +178,50 @@ To conclude this section on algorithm, the complexity of the different method ar
 Brute force            &  $n$       & $2n-1$     \\
 Horner $k^{th}$-order  & $n+k-1$ & $n$   \\
 Estrin                    & $n$        & $n$             \\
-Factorization        &    combinaison            &   combinaison   \\    
+Factorization        &    combination            &   combination   \\    
 	\hline
 \end{tabular}
 \end{center}
-\caption{ number of operation of the different algorithms of evaluation of the polynomial of degree $n$. \label{complexity}}
+\caption{Number of operations for different algorithms used for the evaluation of a polynomial of degree $n$. \label{complexity}}
 \end{table}%
 
 \subsection{Notations}
 In this section, the following notations are introduced. Any polynomial $P$ is characterised by two parameters, the degree and the method of evaluation. 
-The degree like usual is presented by the indices $n$  whereas the subscript is the method of evaluation. The different method of evaluation are
-the brute force method ($b$), the Horner method at the $k$ order ($h^k$) and Estrin method ($e$). Finally, $P^{6}_{e}$ means a polynomial of degree 6
-evaluated with the method of Estrin. An other example $P^8_{h^2}$ means a polynomial of degree 8 evaluated with the method of Horner at the order 2.
+The degree is represented by the superscript $n$, whereas the subscript is the method of evaluation. The different methods of evaluation are
+the brute force method ($b$), the Horner method of order $k$ ($h^k$) and the Estrin method ($e$). For example, $P^{6}_{e}$ means a polynomial of degree 6
+evaluated with the method of Estrin, whereas $P^8_{h^2}$ means a polynomial of degree 8 evaluated with the method of Horner with order 2.
 
 \subsection{Combinatory}
 
-In this study, we are focusing on polynomial evaluation more specially on a specific polynomial of degree 10 where the coefficients are know in advanced. This polynomial 
-is the approximation of $e^x$ with $x \in [0, ln2]$. This polynomial is strictly positive in this range, consequently, it does not have any real roots, but five pairs of conjugate
-root. From the 5 pairs, 5 quadratics polynomial can be built. The product of this 5 quadratics is a factorisation scheme. However, it exists a lot of alternative scheme.
-The starting point of the evaluation is the partition of 10 into even summands which is equivalent of the decomposition of 5 "multiply by 2". In other words the seven partition 
-of 5 are $(5),(4,1),(3,2),(3,1^2),(2^2,1),(2,1^3),(1^5)$ and consequently the partition of 10 into even summands are
+The factorization method and the different polynomial evaluation techniques described above give rise to a large number of possible combinations of polynomial factors.
+We now present a method for computing exactly how many different combinations we need to consider.
+
+In this study, we focus on the evaluation of polynomials of degree 10, where the coefficients are known in advance. We concentrate specifically on polynomials of degree 10 
+because they are very useful in the approximation of the exponential function $e^x$ with $x \in [0, ln2]$.
+The polynomials we consider are strictly positive in the range $[0, ln2]$, and therefore they do not have any real roots, but five pairs of complex conjugate
+roots. From the five pairs, five quadratic polynomials can be built following the factorization process described above. 
+The product of these five quadratic factors is the factorisation scheme.
+We note that there exist other alternative schemes.
+
+To find the total number of combinations of polynomial factors, we start by considering all possible partitions of the number 10 as sum of even numbers.
+We only consider even numbers because, as stated above, all the polynomial factors we consider are of degree two, arising from the product of two factors associated to complex conjugate roots.
+Partitioning the number ten in even summands s equivalent to partitioning the number five into arbitrary summands, then multiplying by two.
+There are seven partitions of the number five, which are $(5),(4,1),(3,2),(3,1^2),(2^2,1),(2,1^3),(1^5)$.
+Consequently the partitions of ten into even summands are
 
 \begin{eqnarray}
  (10),\,(8,2),\,(6,4),\,(6,2^2),\,(4^2,2),\,(4,2^3) \textrm{ and } (2^5) \label{evaluation}
 \end{eqnarray}
 
-To evaluate the number of combination there are three possibilities:
+To evaluate the number of combinations we make three considerations:
 
 \begin{enumerate}
-\item Each polynomial $P^n$ has $n+1$ method of evaluation: $P^n_b$, $P^n_e$ and $P^n_{h^{kth}}$ where $kth \in [1,n-1]$ because $P^n_{h^1} = P^n_{h^n}$. 
-\item Each polynomial produce $P^n P^m$ with $n!=m$, there are $n \times m$ evaluations (we do not consider $P^m P^n$  because the multiplication is commutative)
-\item Each polynomial have the same degree $ \prod P^n$ , there are ${m+k-1 \choose k} $  and not ${m \choose k}$ because the repetitions are allowed. $m$ is the number of method 
-(so $n+1$) and $k$ is the number of produce.
+\item each polynomial $P^m$ has $m+1$ methods of evaluation: $P^m_b$, $P^m_e$ and $P^m_{h^{k}}$ where $k \in [1,m-1]$ because $P^m_{h^1} = P^m_{h^n}$;
+\item for each polynomial product $P^l P^m$ with $l\neq m$, there are $(l+1) \times (m+1)$ possible combinations (we do not consider the alternative $P^m P^l$  because multiplication is commutative);
+\item for each product of $k$ polynomials having the same degree $m$ there are ${m+k \choose k} $  and not ${m+1 \choose k}$ possible combinations because repetitions are not counted.
 \end{enumerate}
 
-Apply this scheme to the equation \ref{evaluation} determines the total number of combinations $S$:
+Applying this scheme to~\eqref{evaluation} determines the total number of combinations $S$:
 
 \begin{eqnarray}
 S  &=&  \textrm{card}((10) + (8,2) + (6,4) + (6,2^2) + (4^2,2) + (4,2^3) + (2^5)) \nonumber \\
@@ -201,29 +229,33 @@ S  &=&  \textrm{card}((10) + (8,2) + (6,4) + (6,2^2) + (4^2,2) + (4,2^3) + (2^5)
     &=& 231
 \end{eqnarray}
 
-The total number of combination to evaluate the $P^{10}$ is 231.
+The total number of combinations to evaluate $P^{10}$ is therefore 231.
 
 \section{Elementary function: $e^x$}
-Small polynomials are intensively utilised in elementary functions, the present study focuses on $e^x$. A possible approach to compute $e^x$ is:
+Small polynomials are extensively used in the approximation of elementary functions.
+The present study focuses on $e^x$.
+A possible approach to compute $e^x$ is:
 
-$\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] \textrm{  with } k \in \mathbb{N} \nonumber$
-\begin{eqnarray}
-    x  & = & y + k ln 2  \label{begin_exp} \nonumber \\
-e^x  &= & 2^k e^y \nonumber 
+\begin{equation}\label{begin_exp}
+\begin{split}
+\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] & \textrm{  with } k \in \mathbb{N} \textrm{ such that:}\\
+    x  & =  y + k ln 2   \\
+e^x  &=  2^k e^y
 %       &=&  2^k P(y) \label{exponential_formula} 
-\end{eqnarray}
+\end{split}
+\end{equation}
 
 The restriction on the range $[0,ln 2]$ simplifies the evaluation of $e^y$. A truncated Taylor series could be a good idea to evaluate $e^y$.
-Nevertheless, it's source of large error. If we consider the Taylor series:
+Nevertheless, it can be a source of large error due to its locality properties. If we consider the Taylor series:
 
 \begin{eqnarray}
-e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Errors}}}_{\text{Exact mathematical formulation}}
+e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Error}}}_{\text{Exact mathematical formulation}}
 \end{eqnarray}
 
-Here the "Truncation Errors" corresponds of the remainder $R_n$ from the Taylor's Theorem. It can be expressed under an integral or the Lagrange form by:
+Here the "Truncation Error" corresponds to the remainder $R_n$ from Taylor's Theorem. It can be expressed under an integral or the Lagrange form by:
 \begin{eqnarray}
 R_n & = & \int_{a}^{y} \frac{(y-t)^n}{n!}f^{(n+1)}(t)dt \,\,\, \text{(the integral form)} \\
-	& = & \frac{f^{(n+1)}(c)}{(n+1)!}(y-1)^{n+1}, \,\,\, \forall c \in [a,y] \,\,\, \text{(the Lagrange form)}
+	& = & \frac{f^{(n+1)}(c)}{(n+1)!}(y-1)^{n+1}, \,\,\, c \in [a,y] \,\,\, \text{(the Lagrange form)}
 \end{eqnarray}
 For $f(y)=e^y$ and $a=0$, we have $f^{(n+1)}(y)=e^y$, thus
 \begin{eqnarray}
@@ -231,24 +263,28 @@ R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
        &\leq& \left| \frac{e^y}{(n+1)!} y^{n+1} \right|
 \end{eqnarray}
 
-When $y=ln2$ and $n=10$, $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, it is a large error. To match an error 
-lower than the double precision of the machine, $n=16$ is needed. An alternative will be to develop the Taylor 
-series around $ln2/2$ but one more time error will be not uniform.
+When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
+series around $ln2/2$ but once again the error would be not uniform.
 
-[copy/past Wolfram]The Remez algorithm (Remez 1934), also called the Remez exchange algorithm, is an application of the Chebyshev alternation theorem that constructs the polynomial of best approximation to certain functions under a number of conditions. The Remez algorithm in effect goes a step beyond the minimax approximation algorithm to give a slightly finer solution to an approximation problem. It is an iterator technique.
+[copy/paste Wolfram]The Remez algorithm (Remez 1934), also called the Remez exchange algorithm, is an application of the Chebyshev alternation theorem that constructs the polynomial of best approximation to certain functions under a number of conditions. The Remez algorithm in effect goes a step beyond the minimax approximation algorithm to give a slightly finer solution to an approximation problem. It is an iterator technique.
 
-The determination of the polynomial is determined by an external program like boost::math::tools package. A polynomial of degree 10 gives total satisfaction.
+The determination of the polynomial is determined by an external program like boost::math::tools package. A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance.
 We will apply the 231 schemes to evaluate it.
- 
+
 \subsection{ From x to k and y}
-The equation \ref{begin_exp} can be solved  although it has two unknowns.
-$\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] \textrm{  with } k \in \mathbb{N} \nonumber $
-\begin{eqnarray}
-x & = & y + k ln 2  \nonumber \\
+The equation~\eqref{begin_exp} can be solved  although it has two unknowns.\\
+$\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2], k \in \mathbb{N} \nonumber $ such that:
+\begin{eqnarray}\label{xyk}
+x & = & y + k ln 2.
+\end{eqnarray}
+To determine $k$, we apply the floor function to both sides of~\eqref{xyk}
+\begin{eqnarray}\label{floork}
 \floor*{\frac{x}{ln2}} & = &  \underbrace{ \floor*{\frac{y}{ln 2}}}_{=0} + \underbrace{\floor*{k}}_{=k} \nonumber \\
-			      & = & k 
+			      & = & k.
 \end{eqnarray} 
-$k$  is determinate and consequently $y$. The previous equations can be integrated in the following algorithm:
+Now that $k$ has been determined, we can compute $y$ by solving~\eqref{xyk}.
+
+The previous equations can be integrated in the following algorithm:
 
 \begin{algorithm}[H]
  \KwData{$x$ floating point number}
@@ -262,8 +298,8 @@ $y = x - k\times1.42860682030941723212  \times 10^{-6}$\;
 \end{algorithm}
 
 \subsection{$2^k$ fast evaluation}
-Compute $2^k$ may be done with a left bit shift but it can only work until 63 and it necessitates a cast from integer to double (compute intensive instruction). 
-An alternative solution utilises the floating point representation. Rational number can be represented closely under the following form:
+Computing $2^k$ may be done with a left bit shift but it can only work if $ (k << 63) \leq 2^{64}$ and it requires a cast from integer to double, which can be a compute intensive instruction.
+An alternative solution utilises the floating point representation. Rational numbers can be represented approximately under the following form:
 
 \begin{eqnarray}
 x = -1^s \times (1+F) \times 2^{e+bias}
@@ -277,11 +313,11 @@ x = -1^s \times (1+F) \times 2^{e+bias}
 \end{center}
 \end{figure}
 
-For double precision number (Figure \ref{doubleIEEE}): $s$ sign bit, $e + bias $ is the exponent (11 bits), it is bias (engineering sense of the world).
-It it biased because an alternative  based on the two complementary method makes think harder specially for comparison. 
-The bias is equal to 1023 and $e$ belongs [-1022,1023]. $F$ is the fraction (53 bits) $\sum_{n=1}^{p-1} bit_n \times 
-2^{-n}$. The method consists to take the wanted $k$ add the bias and move it into the exponent part of the floating point representation, and let the machine interpret it like a double.
-The method is efficient, fast and do not introduce any error or conversion. This method can be described by the following algorithm:
+For double precision numbers (Figure \ref{doubleIEEE}): $s$ sign bit, $e + bias $ is the exponent (11 bits), it is bias (engineering sense of the word).
+It it biased because an alternative  based on the two complementary method makes things harder specially for comparison. 
+The bias is equal to 1023 and $e$ belongs [-1022,1023]. $F$ is the mantissa (53 bits) $\sum_{n=1}^{p-1} bit_n \times 
+2^{-n}$. The method consists in taking the wanted $k$, adding the bias and moving it into the exponent part of the floating point representation, and letting the machine interpret it like a double.
+The method is efficient, fast and does not introduce any errors nor does it require any conversion operations. This method can be described by the following algorithm:
 
 \begin{algorithm}[H]
  \KwData{$k$ signed integer}
@@ -293,8 +329,9 @@ The method is efficient, fast and do not introduce any error or conversion. This
 
 \subsection{Boundary limits}
 
-The last step consists to fix the boundary limits, this step is mandatary and it introduces additional workflows and it is sometime neglected 
-in previous exponential study [pique pour COSTAS]. The  boundary limits to respect are summarised in the table \ref{boundary}.
+The last step consists in fixing the boundary limits.
+This step is mandatory and it introduces additional workflows, although it is sometimes neglected 
+in previous exponential study [pique pour COSTAS]. The  boundary limits to respect are summarised in the Table~\ref{boundary}.
 
 \begin{table}[ht]
 \begin{center}
@@ -308,8 +345,7 @@ $e^x$                   &  0 & $+\infty$  & 1 & NaN & $+\infty$   & 0 \\
 \end{center}
 \end{table}%
 
-Branching are impossible on SIMD architecture nevertheless it exists alternative using bit manipulation.
-As described in the table \ref{boundary}.
+Branching is impossible on SIMD architectures, nevertheless we describe an alternative using bit manipulation, as described in the Algorithm~\ref{manipulatiomanipulation}.
 
 \begin{algorithm}[H]
  \KwData{$x$ floating point number}
@@ -323,30 +359,30 @@ As described in the table \ref{boundary}.
  $mask3  \,\, \&= \neg mask1$\;
  $y \,\, |= mask2$\;
  \textbf{return} $y$\;
- \caption{Boundary condition algorithm}
+ \caption{Boundary condition algorithm\label{manipulation}}
 \end{algorithm}
 
 This algorithm has been applied for the scalar and vectorial versions.
 
-\section{Processor \& methods}
-Perform a full review of processors is a huge work and it is outside the topic of this paper. We focus on the general execution of the processors, but still with enough details
-to understand our results. Whatever the architecture of the chip, the execution of the binary code follows the same logic. Fetch/decode units read a stream of instructions
+\section{Processors \& methods}
+Performing a full review of processors is a huge work and it is outside the scope of this paper. We focus on the general execution of the processors, but still consider enough details
+to explain our results. Whatever the architecture of the chip, the execution of the binary code follows the same logic. Fetch/decode units read a stream of instructions
 from the L1 instructions cache memory and decode them into a series of micro operations that are executed by the processor's parallel executions units.
 
 \subsection{Intel SandyBridge and Broadwell architecture}
-The SandyBridge and Broadwell architecture derived from the core2duo architecture (based on a Pentium M). Both architecture support the new set of 256 bit vectorial instructions 
+The SandyBridge and Broadwell architecture derived from the core2duo architecture (based on a Pentium M). Both architectures support the new set of 256 bit vectorial instructions 
 named AVX and AVX2 (Broadwell only).  For both architectures, the instructions fetch unit bandwidth 
 is limited to 16 bytes per clock cycle. The instructions decoding execution is complicated, it is split
-between a predecoder and a decoder. The predecoder job is to detect where the instructions start, a hard task because the size of the instructions vary between 
-1 to 15 bytes. The predecoder also identifies the additional field (if available) of the instructions (prefix, ModR/M, SIB, displacement and immediate). Then 4 decoders handle
-the incoming instructions into 1 or more $\mu$ops. Only the first decoder can generate more than one $\mu$op. For SandyBridge, per cycle the decoders will generate 3 to 4  
-$\mu$ops. On Broadwell the generation is stabilised to 4  $\mu$ops. The 16 bytes per clock cycle is a serious limitation, therefore both architecture have a cache memory
-to avoid limitation of the 16 byte bandwidth. The effect of the cache memory can double the total size of  $\mu$ops generated: 32 bytes per cycle. 
+between a predecoder and a decoder. The predecoder job is to detect where the instructions start, a hard task because the size of an instruction can vary between 
+1 to 15 bytes. The predecoder also identifies the additional field (if available) of the instructions (prefix, ModR/M, SIB, displacement and immediate). Then 4 decoders decompose
+the incoming instructions into 1 or more $\mu$ops. Only the first decoder can generate more than one $\mu$op. For SandyBridge, decoders will generate 3 to 4  
+$\mu$ops per cycle. On Broadwell, the generation rate is fixed to 4 $\mu$ops per cycle. The 16 bytes per clock cycle is a serious limitation, therefore both architectures have a cache memory
+to avoid the limitations arising from the 16 byte per cycle bandwidth. The effect of the cache memory can double the total size of  $\mu$ops generated: 32 bytes per cycle. 
 %The cache is organised around 32 sets $\times$ 8 ways $\times$ 6 $\mu$ops.
 %$3 caches lines of 6 $\mu$ops. can be allocated simultaneously for a maximum of 32 bytes of code per cycle. 
-Both architecture have the possibilities to perform the fusion of instructions.
+Both architecture have the possibility to perform a fusion of instructions.
 At this point, $\mu$ops are still in-order. They are now  stored in the re-order buffer (168 entries for SandyBridge and  192 entries for Broadwell) for the renaming of the register,  
-the re-ordering $e.g.$ following a Tomasulo Algorithm, and in fine the reservation station  of 54 entries on Sandy Bridge and 60 on Broadwell respectively. At this last point the $\mu$ops will be executed on the execution units in out-of-order mode.
+the re-ordering $e.g.$ following a Tomasulo Algorithm, and \emph{in fine} the reservation station of 54 entries on Sandy Bridge and 60 on Broadwell respectively. At this last point the $\mu$ops will be executed on the execution units in out-of-order mode.
 %The out of order execution is now performed on 6 ports on the SandyBridge and 8 port on the Broadwell, however the number of port dedicated for the vectorial addition, multiplications and FMA (Broadwell only) are
 %equal to two, the port 0 and 1 respectively. 
 
@@ -354,8 +390,8 @@ The Sandy Bridge has six execution ports (or terminology execution pipelines). T
  with a throughput of four instructions per clock cycle (port 0, 1 and 5). Two ports can handle memory read operations (port 2 and 3)
 Port 4 is for memory write. Read/Write can be performed by port 2, 3 and 4 (write only) but the port 4 can not make address calculation.
 The maximum throughput is one unfused $\mu$op on each port per clock cycle.
-Port 0, 1 and 5 support usual 256 bit vector operations. There are separate ports for multiplication in general purpose registers and vector registers. 
-The integer and floating point vector multiplier on port 0.  These two multipliers can run simultaneously and both are fully pipelined with a throughput of 1 vector operation per clock cycle.
+Port 0, 1 and 5 support usual 256 bit vector operations. There are separate ports for multiplication of general purpose registers and vector registers. 
+The integer and floating point vector multiplier are on port 0.  These two multipliers can run simultaneously and both are fully pipelined with a throughput of 1 vector operation per clock cycle.
 %Integer division uses the floating point division unit on port 0. This is the only unit that is not pipelined.
 
 The Broadwell architecture has 8 execution ports (or terminology execution pipelines).  There are four integer ALUs so that the most common integer operations can execute
@@ -366,57 +402,55 @@ is a better throughput for vectorial addition (0.8) and vectorial multiplication
 
 \subsection{IBM Power7 and Power8 architecture}
 The Power8 is the last release of the IBM processor derived from the Power7.
-As x86 architecture Power7/8 support vectorial instructions but limited to 128 bit width. 
-For both architecture the Instruction Fetch Unit bandwidth is equal to 32 bytes per clock. Contrary to the X86 architecture the instructions are enconded in the POWER 32-bit
+Similarly to the x86 architecture, the Power7/8 chips support vectorial instructions but are limited to 128 bit width. 
+For both architectures the Instruction Fetch Unit bandwidth is equal to 32 bytes per clock. Contrary to the X86 architecture the instructions are enconded in the POWER 32-bit
 fixed-width RISC ISA. Therefore 8 inscriptions are pre-decoded into $\mu$ops by the IFU, and store in I-cache of 32 KB (4-way set associative  L1 cache for the Power7 and
-8-way set associative  L1 cache). This operations is performed in 2 cycles. As X86 both architecture can performed fusion of instructions with more facility for the Power8
-If the requesting thread is ready, the  $\mu$ops are bypassed directly the I-cache to the instructions buffer
-still in order). The Power7 has a instructions completion/cycle of 6 compare to 8 of the Power8.
+8-way set associative  L1 cache). This operation is performed in 2 cycles. Similarly to x86, both architectures can perform fusion of instructions, with higher efficiency for the Power8 architecture.
+If the requesting thread is ready, the  $\mu$ops are bypassed directly from the I-cache to the instructions buffer (still in order). The Power7 has a rate of completed instructions per cycle of 6, compared to 8 of the Power8.
 
-The  $\mu$ops will be managed by the Instructions Sequencing Unit (ISU) doing the renaming in out-of order mode and the dispatch in the various issue queues to
-the executions pipelines. After renaming and the dispatching the $\mu$ops (at least the compute one) are transferred to the UniQueue (as the reservation station fro X86). 
+The  $\mu$ops are be managed by the Instructions Sequencing Unit (ISU), responsible for doing the renaming in out-of order mode and the dispatching in the various issue queues to
+the executions pipelines. After renaming and the dispatching the $\mu$ops (at least the compute ones) are transferred to the UniQueue (as the reservation station for the x86 architecture). 
 the UniQueue is implemented as 48-entry queue  (power7) or 64-entry queue (power8) and split into two halves.
 
-The Power7 has 12 executions pipelines, but XXX are dedicated per half UniQueue, but  only  3 instructions per cycle can be executed, 
-one fixed-point instructions on the Fixed-Point Unit, one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU). One load or simple-fixed instruction on the Load unit (LU) and one scalar/vector instructions to the Vector Scalar Unit. 
+The Power7 has 12 executions pipeline, but XXX are dedicated to half UniQueue, so  only  3 instructions per cycle can be executed, 
+one fixed-point instruction on the Fixed-Point Unit, one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU). One load or simple-fixed instruction on the Load unit (LU) and one scalar/vector instruction on the Vector Scalar Unit. 
 
-The Power8 has 16 execution pipelines, but  6 are dedicated per half UniQueue, but  only  4 instructions per cycle can be executed, one fixed-point instructions on the Fixed-Point Uni,
-one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU)  and one scalar/vector instructions to the Vector Scalar Unit. The 4 other executions pipelines are dedicated to the cryptography, the branch execution, the condition logical and the decimal floating point operations. 
+The Power8 has 16 execution pipelines, but  6 are dedicated to half UniQueue, so  only  4 instructions per cycle can be executed, one fixed-point instructions on the Fixed-Point Unit,
+one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU)  and one scalar/vector instructions on the Vector Scalar Unit. The 4 other executions pipelines are dedicated to the cryptography, the branch execution, the condition logical and the decimal floating point operations. 
 
 
 \subsection{Latency, throughput definitions}
 
 The latency of an instruction is the delay that the instruction generates in a dependency chain. 
-For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruction can start executing
-2 clock cycles after a previous FMUL. A reciprocal throughput of 0.33 for ADD means that the execution units can handle 3 integer additions per clock cycle.
 
 The throughput is the maximum number of instructions of the same kind that can be executed per clock cycle
 when the operands of each instruction are independent of the preceding instructions.
+For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruction can start executing
+ clock cycles after a previous FMUL. A reciprocal throughput of 0.33 for ADD means that the execution units can handle 3 integer additions per clock cycle.
 
-The latency and the throughput of the main instructions for all platforms are reported in the table \label{latencyvendor}.
+The latency and the throughput of the main instructions for all platforms are reported in Table~\label{latencyvendor}.
 
 \subsection{Precision}
 
-The precision computed by the Unit of Least Precision (ULP).
-The original definition is: \textit{ulp(x) is the gap between the two floating-point number nearest $x$, even is $x$ is one of them.}
-As we described previously the precision for the exponential implementation will depend only on the error of the polynomial evaluation.
-Because the error on the evaluation on the $2^k$ used the hardware representation of the floating point and the boundaries conditions 
-only introduce bit  manipulation trick.  The ULP has been computed using external library, here the boost library more specially the boost::math
+We compute the precision using the Unit of Least Precision (ULP).
+The standard definition is: \textit{ulp(x) is the gap between the two floating-point numbers closest to $x$, even if $x$ is one of them.}
+The precision for the implementation of the exponential function will depend only on the error arising from the polynomial evaluation, because the evaluation of $2^k$ uses the exact hardware representation of the floating point numbers, and the boundaries conditions 
+only introduce bit  manipulation tricks. In this work, we compute the ULP using the boost library, more specially the boost::math
 package.
 
-\subsection{measurement tool}
+\subsection{measurement tools}
 
-Measure the throughput/latency is not trivial specially for the latency. A direct measurement is not trivial due 
+Measuring the throughput/latency is not a trivial task, especially for the latency. A direct measurement is not trivial due 
 to the large number of variables which may impact the measurements. 
 Therefore, the approach used within this study consists of performing indirect measurements by mapping the instructions associated to their
 mnemonics into a for loop whose unroll factor was parameterizable (between 1 and 5). 
 To avoid introducing some operation throughput effect which would corrupt the measurement of latency, a dependency between instructions 
 throughout the loop iterations has been artificially enforced. 
 
-Within this study, all benchmarks were compiled using GCC and repeated 100 times. The results of this experiment are reported in Figure \ref{fig.LATENCY_OPS} in function of the used unroll factor.  
-The experimental data has been fit to a linear distribution ($y=ax+b$ where $a$ corresponds to the slope of the curve which is equal to 100 times the actual 
-latency of the instruction).  Latency measurements have been carried out for all basic instructions +, $\times$, $/$ and FMA and compare to the 
-vendor results to validate our method with success. Latency of the previous instructions are reported in the table \ref{latencyvendor}.
+Within this study, all benchmarks were compiled using GCC and repeated 100 times. The results of this experiment are reported in Figure~\ref{fig.LATENCY_OPS} in function of the used unroll factor.  
+The experimental data has been fitted to a linear distribution ($y=ax+b$ where $a$ corresponds to the slope of the curve which is equal to 100 times the actual 
+latency of the instruction).  Latency measurements have been carried out for all basic instructions +, $\times$ and FMA and compared to the 
+vendor results to validate our method with success. Latency of the previous instructions are reported in Table~\ref{latencyvendor}.
 
 \begin{figure}[h]
 \begin{center}
@@ -444,19 +478,19 @@ FMA                 &   -  & -  &   0.5 & 5  &  1 & 6   \\
 \end{table}%
 
 A full review  of all x86 instructions can be found in [CITE agner] where fragmented information can be founded in [CITE p7 and P8] paper.
-To conclude, Intel has released in the last years the IACA tool [CITE]. This tools was nice to perform latency and throughput analysis, and
-do prediction on several Intel processor target. Unfortunately the tools is not anymore maintained since 2012 date of the last release. 
-However, we utilize the tool to generate Direct Acyclic Graph of the polynomial evaluation on the Broadwell platform, figure \ref{DAG}
+To conclude, Intel has released in the last years the IACA tool [CITE]. This tool was nice to perform latency and throughput analysis, and
+obtain predictions on several Intel processor target. Unfortunately the tool has not been maintained since 2012, date of its last release. 
+However, we utilize the tool to generate the Direct Acyclic Graph of the polynomial evaluation on the Broadwell platform, Figure~\ref{DAG}.
 
 \subsection{Programming model}
 
-Program polynomial evaluation and $e^x$ is not trivial because the code can not be polluted by additional workload, and useless
-instructions. A solution will be to write directly in assembly language, the solution is conceivable although is time consuming. 
-An alternative is meta-programming associated to recursive algorithm. It simplify the generation of all polynomial evaluation
-as soon as all method has been coded. Moreover as the algorithms are generics they can be plugged to any DSL to generate 
-a SIMD code, it is what we did. The algorithm are successively instantiated with the basic type double and a generic vector class coming from the Cyme library.
-To control the quality of our ASM at least on x86 platform we extract the DAG (Figure \ref{DAG}) using the IACA tool. Per example for the evaluation
-of the Horner method of the first order on a polynomial of degree 10. The match is perfect between the theory and the generated assembly.
+Programming polynomial evaluation and $e^x$ for high performance computing is not trivial because the code can not be polluted by additional workload, and useless
+instructions. A solution would be to write directly in assembly language: the solution is conceivable although it is very time consuming. 
+We consider the alternative of using meta-programming associated to a recursive algorithm. It simplifies the generation of all polynomial evaluations
+as soon as all possible methods have been programmed. Moreover, as the algorithms are generic, they can be plugged into any DSL to generate 
+a SIMD code. The algorithms are successively instantiated with the basic type double and a generic vector class coming from the Cyme library.
+To control the quality of our ASM at least on x86 platform we extract the DAG (Figure~\ref{DAG}) using the IACA tool, for example for the evaluation
+of the first order Horner method on a polynomial of degree 10. The match is perfect between the theory and the generated assembly.
 
 \begin{figure}
 \subfloat[]
