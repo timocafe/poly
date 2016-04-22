@@ -75,16 +75,13 @@ an evaluation  of a polynomial of degree 10 for a satisfying precision.
 \maketitle
 
 \section{Superscalar processor}
-It exists several definition of superscalar processor:  "Dispatch multiple instructions every cycle" from
+It exists several definition of superscalar processor, but two seem more interesting:  "Dispatch multiple instructions every cycle" from
 [CITE Agerwala and Cocke (1987)] or "Execute multiple operations in parallel" from [CITE Lam (1990)].
 Whatever the definitions, they are two main ideas: execute instructions concurrently and independently in separate execution pipelines.
-Moreover, improve throughput of concurrent pipelines by allowing out-of-order execution. Modern processors have more than one pipepeline.
-On the last release of Intel and IBM this number reaches 16 pipelines, and more interesting processors can have several Floating Point Unit (FPU).
+The throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
+Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
 
-Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step [CITE power7 FPU paper].
-It allows to restart the same operation (if no dependency) without waiting the completeness of the previous one.
-
-to be continued ....
+Modern processors have more than one pipelines. On the last release of Intel and IBM this number reaches 16 pipelines for the Power8, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on Power8 and Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step [CITE power7 FPU paper]. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
 $e^x$. State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the core unit of the last
@@ -98,7 +95,7 @@ In evaluating the polynomial of degree $n$,
  \end{eqnarray}
  a large number of methods can be applied. In this study, we selected the most significant, extracted from the seminal work of Knuth [cite vol 2]. %the art of programming [cite vol 2].
  The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation tachniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximizing the parallelism and minimizing the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
-\section{Algorithms}
+%\section{Algorithms}
 \subsection{Evaluation of Powers}
 The basic step in performing a polynomial evaluation is the computation of the power function.
 To compute $x^n$, the naive approach would be to multiply $x$ with itself $n$ times in sequence, which has complexity of o($n$).
