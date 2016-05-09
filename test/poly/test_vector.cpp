@@ -39,7 +39,7 @@ int main(int argc, char * argv[]){
             v1[j] = x[j] = dis(gen);
 
         #ifdef __x86_64__ 
-        v4 = v4dpoly(v1);
+        v2 = v4dpoly(v1);
         #endif 
         #ifdef __PPC64__ 
         v2 = v2dpoly(v1);
