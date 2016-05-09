@@ -15,11 +15,11 @@ foreach(i ${libexp})
                                                      /opt/ibm/xlmass/8.1.3/lib/libmassv.a )
     endif()
 
-    if (CMAKE_SYSTEM_PROCESSOR MATCHES "(ppc64)")
-    target_link_libraries(scalar_vector_latency_${i} llc /opt/ibmcmp/xlmass/bg/7.3/lib64/libmass_64.a /opt/ibmcmp/xlmass/bg/7.3/lib64/libmass_simdp7_64.a)
-    target_link_libraries(scalar_vector_latency_${i} /opt/ibmcmp/xlmass/bg/7.3/lib64/libmassvp7_64.a
-                                                     /opt/ibmcmp/xlmass/bg/7.3/lib64/libmass_simdp7_64.a
-                                                     /opt/ibmcmp/xlmass/bg/7.3/lib64/libmass_64.a)
-    endif()
+#    if (CMAKE_SYSTEM_PROCESSOR MATCHES "(ppc64)")
+#    target_link_libraries(scalar_vector_latency_${i} llc /opt/ibmcmp/xlmass/bg/7.3/lib64/libmass_64.a /opt/ibmcmp/xlmass/bg/7.3/lib64/libmass_simdp7_64.a)
+#    target_link_libraries(scalar_vector_latency_${i} /opt/ibmcmp/xlmass/bg/7.3/lib64/libmassvp7_64.a
+#                                                     /opt/ibmcmp/xlmass/bg/7.3/lib64/libmass_simdp7_64.a
+#                                                     /opt/ibmcmp/xlmass/bg/7.3/lib64/libmass_64.a)
+#    endif()
     target_link_libraries(scalar_vector_latency_${i} llc)
 endforeach()
