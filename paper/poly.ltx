@@ -627,12 +627,28 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 \caption{Broadwell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
 \end{figure}
 
+\section{Processor and Compiler}
+
+In this section,  the processors and the compilers informations are provided
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l c c c l }
+\hline
+architecture   & model-name & FMA & Compiler & Options Compilation \\
+SandyBridge & E5-2670 & no   & GCC 4.9  & -march=native --fast-math  -fabi-version=6  \\
+BroadWell     & E5-2630 & yes & GCC 4.9.3  & -march=native --fast-math -fma -fabi-version=6  \\
+\hline
+\end{tabular}
+\caption{Description of the processors and the compilers}
+\end{center}
+\end{table}
+
+--fast-math needed for compiler version for catching FMA and facilitate the computation $x$ to the power $n$ 
+
 
 \section{Results}
-
-
-\subsection{polynomials}
-
+\subsection{Polynomials, preliminary analysis and validations}
 
 Build an efficient theoretical method is not trivial, and vendor simulator performance are not released on the market. 
 Nevertheless a few experimental data for latency measurement with the simplest polynomial evaluation can be verified easily. 
@@ -646,9 +662,17 @@ Last but not least the simple factorizations combining the classical horner can 
 mul, add and FMA are fully pipelined, the computation of the polynomial of lower degree should be fully hidden by the polynomial of larger degree.
 In such situation the total latency of the produce of the polynomial is $ 6 [\textrm{mul+add}]_{latency} + [\textrm{mul}]_{latency}$ or $ 6 [\textrm{FMA}]_{latency}+ [\textrm{mul}]_{latency}$.
 The last multiplication corresponds to the final product between the two polynomials, it is a blocking operations. The measurement gives  36.00 [cycle] on the Broadwell 
-architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects. 
+architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects.  This first analysis shows already two informations, the factorization and the programming model is efficient.
 
-From this simple validation, we already have two informations, the factorization can be efficient and our programming model is efficient.
+\subsection{Polynomials, latency analysis} The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. For the Latency measurement, as excepted for all platform the longest latency concerns the classical Horner method due to the chain dependency. Considering the Horner method like the reference performance point the spectra of the results are large. The best results can out-perform by a factor lightly larger than 2 for the SandyBridge. In details if we have a look on the 10 best  results in the Table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}, as excepted the factorisation is a good pattern for improve the performance
+
+
+\subsection{Polynomials, throughput analysis}
+more factorization, pipeline better fill up , throughput should be a bit larger, a bit true on sandybridge. Effect of the hardware and the two FPU broadwell is important
+throughput divided by 2
+
+\subsection{Polynomials, precision analysis}
+Unfortunatly factorization is a source of error. Compute the root introduce error as we can see with ULP \ref{PRECISION_ULP}
 
 \subsection{exponentials}
 
@@ -663,7 +687,7 @@ give results compare to vendors intel svml and mass
 \hspace{-2.5cm}
 \includegraphics[scale=0.7]{allht_vector.eps}
 }
-\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right}
+\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT0} }
 \end{figure}
 
 \begin{figure}[h]
@@ -685,7 +709,7 @@ give results compare to vendors intel svml and mass
 \includegraphics[scale=0.7]{all_precision_vector.eps}
 }
 \caption{Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
-the histogram is the total number os polynomial evaluations for a given ULP}
+the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
 \end{figure}
 
 
@@ -697,24 +721,68 @@ the histogram is the total number os polynomial evaluations for a given ULP}
 		       & \multicolumn{3}{c}{scalar} & &  \multicolumn{3}{c}{vector} \\
 		       &   \multicolumn{3}{c}{Throughput Criteria} &   &  \multicolumn{3}{c}{Throughput Criteria} \\
  Algorithm        & Th.  & La.      & ULP  & Algorithm                & Th.   & La.     & ULP \\ 	
-$P^6_{h^{1}}P^4_{h^{1}}$      & 3.13 & 35.03  & 8           & $P^{10}_e$  & 2.90 & 22.69 & 2 \\
-
-
-
-
-
-
-
-
-
-
-		       &   \multicolumn{3}{c}{Latency Criteria} &   &  \multicolumn{3}{c}{Latency Criteria} \\
- $P^4_bP^2_bP^2_eP^2_e$  & 3.14 & 26.07  & 9        & $P^{10}_e$  & 2.90 & 22.69 & 3 \\
+$P_{h^4}^{6}P_e^{2}P_{h^1}^{2}$ & 6.08 & 35.10 & 8  & $P_b^{2}P_{h^2}^{4}P_{h^2}^{4}$ & 5.95 & 34.77 & 9 \\
+$P_{h^4}^{6}P_{h^1}^{2}P_{h^1}^{2}$ & 6.20 & 36.03 & 8  & $P_b^{2}P_{h^1}^{4}P_{h^1}^{4}$ & 6.13 & 43.70 & 9 \\
+$P_{h^4}^{6}P_{h^1}^{4}$ & 6.23 & 37.82 & 8  & $P_b^{2}P_{h^1}^{4}P_{h^2}^{4}$ & 6.24 & 43.06 & 10 \\
+$P_{h^4}^{6}P_e^{4}$ & 6.26 & 34.12 & 8  & $P_b^{2}P_e^{4}P_{h^2}^{4}$ & 6.37 & 31.56 & 11 \\
+$P_{h^3}^{6}P_e^{2}P_e^{2}$ & 6.27 & 39.17 & 8  & $P_b^{2}P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 6.37 & 40.05 & 9 \\
+$P_{h^4}^{6}P_{h^2}^{4}$ & 6.28 & 34.18 & 8  & $P_b^{2}P_e^{4}P_{h^1}^{4}$ & 6.39 & 37.27 & 10 \\
+$P_{h^3}^{6}P_b^{2}P_b^{2}$ & 6.30 & 39.18 & 9  & $P_b^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 6.41 & 39.73 & 9 \\
+$P_{h^3}^{6}P_{h^1}^{2}P_{h^1}^{2}$ & 6.31 & 38.93 & 9  & $P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 6.44 & 40.05 & 9 \\
+$P_{h^5}^{6}P_b^{2}P_{h^1}^{2}$ & 6.32 & 38.81 & 8  & $P_b^{2}P_b^{2}P_b^{2}P_b^{2}P_b^{2}$ & 6.46 & 42.46 & 8 \\
+$P_{h^5}^{6}P_b^{2}P_b^{2}$ & 6.33 & 38.87 & 8  & $P_b^{2}P_b^{2}P_e^{2}P_e^{2}P_e^{2}$ & 6.49 & 41.38 & 9 \\
+		       & \multicolumn{3}{c}{Latency Criteria} &           &  \multicolumn{3}{c}{Latency Criteria}\\
+$P_e^{6}P_b^{4}$ & 7.00 & 29.03 & 9  & $P_e^{10}$ & 7.09 & 29.07 & 4 \\
+$P_e^{6}P_e^{4}$ & 6.99 & 29.72 & 8  & $P_e^{6}P_e^{4}$ & 8.22 & 29.15 & 10 \\
+$P_{h^1}^{2}P_b^{4}P_e^{4}$ & 7.46 & 30.16 & 9  & $P_e^{6}P_{h^2}^{4}$ & 7.32 & 29.15 & 9 \\
+$P_{h^1}^{2}P_e^{4}P_{h^2}^{4}$ & 7.12 & 31.20 & 9  & $P_e^{2}P_e^{4}P_{h^2}^{4}$ & 7.74 & 30.05 & 9 \\
+$P_e^{2}P_b^{4}P_e^{4}$ & 7.47 & 31.67 & 9  & $P_{h^1}^{2}P_e^{4}P_{h^2}^{4}$ & 7.68 & 30.07 & 10 \\
+$P_b^{4}P_b^{2}P_e^{2}P_{h^1}^{2}$ & 7.33 & 31.70 & 10  & $P_e^{6}P_b^{4}$ & 7.58 & 30.65 & 8 \\
+$P_b^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 7.34 & 31.70 & 10  & $P_b^{2}P_e^{4}P_{h^2}^{4}$ & 6.37 & 31.56 & 11 \\
+$P_e^{4}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 7.36 & 31.70 & 10  & $P_e^{8}P_e^{2}$ & 7.53 & 32.27 & 8 \\
+$P_e^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 7.20 & 31.71 & 9  & $P_e^{8}P_{h^1}^{2}$ & 7.49 & 33.05 & 8 \\
+$P_b^{4}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 7.36 & 31.71 & 12  & $P_e^{6}P_e^{2}P_{h^1}^{2}$ & 7.48 & 33.05 & 9 \\
 \hline
 \end{tabular}
 \end{center}
-\caption{Best Latency/throughput [cycle] polynomial evaluation on all platforms. The criteria indicates the sort the tuple (throughput, latency, ulp), 
-on a specific part \label{LTR_EXP}}
+\caption{Best Latency/throughput [cycle] polynomial evaluation on SandyBridge platform. The criteria indicates the sort of the tuple (throughput, latency, ulp), 
+on a specific part \label{LTR_EXP_0}}
+\end{table}%
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l c c c  l c c  c }
+\hline
+		       & \multicolumn{3}{c}{scalar}              &           &  \multicolumn{3}{c}{vector}\\
+		       & \multicolumn{3}{c}{Throughput Criteria} &           &  \multicolumn{3}{c}{Throughput Criteria}\\
+ Algorithm             & Th.  & La.     & ULP                    & Algorithm & Th.   & La.     & ULP\\
+$P_{h^1}^{2}P_e^{4}P_{h^1}^{4}$ & 3.54 & 25.06 & 9  & $P_e^{6}P_e^{4}$ & 3.30 & 20.99 & 8 \\
+$P_{h^1}^{2}P_b^{4}P_{h^1}^{4}$ & 3.54 & 25.03 & 8  & $P_e^{6}P_{h^2}^{4}$ & 3.40 & 21.03 & 9 \\
+$P_e^{2}P_e^{4}P_{h^1}^{4}$ & 3.54 & 25.03 & 8  & $P_e^{6}P_{h^1}^{4}$ & 3.40 & 23.67 & 8 \\
+$P_e^{6}P_e^{2}P_e^{2}$ & 3.54 & 25.59 & 9  & $P_e^{10}$ & 3.41 & 22.65 & 4 \\
+$P_e^{4}P_b^{2}P_b^{2}P_b^{2}$ & 3.54 & 23.17 & 9  & $P_{h^2}^{6}P_{h^1}^{4}$ & 3.45 & 26.28 & 8 \\
+$P_e^{4}P_b^{2}P_e^{2}P_e^{2}$ & 3.54 & 23.17 & 10  & $P_{h^2}^{6}P_{h^2}^{4}$ & 3.46 & 27.27 & 8 \\
+$P_e^{4}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.54 & 23.50 & 9  & $P_e^{6}P_e^{2}P_e^{2}$ & 3.46 & 23.80 & 9 \\
+$P_e^{4}P_b^{2}P_b^{2}P_e^{2}$ & 3.54 & 23.19 & 10  & $P_e^{2}P_e^{4}P_e^{4}$ & 3.47 & 23.65 & 10 \\
+$P_e^{4}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.54 & 23.57 & 9  & $P_e^{8}P_e^{2}$ & 3.47 & 26.01 & 9 \\
+$P_e^{6}P_b^{2}P_e^{2}$ & 3.55 & 25.58 & 8  & $P_e^{2}P_{h^1}^{4}P_{h^2}^{4}$ & 3.49 & 26.45 & 9 \\
+		       & \multicolumn{3}{c}{Latency Criteria} &           &  \multicolumn{3}{c}{Latency Criteria}\\
+$P_b^{2}P_b^{2}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 3.64 & 21.46 & 9  & $P_e^{6}P_e^{4}$ & 3.30 & 20.99 & 8 \\
+$P_b^{2}P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 5.03 & 21.46 & 9  & $P_e^{6}P_{h^2}^{4}$ & 3.40 & 21.03 & 9 \\
+$P_b^{2}P_b^{2}P_b^{2}P_e^{2}P_{h^1}^{2}$ & 3.63 & 21.46 & 10  & $P_{h^1}^{2}P_e^{4}P_{h^2}^{4}$ & 3.57 & 22.43 & 9 \\
+$P_b^{2}P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 3.63 & 21.47 & 8  & $P_e^{2}P_e^{4}P_{h^2}^{4}$ & 3.56 & 22.62 & 10 \\
+$P_b^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.58 & 21.48 & 7  & $P_e^{10}$ & 3.41 & 22.65 & 4 \\
+$P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.62 & 21.48 & 8  & $P_{h^1}^{2}P_e^{4}P_e^{4}$ & 3.49 & 23.29 & 9 \\
+$P_e^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.58 & 21.48 & 8  & $P_b^{2}P_e^{4}P_{h^2}^{4}$ & 3.85 & 23.33 & 10 \\
+$P_e^{2}P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 3.63 & 21.51 & 9  & $P_e^{2}P_e^{4}P_e^{4}$ & 3.47 & 23.65 & 10 \\
+$P_b^{2}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.60 & 21.64 & 8  & $P_e^{6}P_{h^1}^{4}$ & 3.40 & 23.67 & 8 \\
+$P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 5.05 & 21.64 & 8  & $P_e^{6}P_e^{2}P_{h^1}^{2}$ & 3.53 & 23.74 & 9 \\
+
+\hline
+\end{tabular}
+\end{center}
+\caption{Best Latency/throughput [cycle] polynomial evaluation on Broadwell platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
+on a specific part \label{LTR_EXP_1}}
 \end{table}%
 
 \section{Conclusions}
