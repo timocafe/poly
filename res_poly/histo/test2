@@ -12,8 +12,9 @@ hist(x,width)=width*floor(x/width)+width/2.0
 set boxwidth width*0.9
 set style data points
 x = 0.0
+set key top left
 ## Last datafile plotted: "random-points"
-plot [min:max][0:1]   "data_hw"  u 6 smooth cnormal t 'normalized cumulative Haswell '
-replot  "data_sb"  u 6 smooth cnormal t 'normalized cumulative  SandyBridge '
-replot  "data_p7"  u 6 smooth cnormal t 'normalized cumulative  Power7 '
-replot  "data_p8"  u 6 smooth cnormal t 'normalized cumulative  Power8 '
+plot [min:max][0:1]   "data_hw"  u 7 smooth cnormal t 'normalized cumulative Haswell '
+replot  "data_sb"  u 7 smooth cnormal t 'normalized cumulative  SandyBridge '
+replot  "data_p7"  u 7 smooth cnormal t 'normalized cumulative  Power7 '
+replot  "data_p8"  u 7 smooth cnormal t 'normalized cumulative  Power8 '

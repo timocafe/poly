@@ -646,7 +646,7 @@ BroadWell     & E5-2630 & yes & GCC 4.9.3  & -march=native --fast-math -fma -fab
 
 --fast-math needed for compiler version for catching FMA and facilitate the computation $x$ to the power $n$ 
 
-
+ 
 \section{Results}
 \subsection{Polynomials, preliminary analysis and validations}
 
@@ -664,15 +664,28 @@ In such situation the total latency of the produce of the polynomial is $ 6 [\te
 The last multiplication corresponds to the final product between the two polynomials, it is a blocking operations. The measurement gives  36.00 [cycle] on the Broadwell 
 architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects.  This first analysis shows already two informations, the factorization and the programming model is efficient.
 
-\subsection{Polynomials, latency analysis} The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. For the Latency measurement, as excepted for all platform the longest latency concerns the classical Horner method due to the chain dependency. Considering the Horner method like the reference performance point the spectra of the results are large. The best results can out-perform by a factor lightly larger than 2 for the SandyBridge. In details if we have a look on the 10 best  results in the Table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}, as excepted the factorisation is a good pattern for improve the performance
+\subsection{Polynomials, latency analysis} The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. 
+The results present  are not distributed uniformly,  .. distributed ....  over 30 cycle .... figure 5 ... in details ... classical method uniform distributed ... logical horner more and more //.
+for over factorization improove latency so modistributed over the first half. 
 
+See packet  specially scalar version because compiler optimize following the same pattern so a lot of algo has a similar ASM (compiler effect) \& renaming out of order probably converge the version.
+this effect less visible for vector version because simd intrinsicsns compiler does not modify what we write, consider like final solution.
+
+For the Latency measurement, as excepted for all platform the longest latency concerns the classical Horner method due to the chain dependency. Considering the Horner method like the reference performance point the spectra of the results are large. The best results can out-perform by a factor lightly larger than 2 for the SandyBridge. In details if we have a look on the 10 best  results in the Table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}, as excepted the factorisation is a good pattern for improve the performance. 
 
 \subsection{Polynomials, throughput analysis}
-more factorization, pipeline better fill up , throughput should be a bit larger, a bit true on sandybridge. Effect of the hardware and the two FPU broadwell is important
-throughput divided by 2
+throughput same anlysis than previsously ... factorization fill up pipeline throughput increase .... broadwell two fpu direct effect throughput divided by two
 
 \subsection{Polynomials, precision analysis}
-Unfortunatly factorization is a source of error. Compute the root introduce error as we can see with ULP \ref{PRECISION_ULP}
+The ULP error estimator is presented on the Figure  \ref{PRECISION_ULP}. Errors is dispatched in two group. First group with a small ULP 2/3 or a larger one aounrd 8/9.
+This behavior is explained easily. The first group concerns all the polynomial of type $P^{10}_m$, no factorization has been applied on it. Contrary to the $2^{nd}$ group 
+where the factorization has been applied. This processus was performed with Matlab software, it introduces numerical error more and less important during \textit{e.g.} the square root
+of the determinant. We do not investigate  deeply the mechanism but it may be possible to improve it and consequently improve the ULP of all factorization pattern. 
+
+More surprisingly, the vector presents a shift of 1 ULP compare to the scalar version. Although we do not have a clear idea of this shift, for the scalar
+version the compiler has more freedom than the vector version where  the SIMD intrinsics associated to the algorithm fix the operations executions.
+In the scalar version, the compiler reorganize the operations following is setting in policy, we think the generated is done to maximize the performance and
+minimize the error.
 
 \subsection{exponentials}
 
