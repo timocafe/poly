@@ -2,21 +2,28 @@
 
 use strict;
 
+my %table=();
+
+while (<>) {
+    if (/latency/) {
+    my ($algo,$scalar,$vector)=(m'.*latency_(\w+).*scalar::poly\s+(\S+).*vector::poly\s+(\S+)');
+        $table{$algo}{'scalar_latency'}=''.$scalar;
+        $table{$algo}{'vector_latency'}=''.$vector;
+    }
+    else {
+    my ($function,$bench,$algo,$count)=(m'.*/([a-zA-Z]*)_([a-zA-Z]*_[a-zA-Z]*)_(\w+)\s+(\S+)');
+
+    $table{$algo}{$bench}=''.$count;
+    }
+}
+
 my %table_s=();
 my %table_v=();
 
-my %sort_table_s=();
-my %sort_table_v=();
-
-my $filename = shift;
-open(my $fh, '<:encoding(UTF-8)', $filename)
-  or die "Could not open file '$filename' $!";
-
-while (my $row = <$fh>) {
-  chomp $row;
-  my ($algo,$ulp_s,$th_s,$la_s,$ulp_v,$th_v,$la_v,$count)= split(/\s/,$row,8);
-  $table_s{$algo} = [$ulp_s,$th_s,$la_s];
-  $table_v{$algo} = [$ulp_v,$th_v,$la_v];
+for my $key (keys %table) {
+    my ($su,$st,$sl,$vu,$vt,$vl)=@{$table{$key}}{'scalar_ulp','scalar_throughput','scalar_latency','vector_ulp','vector_throughput','vector_latency'};
+    $table_s{$key} = [$su,$st,$sl];
+    $table_v{$key} = [$vu,$vt,$vl];
 }
 
 sub pretty_poly {

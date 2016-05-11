@@ -78,7 +78,7 @@ std::ostream &emit_latency(std::ostream &O,op_enum op,ci_iter b,ci_iter e) {
 
 
     for (;b!=e;++b){
-      O << ",\t" << op << ",\t" << b->ksize << ",\t" << b->c_kernel << ",\t" << b->c_harness << "\n";
+//    O << ",\t" << op << ",\t" << b->ksize << ",\t" << b->c_kernel << ",\t" << b->c_harness << "\n";
       x.push_back(b->ksize);
       y.push_back(b->c_kernel);
     }
