@@ -1,0 +1,71 @@
+\begin{thebibliography}{10}
+\expandafter\ifx\csname url\endcsname\relax
+  \def\url#1{\texttt{#1}}\fi
+\expandafter\ifx\csname urlprefix\endcsname\relax\def\urlprefix{URL }\fi
+\expandafter\ifx\csname href\endcsname\relax
+  \def\href#1#2{#2} \def\path#1{#1}\fi
+
+\bibitem{thomas1987high}
+T.~J. W. I.~R. Center, T.~Agerwala, J.~Cocke, High Performance Reduced
+  Instruction Set Processors, IBM Watson Research Center, 1987.
+
+\bibitem{Lam1990}
+M.~S. Lam, Instruction scheduling for superscalar architectures, Annu. Rev.
+  Comput. Sci. 4 (1990) 173--201.
+
+\bibitem{Power7FPU}
+M.~Boersma, M.~Kroner, C.~Layer, P.~Leber, S.~Muller, K.~Schelm, The power7
+  binary floating-point unit, in: Computer Arithmetic (ARITH), 2011 20th IEEE
+  Symposium on, 2011, pp. 87--91.
+\newblock \href {http://dx.doi.org/10.1109/ARITH.2011.21}
+  {\path{doi:10.1109/ARITH.2011.21}}.
+
+\bibitem{Knuth:1997:ACP:270146}
+D.~E. Knuth, The Art of Computer Programming, Volume 2 (3rd Ed.): Seminumerical
+  Algorithms, Addison-Wesley Longman Publishing Co., Inc., Boston, MA, USA,
+  1997.
+
+\bibitem{Dorn:1962:GHR:1661979.1661987}
+W.~S. Dorn, \href{http://dx.doi.org/10.1147/rd.62.0239}{Generalizations of
+  horner's rule for polynomial evaluation}, IBM J. Res. Dev. 6~(2) (1962)
+  239--245.
+\newblock \href {http://dx.doi.org/10.1147/rd.62.0239}
+  {\path{doi:10.1147/rd.62.0239}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1147/rd.62.0239}
+
+\bibitem{10.1109/AFIPS.1960.28}
+G.~Estrin, Organization of computer systems-the fixed plus variable structure
+  computer, Managing Requirements Knowledge, International Workshop on 0 (1960)
+  33.
+\newblock \href
+  {http://dx.doi.org/http://doi.ieeecomputersociety.org/10.1109/AFIPS.1960.28}
+  {\path{doi:http://doi.ieeecomputersociety.org/10.1109/AFIPS.1960.28}}.
+
+\bibitem{agner}
+A.~Fog, The microarchitecture of Intel, AMD and VIA CPUs An optimization guide
+  for assembly programmers and compiler makers, Technical University of
+  Denmark, 1996-2016.
+
+\bibitem{Sinharoy:2011:IPM:2001058.2001059}
+B.~Sinharoy, R.~Kalla, W.~J. Starke, H.~Q. Le, R.~Cargnoni, J.~A.
+  Van~Norstrand, B.~J. Ronchetti, J.~Stuecheli, J.~Leenstra, G.~L. Guthrie,
+  D.~Q. Nguyen, B.~Blaner, C.~F. Marino, E.~Retter, P.~Williams,
+  \href{http://dx.doi.org/10.1147/JRD.2011.2127330}{Ibm power7 multicore server
+  processor}, IBM J. Res. Dev. 55~(3) (2011) 191--219.
+\newblock \href {http://dx.doi.org/10.1147/JRD.2011.2127330}
+  {\path{doi:10.1147/JRD.2011.2127330}}.
+\newline\urlprefix\url{http://dx.doi.org/10.1147/JRD.2011.2127330}
+
+\bibitem{Power8}
+B.~Sinharoy, J.~Van~Norstrand, R.~Eickemeyer, H.~Le, J.~Leenstra, D.~Nguyen,
+  B.~Konigsburg, K.~Ward, M.~Brown, J.~Moreira, D.~Levitan, S.~Tung,
+  D.~Hrusecky, J.~Bishop, M.~Gschwind, M.~Boersma, M.~Kroener, M.~Kaltenbach,
+  T.~Karkhanis, K.~Fernsler, Ibm power8 processor core microarchitecture, IBM
+  Journal of Research and Development 59~(1) (2015) 2:1--2:21.
+\newblock \href {http://dx.doi.org/10.1147/JRD.2014.2376112}
+  {\path{doi:10.1147/JRD.2014.2376112}}.
+
+\bibitem{iaca}
+Intel Archtecture Code Analyser, Intel, 2009-2012.
+
+\end{thebibliography}
