@@ -632,11 +632,23 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 
 
 \subsection{polynomials}
-build th. model difficult, to make a prediction [cite simulator] outside our knowledge.
-Simple model easy for latency and the Horner method order 1...
 
-horner order 1 -> 10 mul/add or FMA  with dependency = 10 * latency of mul/add or FMA... it works all platform see table..
-produce of two quadratic horner large degree fix the time 6* latency of mul/add or FMA... + the final mul (dependency) it works.
+
+Build an efficient theoretical method is not trivial, and vendor simulator performance are not released on the market. 
+Nevertheless a few experimental data for latency measurement with the simplest polynomial evaluation can be verified easily. 
+The classical Horner's method  provides a dependency chain between all the operations (As shown by the AMS DAG, Figure \ref{DAG}), therefore any instructions
+can be only executed if the previous one is finished. The classical Horner's method gives 10 successives mull/add or 
+FMA with dependency,  Therefore the theoretical total latency of the polynomial is: $ 10 [\textrm{mul+add}]_{latency}$ or $ 10 [\textrm{FMA}]_{latency}$
+if the machine supports natively the FMA operations. The measurement gives 50.03 [cycle] on the Broadwell architecture and 80.01 [cycle] on the SandyBridge 
+architecture which correspond perfectly on the tiny model proposes  previously.
+
+Last but not least the simple factorizations combining the classical horner can be also modeled. Considering   $P^6_{h^1}P^4_{h^1}$, as the operations
+mul, add and FMA are fully pipelined, the computation of the polynomial of lower degree should be fully hidden by the polynomial of larger degree.
+In such situation the total latency of the produce of the polynomial is $ 6 [\textrm{mul+add}]_{latency} + [\textrm{mul}]_{latency}$ or $ 6 [\textrm{FMA}]_{latency}+ [\textrm{mul}]_{latency}$.
+The last multiplication corresponds to the final product between the two polynomials, it is a blocking operations. The measurement gives  36.00 [cycle] on the Broadwell 
+architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects. 
+
+From this simple validation, we already have two informations, the factorization can be efficient and our programming model is efficient.
 
 \subsection{exponentials}
 
