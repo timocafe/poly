@@ -96,7 +96,7 @@ In evaluating the polynomial of degree $n$,
  a large number of methods can be applied. In this study, we selected the most significant, extracted from the seminal work of Knuth \cite{Knuth:1997:ACP:270146}. %the art of programming [cite vol 2].
  The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation tachniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximizing the parallelism and minimizing the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
 %\section{Algorithms}
-\subsection{Evaluation of Powers}
+\subsection{Evaluation of Powers \label{powern}}
 The basic step in performing a polynomial evaluation is the computation of the power function.
 To compute $x^n$, the naive approach would be to multiply $x$ with itself $n$ times in sequence, which has complexity of o($n$).
 Following the advice of Knuth, the Right-to-Left binary method for exponentiation is an excellent alternative for our small degree polynomial [cite Knuth chapter]. 
@@ -235,7 +235,7 @@ A possible approach to compute $e^x$ is:
 
 \begin{equation}\label{begin_exp}
 \begin{split}
-\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] & \textrm{  with } k \in \mathbb{N} \textrm{ such that:}\\
+\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] & \textrm{  with } k \i`n \mathbb{N} \textrm{ such that:}\\
     x  & =  y + k ln 2   \\
 e^x  &=  2^k e^y
 %       &=&  2^k P(y) \label{exponential_formula} 
@@ -243,7 +243,10 @@ e^x  &=  2^k e^y
 \end{equation}
 
 The restriction on the range $[0,ln 2]$ simplifies the evaluation of $e^y$. A truncated Taylor series could be a good idea to evaluate $e^y$.
-Nevertheless, it can be a source of large error due to its locality properties. If we consider the Taylor series:
+Nevertheless, it can be a source of large error due to its locality properties.
+
+\subsection{Truncated series}
+ If we consider the Taylor series:
 
 \begin{eqnarray}
 e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Error}}}_{\text{Exact mathematical formulation}}
@@ -263,7 +266,25 @@ R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
 When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
 series around $ln2/2$ but once again the error would be not uniform.
 
-[copy/paste Wolfram]The Remez algorithm (Remez 1934), also called the Remez exchange algorithm, is an application of the Chebyshev alternation theorem that constructs the polynomial of best approximation to certain functions under a number of conditions. The Remez algorithm in effect goes a step beyond the minimax approximation algorithm to give a slightly finer solution to an approximation problem. It is an iterator technique.
+\subsection{Polynomial approximation}
+
+As demonstrated truncated Taylor series can not be selected due to locality issues. An excellent alternative is to approximate $e^x$ with a polynomial using a minimax method.
+The Remez algorithm associated to Chebyshev alternation theorem is an excellent solution. The method certify than $f(x)$  ($e^x$ in our case) can be approximate by a unique  minimax solution $R(x)$ that verify (Chebyshev proof).
+
+\begin{enumerate}
+\item if $R(x)$ is a polynomial of degree $n$. then there are $n+1$ unknowns: the $n+1$ coefficients of the polynomial, and the maximal value of the error function ($E(x) = f(x) - R(x)$)
+\item The error function has $n+1$ roots and $n+2$ extrema 
+\item The extrema alternate in sign, and all have the same magnitude 
+\end{enumerate}
+
+That means that if we know the location of the extrema of the error function then we can write N+2 simultaneous equations:
+
+\begin{eqnarray}
+R(x_i) + (-1)^iE = f(x_i)
+\end{eqnarray}
+
+where $E$ is the maximal error term, and $x_i$ are the abscissa values of the $n+2$ extrema of the error function. It is then trivial to solve the simultaneous equations to obtain the polynomial coefficients and the error term. Unfortunately the position of the extrema is unknown. The iterative  Remez method, given a broad range of assumptions, will converge 
+on the extrema of the error function, and therefore the minimax solution.
 
 The determination of the polynomial is determined by an external program like boost::math::tools package. A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance.
 We will apply the 231 schemes to evaluate it.
@@ -422,6 +443,7 @@ The latency of an instruction is the delay that the instruction generates in a d
 
 The throughput is the maximum number of instructions of the same kind that can be executed per clock cycle
 when the operands of each instruction are independent of the preceding instructions.
+
 For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruction can start executing
  clock cycles after a previous FMUL. A reciprocal throughput of 0.33 for ADD means that the execution units can handle 3 integer additions per clock cycle.
 
@@ -429,7 +451,7 @@ The latency and the throughput of the main instructions for all platforms are re
 
 \subsection{Precision}
 
-We compute the precision using the Unit of Least Precision (ULP).
+We compute the precision using the Unit of Least Precision (ULP) \cite{muller:inria-00070503}.
 The standard definition is: \textit{ulp(x) is the gap between the two floating-point numbers closest to $x$, even if $x$ is one of them.}
 The precision for the implementation of the exponential function will depend only on the error arising from the polynomial evaluation, because the evaluation of $2^k$ uses the exact hardware representation of the floating point numbers, and the boundaries conditions 
 only introduce bit  manipulation tricks. In this work, we compute the ULP using the boost library, more specially the boost::math
@@ -629,22 +651,25 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 
 \section{Processor and Compiler}
 
-In this section,  the processors and the compilers informations are provided
+This work focuses on the last release of Intel Xeon processor (Broadwell) and an oldest generation (SandyBrdige). We privileged the intel architecture 
+because it is well know and  well documented. The compiler is GCC. All informations are summarised in the table \ref{env_compil}.
 
 \begin{table}[ht]
 \begin{center}
-\begin{tabular}{ l c c c l }
+\begin{tabular}{ l c c c c }
 \hline
-architecture   & model-name & FMA & Compiler & Options Compilation \\
-SandyBridge & E5-2670 & no   & GCC 4.9  & -march=native --fast-math  -fabi-version=6  \\
-BroadWell     & E5-2630 & yes & GCC 4.9.3  & -march=native --fast-math -fma -fabi-version=6  \\
+Architecture   & Model & FMA & Compiler & Options Compilation \\
+SandyBridge & E5-2670 & no   & GCC 4.9  & \texttt{-O3 -march=native } \\
+                      &                &        &                 & \texttt{-fast-math -fabi-version=6}  \\
+BroadWell     & E5-2630 & yes & GCC 4.9.3  &  \texttt{-O3 -march=native -fma} \\
+                      &                &        &                 & \texttt{-fast-math -fabi-version=6}  \\
 \hline
 \end{tabular}
-\caption{Description of the processors and the compilers}
+\caption{Description of the processors, the compilers and the compilation options. \label{env_compil}} 
 \end{center}
 \end{table}
 
---fast-math needed for compiler version for catching FMA and facilitate the computation $x$ to the power $n$ 
+The two options \texttt{-fast-math} and \texttt{-fma} are mandatory to better computation of $x$ to the power of $n$ (as presented in the section \ref{powern}) and the utilization of the FMA for the scalar version. And finally the option \texttt{-fabi-version=6} for a usage of GCC vector Instructions through Built-in Functions.
 
  
 \section{Results}
@@ -665,27 +690,27 @@ The last multiplication corresponds to the final product between the two polynom
 architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects.  This first analysis shows already two informations, the factorization and the programming model is efficient.
 
 \subsection{Polynomials, latency analysis} The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. 
-The results present  are not distributed uniformly,  .. distributed ....  over 30 cycle .... figure 5 ... in details ... classical method uniform distributed ... logical horner more and more //.
-for over factorization improove latency so modistributed over the first half. 
-
-See packet  specially scalar version because compiler optimize following the same pattern so a lot of algo has a similar ASM (compiler effect) \& renaming out of order probably converge the version.
-this effect less visible for vector version because simd intrinsicsns compiler does not modify what we write, consider like final solution.
+The results are not distributed uniformly. For the scalar version they are distributed around 30 [cycle] (BroadWell) and 40 [cycle] (SandyBriddge). For the vectorial version, the distribution is more regular. In details, some packets of points appear (confirm by the table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}. It should be an compiler artefact, specially for the scalar version. The -fast-math reorganise the computation  of the power of $n$, as all the version are just slightly different (confirm by a fast quick look on the disassemble ,code), considering the out of order execution and the renaming of the register, it is clear that a few version give the same results. Oppositely for the vectorial version these packets are less visible because SIMD intrinsics programming prevent any optimization of the -fast-math, and  every algorithm is more unique.  
 
 For the Latency measurement, as excepted for all platform the longest latency concerns the classical Horner method due to the chain dependency. Considering the Horner method like the reference performance point the spectra of the results are large. The best results can out-perform by a factor lightly larger than 2 for the SandyBridge. In details if we have a look on the 10 best  results in the Table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}, as excepted the factorisation is a good pattern for improve the performance. 
 
 \subsection{Polynomials, throughput analysis}
-throughput same anlysis than previsously ... factorization fill up pipeline throughput increase .... broadwell two fpu direct effect throughput divided by two
+
+The throughput analysis is similar to the latency one, but with one more additional information. Factorization pattern increase slightly the throughput in cycle, it can be
+easily understand. The  factorisation pattern  improves the parallelism and consequently a better fill up of the pipeline, therefore it takes more cycle to restart a new operations
+as the pipelines are full.
 
 \subsection{Polynomials, precision analysis}
-The ULP error estimator is presented on the Figure  \ref{PRECISION_ULP}. Errors is dispatched in two group. First group with a small ULP 2/3 or a larger one aounrd 8/9.
-This behavior is explained easily. The first group concerns all the polynomial of type $P^{10}_m$, no factorization has been applied on it. Contrary to the $2^{nd}$ group 
-where the factorization has been applied. This processus was performed with Matlab software, it introduces numerical error more and less important during \textit{e.g.} the square root
-of the determinant. We do not investigate  deeply the mechanism but it may be possible to improve it and consequently improve the ULP of all factorization pattern. 
+The ULP error estimator is presented on the Figure  \ref{PRECISION_ULP}. Errors is dispatched in two group. First group with a small ULP 2/3 or a larger one around 8/9.
+This behaviour is explained easily. The first group concerns all the polynomial of type $P^{10}_m$, no factorisation has been applied on it. Contrary to the $2^{nd}$ group 
+where the factorisation has been applied. This processus was performed with Matlab software, and it necessitates resolution of quadratic equation  it introduces numerical error.
+of the determinant due to the round-off error. Kahan the father of IEEE floating point investigated the phenomena on simple quadratic \cite{Kahan2002}, 
+consequently it should be possible to improve the ULP of all factorisation pattern. 
 
 More surprisingly, the vector presents a shift of 1 ULP compare to the scalar version. Although we do not have a clear idea of this shift, for the scalar
 version the compiler has more freedom than the vector version where  the SIMD intrinsics associated to the algorithm fix the operations executions.
-In the scalar version, the compiler reorganize the operations following is setting in policy, we think the generated is done to maximize the performance and
-minimize the error.
+In the scalar version, the compiler reorganise the operations following is setting in policy, we think the generated is done to maximise the performance and
+minimise the error.
 
 \subsection{exponentials}
 
