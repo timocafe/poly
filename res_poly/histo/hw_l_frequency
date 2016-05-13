@@ -35,7 +35,7 @@ set style line 7 lc rgb '#C03000' pt 5 lw 5 lt 1 # vermillon
 set style line 71 lc rgb '#C03000' pt 5 lw 5 lt 2 # vermillon dash
 
 set out "../figures/hw_histo_vector_l.eps"; plot   'data1' u (helper_l(0)):(1.0) smooth freq ls 1 w l t "P_1"
-set out "../figures/hw_histo_vector_l.eps"; replot   'data1' u (helper_l(0)):(1.0) smooth freq ls 1 not
+set out "../figures/hw_histo_vector_l.eps"; replot 'data1' u (helper_l(0)):(1.0) smooth freq ls 1 not
 
 set out "../figures/hw_histo_vector_l.eps"; replot 'data2' u (helper_l(0)):(1.0) smooth freq ls 2 w l t "P_1P_2"
 set out "../figures/hw_histo_vector_l.eps"; replot 'data2' u (helper_l(0)):(1.0) smooth freq ls 2 not

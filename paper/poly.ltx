@@ -64,7 +64,7 @@
 The polynomial evaluation of small degree polynomials is critical for the computation of elementary functions. 
 It has been massively studied, and is well documented. In this paper, we have evaluated the existing methods for polynomial evaluation
 on super scalar architecture.  And, we have completed this work by factorisation evaluation, which is surprisingly neglected in the literature.  
-This work has been focused on the most recent processors of  Intel and IBM, amongst others, several computational units are available.
+This work has been focused on the most recent processors of  Intel, amongst others, several computational units are available.
 Moreover, we have applied our work on the elementary $e^x$ that  requires, in the current implementation,
 an evaluation  of a polynomial of degree 10 for a satisfying precision.
 
@@ -81,11 +81,13 @@ Whatever the definitions, they are two main ideas: execute instructions concurre
 The throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
 Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
 
-Modern processors have more than one pipelines. On the last release of Intel and IBM this number reaches 16 pipelines for the Power8, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on Power8 and Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
+Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
 $e^x$. State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the core unit of the last
-processor of Intel (SandyBridge and Broadwell) and IBM (Power7 and Power8), and the different method we will use for coding and measure the veracity of the results.
+processor of Intel (SandyBridge and Broadwell) 
+%and IBM (Power7 and Power8)
+, and the different method we will use for coding and measure the veracity of the results.
 We present results for the polynomial evaluation and exponential for scalar and vectorial version, and then we compare to vendor exponential library.
 
 \section{State of the art}
@@ -137,7 +139,8 @@ Developing equation~\eqref{estrin} leads to:
 P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
                &+&  x_0^2(a_2  + a_3 x_0) \nonumber \\
                &+&  x_0^4(a_4  + a_5 x_0 + x_0^2 (a_6 + a_7x_0)) \nonumber \\
-               &+&  x_0^8(a_8  + a_9 x_0 + x_0^2 (a_{10} + a_{11}x_0) + x_0^4 ((a_{12}+a_{13}x_0 +x_0^2(a_{14}+a_{15}x_0)))))  \nonumber \\
+               &+&  x_0^8(a_8  + a_9 x_0 + x_0^2 (a_{10} + a_{11}x_0) + \nonumber \\ 
+               & &  x_0^4 ((a_{12}+a_{13}x_0 +x_0^2(a_{14}+a_{15}x_0)))))  \nonumber \\
                & &\dots
 \end{eqnarray}
 This method has $n$ multiplications and $n$ additions, just like Horner's
@@ -165,8 +168,8 @@ Each higher degree polynomial can be evaluated by one
 of the previously described methods.
 The factorization technique can introduce a large degree of parallelism and may outperform others for superscalar architectures.
 
-\subsection{number of operations}
-To conclude this section on algorithmis, the complexity of the different methods is summarized in Table \ref{complexity}.
+\subsection{complexity}
+To conclude this section on algorithms, the complexity of the different methods is summarised in Table \ref{complexity}.
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{l c c  }
@@ -355,9 +358,8 @@ The method is efficient, fast and does not introduce any errors nor does it requ
 
 \subsection{Boundary limits}
 
-The last step consists in fixing the boundary limits.
-This step is mandatory and it introduces additional workflows, although it is sometimes neglected 
-in previous exponential study [pique pour COSTAS]. The  boundary limits to respect are summarised in the Table~\ref{boundary}.
+The last step consists in fixing the boundary limits. This step is mandatory and it introduces additional workflows, although it is sometimes neglected 
+in previous exponential study \cite{Costas}. The  boundary limits to respect are summarised in the Table~\ref{boundary}.
 
 \begin{table}[ht]
 \begin{center}
@@ -426,23 +428,23 @@ The Broadwell architecture has 8 execution ports (or terminology execution pipel
 Two ports can handle floating point vector operations (port 0 and 1). The direct consequences  of this larger number of port for floating point operations 
 is a better throughput for vectorial addition (0.8) and vectorial multiplication (0.5) compared to SandyBridge.
 
-\subsection{IBM Power7 and Power8 architecture}
-The Power8 is the last release of the IBM processor derived from the Power7.
-Similarly to the x86 architecture, the Power7/8 chips support vectorial instructions but are limited to 128 bit width. 
-For both architectures the Instruction Fetch Unit bandwidth is equal to 32 bytes per clock. Contrary to the X86 architecture the instructions are enconded in the POWER 32-bit
-fixed-width RISC ISA. Therefore 8 inscriptions are pre-decoded into $\mu$ops by the IFU, and store in I-cache of 32 KB (4-way set associative  L1 cache for the Power7 and
-8-way set associative  L1 cache). This operation is performed in 2 cycles. Similarly to x86, both architectures can perform fusion of instructions, with higher efficiency for the Power8 architecture.
-If the requesting thread is ready, the  $\mu$ops are bypassed directly from the I-cache to the instructions buffer (still in order). The Power7 has a rate of completed instructions per cycle of 6, compared to 8 of the Power8.
-
-The  $\mu$ops are be managed by the Instructions Sequencing Unit (ISU), responsible for doing the renaming in out-of order mode and the dispatching in the various issue queues to
-the executions pipelines. After renaming and the dispatching the $\mu$ops (at least the compute ones) are transferred to the UniQueue (as the reservation station for the x86 architecture). 
-the UniQueue is implemented as 48-entry queue  (power7) or 64-entry queue (power8) and split into two halves.
-
-The Power7 has 12 executions pipeline, but XXX are dedicated to half UniQueue, so  only  3 instructions per cycle can be executed, 
-one fixed-point instruction on the Fixed-Point Unit, one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU). One load or simple-fixed instruction on the Load unit (LU) and one scalar/vector instruction on the Vector Scalar Unit. 
-
-The Power8 has 16 execution pipelines, but  6 are dedicated to half UniQueue, so  only  4 instructions per cycle can be executed, one fixed-point instructions on the Fixed-Point Unit,
-one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU)  and one scalar/vector instructions on the Vector Scalar Unit. The 4 other executions pipelines are dedicated to the cryptography, the branch execution, the condition logical and the decimal floating point operations. 
+%\subsection{IBM Power7 and Power8 architecture}
+%The Power8 is the last release of the IBM processor derived from the Power7.
+%Similarly to the x86 architecture, the Power7/8 chips support vectorial instructions but are limited to 128 bit width. 
+%For both architectures the Instruction Fetch Unit bandwidth is equal to 32 bytes per clock. Contrary to the X86 architecture the instructions are enconded in the POWER 32-bit
+%fixed-width RISC ISA. Therefore 8 inscriptions are pre-decoded into $\mu$ops by the IFU, and store in I-cache of 32 KB (4-way set associative  L1 cache for the Power7 and
+%8-way set associative  L1 cache). This operation is performed in 2 cycles. Similarly to x86, both architectures can perform fusion of instructions, with higher efficiency for the Power8 architecture.
+%If the requesting thread is ready, the  $\mu$ops are bypassed directly from the I-cache to the instructions buffer (still in order). The Power7 has a rate of completed instructions per cycle of 6, compared to 8 of the Power8.
+%
+%The  $\mu$ops are be managed by the Instructions Sequencing Unit (ISU), responsible for doing the renaming in out-of order mode and the dispatching in the various issue queues to
+%the executions pipelines. After renaming and the dispatching the $\mu$ops (at least the compute ones) are transferred to the UniQueue (as the reservation station for the x86 architecture). 
+%the UniQueue is implemented as 48-entry queue  (power7) or 64-entry queue (power8) and split into two halves.
+%
+%The Power7 has 12 executions pipeline, but XXX are dedicated to half UniQueue, so  only  3 instructions per cycle can be executed, 
+%one fixed-point instruction on the Fixed-Point Unit, one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU). One load or simple-fixed instruction on the Load unit (LU) and one scalar/vector instruction on the Vector Scalar Unit. 
+%
+%The Power8 has 16 execution pipelines, but  6 are dedicated to half UniQueue, so  only  4 instructions per cycle can be executed, one fixed-point instructions on the Fixed-Point Unit,
+%one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU)  and one scalar/vector instructions on the Vector Scalar Unit. The 4 other executions pipelines are dedicated to the cryptography, the branch execution, the condition logical and the decimal floating point operations. 
 
 
 \subsection{Latency, throughput definitions}
@@ -455,14 +457,14 @@ when the operands of each instruction are independent of the preceding instructi
 For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruction can start executing
  clock cycles after a previous FMUL. A reciprocal throughput of 0.33 for ADD means that the execution units can handle 3 integer additions per clock cycle.
 
-The latency and the throughput of the main instructions for all platforms are reported in Table~\label{latencyvendor}.
+The latency and the throughput of the main instructions for all platforms are reported in Table~\ref{latencyvendor}.
 
 \subsection{Precision}
 
 We compute the precision using the Unit of Least Precision (ULP) \cite{muller:inria-00070503}.
 The standard definition is: \textit{ulp(x) is the gap between the two floating-point numbers closest to $x$, even if $x$ is one of them.}
 The precision for the implementation of the exponential function will depend only on the error arising from the polynomial evaluation, because the evaluation of $2^k$ uses the exact hardware representation of the floating point numbers, and the boundaries conditions 
-only introduce bit  manipulation tricks. In this work, we compute the ULP using the boost library, more specially the boost::math
+only introduce bit  manipulation tricks. In this work, we compute the ULP using the boost library, more specially the \texttt{boost::math}
 package.
 
 \subsection{measurement tools}
@@ -474,34 +476,44 @@ mnemonics into a for loop whose unroll factor was parameterizable (between 1 and
 To avoid introducing some operation throughput effect which would corrupt the measurement of latency, a dependency between instructions 
 throughout the loop iterations has been artificially enforced. 
 
-Within this study, all benchmarks were compiled using GCC and repeated 100 times. The results of this experiment are reported in Figure~\ref{fig.LATENCY_OPS} in function of the used unroll factor.  
+Within this study, all benchmarks were compiled using GCC and repeated 100 times. 
+%The results of this experiment are reported in Figure~\ref{fig.LATENCY_OPS} in function of the used unroll factor.  
 The experimental data has been fitted to a linear distribution ($y=ax+b$ where $a$ corresponds to the slope of the curve which is equal to 100 times the actual 
 latency of the instruction).  Latency measurements have been carried out for all basic instructions +, $\times$ and FMA and compared to the 
 vendor results to validate our method with success. Latency of the previous instructions are reported in Table~\ref{latencyvendor}.
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.7]{platency.eps} %\vspace{-1cm}
-\caption{Value of latencies using a linear approximation for vectorial double precision instructions on Power8: $+$. 
-The slop $a$ represents the latency of the instructions. The residual $b$ of 60 cycle in 0, corresponds to the the additional workload in cycle introduced 
-by the program/processor. 
-\label{fig.LATENCY_OPS}}
-\end{center}
-\end{figure}
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.7]{platency.eps} %\vspace{-1cm}
+%\caption{Value of latencies using a linear approximation for vectorial double precision instructions on Power8: $+$. 
+%The slop $a$ represents the latency of the instructions. The residual $b$ of 60 cycle in 0, corresponds to the the additional workload in cycle introduced 
+%by the program/processor. 
+%\label{fig.LATENCY_OPS}}
+%\end{center}
+%\end{figure}
 
 \begin{table}[ht]
-\caption{Latency/Throughput add/mul/fma on the Broadwell architecture. \label{latencyvendor}}
 \begin{center}
-\begin{tabular}{l c c c c c c }
-			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  & \multicolumn{2}{c}{Power 7/8}\\ 
-                         & Thr.  & Lat. & Thr. & Lat. & Thr. & Lat.  \\
+%\begin{tabular}{l c c c c c c }
+%			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  & \multicolumn{2}{c}{Power 7/8}\\ 
+%                         & Thr.  & Lat. & Thr. & Lat. & Thr. & Lat.  \\
+%		          \hline
+%add                   &  1 & 3  &   0.8 & 3 &  1 & 6     \\
+%mul                   &  1 & 5  &   0.5 & 5 &  1 & 6   \\
+%FMA                 &   -  & -  &   0.5 & 5  &  1 & 6   \\
+%		             \hline
+%\end{tabular}
+\begin{tabular}{l c c c c  }
+			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  \\ 
+                         & Thr.  & Lat. & Thr. & Lat. \\
 		          \hline
-add                   &  1 & 3  &   0.8 & 3 &  1 & 6     \\
-mul                   &  1 & 5  &   0.5 & 5 &  1 & 6   \\
-FMA                 &   -  & -  &   0.5 & 5  &  1 & 6   \\
+add                   &  1 & 3  &   0.8 & 3    \\
+mul                   &  1 & 5  &   0.5 & 5    \\
+FMA                 &   -  & -  &   0.5 & 5    \\
 		             \hline
 \end{tabular}
 \end{center}
+\caption{Latency/Throughput add/mul/fma on the Broadwell architecture. \label{latencyvendor}}
 \end{table}%
 
 A full review  of all x86 instructions can be found in \cite{agner} where fragmented information can be founded in \cite{Sinharoy:2011:IPM:2001058.2001059, Power8}
@@ -519,11 +531,11 @@ a SIMD code. The algorithms are successively instantiated with the basic type do
 To control the quality of our ASM at least on x86 platform we extract the DAG (Figure~\ref{DAG}) using the IACA tool, for example for the evaluation
 of the first order Horner method on a polynomial of degree 10. The match is perfect between the theory and the generated assembly.
 
-\begin{figure}
+\begin{figure}[t]
 \subfloat[]
 {
 %\resizebox{.1\textwidth}{.9\textwidth}{%
-\begin{tikzpicture}[>=latex',line join=bevel,scale=0.3]
+\begin{tikzpicture}[>=latex',line join=bevel,scale=0.27]
 %%
 \node (11) at (213.0bp,18.0bp) [draw=cyan,fill=cyan,circle,scale=0.3] {11. mov};
   \node (10) at (213.0bp,90.0bp) [draw=pink,fill=pink,circle,scale=0.3] {10. FMA};
@@ -554,7 +566,7 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 }
 \subfloat[]
 {
-\begin{tikzpicture}[>=latex',line join=bevel,,scale=0.3]
+\begin{tikzpicture}[>=latex',line join=bevel,,scale=0.27]
 %%
 \node (11) at (229.0bp,519.0bp) [draw=pink,fill=pink,circle,scale=0.3] {11. $\times$};
   \node (10) at (372.0bp,283.0bp) [draw=cyan,fill=cyan,circle,scale=0.3] {10. mov};
@@ -599,7 +611,7 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 }
 \subfloat[]
 {
-\begin{tikzpicture}[>=latex',line join=bevel,scale=0.3]
+\begin{tikzpicture}[>=latex',line join=bevel,scale=0.27]
 %%
 \node (11) at (44.0bp,446.0bp) [draw=cyan,fill=cyan,circle,scale=0.3] {11. mov};
   \node (10) at (445.0bp,580.0bp) [draw=pink,fill=pink,circle,scale=0.3] {10. FMA};
@@ -657,9 +669,9 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 \caption{Broadwell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
 \end{figure}
 
-\section{Processor and Compiler}
+\section{Processors and Compiler}
 
-This work focuses on the last release of Intel Xeon processor (Broadwell) and an oldest generation (SandyBrdige). We privileged the intel architecture 
+This work focuses on the last release of Intel Xeon processor (Broadwell) and an oldest generation (SandyBridge). We privileged the intel architecture 
 because it is well know and  well documented. The compiler is GCC. All informations are summarised in the table \ref{env_compil}.
 
 \begin{table}[ht]
