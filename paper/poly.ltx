@@ -182,6 +182,75 @@ Factorization        &    combination            &   combination   \\
 \caption{Number of operations for different algorithms used for the evaluation of a polynomial of degree $n$. \label{complexity}}
 \end{table}%
 
+\section{Elementary function: $e^x$}
+Small polynomials are extensively used in the approximation of elementary functions.
+The present study focuses on $e^x$.
+A possible approach to compute $e^x$ is:
+
+\begin{equation}\label{begin_exp}
+\begin{split}
+\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] & \textrm{  with } k \in \mathbb{N} \textrm{ such that:}\\
+    x  & =  y + k ln 2   \\
+e^x  &=  2^k e^y
+%       &=&  2^k P(y) \label{exponential_formula} 
+\end{split}
+\end{equation}
+
+The restriction on the range $[0,ln 2]$ simplifies the evaluation of $e^y$. A truncated Taylor series could be a good idea to evaluate $e^y$.
+Nevertheless, it can be a source of large error due to its locality properties, as we are going to demonstrate.
+
+\subsection{Truncated series}
+ If we consider the Taylor series:
+
+\begin{eqnarray}
+e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Error}}}_{\text{Exact mathematical formulation}}
+\end{eqnarray}
+
+Here the "Truncation Error" corresponds to the remainder $R_n$ from Taylor's Theorem. It can be expressed under an integral or the Lagrange form by:
+\begin{eqnarray}
+R_n & = & \int_{a}^{y} \frac{(y-t)^n}{n!}f^{(n+1)}(t)dt \,\,\, \text{(the integral form)} \\
+	& = & \frac{f^{(n+1)}(c)}{(n+1)!}(y-1)^{n+1}, \,\,\, c \in [a,y] \,\,\, \text{(the Lagrange form)}
+\end{eqnarray}
+For $f(y)=e^y$ and $a=0$, we have $f^{(n+1)}(y)=e^y$, thus
+\begin{eqnarray}
+R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
+       &\leq& \left| \frac{e^y}{(n+1)!} y^{n+1} \right|
+\end{eqnarray}
+
+When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
+series around $ln2/2$ but once again the error would be local.
+
+\subsection{Polynomial approximation}
+
+As demonstrated truncated Taylor series can not be selected due to locality issues. An excellent alternative is to approximate $e^x$ with a polynomial using a minimax method.
+The Remez algorithm is an excellent solution. The method certify than $f(x)$  ($e^x$ in our case) can be approximate by a unique minimax solution $R(x)$ minimising 
+an  error function \textit{e.g.} $E(x)=f(x)-R(x)$) in the concerning interval. Moreover the minimax solution verifies (Chebyshev proof).
+
+\begin{itemize}
+\item if $R(x)$ is a polynomial of degree $n$ with $n+1$ $c_i$ coefficients, there are $n+2$ unknowns: the $n+1$ coefficients of the polynomial, and the maximal value of the error function ($E(x) = f(x) - R(x)$)
+\item The error function has $n+1$ roots and $n+2$ extrema 
+\item The extrema alternate in sign, and all have the same magnitude 
+\end{itemize}
+
+That means that if we know the location of the extrema of the error function then we can write N+2 simultaneous equations:
+
+\begin{eqnarray}
+R(x_i) + (-1)^iE = f(x_i) \label{system}
+\end{eqnarray}
+
+where $E$ is the maximal error term, and $x_i$ are the abscissa values (or control point) and should be the $n+2$ extrema of the error function. The resolution of this system of equation is easy 
+nevertheless it does not  provide the position of the extrema. In practice the  Remez algorithm necessitates an initialisation and  two iterative steps. First the polynomial approximation comes from a 
+Chebyshev approximation, the extrema are determinate, they become the control points $x_i$ of the error functions. Then the two iterative steps are performed:
+
+\begin{enumerate}
+\item Compute the $n+1$ coefficients $c_i$ and the error $E$ by solving the  equation \ref{system}. A solution is obtained with the same error on the control point but it is not necessarily the minimax 
+solution, because the extrema are not located on the control points.
+\item Find the extrema of the new solution using the properties that the extrema is between the $n+1$ root of the polynomial and the control points. This step is called exchange step. 
+And iterate until the error function is lower than the wanted precision. 
+\end{enumerate}
+
+The Remez method is powerfull, a full detail and rigorous analysis can be found in \cite{Fraser:1965:SMC:321281.321282}. In this paper, the \texttt{boost::math::tools} package was selected.  A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance. This polynomial will be the starting point for the method previously describe. 
+
 \subsection{Notations}
 In this section, the following notations are introduced. Any polynomial $P$ is characterised by two parameters, the degree and the method of evaluation. 
 The degree is represented by the superscript $n$, whereas the subscript is the method of evaluation. The different methods of evaluation are
@@ -228,69 +297,8 @@ S  &=&  \textrm{card}((10) + (8,2) + (6,4) + (6,2^2) + (4^2,2) + (4,2^3) + (2^5)
 
 The total number of combinations to evaluate $P^{10}$ is therefore 231.
 
-\section{Elementary function: $e^x$}
-Small polynomials are extensively used in the approximation of elementary functions.
-The present study focuses on $e^x$.
-A possible approach to compute $e^x$ is:
-
-\begin{equation}\label{begin_exp}
-\begin{split}
-\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] & \textrm{  with } k \i`n \mathbb{N} \textrm{ such that:}\\
-    x  & =  y + k ln 2   \\
-e^x  &=  2^k e^y
-%       &=&  2^k P(y) \label{exponential_formula} 
-\end{split}
-\end{equation}
-
-The restriction on the range $[0,ln 2]$ simplifies the evaluation of $e^y$. A truncated Taylor series could be a good idea to evaluate $e^y$.
-Nevertheless, it can be a source of large error due to its locality properties.
-
-\subsection{Truncated series}
- If we consider the Taylor series:
-
-\begin{eqnarray}
-e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Error}}}_{\text{Exact mathematical formulation}}
-\end{eqnarray}
-
-Here the "Truncation Error" corresponds to the remainder $R_n$ from Taylor's Theorem. It can be expressed under an integral or the Lagrange form by:
-\begin{eqnarray}
-R_n & = & \int_{a}^{y} \frac{(y-t)^n}{n!}f^{(n+1)}(t)dt \,\,\, \text{(the integral form)} \\
-	& = & \frac{f^{(n+1)}(c)}{(n+1)!}(y-1)^{n+1}, \,\,\, c \in [a,y] \,\,\, \text{(the Lagrange form)}
-\end{eqnarray}
-For $f(y)=e^y$ and $a=0$, we have $f^{(n+1)}(y)=e^y$, thus
-\begin{eqnarray}
-R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
-       &\leq& \left| \frac{e^y}{(n+1)!} y^{n+1} \right|
-\end{eqnarray}
-
-When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
-series around $ln2/2$ but once again the error would be not uniform.
-
-\subsection{Polynomial approximation}
-
-As demonstrated truncated Taylor series can not be selected due to locality issues. An excellent alternative is to approximate $e^x$ with a polynomial using a minimax method.
-The Remez algorithm associated to Chebyshev alternation theorem is an excellent solution. The method certify than $f(x)$  ($e^x$ in our case) can be approximate by a unique  minimax solution $R(x)$ that verify (Chebyshev proof).
-
-\begin{enumerate}
-\item if $R(x)$ is a polynomial of degree $n$. then there are $n+1$ unknowns: the $n+1$ coefficients of the polynomial, and the maximal value of the error function ($E(x) = f(x) - R(x)$)
-\item The error function has $n+1$ roots and $n+2$ extrema 
-\item The extrema alternate in sign, and all have the same magnitude 
-\end{enumerate}
-
-That means that if we know the location of the extrema of the error function then we can write N+2 simultaneous equations:
-
-\begin{eqnarray}
-R(x_i) + (-1)^iE = f(x_i)
-\end{eqnarray}
-
-where $E$ is the maximal error term, and $x_i$ are the abscissa values of the $n+2$ extrema of the error function. It is then trivial to solve the simultaneous equations to obtain the polynomial coefficients and the error term. Unfortunately the position of the extrema is unknown. The iterative  Remez method, given a broad range of assumptions, will converge 
-on the extrema of the error function, and therefore the minimax solution.
-
-The determination of the polynomial is determined by an external program like boost::math::tools package. A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance.
-We will apply the 231 schemes to evaluate it.
-
 \subsection{ From x to k and y}
-The equation~\eqref{begin_exp} can be solved  although it has two unknowns.\\
+The polynomial is solved consequently, going back to the $e^x$ computation. The equation~\eqref{begin_exp} can be solved  although it has two unknowns.\\
 $\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2], k \in \mathbb{N} \nonumber $ such that:
 \begin{eqnarray}\label{xyk}
 x & = & y + k ln 2.
