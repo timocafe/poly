@@ -66,7 +66,7 @@ It has been massively studied, and is well documented. In this paper, we have ev
 on super scalar architecture.  And, we have completed this work by factorisation evaluation, which is surprisingly neglected in the literature.  
 This work has been focused on the most recent processors of  Intel, amongst others, several computational units are available.
 Moreover, we have applied our work on the elementary $e^x$ that  requires, in the current implementation,
-an evaluation  of a polynomial of degree 10 for a satisfying precision.
+an evaluation  of a polynomial of degree 10 for a satisfying precision, and obtain factorization scheme benchmark faster than the famous Estrin's method.
 
 
 \end{abstract}
@@ -101,22 +101,21 @@ In evaluating the polynomial of degree $n$,
 \subsection{Evaluation of Powers \label{powern}}
 The basic step in performing a polynomial evaluation is the computation of the power function.
 To compute $x^n$, the naive approach would be to multiply $x$ with itself $n$ times in sequence, which has complexity of o($n$).
-Following the advice of Knuth, the Right-to-Left binary method for exponentiation is an excellent alternative for our small degree polynomial [cite Knuth chapter]. 
+Following the advice of Knuth, the Right-to-Left binary method for exponentiation is an excellent alternative for our small degree polynomial \cite{Knuth:1997:ACP:270146}. 
 The method has a complexity o($\lfloor log(n) \rfloor + \upsilon(n)$) multiplications where  $\upsilon(n)$ is the number of ones in the binary representation of $n$.
 \subsection{Brute force}
 The brute force method simply consists in evaluating the polynomial~\eqref{P0}, term after term, computing the power function as described above.
 The complexity of the algorithm is $n$ additions and  $2n-1$ multiplications.
 \subsection{Horner method: classical - $1^{st}$-order}
-The Horner method at order one is the most classical [reference]. It is also very well known under the name \textit{``Horner's rule''}.
-Given an input value $x_0$, it evaluates recursively the polynomial~\eqref{P0} as
+The homonym Horner's method at order one is the most classical. Given an input value $x_0$, it evaluates recursively the polynomial~\eqref{P0} as
  \begin{eqnarray}
    P(x_0) = a_0 +  x_0 ( a_1  +  x_0 ( a_2 + x_0(  \dots a_{n}  ) )).
   \end{eqnarray}
-\textit{``Horner's rule''} has a complexity of $n$ multiplications and $n$ additions, or $n$ Fused Multiply-Add (FMA). The method is efficient,
+\textit{``Horner's method''} has a complexity of $n$ multiplications and $n$ additions, or $n$ Fused Multiply-Add (FMA). The method is efficient,
 but inefficient from the point of view of the processor, because it can introduce pipelining data hazards due to the dependency chain in the recursive process.
 
 \subsection{Horner method: $k^{th}$-order}
-\textit{``Horner's rule''} can be generalised to an arbitrary order by building new polynomials over $x^k$ instead of $x$ \cite{Dorn:1962:GHR:1661979.1661987}.
+\textit{``Horner's method''} can be generalised to an arbitrary order by building new polynomials over $x^k$ instead of $x$ \cite{Dorn:1962:GHR:1661979.1661987}.
 The main advantage is to introduce parallelism that removes the data hazards, especially for high orders of $k$.
 Given a degree of parallelism $k$, Horner's $k^{th}$-order method reads:
  \begin{eqnarray}
