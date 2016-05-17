@@ -41,6 +41,23 @@ G.~Estrin, Organization of computer systems-the fixed plus variable structure
   {http://dx.doi.org/http://doi.ieeecomputersociety.org/10.1109/AFIPS.1960.28}
   {\path{doi:http://doi.ieeecomputersociety.org/10.1109/AFIPS.1960.28}}.
 
+\bibitem{Fraser:1965:SMC:321281.321282}
+W.~Fraser, \href{http://doi.acm.org/10.1145/321281.321282}{A survey of methods
+  of computing minimax and near-minimax polynomial approximations for functions
+  of a single independent variable}, J. ACM 12~(3) (1965) 295--314.
+\newblock \href {http://dx.doi.org/10.1145/321281.321282}
+  {\path{doi:10.1145/321281.321282}}.
+\newline\urlprefix\url{http://doi.acm.org/10.1145/321281.321282}
+
+\bibitem{Costas}
+Conference: HiPEAC 2015 - 1st Workshop On Approximate Computing (WAPCO), Fast
+  Exponential Computation on SIMD Architectures.
+
+\bibitem{muller:inria-00070503}
+J.-M. Muller, \href{https://hal.inria.fr/inria-00070503}{{On the definition of
+  ulp(x)}}, Tech. Rep. RR-5504, {INRIA} (Feb. 2005).
+\newline\urlprefix\url{https://hal.inria.fr/inria-00070503}
+
 \bibitem{agner}
 A.~Fog, The microarchitecture of Intel, AMD and VIA CPUs An optimization guide
   for assembly programmers and compiler makers, Technical University of
@@ -67,5 +84,9 @@ B.~Sinharoy, J.~Van~Norstrand, R.~Eickemeyer, H.~Le, J.~Leenstra, D.~Nguyen,
 
 \bibitem{iaca}
 Intel Archtecture Code Analyser, Intel, 2009-2012.
+
+\bibitem{Kahan2002}
+W.~Kahan, On the cost of floating-point computation without extra-precise
+  arithmetic (2002).
 
 \end{thebibliography}

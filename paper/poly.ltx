@@ -66,7 +66,8 @@ It has been massively studied, and is well documented. In this paper, we have ev
 on super scalar architecture.  And, we have completed this work by factorisation evaluation, which is surprisingly neglected in the literature.  
 This work has been focused on the most recent processors of  Intel, amongst others, several computational units are available.
 Moreover, we have applied our work on the elementary $e^x$ that  requires, in the current implementation,
-an evaluation  of a polynomial of degree 10 for a satisfying precision, and obtain factorization scheme benchmark faster than the famous Estrin's method.
+an evaluation  of a polynomial of degree 10 for a satisfying precision. The results obtained for the  factorization scheme benchmark are faster than the famous
+and efficient  Estrin's method.
 
 
 \end{abstract}
@@ -81,7 +82,7 @@ Whatever the definitions, they are two main ideas: execute instructions concurre
 The throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
 Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
 
-Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
+Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the Broadwell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
 $e^x$. State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the core unit of the last
@@ -749,10 +750,16 @@ give results compare to vendors intel svml and mass
 
 \begin{figure}[h]
 \mbox{
-\hspace{-2cm}
-\includegraphics[scale=0.7]{hw_histo_vector_l.eps} 
+\vspace{-2.5cm}
+\includegraphics[scale=0.7]{hw_histo_vector_l_sb.eps} 
 \hspace{-2.5cm}
-\includegraphics[scale=0.7]{hw_histo_vector_t.eps}
+\includegraphics[scale=0.7]{hw_histo_vector_t_sb.eps} 
+}
+\mbox{
+\vspace{-2.5cm}
+\includegraphics[scale=0.7]{hw_histo_vector_l_hw.eps} 
+\hspace{-2.5cm}
+\includegraphics[scale=0.7]{hw_histo_vector_t_hw.eps} 
 }
 \caption{Latency and Throughput frequency of the vectorial version. The analysis is done for the original polynomial or the factorization associated. Sampling interval of 1 for the latency and 0.1 for the throughput.}
 \end{figure}
