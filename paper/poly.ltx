@@ -86,9 +86,7 @@ Modern processors have more than one pipelines. On the last release of Intel thi
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
 $e^x$. State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the core unit of the last
-processor of Intel (SandyBridge and Broadwell) 
-%and IBM (Power7 and Power8)
-, and the different method we will use for coding and measure the veracity of the results.
+processor of Intel (SandyBridge and Broadwell), and the different method we will use for coding and measure the veracity of the results.
 We present results for the polynomial evaluation and exponential for scalar and vectorial version, and then we compare to vendor exponential library.
 
 \section{State of the art}
@@ -326,7 +324,7 @@ $y = x - k\times1.42860682030941723212  \times 10^{-6}$\;
  \caption{$2^k$ evaluation algorithm. Note the operation  interpret\_as\_double interprets $k$ as a double it is not a cast operation.}
 \end{algorithm}
 
-\subsection{$2^k$ fast evaluation}
+\subsection{$2^k$ fast evaluation} \label{TwokSection}
 Computing $2^k$ may be done with a left bit shift but it can only work if $ (k << 63) \leq 2^{64}$ and it requires a cast from integer to double, which can be a compute intensive instruction.
 An alternative solution utilises the floating point representation. Rational numbers can be represented approximately under the following form:
 
@@ -356,8 +354,8 @@ The method is efficient, fast and does not introduce any errors nor does it requ
  \caption{$2^k$ evaluation algorithm. Note the operation  interpret\_as\_double interprets $k$ as a double it is not a cast operation.}
 \end{algorithm}
 
-\subsection{Boundary limits}
-
+\subsection{Boundary limits} 
+ \label{BoundarySection}
 The last step consists in fixing the boundary limits. This step is mandatory and it introduces additional workflows, although it is sometimes neglected 
 in previous exponential study \cite{Costas}. The  boundary limits to respect are summarised in the Table~\ref{boundary}.
 
@@ -716,6 +714,18 @@ For the Latency measurement, as excepted for all platform the longest latency co
 
 \subsection{Polynomials, throughput analysis}
 
+\begin{figure}[ht]
+\mbox{
+\hspace{-2cm}
+\includegraphics[scale=0.7]{allht_scalar.eps} 
+\hspace{-2.5cm}
+\includegraphics[scale=0.7]{allht_vector.eps}
+}
+\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT0} }
+\end{figure}
+
+
+
 The throughput analysis is similar to the latency one, but with one more additional information. Factorization pattern increase slightly the throughput in cycle, it can be
 easily understand. The  factorisation pattern  improves the parallelism and consequently a better fill up of the pipeline, therefore it takes more cycle to restart a new operations
 as the pipelines are full.
@@ -731,22 +741,6 @@ More surprisingly, the vector presents a shift of 1 ULP compare to the scalar ve
 version the compiler has more freedom than the vector version where  the SIMD intrinsics associated to the algorithm fix the operations executions.
 In the scalar version, the compiler reorganise the operations following is setting in policy, we think the generated is done to maximise the performance and
 minimise the error.
-
-\subsection{exponentials}
-
-give results compare to vendors intel svml and mass
-
-
-
-\begin{figure}[h]
-\mbox{
-\hspace{-2cm}
-\includegraphics[scale=0.7]{allht_scalar.eps} 
-\hspace{-2.5cm}
-\includegraphics[scale=0.7]{allht_vector.eps}
-}
-\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT0} }
-\end{figure}
 
 \begin{figure}[h]
 \mbox{
@@ -775,8 +769,6 @@ give results compare to vendors intel svml and mass
 \caption{Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
 the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
 \end{figure}
-
-
 
 \begin{table}[ht]
 \begin{center}
@@ -847,6 +839,28 @@ $P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 5.05 & 21.64 & 8  & $P_e^{6}P_e^
 \end{center}
 \caption{Best Latency/throughput [cycle] polynomial evaluation on Broadwell platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
 on a specific part \label{LTR_EXP_1}}
+\end{table}%
+
+\subsection{exponentials}
+Evaluate the exponential necessitates the addition of the computation of $2^k$ and the boundary conditions has we have described in the section \ref{TwokSection} and \ref{BoundarySection}.
+The throughput/latency benchmarks are reported in the table  \ref{twokboundary}. The results are similar whatever the the platform and the backend (vectorial/scalar), with a little improvement 
+on the Broadwell version, specially for the vector version because the native support of the  AVX2  compared to the limited AVX1 on the Sandybridge allow more vectorial SIMD instructions 
+specially for the integer manipulations. However the latency of the boundary and the $2^k$ are quiet expensive in term of cycle. It is easily explain. Both operations introduced chain
+of dependency that does not allow a good parallelism although the large number of ALU inside the processors.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l c c  c c c c c c  }
+\hline
+Architecture & \multicolumn{4}{c}{$2^k$} & \multicolumn{4}{c}{boundary} \\
+	             & \multicolumn{2}{c}{scalar} & \multicolumn{2}{c}{vector} & \multicolumn{2}{c}{scalar} & \multicolumn{2}{c}{vector} \\
+			& Thr. & Lat. 		& Thr. & Lat. 		& Thr. & Lat.  		& Thr. & Lat.\\		    
+SandyBridge & 4.71  & 15.00  &3.49 &18.99   & 4.71 &9.95 & 4.04 &  8.01 \\
+Broadwell     & 3.63  &16.00  & 2.70 &   18.00 &  4.94&  10.65& 2.64 &  8.01 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Benchmark of the $2^k$ and the boundary conditions for the evaluation of $e^x$. \label{twokboundary}}
 \end{table}%
 
 \section{Conclusions}
