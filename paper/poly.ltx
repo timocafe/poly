@@ -78,8 +78,8 @@ and efficient  Estrin's method.
 \section{Superscalar processor}
 It exists several definition of superscalar processor, but two seem more interesting:  "Dispatch multiple instructions every cycle" from
 \cite{thomas1987high} or "Execute two or more scalar operations in parallel" from \cite{Lam1990}.
-Whatever the definitions, they are two main ideas: execute instructions concurrently and independently in separate execution pipelines.
-The throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
+Whatever the definitions, they are two main ideas: execute instructions concurrently and independently in separate execution pipelines. Moreover, 
+the throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
 Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
 
 Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the Broadwell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
