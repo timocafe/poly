@@ -36,7 +36,7 @@
 \address[rvt]{Blue Brain Project, Campus Biotech, Ch. des Mines 9. CH-1212 Gen\`eve}
 
 
-\graphicspath{{plot/figures/}{../res_poly/figures/}{graph/}} %do not forget the / at the end
+\graphicspath{{plot/figures/}{../res_exp/figures/}{../res_poly/figures/}{graph/}} %do not forget the / at the end
 
 \newcommand{\R}{\mathbb{R}}
 
@@ -82,11 +82,11 @@ Whatever the definitions, they are two main ideas: execute instructions concurre
 the throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
 Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
 
-Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the Broadwell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
+Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the BroadWell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the BroadWell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
 $e^x$. State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the core unit of the last
-processor of Intel (SandyBridge and Broadwell), and the different method we will use for coding and measure the veracity of the results.
+processor of Intel (SandyBridge and BroadWell), and the different method we will use for coding and measure the veracity of the results.
 We present results for the polynomial evaluation and exponential for scalar and vectorial version, and then we compare to vendor exponential library.
 
 \section{State of the art}
@@ -95,7 +95,7 @@ In evaluating the polynomial of degree $n$,
    P(x) = a_0 + a_1 x  + \dots + a_{n} x^{n}, \,\, (a_i  \in \R) \label{P0}
  \end{eqnarray}
  a large number of methods can be applied. In this study, we selected the most significant, extracted from the seminal work of Knuth \cite{Knuth:1997:ACP:270146}. %the art of programming [cite vol 2].
- The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation tachniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximizing the parallelism and minimizing the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
+ The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation techniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximizing the parallelism and minimizing the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
 %\section{Algorithms}
 \subsection{Evaluation of Powers \label{powern}}
 The basic step in performing a polynomial evaluation is the computation of the power function.
@@ -224,8 +224,8 @@ series around $ln2/2$ but once again the error would be local.
 \subsection{Polynomial approximation}
 
 As demonstrated truncated Taylor series can not be selected due to locality issues. An excellent alternative is to approximate $e^x$ with a polynomial using a minimax method.
-The Remez algorithm is an excellent solution. The method certify than $f(x)$  ($e^x$ in our case) can be approximate by a unique minimax solution $R(x)$ minimising 
-an  error function \textit{e.g.} $E(x)=f(x)-R(x)$) in the concerning interval. Moreover the minimax solution verifies (Chebyshev proof).
+The Remez algorithm is an excellent solution. The method certifis that $f(x)$  ($e^x$ in our case) can be approximate by a unique minimax solution $R(x)$ minimising 
+an  error function \textit{e.g.} $E(x)=f(x)-R(x)$) in the concerning interval. Moreover, the minimax solution verifies (Chebyshev proof).
 
 \begin{itemize}
 \item if $R(x)$ is a polynomial of degree $n$ with $n+1$ $c_i$ coefficients, there are $n+2$ unknowns: the $n+1$ coefficients of the polynomial, and the maximal value of the error function ($E(x) = f(x) - R(x)$)
@@ -233,7 +233,7 @@ an  error function \textit{e.g.} $E(x)=f(x)-R(x)$) in the concerning interval. M
 \item The extrema alternate in sign, and all have the same magnitude 
 \end{itemize}
 
-That means that if we know the location of the extrema of the error function then we can write N+2 simultaneous equations:
+That means that if the location of the extrema of the error function are known, then  $n+2$ simultaneous equations can be written:
 
 \begin{eqnarray}
 R(x_i) + (-1)^iE = f(x_i) \label{system}
@@ -241,7 +241,7 @@ R(x_i) + (-1)^iE = f(x_i) \label{system}
 
 where $E$ is the maximal error term, and $x_i$ are the abscissa values (or control point) and should be the $n+2$ extrema of the error function. The resolution of this system of equation is easy 
 nevertheless it does not  provide the position of the extrema. In practice the  Remez algorithm necessitates an initialisation and  two iterative steps. First the polynomial approximation comes from a 
-Chebyshev approximation, the extrema are determinate, they become the control points $x_i$ of the error functions. Then the two iterative steps are performed:
+Chebyshev approximation, the extrema are determinate, and they become the control points $x_i$ of the error functions. Then the two iterative steps are performed:
 
 \begin{enumerate}
 \item Compute the $n+1$ coefficients $c_i$ and the error $E$ by solving the  equation \ref{system}. A solution is obtained with the same error on the control point but it is not necessarily the minimax 
@@ -250,7 +250,7 @@ solution, because the extrema are not located on the control points.
 And iterate until the error function is lower than the wanted precision. 
 \end{enumerate}
 
-The Remez method is powerfull, a full detail and rigorous analysis can be found in \cite{Fraser:1965:SMC:321281.321282}. In this paper, the \texttt{boost::math::tools} package was selected.  A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance. This polynomial will be the starting point for the method previously describe. 
+The Remez method is powerfull, a full detail and rigorous analysis can be found in \cite{Fraser:1965:SMC:321281.321282}. In this paper, the \texttt{boost::math::tools} package was selected.  A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance (demonstrate in section \ref{section_ulp}). This polynomial will be the starting point for the method previously describe. 
 
 \subsection{Notations}
 In this section, the following notations are introduced. Any polynomial $P$ is characterised by two parameters, the degree and the method of evaluation. 
@@ -273,14 +273,14 @@ We note that there exist other alternative schemes.
 To find the total number of combinations of polynomial factors, we start by considering all possible partitions of the number 10 as sum of even numbers.
 We only consider even numbers because, as stated above, all the polynomial factors we consider are of degree two, arising from the product of two factors associated to complex conjugate roots.
 Partitioning the number ten in even summands s equivalent to partitioning the number five into arbitrary summands, then multiplying by two.
-There are seven partitions of the number five, which are $(5),(4,1),(3,2),(3,1^2),(2^2,1),(2,1^3),(1^5)$.
+There are seven partitions of the number five, which are, using conventional notation: $(5),(4,1),(3,2),(3,1^2),(2^2,1),(2,1^3),(1^5)$.
 Consequently the partitions of ten into even summands are
 
 \begin{eqnarray}
  (10),\,(8,2),\,(6,4),\,(6,2^2),\,(4^2,2),\,(4,2^3) \textrm{ and } (2^5) \label{evaluation}
 \end{eqnarray}
 
-To evaluate the number of combinations we make three considerations:
+To evaluate the number of combinations, three considerations are made:
 
 \begin{enumerate}
 \item each polynomial $P^m$ has $m+1$ methods of evaluation: $P^m_b$, $P^m_e$ and $P^m_{h^{k}}$ where $k \in [1,m-1]$ because $P^m_{h^1} = P^m_{h^n}$;
@@ -394,22 +394,23 @@ This algorithm has been applied for the scalar and vectorial versions.
 Performing a full review of processors is a huge work and it is outside the scope of this paper. We focus on the general execution of the processors, but still consider enough details
 to explain our results. Whatever the architecture of the chip, the execution of the binary code follows the same logic. Fetch/decode units read a stream of instructions
 from the L1 instructions cache memory and decode them into a series of micro operations that are executed by the processor's parallel executions units.
+The next section is a summarise of the great work of \cite{Agner}.
 
-\subsection{Intel SandyBridge and Broadwell architecture}
-The SandyBridge and Broadwell architecture derived from the core2duo architecture (based on a Pentium M). Both architectures support the new set of 256 bit vectorial instructions 
-named AVX and AVX2 (Broadwell only).  For both architectures, the instructions fetch unit bandwidth 
+\subsection{Intel SandyBridge and BroadWell architecture}
+The SandyBridge and BroadWell architecture derived from the core2duo architecture (based on a Pentium M). Both architectures support the new set of 256 bit vectorial instructions 
+named AVX and AVX2 (BroadWell only). The AVX2 provides FMA support and better integer manipulation.  For both architectures, the instructions fetch unit bandwidth 
 is limited to 16 bytes per clock cycle. The instructions decoding execution is complicated, it is split
 between a predecoder and a decoder. The predecoder job is to detect where the instructions start, a hard task because the size of an instruction can vary between 
 1 to 15 bytes. The predecoder also identifies the additional field (if available) of the instructions (prefix, ModR/M, SIB, displacement and immediate). Then 4 decoders decompose
 the incoming instructions into 1 or more $\mu$ops. Only the first decoder can generate more than one $\mu$op. For SandyBridge, decoders will generate 3 to 4  
-$\mu$ops per cycle. On Broadwell, the generation rate is fixed to 4 $\mu$ops per cycle. The 16 bytes per clock cycle is a serious limitation, therefore both architectures have a cache memory
+$\mu$ops per cycle. On BroadWell, the generation rate is fixed to 4 $\mu$ops per cycle. The 16 bytes per clock cycle is a serious limitation, therefore both architectures have a cache memory
 to avoid the limitations arising from the 16 byte per cycle bandwidth. The effect of the cache memory can double the total size of  $\mu$ops generated: 32 bytes per cycle. 
 %The cache is organised around 32 sets $\times$ 8 ways $\times$ 6 $\mu$ops.
 %$3 caches lines of 6 $\mu$ops. can be allocated simultaneously for a maximum of 32 bytes of code per cycle. 
 Both architecture have the possibility to perform a fusion of instructions.
-At this point, $\mu$ops are still in-order. They are now  stored in the re-order buffer (168 entries for SandyBridge and  192 entries for Broadwell) for the renaming of the register,  
-the re-ordering $e.g.$ following a Tomasulo Algorithm, and \emph{in fine} the reservation station of 54 entries on Sandy Bridge and 60 on Broadwell respectively. At this last point the $\mu$ops will be executed on the execution units in out-of-order mode.
-%The out of order execution is now performed on 6 ports on the SandyBridge and 8 port on the Broadwell, however the number of port dedicated for the vectorial addition, multiplications and FMA (Broadwell only) are
+At this point, $\mu$ops are still in-order. They are now  stored in the re-order buffer (168 entries for SandyBridge and  192 entries for BroadWell) for the renaming of the register,  
+the re-ordering $e.g.$ following a Tomasulo Algorithm, and \emph{in fine} the reservation station of 54 entries on Sandy Bridge and 60 on BroadWell respectively. At this last point the $\mu$ops will be executed on the execution units in out-of-order mode.
+%The out of order execution is now performed on 6 ports on the SandyBridge and 8 port on the BroadWell, however the number of port dedicated for the vectorial addition, multiplications and FMA (BroadWell only) are
 %equal to two, the port 0 and 1 respectively. 
 
 The Sandy Bridge has six execution ports (or terminology execution pipelines). There are tree integer ALUs so that the most common integer operations can execute
@@ -420,7 +421,7 @@ Port 0, 1 and 5 support usual 256 bit vector operations. There are separate port
 The integer and floating point vector multiplier are on port 0.  These two multipliers can run simultaneously and both are fully pipelined with a throughput of 1 vector operation per clock cycle.
 %Integer division uses the floating point division unit on port 0. This is the only unit that is not pipelined.
 
-The Broadwell architecture has 8 execution ports (or terminology execution pipelines).  There are four integer ALUs so that the most common integer operations can execute
+The BroadWell architecture has 8 execution ports (or terminology execution pipelines).  There are four integer ALUs so that the most common integer operations can execute
  with a throughput of four instructions per clock cycle. There are three ports that can handle integer vector operations (port 0, 1 and 5).
  Two ports can handle branches (port 0 and 6).  Two ports can handle memory read operations (port 2 and 3), and one port can handle memory writes (port 4).
 Two ports can handle floating point vector operations (port 0 and 1). The direct consequences  of this larger number of port for floating point operations 
@@ -465,7 +466,7 @@ The precision for the implementation of the exponential function will depend onl
 only introduce bit  manipulation tricks. In this work, we compute the ULP using the boost library, more specially the \texttt{boost::math}
 package.
 
-\subsection{measurement tools}
+\subsection{Measurement tools}
 
 Measuring the throughput/latency is not a trivial task, especially for the latency. A direct measurement is not trivial due 
 to the large number of variables which may impact the measurements. 
@@ -493,7 +494,7 @@ vendor results to validate our method with success. Latency of the previous inst
 \begin{table}[ht]
 \begin{center}
 %\begin{tabular}{l c c c c c c }
-%			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  & \multicolumn{2}{c}{Power 7/8}\\ 
+%			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{BroadWell}  & \multicolumn{2}{c}{Power 7/8}\\ 
 %                         & Thr.  & Lat. & Thr. & Lat. & Thr. & Lat.  \\
 %		          \hline
 %add                   &  1 & 3  &   0.8 & 3 &  1 & 6     \\
@@ -502,7 +503,7 @@ vendor results to validate our method with success. Latency of the previous inst
 %		             \hline
 %\end{tabular}
 \begin{tabular}{l c c c c  }
-			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  \\ 
+			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{BroadWell}  \\ 
                          & Thr.  & Lat. & Thr. & Lat. \\
 		          \hline
 add                   &  1 & 3  &   0.8 & 3    \\
@@ -511,13 +512,13 @@ FMA                 &   -  & -  &   0.5 & 5    \\
 		             \hline
 \end{tabular}
 \end{center}
-\caption{Latency/Throughput add/mul/fma on the Broadwell architecture. \label{latencyvendor}}
+\caption{Latency/Throughput add/mul/fma on the BroadWell architecture. \label{latencyvendor}}
 \end{table}%
 
 A full review  of all x86 instructions can be found in \cite{agner} where fragmented information can be founded in \cite{Sinharoy:2011:IPM:2001058.2001059, Power8}
 To conclude, Intel has released in the last years the IACA tool \cite{iaca}. This tool was nice to perform latency and throughput analysis, and
 obtain predictions on several Intel processor target. Unfortunately the tool has not been maintained since 2012, date of its last release. 
-However, we utilize the tool to generate the Direct Acyclic Graph of the polynomial evaluation on the Broadwell platform, Figure~\ref{DAG}.
+However, we utilize the tool to generate the Direct Acyclic Graph of the polynomial evaluation on the BroadWell platform, Figure~\ref{DAG}.
 
 \subsection{Programming model}
 
@@ -664,12 +665,12 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 %
 \end{tikzpicture}
 }
-\caption{Broadwell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
+\caption{BroadWell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
 \end{figure}
 
 \section{Processors and Compiler}
 
-This work focuses on the last release of Intel Xeon processor (Broadwell) and an oldest generation (SandyBridge). We privileged the intel architecture 
+This work focuses on the last release of Intel Xeon processor (BroadWell) and an oldest generation (SandyBridge). We privileged the intel architecture 
 because it is well know and  well documented. The compiler is GCC. All informations are summarised in the table \ref{env_compil}.
 
 \begin{table}[ht]
@@ -698,13 +699,13 @@ Nevertheless a few experimental data for latency measurement with the simplest p
 The classical Horner's method  provides a dependency chain between all the operations (As shown by the AMS DAG, Figure \ref{DAG}), therefore any instructions
 can be only executed if the previous one is finished. The classical Horner's method gives 10 successives mull/add or 
 FMA with dependency,  Therefore the theoretical total latency of the polynomial is: $ 10 [\textrm{mul+add}]_{latency}$ or $ 10 [\textrm{FMA}]_{latency}$
-if the machine supports natively the FMA operations. The measurement gives 50.03 [cycle] on the Broadwell architecture and 80.01 [cycle] on the SandyBridge 
+if the machine supports natively the FMA operations. The measurement gives 50.03 [cycle] on the BroadWell architecture and 80.01 [cycle] on the SandyBridge 
 architecture which correspond perfectly on the tiny model proposes  previously.
 
 Last but not least the simple factorizations combining the classical horner can be also modeled. Considering   $P^6_{h^1}P^4_{h^1}$, as the operations
 mul, add and FMA are fully pipelined, the computation of the polynomial of lower degree should be fully hidden by the polynomial of larger degree.
 In such situation the total latency of the produce of the polynomial is $ 6 [\textrm{mul+add}]_{latency} + [\textrm{mul}]_{latency}$ or $ 6 [\textrm{FMA}]_{latency}+ [\textrm{mul}]_{latency}$.
-The last multiplication corresponds to the final product between the two polynomials, it is a blocking operations. The measurement gives  36.00 [cycle] on the Broadwell 
+The last multiplication corresponds to the final product between the two polynomials, it is a blocking operations. The measurement gives  36.00 [cycle] on the BroadWell 
 architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects.  This first analysis shows already two informations, the factorization and the programming model is efficient.
 
 \subsection{Polynomials, latency analysis} The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. 
@@ -730,7 +731,7 @@ The throughput analysis is similar to the latency one, but with one more additio
 easily understand. The  factorisation pattern  improves the parallelism and consequently a better fill up of the pipeline, therefore it takes more cycle to restart a new operations
 as the pipelines are full.
 
-\subsection{Polynomials, precision analysis}
+\subsection{Polynomials, precision analysis \label{section_ulp}}
 The ULP error estimator is presented on the Figure  \ref{PRECISION_ULP}. Errors is dispatched in two group. First group with a small ULP 2/3 or a larger one around 8/9.
 This behaviour is explained easily. The first group concerns all the polynomial of type $P^{10}_m$, no factorisation has been applied on it. Contrary to the $2^{nd}$ group 
 where the factorisation has been applied. This processus was performed with Matlab software, and it necessitates resolution of quadratic equation  it introduces numerical error.
@@ -801,7 +802,7 @@ $P_b^{4}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 7.36 & 31.71 & 12  & $P_e^{6}P_e^{2}P_{h^1}
 \hline
 \end{tabular}
 \end{center}
-\caption{Best Latency/throughput [cycle] polynomial evaluation on SandyBridge platform. The criteria indicates the sort of the tuple (throughput, latency, ulp), 
+\caption{Best Latency/throughput [cycle] polynomial evaluations on SandyBridge platform. The criteria indicates the sort of the tuple (throughput, latency, ulp), 
 on a specific part \label{LTR_EXP_0}}
 \end{table}%
 
@@ -837,16 +838,16 @@ $P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 5.05 & 21.64 & 8  & $P_e^{6}P_e^
 \hline
 \end{tabular}
 \end{center}
-\caption{Best Latency/throughput [cycle] polynomial evaluation on Broadwell platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
+\caption{Best Latency/throughput [cycle] polynomial evaluations on BroadWell platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
 on a specific part \label{LTR_EXP_1}}
 \end{table}%
 
-\subsection{exponentials}
+\subsection{Exponentials}
 Evaluate the exponential necessitates the addition of the computation of $2^k$ and the boundary conditions has we have described in the section \ref{TwokSection} and \ref{BoundarySection}.
 The throughput/latency benchmarks are reported in the table  \ref{twokboundary}. The results are similar whatever the the platform and the backend (vectorial/scalar), with a little improvement 
-on the Broadwell version, specially for the vector version because the native support of the  AVX2  compared to the limited AVX1 on the Sandybridge allow more vectorial SIMD instructions 
+on the BroadWell version, specially for the vector version because the native support of the  AVX2  compared to the limited AVX1 on the Sandybridge allow more vectorial SIMD instructions 
 specially for the integer manipulations. However the latency of the boundary and the $2^k$ are quiet expensive in term of cycle. It is easily explain. Both operations introduced chain
-of dependency that does not allow a good parallelism although the large number of ALU inside the processors.
+of dependency that does not allow parallelism although the large number of ALU inside the processors.
 
 \begin{table}[ht]
 \begin{center}
@@ -856,12 +857,95 @@ Architecture & \multicolumn{4}{c}{$2^k$} & \multicolumn{4}{c}{boundary} \\
 	             & \multicolumn{2}{c}{scalar} & \multicolumn{2}{c}{vector} & \multicolumn{2}{c}{scalar} & \multicolumn{2}{c}{vector} \\
 			& Thr. & Lat. 		& Thr. & Lat. 		& Thr. & Lat.  		& Thr. & Lat.\\		    
 SandyBridge & 4.71  & 15.00  &3.49 &18.99   & 4.71 &9.95 & 4.04 &  8.01 \\
-Broadwell     & 3.63  &16.00  & 2.70 &   18.00 &  4.94&  10.65& 2.64 &  8.01 \\
+BroadWell     & 3.63  &16.00  & 2.70 &   18.00 &  4.94&  10.65& 2.64 &  8.01 \\
 \hline
 \end{tabular}
 \end{center}
 \caption{Benchmark of the $2^k$ and the boundary conditions for the evaluation of $e^x$. \label{twokboundary}}
 \end{table}%
+
+
+
+\begin{figure}[ht]
+\mbox{
+\hspace{-2cm}
+\includegraphics[scale=0.7]{allht_scalar_exp.eps} 
+\hspace{-2.5cm}
+\includegraphics[scale=0.7]{allht_vector_exp.eps}
+}
+\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT00} }
+\end{figure}
+
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l c c c  l c c  c }
+\hline
+		       & \multicolumn{3}{c}{scalar}              &           &  \multicolumn{3}{c}{vector}\\
+		       & \multicolumn{3}{c}{Throughput Criteria} &           &  \multicolumn{3}{c}{Throughput Criteria}\\
+ Algorithm             & Th.  & La.     & ULP                    & Algorithm & Th.   & La.     & ULP\\
+$P_e^{2}P_b^{4}P_{h^2}^{4}$ & 12.44 & 64.73 & 9  & $P_e^{6}P_b^{4}$ & 13.69 & 66.92 & 9 \\
+$P_{h^2}^{6}P_e^{2}P_{h^1}^{2}$ & 12.48 & 72.88 & 7  & $P_b^{2}P_e^{4}P_e^{4}$ & 13.69 & 66.92 & 11 \\
+$P_b^{2}P_e^{4}P_{h^2}^{4}$ & 12.62 & 64.75 & 9  & $P_e^{2}P_e^{4}P_{h^2}^{4}$ & 13.71 & 67.79 & 9 \\
+$P_b^{2}P_{h^2}^{4}P_{h^2}^{4}$ & 12.72 & 67.79 & 9  & $P_e^{2}P_{h^1}^{4}P_{h^1}^{4}$ & 13.76 & 78.90 & 9 \\
+$P_{h^3}^{6}P_{h^1}^{2}P_{h^1}^{2}$ & 12.76 & 70.01 & 9  & $P_{h^1}^{2}P_e^{4}P_{h^2}^{4}$ & 13.82 & 66.08 & 10 \\
+$P_{h^1}^{2}P_b^{4}P_{h^3}^{4}$ & 12.79 & 64.76 & 10  & $P_{h^2}^{6}P_{h^1}^{4}$ & 13.90 & 74.14 & 8 \\
+$P_e^{2}P_b^{4}P_e^{4}$ & 12.80 & 63.88 & 9  & $P_e^{8}P_e^{2}$ & 13.93 & 70.01 & 9 \\
+$P_{h^4}^{10}$ & 12.81 & 76.13 & 2  & $P_{h^1}^{2}P_{h^2}^{4}P_{h^2}^{4}$ & 13.99 & 72.01 & 9 \\
+$P_{h^2}^{6}P_e^{2}P_e^{2}$ & 12.82 & 72.75 & 8  & $P_b^{2}P_{h^1}^{4}P_{h^2}^{4}$ & 14.03 & 78.11 & 10 \\
+$P_b^{2}P_{h^3}^{4}P_{h^3}^{4}$ & 12.82 & 69.78 & 9  & $P_b^{2}P_{h^1}^{4}P_{h^1}^{4}$ & 14.09 & 80.04 & 10 \\
+		       & \multicolumn{3}{c}{Latency Criteria} &           &  \multicolumn{3}{c}{Latency Criteria}\\
+$P_{h^1}^{2}P_b^{4}P_e^{4}$ & 15.40 & 62.88 & 9  & $P_e^{6}P_{h^2}^{4}$ & 14.78 & 65.08 & 9 \\
+$P_e^{2}P_e^{4}P_e^{4}$ & 16.17 & 63.19 & 10  & $P_e^{10}$ & 16.07 & 65.12 & 3 \\
+$P_b^{2}P_e^{4}P_e^{4}$ & 15.95 & 63.21 & 10  & $P_e^{6}P_e^{4}$ & 15.88 & 65.72 & 9 \\
+$P_{h^1}^{2}P_e^{4}P_e^{4}$ & 13.18 & 63.84 & 9  & $P_{h^1}^{2}P_e^{4}P_{h^2}^{4}$ & 13.82 & 66.08 & 10 \\
+$P_e^{2}P_b^{4}P_e^{4}$ & 12.80 & 63.88 & 9  & $P_b^{2}P_e^{4}P_e^{4}$ & 13.69 & 66.92 & 11 \\
+$P_e^{6}P_b^{4}$ & 12.84 & 63.90 & 8  & $P_e^{6}P_b^{4}$ & 13.69 & 66.92 & 9 \\
+$P_b^{2}P_b^{4}P_e^{4}$ & 15.18 & 63.90 & 10  & $P_e^{6}P_b^{2}P_b^{2}$ & 15.72 & 67.73 & 9 \\
+$P_{h^1}^{2}P_e^{4}P_{h^3}^{4}$ & 15.22 & 63.98 & 9  & $P_e^{2}P_e^{4}P_{h^2}^{4}$ & 13.71 & 67.79 & 9 \\
+$P_e^{2}P_e^{4}P_{h^2}^{4}$ & 15.18 & 64.73 & 9  & $P_b^{2}P_e^{4}P_{h^2}^{4}$ & 16.70 & 67.80 & 9 \\
+$P_e^{2}P_b^{4}P_{h^2}^{4}$ & 12.44 & 64.73 & 9  & $P_e^{2}P_e^{4}P_e^{4}$ & 16.25 & 68.02 & 10 \\
+\end{tabular}
+\end{center}
+\caption{Best Latency/throughput [cycle] $e^x$  evaluations SandBridge platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
+on a specific part \label{LTR_EXP_00}}
+\end{table}%
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l c c c  l c c  c }
+\hline
+		       & \multicolumn{3}{c}{scalar}              &           &  \multicolumn{3}{c}{vector}\\
+		       & \multicolumn{3}{c}{Throughput Criteria} &           &  \multicolumn{3}{c}{Throughput Criteria}\\
+ Algorithm             & Th.  & La.     & ULP                    & Algorithm & Th.   & La.     & ULP\\
+$P_e^{6}P_{h^1}^{4}$ & 8.94 & 57.77 & 8  & $P_{h^2}^{6}P_b^{4}$ & 8.17 & 64.44 & 9 \\
+$P_{h^1}^{2}P_{h^1}^{4}P_{h^1}^{4}$ & 9.01 & 58.05 & 9  & $P_{h^2}^{10}$ & 8.18 & 71.52 & 3 \\
+$P_b^{2}P_{h^1}^{4}P_{h^1}^{4}$ & 9.01 & 58.05 & 9  & $P_{h^2}^{8}P_b^{2}$ & 8.26 & 69.10 & 8 \\
+$P_e^{2}P_{h^1}^{4}P_{h^1}^{4}$ & 9.01 & 58.05 & 8  & $P_b^{2}P_b^{4}P_{h^2}^{4}$ & 8.68 & 59.60 & 10 \\
+$P_{h^1}^{2}P_e^{4}P_{h^1}^{4}$ & 9.03 & 57.55 & 8  & $P_e^{6}P_{h^2}^{4}$ & 8.68 & 59.57 & 9 \\
+$P_e^{6}P_b^{2}P_b^{2}$ & 9.05 & 58.04 & 8  & $P_e^{6}P_e^{4}$ & 8.80 & 60.86 & 9 \\
+$P_{h^1}^{2}P_b^{4}P_{h^1}^{4}$ & 9.05 & 57.53 & 10  & $P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 8.84 & 55.89 & 9 \\
+$P_e^{6}P_b^{2}P_e^{2}$ & 9.08 & 58.04 & 8  & $P_{h^2}^{8}P_{h^1}^{2}$ & 8.87 & 69.29 & 8 \\
+$P_b^{2}P_e^{4}P_{h^1}^{4}$ & 9.08 & 57.61 & 9  & $P_e^{2}P_b^{4}P_{h^1}^{4}$ & 8.87 & 61.34 & 10 \\
+$P_e^{2}P_b^{4}P_{h^1}^{4}$ & 9.09 & 57.62 & 10  & $P_e^{2}P_e^{4}P_{h^1}^{4}$ & 8.90 & 60.49 & 9 \\
+		       & \multicolumn{3}{c}{Latency Criteria} &           &  \multicolumn{3}{c}{Latency Criteria}\\
+$P_b^{4}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.40 & 52.07 & 10  & $P_b^{2}P_b^{2}P_b^{2}P_b^{2}P_e^{2}$ & 13.35 & 55.65 & 10 \\
+$P_e^{4}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.42 & 52.07 & 9  & $P_b^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.12 & 55.67 & 9 \\
+$P_b^{4}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.42 & 52.07 & 9  & $P_b^{2}P_b^{2}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 13.48 & 55.76 & 9 \\
+$P_e^{4}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.42 & 52.08 & 9  & $P_b^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.60 & 55.80 & 10 \\
+$P_b^{2}P_b^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.53 & 52.09 & 8  & $P_b^{2}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.90 & 55.86 & 9 \\
+$P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.54 & 52.10 & 8  & $P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 8.84 & 55.89 & 9 \\
+$P_b^{2}P_b^{2}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.54 & 52.10 & 9  & $P_b^{2}P_b^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 13.27 & 55.95 & 10 \\
+$P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.54 & 52.10 & 9  & $P_b^{2}P_b^{2}P_b^{2}P_b^{2}P_b^{2}$ & 12.70 & 55.96 & 10 \\
+$P_b^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 9.31 & 52.16 & 10  & $P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 12.50 & 55.99 & 9 \\
+$P_e^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 9.31 & 52.16 & 10  & $P_b^{2}P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 12.73 & 56.02 & 9 \\
+\end{tabular}
+\end{center}
+\caption{Best Latency/throughput [cycle]  $e^x$  evaluations BroadWell platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
+on a specific part \label{LTR_EXP}}
+\end{table}%
+
+
 
 \section{Conclusions}
 
