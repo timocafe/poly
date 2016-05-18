@@ -64,9 +64,10 @@
 The polynomial evaluation of small degree polynomials is critical for the computation of elementary functions. 
 It has been massively studied, and is well documented. In this paper, we have evaluated the existing methods for polynomial evaluation
 on super scalar architecture.  And, we have completed this work by factorisation evaluation, which is surprisingly neglected in the literature.  
-This work has been focused on the most recent processors of  Intel and IBM, amongst others, several computational units are available.
+This work has been focused on the most recent processors of  Intel, amongst others, several computational units are available.
 Moreover, we have applied our work on the elementary $e^x$ that  requires, in the current implementation,
-an evaluation  of a polynomial of degree 10 for a satisfying precision.
+an evaluation  of a polynomial of degree 10 for a satisfying precision. The results obtained for the  factorization scheme benchmark are faster than the famous
+and efficient  Estrin's method.
 
 
 \end{abstract}
@@ -77,15 +78,15 @@ an evaluation  of a polynomial of degree 10 for a satisfying precision.
 \section{Superscalar processor}
 It exists several definition of superscalar processor, but two seem more interesting:  "Dispatch multiple instructions every cycle" from
 \cite{thomas1987high} or "Execute two or more scalar operations in parallel" from \cite{Lam1990}.
-Whatever the definitions, they are two main ideas: execute instructions concurrently and independently in separate execution pipelines.
-The throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
+Whatever the definitions, they are two main ideas: execute instructions concurrently and independently in separate execution pipelines. Moreover, 
+the throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
 Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
 
-Modern processors have more than one pipelines. On the last release of Intel and IBM this number reaches 16 pipelines for the Power8, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on Power8 and Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
+Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the Broadwell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the Broadwell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
 $e^x$. State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the core unit of the last
-processor of Intel (SandyBridge and Broadwell) and IBM (Power7 and Power8), and the different method we will use for coding and measure the veracity of the results.
+processor of Intel (SandyBridge and Broadwell), and the different method we will use for coding and measure the veracity of the results.
 We present results for the polynomial evaluation and exponential for scalar and vectorial version, and then we compare to vendor exponential library.
 
 \section{State of the art}
@@ -96,25 +97,24 @@ In evaluating the polynomial of degree $n$,
  a large number of methods can be applied. In this study, we selected the most significant, extracted from the seminal work of Knuth \cite{Knuth:1997:ACP:270146}. %the art of programming [cite vol 2].
  The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation tachniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximizing the parallelism and minimizing the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
 %\section{Algorithms}
-\subsection{Evaluation of Powers}
+\subsection{Evaluation of Powers \label{powern}}
 The basic step in performing a polynomial evaluation is the computation of the power function.
 To compute $x^n$, the naive approach would be to multiply $x$ with itself $n$ times in sequence, which has complexity of o($n$).
-Following the advice of Knuth, the Right-to-Left binary method for exponentiation is an excellent alternative for our small degree polynomial [cite Knuth chapter]. 
+Following the advice of Knuth, the Right-to-Left binary method for exponentiation is an excellent alternative for our small degree polynomial \cite{Knuth:1997:ACP:270146}. 
 The method has a complexity o($\lfloor log(n) \rfloor + \upsilon(n)$) multiplications where  $\upsilon(n)$ is the number of ones in the binary representation of $n$.
 \subsection{Brute force}
 The brute force method simply consists in evaluating the polynomial~\eqref{P0}, term after term, computing the power function as described above.
 The complexity of the algorithm is $n$ additions and  $2n-1$ multiplications.
 \subsection{Horner method: classical - $1^{st}$-order}
-The Horner method at order one is the most classical [reference]. It is also very well known under the name \textit{``Horner's rule''}.
-Given an input value $x_0$, it evaluates recursively the polynomial~\eqref{P0} as
+The homonym Horner's method at order one is the most classical. Given an input value $x_0$, it evaluates recursively the polynomial~\eqref{P0} as
  \begin{eqnarray}
    P(x_0) = a_0 +  x_0 ( a_1  +  x_0 ( a_2 + x_0(  \dots a_{n}  ) )).
   \end{eqnarray}
-\textit{``Horner's rule''} has a complexity of $n$ multiplications and $n$ additions, or $n$ Fused Multiply-Add (FMA). The method is efficient,
+\textit{``Horner's method''} has a complexity of $n$ multiplications and $n$ additions, or $n$ Fused Multiply-Add (FMA). The method is efficient,
 but inefficient from the point of view of the processor, because it can introduce pipelining data hazards due to the dependency chain in the recursive process.
 
 \subsection{Horner method: $k^{th}$-order}
-\textit{``Horner's rule''} can be generalised to an arbitrary order by building new polynomials over $x^k$ instead of $x$ \cite{Dorn:1962:GHR:1661979.1661987}.
+\textit{``Horner's method''} can be generalised to an arbitrary order by building new polynomials over $x^k$ instead of $x$ \cite{Dorn:1962:GHR:1661979.1661987}.
 The main advantage is to introduce parallelism that removes the data hazards, especially for high orders of $k$.
 Given a degree of parallelism $k$, Horner's $k^{th}$-order method reads:
  \begin{eqnarray}
@@ -137,7 +137,8 @@ Developing equation~\eqref{estrin} leads to:
 P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
                &+&  x_0^2(a_2  + a_3 x_0) \nonumber \\
                &+&  x_0^4(a_4  + a_5 x_0 + x_0^2 (a_6 + a_7x_0)) \nonumber \\
-               &+&  x_0^8(a_8  + a_9 x_0 + x_0^2 (a_{10} + a_{11}x_0) + x_0^4 ((a_{12}+a_{13}x_0 +x_0^2(a_{14}+a_{15}x_0)))))  \nonumber \\
+               &+&  x_0^8(a_8  + a_9 x_0 + x_0^2 (a_{10} + a_{11}x_0) + \nonumber \\ 
+               & &  x_0^4 ((a_{12}+a_{13}x_0 +x_0^2(a_{14}+a_{15}x_0)))))  \nonumber \\
                & &\dots
 \end{eqnarray}
 This method has $n$ multiplications and $n$ additions, just like Horner's
@@ -165,8 +166,8 @@ Each higher degree polynomial can be evaluated by one
 of the previously described methods.
 The factorization technique can introduce a large degree of parallelism and may outperform others for superscalar architectures.
 
-\subsection{number of operations}
-To conclude this section on algorithmis, the complexity of the different methods is summarized in Table \ref{complexity}.
+\subsection{complexity}
+To conclude this section on algorithms, the complexity of the different methods is summarised in Table \ref{complexity}.
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{l c c  }
@@ -181,6 +182,75 @@ Factorization        &    combination            &   combination   \\
 \end{center}
 \caption{Number of operations for different algorithms used for the evaluation of a polynomial of degree $n$. \label{complexity}}
 \end{table}%
+
+\section{Elementary function: $e^x$}
+Small polynomials are extensively used in the approximation of elementary functions.
+The present study focuses on $e^x$.
+A possible approach to compute $e^x$ is:
+
+\begin{equation}\label{begin_exp}
+\begin{split}
+\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] & \textrm{  with } k \in \mathbb{N} \textrm{ such that:}\\
+    x  & =  y + k ln 2   \\
+e^x  &=  2^k e^y
+%       &=&  2^k P(y) \label{exponential_formula} 
+\end{split}
+\end{equation}
+
+The restriction on the range $[0,ln 2]$ simplifies the evaluation of $e^y$. A truncated Taylor series could be a good idea to evaluate $e^y$.
+Nevertheless, it can be a source of large error due to its locality properties, as we are going to demonstrate.
+
+\subsection{Truncated series}
+ If we consider the Taylor series:
+
+\begin{eqnarray}
+e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Error}}}_{\text{Exact mathematical formulation}}
+\end{eqnarray}
+
+Here the "Truncation Error" corresponds to the remainder $R_n$ from Taylor's Theorem. It can be expressed under an integral or the Lagrange form by:
+\begin{eqnarray}
+R_n & = & \int_{a}^{y} \frac{(y-t)^n}{n!}f^{(n+1)}(t)dt \,\,\, \text{(the integral form)} \\
+	& = & \frac{f^{(n+1)}(c)}{(n+1)!}(y-1)^{n+1}, \,\,\, c \in [a,y] \,\,\, \text{(the Lagrange form)}
+\end{eqnarray}
+For $f(y)=e^y$ and $a=0$, we have $f^{(n+1)}(y)=e^y$, thus
+\begin{eqnarray}
+R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
+       &\leq& \left| \frac{e^y}{(n+1)!} y^{n+1} \right|
+\end{eqnarray}
+
+When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
+series around $ln2/2$ but once again the error would be local.
+
+\subsection{Polynomial approximation}
+
+As demonstrated truncated Taylor series can not be selected due to locality issues. An excellent alternative is to approximate $e^x$ with a polynomial using a minimax method.
+The Remez algorithm is an excellent solution. The method certify than $f(x)$  ($e^x$ in our case) can be approximate by a unique minimax solution $R(x)$ minimising 
+an  error function \textit{e.g.} $E(x)=f(x)-R(x)$) in the concerning interval. Moreover the minimax solution verifies (Chebyshev proof).
+
+\begin{itemize}
+\item if $R(x)$ is a polynomial of degree $n$ with $n+1$ $c_i$ coefficients, there are $n+2$ unknowns: the $n+1$ coefficients of the polynomial, and the maximal value of the error function ($E(x) = f(x) - R(x)$)
+\item The error function has $n+1$ roots and $n+2$ extrema 
+\item The extrema alternate in sign, and all have the same magnitude 
+\end{itemize}
+
+That means that if we know the location of the extrema of the error function then we can write N+2 simultaneous equations:
+
+\begin{eqnarray}
+R(x_i) + (-1)^iE = f(x_i) \label{system}
+\end{eqnarray}
+
+where $E$ is the maximal error term, and $x_i$ are the abscissa values (or control point) and should be the $n+2$ extrema of the error function. The resolution of this system of equation is easy 
+nevertheless it does not  provide the position of the extrema. In practice the  Remez algorithm necessitates an initialisation and  two iterative steps. First the polynomial approximation comes from a 
+Chebyshev approximation, the extrema are determinate, they become the control points $x_i$ of the error functions. Then the two iterative steps are performed:
+
+\begin{enumerate}
+\item Compute the $n+1$ coefficients $c_i$ and the error $E$ by solving the  equation \ref{system}. A solution is obtained with the same error on the control point but it is not necessarily the minimax 
+solution, because the extrema are not located on the control points.
+\item Find the extrema of the new solution using the properties that the extrema is between the $n+1$ root of the polynomial and the control points. This step is called exchange step. 
+And iterate until the error function is lower than the wanted precision. 
+\end{enumerate}
+
+The Remez method is powerfull, a full detail and rigorous analysis can be found in \cite{Fraser:1965:SMC:321281.321282}. In this paper, the \texttt{boost::math::tools} package was selected.  A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance. This polynomial will be the starting point for the method previously describe. 
 
 \subsection{Notations}
 In this section, the following notations are introduced. Any polynomial $P$ is characterised by two parameters, the degree and the method of evaluation. 
@@ -228,48 +298,8 @@ S  &=&  \textrm{card}((10) + (8,2) + (6,4) + (6,2^2) + (4^2,2) + (4,2^3) + (2^5)
 
 The total number of combinations to evaluate $P^{10}$ is therefore 231.
 
-\section{Elementary function: $e^x$}
-Small polynomials are extensively used in the approximation of elementary functions.
-The present study focuses on $e^x$.
-A possible approach to compute $e^x$ is:
-
-\begin{equation}\label{begin_exp}
-\begin{split}
-\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2] & \textrm{  with } k \in \mathbb{N} \textrm{ such that:}\\
-    x  & =  y + k ln 2   \\
-e^x  &=  2^k e^y
-%       &=&  2^k P(y) \label{exponential_formula} 
-\end{split}
-\end{equation}
-
-The restriction on the range $[0,ln 2]$ simplifies the evaluation of $e^y$. A truncated Taylor series could be a good idea to evaluate $e^y$.
-Nevertheless, it can be a source of large error due to its locality properties. If we consider the Taylor series:
-
-\begin{eqnarray}
-e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Error}}}_{\text{Exact mathematical formulation}}
-\end{eqnarray}
-
-Here the "Truncation Error" corresponds to the remainder $R_n$ from Taylor's Theorem. It can be expressed under an integral or the Lagrange form by:
-\begin{eqnarray}
-R_n & = & \int_{a}^{y} \frac{(y-t)^n}{n!}f^{(n+1)}(t)dt \,\,\, \text{(the integral form)} \\
-	& = & \frac{f^{(n+1)}(c)}{(n+1)!}(y-1)^{n+1}, \,\,\, c \in [a,y] \,\,\, \text{(the Lagrange form)}
-\end{eqnarray}
-For $f(y)=e^y$ and $a=0$, we have $f^{(n+1)}(y)=e^y$, thus
-\begin{eqnarray}
-R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
-       &\leq& \left| \frac{e^y}{(n+1)!} y^{n+1} \right|
-\end{eqnarray}
-
-When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
-series around $ln2/2$ but once again the error would be not uniform.
-
-[copy/paste Wolfram]The Remez algorithm (Remez 1934), also called the Remez exchange algorithm, is an application of the Chebyshev alternation theorem that constructs the polynomial of best approximation to certain functions under a number of conditions. The Remez algorithm in effect goes a step beyond the minimax approximation algorithm to give a slightly finer solution to an approximation problem. It is an iterator technique.
-
-The determination of the polynomial is determined by an external program like boost::math::tools package. A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance.
-We will apply the 231 schemes to evaluate it.
-
 \subsection{ From x to k and y}
-The equation~\eqref{begin_exp} can be solved  although it has two unknowns.\\
+The polynomial is solved consequently, going back to the $e^x$ computation. The equation~\eqref{begin_exp} can be solved  although it has two unknowns.\\
 $\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2], k \in \mathbb{N} \nonumber $ such that:
 \begin{eqnarray}\label{xyk}
 x & = & y + k ln 2.
@@ -294,7 +324,7 @@ $y = x - k\times1.42860682030941723212  \times 10^{-6}$\;
  \caption{$2^k$ evaluation algorithm. Note the operation  interpret\_as\_double interprets $k$ as a double it is not a cast operation.}
 \end{algorithm}
 
-\subsection{$2^k$ fast evaluation}
+\subsection{$2^k$ fast evaluation} \label{TwokSection}
 Computing $2^k$ may be done with a left bit shift but it can only work if $ (k << 63) \leq 2^{64}$ and it requires a cast from integer to double, which can be a compute intensive instruction.
 An alternative solution utilises the floating point representation. Rational numbers can be represented approximately under the following form:
 
@@ -324,11 +354,10 @@ The method is efficient, fast and does not introduce any errors nor does it requ
  \caption{$2^k$ evaluation algorithm. Note the operation  interpret\_as\_double interprets $k$ as a double it is not a cast operation.}
 \end{algorithm}
 
-\subsection{Boundary limits}
-
-The last step consists in fixing the boundary limits.
-This step is mandatory and it introduces additional workflows, although it is sometimes neglected 
-in previous exponential study [pique pour COSTAS]. The  boundary limits to respect are summarised in the Table~\ref{boundary}.
+\subsection{Boundary limits} 
+ \label{BoundarySection}
+The last step consists in fixing the boundary limits. This step is mandatory and it introduces additional workflows, although it is sometimes neglected 
+in previous exponential study \cite{Costas}. The  boundary limits to respect are summarised in the Table~\ref{boundary}.
 
 \begin{table}[ht]
 \begin{center}
@@ -397,23 +426,23 @@ The Broadwell architecture has 8 execution ports (or terminology execution pipel
 Two ports can handle floating point vector operations (port 0 and 1). The direct consequences  of this larger number of port for floating point operations 
 is a better throughput for vectorial addition (0.8) and vectorial multiplication (0.5) compared to SandyBridge.
 
-\subsection{IBM Power7 and Power8 architecture}
-The Power8 is the last release of the IBM processor derived from the Power7.
-Similarly to the x86 architecture, the Power7/8 chips support vectorial instructions but are limited to 128 bit width. 
-For both architectures the Instruction Fetch Unit bandwidth is equal to 32 bytes per clock. Contrary to the X86 architecture the instructions are enconded in the POWER 32-bit
-fixed-width RISC ISA. Therefore 8 inscriptions are pre-decoded into $\mu$ops by the IFU, and store in I-cache of 32 KB (4-way set associative  L1 cache for the Power7 and
-8-way set associative  L1 cache). This operation is performed in 2 cycles. Similarly to x86, both architectures can perform fusion of instructions, with higher efficiency for the Power8 architecture.
-If the requesting thread is ready, the  $\mu$ops are bypassed directly from the I-cache to the instructions buffer (still in order). The Power7 has a rate of completed instructions per cycle of 6, compared to 8 of the Power8.
-
-The  $\mu$ops are be managed by the Instructions Sequencing Unit (ISU), responsible for doing the renaming in out-of order mode and the dispatching in the various issue queues to
-the executions pipelines. After renaming and the dispatching the $\mu$ops (at least the compute ones) are transferred to the UniQueue (as the reservation station for the x86 architecture). 
-the UniQueue is implemented as 48-entry queue  (power7) or 64-entry queue (power8) and split into two halves.
-
-The Power7 has 12 executions pipeline, but XXX are dedicated to half UniQueue, so  only  3 instructions per cycle can be executed, 
-one fixed-point instruction on the Fixed-Point Unit, one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU). One load or simple-fixed instruction on the Load unit (LU) and one scalar/vector instruction on the Vector Scalar Unit. 
-
-The Power8 has 16 execution pipelines, but  6 are dedicated to half UniQueue, so  only  4 instructions per cycle can be executed, one fixed-point instructions on the Fixed-Point Unit,
-one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU)  and one scalar/vector instructions on the Vector Scalar Unit. The 4 other executions pipelines are dedicated to the cryptography, the branch execution, the condition logical and the decimal floating point operations. 
+%\subsection{IBM Power7 and Power8 architecture}
+%The Power8 is the last release of the IBM processor derived from the Power7.
+%Similarly to the x86 architecture, the Power7/8 chips support vectorial instructions but are limited to 128 bit width. 
+%For both architectures the Instruction Fetch Unit bandwidth is equal to 32 bytes per clock. Contrary to the X86 architecture the instructions are enconded in the POWER 32-bit
+%fixed-width RISC ISA. Therefore 8 inscriptions are pre-decoded into $\mu$ops by the IFU, and store in I-cache of 32 KB (4-way set associative  L1 cache for the Power7 and
+%8-way set associative  L1 cache). This operation is performed in 2 cycles. Similarly to x86, both architectures can perform fusion of instructions, with higher efficiency for the Power8 architecture.
+%If the requesting thread is ready, the  $\mu$ops are bypassed directly from the I-cache to the instructions buffer (still in order). The Power7 has a rate of completed instructions per cycle of 6, compared to 8 of the Power8.
+%
+%The  $\mu$ops are be managed by the Instructions Sequencing Unit (ISU), responsible for doing the renaming in out-of order mode and the dispatching in the various issue queues to
+%the executions pipelines. After renaming and the dispatching the $\mu$ops (at least the compute ones) are transferred to the UniQueue (as the reservation station for the x86 architecture). 
+%the UniQueue is implemented as 48-entry queue  (power7) or 64-entry queue (power8) and split into two halves.
+%
+%The Power7 has 12 executions pipeline, but XXX are dedicated to half UniQueue, so  only  3 instructions per cycle can be executed, 
+%one fixed-point instruction on the Fixed-Point Unit, one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU). One load or simple-fixed instruction on the Load unit (LU) and one scalar/vector instruction on the Vector Scalar Unit. 
+%
+%The Power8 has 16 execution pipelines, but  6 are dedicated to half UniQueue, so  only  4 instructions per cycle can be executed, one fixed-point instructions on the Fixed-Point Unit,
+%one load, store or simple  fixed-point instruction (Addition and logical instructions) on the Load/Store unit (LSU)  and one scalar/vector instructions on the Vector Scalar Unit. The 4 other executions pipelines are dedicated to the cryptography, the branch execution, the condition logical and the decimal floating point operations. 
 
 
 \subsection{Latency, throughput definitions}
@@ -422,17 +451,18 @@ The latency of an instruction is the delay that the instruction generates in a d
 
 The throughput is the maximum number of instructions of the same kind that can be executed per clock cycle
 when the operands of each instruction are independent of the preceding instructions.
+
 For example, a reciprocal throughput of 2 for FMUL means that a new FMUL instruction can start executing
  clock cycles after a previous FMUL. A reciprocal throughput of 0.33 for ADD means that the execution units can handle 3 integer additions per clock cycle.
 
-The latency and the throughput of the main instructions for all platforms are reported in Table~\label{latencyvendor}.
+The latency and the throughput of the main instructions for all platforms are reported in Table~\ref{latencyvendor}.
 
 \subsection{Precision}
 
-We compute the precision using the Unit of Least Precision (ULP).
+We compute the precision using the Unit of Least Precision (ULP) \cite{muller:inria-00070503}.
 The standard definition is: \textit{ulp(x) is the gap between the two floating-point numbers closest to $x$, even if $x$ is one of them.}
 The precision for the implementation of the exponential function will depend only on the error arising from the polynomial evaluation, because the evaluation of $2^k$ uses the exact hardware representation of the floating point numbers, and the boundaries conditions 
-only introduce bit  manipulation tricks. In this work, we compute the ULP using the boost library, more specially the boost::math
+only introduce bit  manipulation tricks. In this work, we compute the ULP using the boost library, more specially the \texttt{boost::math}
 package.
 
 \subsection{measurement tools}
@@ -444,34 +474,44 @@ mnemonics into a for loop whose unroll factor was parameterizable (between 1 and
 To avoid introducing some operation throughput effect which would corrupt the measurement of latency, a dependency between instructions 
 throughout the loop iterations has been artificially enforced. 
 
-Within this study, all benchmarks were compiled using GCC and repeated 100 times. The results of this experiment are reported in Figure~\ref{fig.LATENCY_OPS} in function of the used unroll factor.  
+Within this study, all benchmarks were compiled using GCC and repeated 100 times. 
+%The results of this experiment are reported in Figure~\ref{fig.LATENCY_OPS} in function of the used unroll factor.  
 The experimental data has been fitted to a linear distribution ($y=ax+b$ where $a$ corresponds to the slope of the curve which is equal to 100 times the actual 
 latency of the instruction).  Latency measurements have been carried out for all basic instructions +, $\times$ and FMA and compared to the 
 vendor results to validate our method with success. Latency of the previous instructions are reported in Table~\ref{latencyvendor}.
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.7]{platency.eps} %\vspace{-1cm}
-\caption{Value of latencies using a linear approximation for vectorial double precision instructions on Power8: $+$. 
-The slop $a$ represents the latency of the instructions. The residual $b$ of 60 cycle in 0, corresponds to the the additional workload in cycle introduced 
-by the program/processor. 
-\label{fig.LATENCY_OPS}}
-\end{center}
-\end{figure}
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.7]{platency.eps} %\vspace{-1cm}
+%\caption{Value of latencies using a linear approximation for vectorial double precision instructions on Power8: $+$. 
+%The slop $a$ represents the latency of the instructions. The residual $b$ of 60 cycle in 0, corresponds to the the additional workload in cycle introduced 
+%by the program/processor. 
+%\label{fig.LATENCY_OPS}}
+%\end{center}
+%\end{figure}
 
 \begin{table}[ht]
-\caption{Latency/Throughput add/mul/fma on the Broadwell architecture. \label{latencyvendor}}
 \begin{center}
-\begin{tabular}{l c c c c c c }
-			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  & \multicolumn{2}{c}{Power 7/8}\\ 
-                         & Thr.  & Lat. & Thr. & Lat. & Thr. & Lat.  \\
+%\begin{tabular}{l c c c c c c }
+%			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  & \multicolumn{2}{c}{Power 7/8}\\ 
+%                         & Thr.  & Lat. & Thr. & Lat. & Thr. & Lat.  \\
+%		          \hline
+%add                   &  1 & 3  &   0.8 & 3 &  1 & 6     \\
+%mul                   &  1 & 5  &   0.5 & 5 &  1 & 6   \\
+%FMA                 &   -  & -  &   0.5 & 5  &  1 & 6   \\
+%		             \hline
+%\end{tabular}
+\begin{tabular}{l c c c c  }
+			& \multicolumn{2}{c}{SandyBridge} & \multicolumn{2}{c}{Broadwell}  \\ 
+                         & Thr.  & Lat. & Thr. & Lat. \\
 		          \hline
-add                   &  1 & 3  &   0.8 & 3 &  1 & 6     \\
-mul                   &  1 & 5  &   0.5 & 5 &  1 & 6   \\
-FMA                 &   -  & -  &   0.5 & 5  &  1 & 6   \\
+add                   &  1 & 3  &   0.8 & 3    \\
+mul                   &  1 & 5  &   0.5 & 5    \\
+FMA                 &   -  & -  &   0.5 & 5    \\
 		             \hline
 \end{tabular}
 \end{center}
+\caption{Latency/Throughput add/mul/fma on the Broadwell architecture. \label{latencyvendor}}
 \end{table}%
 
 A full review  of all x86 instructions can be found in \cite{agner} where fragmented information can be founded in \cite{Sinharoy:2011:IPM:2001058.2001059, Power8}
@@ -489,11 +529,11 @@ a SIMD code. The algorithms are successively instantiated with the basic type do
 To control the quality of our ASM at least on x86 platform we extract the DAG (Figure~\ref{DAG}) using the IACA tool, for example for the evaluation
 of the first order Horner method on a polynomial of degree 10. The match is perfect between the theory and the generated assembly.
 
-\begin{figure}
+\begin{figure}[t]
 \subfloat[]
 {
 %\resizebox{.1\textwidth}{.9\textwidth}{%
-\begin{tikzpicture}[>=latex',line join=bevel,scale=0.3]
+\begin{tikzpicture}[>=latex',line join=bevel,scale=0.27]
 %%
 \node (11) at (213.0bp,18.0bp) [draw=cyan,fill=cyan,circle,scale=0.3] {11. mov};
   \node (10) at (213.0bp,90.0bp) [draw=pink,fill=pink,circle,scale=0.3] {10. FMA};
@@ -524,7 +564,7 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 }
 \subfloat[]
 {
-\begin{tikzpicture}[>=latex',line join=bevel,,scale=0.3]
+\begin{tikzpicture}[>=latex',line join=bevel,,scale=0.27]
 %%
 \node (11) at (229.0bp,519.0bp) [draw=pink,fill=pink,circle,scale=0.3] {11. $\times$};
   \node (10) at (372.0bp,283.0bp) [draw=cyan,fill=cyan,circle,scale=0.3] {10. mov};
@@ -569,7 +609,7 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 }
 \subfloat[]
 {
-\begin{tikzpicture}[>=latex',line join=bevel,scale=0.3]
+\begin{tikzpicture}[>=latex',line join=bevel,scale=0.27]
 %%
 \node (11) at (44.0bp,446.0bp) [draw=cyan,fill=cyan,circle,scale=0.3] {11. mov};
   \node (10) at (445.0bp,580.0bp) [draw=pink,fill=pink,circle,scale=0.3] {10. FMA};
@@ -627,12 +667,31 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 \caption{Broadwell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
 \end{figure}
 
+\section{Processors and Compiler}
 
+This work focuses on the last release of Intel Xeon processor (Broadwell) and an oldest generation (SandyBridge). We privileged the intel architecture 
+because it is well know and  well documented. The compiler is GCC. All informations are summarised in the table \ref{env_compil}.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l c c c c }
+\hline
+Architecture   & Model & FMA & Compiler & Options Compilation \\
+SandyBridge & E5-2670 & no   & GCC 4.9  & \texttt{-O3 -march=native } \\
+                      &                &        &                 & \texttt{-fast-math -fabi-version=6}  \\
+BroadWell     & E5-2630 & yes & GCC 4.9.3  &  \texttt{-O3 -march=native -fma} \\
+                      &                &        &                 & \texttt{-fast-math -fabi-version=6}  \\
+\hline
+\end{tabular}
+\caption{Description of the processors, the compilers and the compilation options. \label{env_compil}} 
+\end{center}
+\end{table}
+
+The two options \texttt{-fast-math} and \texttt{-fma} are mandatory to better computation of $x$ to the power of $n$ (as presented in the section \ref{powern}) and the utilization of the FMA for the scalar version. And finally the option \texttt{-fabi-version=6} for a usage of GCC vector Instructions through Built-in Functions.
+
+ 
 \section{Results}
-
-
-\subsection{polynomials}
-
+\subsection{Polynomials, preliminary analysis and validations}
 
 Build an efficient theoretical method is not trivial, and vendor simulator performance are not released on the market. 
 Nevertheless a few experimental data for latency measurement with the simplest polynomial evaluation can be verified easily. 
@@ -646,32 +705,55 @@ Last but not least the simple factorizations combining the classical horner can 
 mul, add and FMA are fully pipelined, the computation of the polynomial of lower degree should be fully hidden by the polynomial of larger degree.
 In such situation the total latency of the produce of the polynomial is $ 6 [\textrm{mul+add}]_{latency} + [\textrm{mul}]_{latency}$ or $ 6 [\textrm{FMA}]_{latency}+ [\textrm{mul}]_{latency}$.
 The last multiplication corresponds to the final product between the two polynomials, it is a blocking operations. The measurement gives  36.00 [cycle] on the Broadwell 
-architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects. 
+architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects.  This first analysis shows already two informations, the factorization and the programming model is efficient.
 
-From this simple validation, we already have two informations, the factorization can be efficient and our programming model is efficient.
+\subsection{Polynomials, latency analysis} The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. 
+The results are not distributed uniformly. For the scalar version they are distributed around 30 [cycle] (BroadWell) and 40 [cycle] (SandyBriddge). For the vectorial version, the distribution is more regular. In details, some packets of points appear (confirm by the table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}. It should be an compiler artefact, specially for the scalar version. The -fast-math reorganise the computation  of the power of $n$, as all the version are just slightly different (confirm by a fast quick look on the disassemble ,code), considering the out of order execution and the renaming of the register, it is clear that a few version give the same results. Oppositely for the vectorial version these packets are less visible because SIMD intrinsics programming prevent any optimization of the -fast-math, and  every algorithm is more unique.  
 
-\subsection{exponentials}
+For the Latency measurement, as excepted for all platform the longest latency concerns the classical Horner method due to the chain dependency. Considering the Horner method like the reference performance point the spectra of the results are large. The best results can out-perform by a factor lightly larger than 2 for the SandyBridge. In details if we have a look on the 10 best  results in the Table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}, as excepted the factorisation is a good pattern for improve the performance. 
 
-give results compare to vendors intel svml and mass
+\subsection{Polynomials, throughput analysis}
 
-
-
-\begin{figure}[h]
+\begin{figure}[ht]
 \mbox{
 \hspace{-2cm}
 \includegraphics[scale=0.7]{allht_scalar.eps} 
 \hspace{-2.5cm}
 \includegraphics[scale=0.7]{allht_vector.eps}
 }
-\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right}
+\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT0} }
 \end{figure}
+
+
+
+The throughput analysis is similar to the latency one, but with one more additional information. Factorization pattern increase slightly the throughput in cycle, it can be
+easily understand. The  factorisation pattern  improves the parallelism and consequently a better fill up of the pipeline, therefore it takes more cycle to restart a new operations
+as the pipelines are full.
+
+\subsection{Polynomials, precision analysis}
+The ULP error estimator is presented on the Figure  \ref{PRECISION_ULP}. Errors is dispatched in two group. First group with a small ULP 2/3 or a larger one around 8/9.
+This behaviour is explained easily. The first group concerns all the polynomial of type $P^{10}_m$, no factorisation has been applied on it. Contrary to the $2^{nd}$ group 
+where the factorisation has been applied. This processus was performed with Matlab software, and it necessitates resolution of quadratic equation  it introduces numerical error.
+of the determinant due to the round-off error. Kahan the father of IEEE floating point investigated the phenomena on simple quadratic \cite{Kahan2002}, 
+consequently it should be possible to improve the ULP of all factorisation pattern. 
+
+More surprisingly, the vector presents a shift of 1 ULP compare to the scalar version. Although we do not have a clear idea of this shift, for the scalar
+version the compiler has more freedom than the vector version where  the SIMD intrinsics associated to the algorithm fix the operations executions.
+In the scalar version, the compiler reorganise the operations following is setting in policy, we think the generated is done to maximise the performance and
+minimise the error.
 
 \begin{figure}[h]
 \mbox{
-\hspace{-2cm}
-\includegraphics[scale=0.7]{hw_histo_vector_l.eps} 
+\vspace{-2.5cm}
+\includegraphics[scale=0.7]{hw_histo_vector_l_sb.eps} 
 \hspace{-2.5cm}
-\includegraphics[scale=0.7]{hw_histo_vector_t.eps}
+\includegraphics[scale=0.7]{hw_histo_vector_t_sb.eps} 
+}
+\mbox{
+\vspace{-2.5cm}
+\includegraphics[scale=0.7]{hw_histo_vector_l_hw.eps} 
+\hspace{-2.5cm}
+\includegraphics[scale=0.7]{hw_histo_vector_t_hw.eps} 
 }
 \caption{Latency and Throughput frequency of the vectorial version. The analysis is done for the original polynomial or the factorization associated. Sampling interval of 1 for the latency and 0.1 for the throughput.}
 \end{figure}
@@ -685,10 +767,8 @@ give results compare to vendors intel svml and mass
 \includegraphics[scale=0.7]{all_precision_vector.eps}
 }
 \caption{Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
-the histogram is the total number os polynomial evaluations for a given ULP}
+the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
 \end{figure}
-
-
 
 \begin{table}[ht]
 \begin{center}
@@ -697,24 +777,90 @@ the histogram is the total number os polynomial evaluations for a given ULP}
 		       & \multicolumn{3}{c}{scalar} & &  \multicolumn{3}{c}{vector} \\
 		       &   \multicolumn{3}{c}{Throughput Criteria} &   &  \multicolumn{3}{c}{Throughput Criteria} \\
  Algorithm        & Th.  & La.      & ULP  & Algorithm                & Th.   & La.     & ULP \\ 	
-$P^6_{h^{1}}P^4_{h^{1}}$      & 3.13 & 35.03  & 8           & $P^{10}_e$  & 2.90 & 22.69 & 2 \\
-
-
-
-
-
-
-
-
-
-
-		       &   \multicolumn{3}{c}{Latency Criteria} &   &  \multicolumn{3}{c}{Latency Criteria} \\
- $P^4_bP^2_bP^2_eP^2_e$  & 3.14 & 26.07  & 9        & $P^{10}_e$  & 2.90 & 22.69 & 3 \\
+$P_{h^4}^{6}P_e^{2}P_{h^1}^{2}$ & 6.08 & 35.10 & 8  & $P_b^{2}P_{h^2}^{4}P_{h^2}^{4}$ & 5.95 & 34.77 & 9 \\
+$P_{h^4}^{6}P_{h^1}^{2}P_{h^1}^{2}$ & 6.20 & 36.03 & 8  & $P_b^{2}P_{h^1}^{4}P_{h^1}^{4}$ & 6.13 & 43.70 & 9 \\
+$P_{h^4}^{6}P_{h^1}^{4}$ & 6.23 & 37.82 & 8  & $P_b^{2}P_{h^1}^{4}P_{h^2}^{4}$ & 6.24 & 43.06 & 10 \\
+$P_{h^4}^{6}P_e^{4}$ & 6.26 & 34.12 & 8  & $P_b^{2}P_e^{4}P_{h^2}^{4}$ & 6.37 & 31.56 & 11 \\
+$P_{h^3}^{6}P_e^{2}P_e^{2}$ & 6.27 & 39.17 & 8  & $P_b^{2}P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 6.37 & 40.05 & 9 \\
+$P_{h^4}^{6}P_{h^2}^{4}$ & 6.28 & 34.18 & 8  & $P_b^{2}P_e^{4}P_{h^1}^{4}$ & 6.39 & 37.27 & 10 \\
+$P_{h^3}^{6}P_b^{2}P_b^{2}$ & 6.30 & 39.18 & 9  & $P_b^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 6.41 & 39.73 & 9 \\
+$P_{h^3}^{6}P_{h^1}^{2}P_{h^1}^{2}$ & 6.31 & 38.93 & 9  & $P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 6.44 & 40.05 & 9 \\
+$P_{h^5}^{6}P_b^{2}P_{h^1}^{2}$ & 6.32 & 38.81 & 8  & $P_b^{2}P_b^{2}P_b^{2}P_b^{2}P_b^{2}$ & 6.46 & 42.46 & 8 \\
+$P_{h^5}^{6}P_b^{2}P_b^{2}$ & 6.33 & 38.87 & 8  & $P_b^{2}P_b^{2}P_e^{2}P_e^{2}P_e^{2}$ & 6.49 & 41.38 & 9 \\
+		       & \multicolumn{3}{c}{Latency Criteria} &           &  \multicolumn{3}{c}{Latency Criteria}\\
+$P_e^{6}P_b^{4}$ & 7.00 & 29.03 & 9  & $P_e^{10}$ & 7.09 & 29.07 & 4 \\
+$P_e^{6}P_e^{4}$ & 6.99 & 29.72 & 8  & $P_e^{6}P_e^{4}$ & 8.22 & 29.15 & 10 \\
+$P_{h^1}^{2}P_b^{4}P_e^{4}$ & 7.46 & 30.16 & 9  & $P_e^{6}P_{h^2}^{4}$ & 7.32 & 29.15 & 9 \\
+$P_{h^1}^{2}P_e^{4}P_{h^2}^{4}$ & 7.12 & 31.20 & 9  & $P_e^{2}P_e^{4}P_{h^2}^{4}$ & 7.74 & 30.05 & 9 \\
+$P_e^{2}P_b^{4}P_e^{4}$ & 7.47 & 31.67 & 9  & $P_{h^1}^{2}P_e^{4}P_{h^2}^{4}$ & 7.68 & 30.07 & 10 \\
+$P_b^{4}P_b^{2}P_e^{2}P_{h^1}^{2}$ & 7.33 & 31.70 & 10  & $P_e^{6}P_b^{4}$ & 7.58 & 30.65 & 8 \\
+$P_b^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 7.34 & 31.70 & 10  & $P_b^{2}P_e^{4}P_{h^2}^{4}$ & 6.37 & 31.56 & 11 \\
+$P_e^{4}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 7.36 & 31.70 & 10  & $P_e^{8}P_e^{2}$ & 7.53 & 32.27 & 8 \\
+$P_e^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 7.20 & 31.71 & 9  & $P_e^{8}P_{h^1}^{2}$ & 7.49 & 33.05 & 8 \\
+$P_b^{4}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 7.36 & 31.71 & 12  & $P_e^{6}P_e^{2}P_{h^1}^{2}$ & 7.48 & 33.05 & 9 \\
 \hline
 \end{tabular}
 \end{center}
-\caption{Best Latency/throughput [cycle] polynomial evaluation on all platforms. The criteria indicates the sort the tuple (throughput, latency, ulp), 
-on a specific part \label{LTR_EXP}}
+\caption{Best Latency/throughput [cycle] polynomial evaluation on SandyBridge platform. The criteria indicates the sort of the tuple (throughput, latency, ulp), 
+on a specific part \label{LTR_EXP_0}}
+\end{table}%
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l c c c  l c c  c }
+\hline
+		       & \multicolumn{3}{c}{scalar}              &           &  \multicolumn{3}{c}{vector}\\
+		       & \multicolumn{3}{c}{Throughput Criteria} &           &  \multicolumn{3}{c}{Throughput Criteria}\\
+ Algorithm             & Th.  & La.     & ULP                    & Algorithm & Th.   & La.     & ULP\\
+$P_{h^1}^{2}P_e^{4}P_{h^1}^{4}$ & 3.54 & 25.06 & 9  & $P_e^{6}P_e^{4}$ & 3.30 & 20.99 & 8 \\
+$P_{h^1}^{2}P_b^{4}P_{h^1}^{4}$ & 3.54 & 25.03 & 8  & $P_e^{6}P_{h^2}^{4}$ & 3.40 & 21.03 & 9 \\
+$P_e^{2}P_e^{4}P_{h^1}^{4}$ & 3.54 & 25.03 & 8  & $P_e^{6}P_{h^1}^{4}$ & 3.40 & 23.67 & 8 \\
+$P_e^{6}P_e^{2}P_e^{2}$ & 3.54 & 25.59 & 9  & $P_e^{10}$ & 3.41 & 22.65 & 4 \\
+$P_e^{4}P_b^{2}P_b^{2}P_b^{2}$ & 3.54 & 23.17 & 9  & $P_{h^2}^{6}P_{h^1}^{4}$ & 3.45 & 26.28 & 8 \\
+$P_e^{4}P_b^{2}P_e^{2}P_e^{2}$ & 3.54 & 23.17 & 10  & $P_{h^2}^{6}P_{h^2}^{4}$ & 3.46 & 27.27 & 8 \\
+$P_e^{4}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.54 & 23.50 & 9  & $P_e^{6}P_e^{2}P_e^{2}$ & 3.46 & 23.80 & 9 \\
+$P_e^{4}P_b^{2}P_b^{2}P_e^{2}$ & 3.54 & 23.19 & 10  & $P_e^{2}P_e^{4}P_e^{4}$ & 3.47 & 23.65 & 10 \\
+$P_e^{4}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.54 & 23.57 & 9  & $P_e^{8}P_e^{2}$ & 3.47 & 26.01 & 9 \\
+$P_e^{6}P_b^{2}P_e^{2}$ & 3.55 & 25.58 & 8  & $P_e^{2}P_{h^1}^{4}P_{h^2}^{4}$ & 3.49 & 26.45 & 9 \\
+		       & \multicolumn{3}{c}{Latency Criteria} &           &  \multicolumn{3}{c}{Latency Criteria}\\
+$P_b^{2}P_b^{2}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 3.64 & 21.46 & 9  & $P_e^{6}P_e^{4}$ & 3.30 & 20.99 & 8 \\
+$P_b^{2}P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 5.03 & 21.46 & 9  & $P_e^{6}P_{h^2}^{4}$ & 3.40 & 21.03 & 9 \\
+$P_b^{2}P_b^{2}P_b^{2}P_e^{2}P_{h^1}^{2}$ & 3.63 & 21.46 & 10  & $P_{h^1}^{2}P_e^{4}P_{h^2}^{4}$ & 3.57 & 22.43 & 9 \\
+$P_b^{2}P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 3.63 & 21.47 & 8  & $P_e^{2}P_e^{4}P_{h^2}^{4}$ & 3.56 & 22.62 & 10 \\
+$P_b^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.58 & 21.48 & 7  & $P_e^{10}$ & 3.41 & 22.65 & 4 \\
+$P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.62 & 21.48 & 8  & $P_{h^1}^{2}P_e^{4}P_e^{4}$ & 3.49 & 23.29 & 9 \\
+$P_e^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.58 & 21.48 & 8  & $P_b^{2}P_e^{4}P_{h^2}^{4}$ & 3.85 & 23.33 & 10 \\
+$P_e^{2}P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 3.63 & 21.51 & 9  & $P_e^{2}P_e^{4}P_e^{4}$ & 3.47 & 23.65 & 10 \\
+$P_b^{2}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 3.60 & 21.64 & 8  & $P_e^{6}P_{h^1}^{4}$ & 3.40 & 23.67 & 8 \\
+$P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 5.05 & 21.64 & 8  & $P_e^{6}P_e^{2}P_{h^1}^{2}$ & 3.53 & 23.74 & 9 \\
+
+\hline
+\end{tabular}
+\end{center}
+\caption{Best Latency/throughput [cycle] polynomial evaluation on Broadwell platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
+on a specific part \label{LTR_EXP_1}}
+\end{table}%
+
+\subsection{exponentials}
+Evaluate the exponential necessitates the addition of the computation of $2^k$ and the boundary conditions has we have described in the section \ref{TwokSection} and \ref{BoundarySection}.
+The throughput/latency benchmarks are reported in the table  \ref{twokboundary}. The results are similar whatever the the platform and the backend (vectorial/scalar), with a little improvement 
+on the Broadwell version, specially for the vector version because the native support of the  AVX2  compared to the limited AVX1 on the Sandybridge allow more vectorial SIMD instructions 
+specially for the integer manipulations. However the latency of the boundary and the $2^k$ are quiet expensive in term of cycle. It is easily explain. Both operations introduced chain
+of dependency that does not allow a good parallelism although the large number of ALU inside the processors.
+
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{ l c c  c c c c c c  }
+\hline
+Architecture & \multicolumn{4}{c}{$2^k$} & \multicolumn{4}{c}{boundary} \\
+	             & \multicolumn{2}{c}{scalar} & \multicolumn{2}{c}{vector} & \multicolumn{2}{c}{scalar} & \multicolumn{2}{c}{vector} \\
+			& Thr. & Lat. 		& Thr. & Lat. 		& Thr. & Lat.  		& Thr. & Lat.\\		    
+SandyBridge & 4.71  & 15.00  &3.49 &18.99   & 4.71 &9.95 & 4.04 &  8.01 \\
+Broadwell     & 3.63  &16.00  & 2.70 &   18.00 &  4.94&  10.65& 2.64 &  8.01 \\
+\hline
+\end{tabular}
+\end{center}
+\caption{Benchmark of the $2^k$ and the boundary conditions for the evaluation of $e^x$. \label{twokboundary}}
 \end{table}%
 
 \section{Conclusions}
