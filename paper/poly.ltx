@@ -82,20 +82,20 @@ Whatever the definitions, they are two main ideas: execute instructions concurre
 the throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
 Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
 
-Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the BroadWell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the BroadWell) and Arithmetic Logic Unit (APU). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
+Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the BroadWell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the BroadWell) and Arithmetic Logic Unit (ALU - \textit{e.g.} four on the BroadWell). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
 $e^x$. State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the core unit of the last
 processor of Intel (SandyBridge and BroadWell), and the different method we will use for coding and measure the veracity of the results.
 We present results for the polynomial evaluation and exponential for scalar and vectorial version, and then we compare to vendor exponential library.
 
-\section{State of the art}
+\section{Polynomial evaluation, state of the art}
 In evaluating the polynomial of degree $n$,
  \begin{eqnarray}
    P(x) = a_0 + a_1 x  + \dots + a_{n} x^{n}, \,\, (a_i  \in \R) \label{P0}
  \end{eqnarray}
  a large number of methods can be applied. In this study, we selected the most significant, extracted from the seminal work of Knuth \cite{Knuth:1997:ACP:270146}. %the art of programming [cite vol 2].
- The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation techniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximizing the parallelism and minimizing the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
+ The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation techniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximising the parallelism and minimising the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
 %\section{Algorithms}
 \subsection{Evaluation of Powers \label{powern}}
 The basic step in performing a polynomial evaluation is the computation of the power function.
@@ -111,7 +111,7 @@ The homonym Horner's method at order one is the most classical. Given an input v
    P(x_0) = a_0 +  x_0 ( a_1  +  x_0 ( a_2 + x_0(  \dots a_{n}  ) )).
   \end{eqnarray}
 \textit{``Horner's method''} has a complexity of $n$ multiplications and $n$ additions, or $n$ Fused Multiply-Add (FMA). The method is efficient,
-but inefficient from the point of view of the processor, because it can introduce pipelining data hazards due to the dependency chain in the recursive process.
+but inefficient from the point of view of the processor, because it introduces pipelining data hazards due to the dependency chain in the recursive process.
 
 \subsection{Horner method: $k^{th}$-order}
 \textit{``Horner's method''} can be generalised to an arbitrary order by building new polynomials over $x^k$ instead of $x$ \cite{Dorn:1962:GHR:1661979.1661987}.
@@ -121,7 +121,7 @@ Given a degree of parallelism $k$, Horner's $k^{th}$-order method reads:
    P(x_0) &=&  Q_0(x_0^k) + Q_1(x_0^k) + \dots + Q_{k-1}(x_0^k) \\
    Q_{k-1}(x_0^k) &=&  x_0^{k-1}(a_{k-1} + x_0^{k}(a_{2k-1} + x_0^{k}(a_{3k-1} + x_0^{k}(\dots a_{m \le n}))))
      \end{eqnarray}
-This method hasa complexity of $n+k-1$ multiplications and $n$ additions. The classical Horner method corresponds to $k=1$.
+This method has a complexity of $n+k-1$ multiplications and $n$ additions. The classical Horner method corresponds to $k=1$.
 
 \subsection{Horner method: Estrin}
 An alternative to the generalization of Horner's rule is the Estrin method \cite{10.1109/AFIPS.1960.28}, described as follows:
@@ -144,7 +144,7 @@ P(x_0) &=&  a_0 + a_1 x_0   \nonumber \\
 This method has $n$ multiplications and $n$ additions, just like Horner's
 method, but it has a remarkable pattern design for the following reason: every
 $c_i^j$ can be associated to an independent FMA, and by virtue of this
-independence we expect a good efficiency on super scalar machines (i.e. no
+independence we expect a good efficiency on super scalar machines (\textit{i.e.} no
 bubbles in the pipeline).
 
 \subsection{Factorization}
@@ -158,7 +158,7 @@ In this work we only consider polynomials with fixed coefficients known a priori
 We recall the property that, given two complex conjugate numbers $z_i, z_j$, the product $(x - z_i)(x - z_j)$ factorizes to $x^2 + \alpha x + \beta$ where $\alpha, \beta \in \mathbb{R}$.
 We use this property to rewrite~\eqref{factor} such that it only contains real coefficients by explicitly computing all the products between complex conjugate roots:
 \begin{equation}\label{real-factor}
-\prod\limits_{i=1}^{n-l/2} (x - z_i)\prod\limits_{j=1}^{l/2} (x^2 + \alpha_j x + \beta_j),
+\prod\limits_{i=1}^{n-l/2} (x - z_i) = \prod\limits_{j=1}^{l/2} (x^2 + \alpha_j x + \beta_j),
 \end{equation}
 where $l$ is the number of complex conjugate roots of the polynomial~\eqref{P0}, with $l<n$ and $l$ always even.
 Instead of only evaluating all the simple factors appearing in~\eqref{real-factor} one-by-one, we consider all their possible combinations into polynomials of higher degree, to test whether a particular sequence of higher degree polynomials yields better results.
@@ -167,7 +167,8 @@ of the previously described methods.
 The factorization technique can introduce a large degree of parallelism and may outperform others for superscalar architectures.
 
 \subsection{complexity}
-To conclude this section on algorithms, the complexity of the different methods is summarised in Table \ref{complexity}.
+To conclude this section on algorithms, the complexity of the different methods is summarised in Table \ref{complexity}. In this table
+the factorisation is combination of the different method $m_i$ indicates the number of addition/subtraction of the evaluation according the chosen method.
 \begin{table}[h!]
 \begin{center}
 \begin{tabular}{l c c  }
@@ -176,7 +177,7 @@ To conclude this section on algorithms, the complexity of the different methods 
 Brute force            &  $n$       & $2n-1$     \\
 Horner $k^{th}$-order  & $n+k-1$ & $n$   \\
 Estrin                    & $n$        & $n$             \\
-Factorization        &    combination            &   combination   \\    
+Factorization        &    $\sum\limits_{i=1}^n m_i$     &    $\sum\limits_{i=1}^n m_i$ + n   \\    
 	\hline
 \end{tabular}
 \end{center}
@@ -185,8 +186,7 @@ Factorization        &    combination            &   combination   \\
 
 \section{Elementary function: $e^x$}
 Small polynomials are extensively used in the approximation of elementary functions.
-The present study focuses on $e^x$.
-A possible approach to compute $e^x$ is:
+The present study focuses on $e^x$, a possible approach to compute $e^x$ is:
 
 \begin{equation}\label{begin_exp}
 \begin{split}
@@ -219,7 +219,7 @@ R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
 \end{eqnarray}
 
 When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
-series around $ln2/2$ but once again the error would be local.
+series around $ln(2)/2$ but once again the error would be local.
 
 \subsection{Polynomial approximation}
 
@@ -228,7 +228,7 @@ The Remez algorithm is an excellent solution. The method certifis that $f(x)$  (
 an  error function \textit{e.g.} $E(x)=f(x)-R(x)$) in the concerning interval. Moreover, the minimax solution verifies (Chebyshev proof).
 
 \begin{itemize}
-\item if $R(x)$ is a polynomial of degree $n$ with $n+1$ $c_i$ coefficients, there are $n+2$ unknowns: the $n+1$ coefficients of the polynomial, and the maximal value of the error function ($E(x) = f(x) - R(x)$)
+\item if $R(x)$ is a polynomial of degree $n$ with $(n+1)$ $c_i$ coefficients, there are $n+2$ unknowns: the $n+1$ coefficients of the polynomial, and the maximal value of the error function ($E(x) = f(x) - R(x)$)
 \item The error function has $n+1$ roots and $n+2$ extrema 
 \item The extrema alternate in sign, and all have the same magnitude 
 \end{itemize}
@@ -244,7 +244,7 @@ nevertheless it does not  provide the position of the extrema. In practice the  
 Chebyshev approximation, the extrema are determinate, and they become the control points $x_i$ of the error functions. Then the two iterative steps are performed:
 
 \begin{enumerate}
-\item Compute the $n+1$ coefficients $c_i$ and the error $E$ by solving the  equation \ref{system}. A solution is obtained with the same error on the control point but it is not necessarily the minimax 
+\item Compute the $n+1$ coefficients $c_i$ and the error $E$ by solving the  equation (\ref{system}). A solution is obtained with the same error on the control point but it is not necessarily the minimax 
 solution, because the extrema are not located on the control points.
 \item Find the extrema of the new solution using the properties that the extrema is between the $n+1$ root of the polynomial and the control points. This step is called exchange step. 
 And iterate until the error function is lower than the wanted precision. 
@@ -299,7 +299,7 @@ S  &=&  \textrm{card}((10) + (8,2) + (6,4) + (6,2^2) + (4^2,2) + (4,2^3) + (2^5)
 The total number of combinations to evaluate $P^{10}$ is therefore 231.
 
 \subsection{ From x to k and y}
-The polynomial is solved consequently, going back to the $e^x$ computation. The equation~\eqref{begin_exp} can be solved  although it has two unknowns.\\
+The polynomial evaluation issue solved, going back to the $e^x$ computation. The equation~\eqref{begin_exp} can be solved  although it has two unknowns.\\
 $\forall x \in  \mathbb{R}, \exists  y \in [0,ln 2], k \in \mathbb{N} \nonumber $ such that:
 \begin{eqnarray}\label{xyk}
 x & = & y + k ln 2.
@@ -341,7 +341,6 @@ x = -1^s \times (1+F) \times 2^{e+bias}
 \end{figure}
 
 For double precision numbers (Figure \ref{doubleIEEE}): $s$ sign bit, $e + bias $ is the exponent (11 bits), it is bias (engineering sense of the word).
-It it biased because an alternative  based on the two complementary method makes things harder specially for comparison. 
 The bias is equal to 1023 and $e$ belongs [-1022,1023]. $F$ is the mantissa (53 bits) $\sum_{n=1}^{p-1} bit_n \times 
 2^{-n}$. The method consists in taking the wanted $k$, adding the bias and moving it into the exponent part of the floating point representation, and letting the machine interpret it like a double.
 The method is efficient, fast and does not introduce any errors nor does it require any conversion operations. This method can be described by the following algorithm:
@@ -371,7 +370,7 @@ $e^x$                   &  0 & $+\infty$  & 1 & NaN & $+\infty$   & 0 \\
 \end{center}
 \end{table}%
 
-Branching is impossible on SIMD architectures, nevertheless we describe an alternative using bit manipulation, as described in the Algorithm~\ref{manipulatiomanipulation}.
+Branching is impossible on SIMD architectures, nevertheless we describe an alternative using bitwise manipulation, as described in the Algorithm~\ref{manipulation}.
 
 \begin{algorithm}[H]
  \KwData{$x$ floating point number}
@@ -398,7 +397,7 @@ The next section is a summarise of the great work of \cite{Agner}.
 
 \subsection{Intel SandyBridge and BroadWell architecture}
 The SandyBridge and BroadWell architecture derived from the core2duo architecture (based on a Pentium M). Both architectures support the new set of 256 bit vectorial instructions 
-named AVX and AVX2 (BroadWell only). The AVX2 provides FMA support and better integer manipulation.  For both architectures, the instructions fetch unit bandwidth 
+named AVX and AVX2 (BroadWell only). The AVX2 provides FMA support and better integer and bitwise manipulation.  For both architectures, the instructions fetch unit bandwidth 
 is limited to 16 bytes per clock cycle. The instructions decoding execution is complicated, it is split
 between a predecoder and a decoder. The predecoder job is to detect where the instructions start, a hard task because the size of an instruction can vary between 
 1 to 15 bytes. The predecoder also identifies the additional field (if available) of the instructions (prefix, ModR/M, SIB, displacement and immediate). Then 4 decoders decompose
@@ -415,7 +414,7 @@ the re-ordering $e.g.$ following a Tomasulo Algorithm, and \emph{in fine} the re
 
 The Sandy Bridge has six execution ports (or terminology execution pipelines). There are tree integer ALUs so that the most common integer operations can execute
  with a throughput of four instructions per clock cycle (port 0, 1 and 5). Two ports can handle memory read operations (port 2 and 3)
-Port 4 is for memory write. Read/Write can be performed by port 2, 3 and 4 (write only) but the port 4 can not make address calculation.
+Port 4 is for memory write. Read/Write can be performed by port 2, 3 and 4 (write only) but the port 4 can not make address computation.
 The maximum throughput is one unfused $\mu$op on each port per clock cycle.
 Port 0, 1 and 5 support usual 256 bit vector operations. There are separate ports for multiplication of general purpose registers and vector registers. 
 The integer and floating point vector multiplier are on port 0.  These two multipliers can run simultaneously and both are fully pipelined with a throughput of 1 vector operation per clock cycle.
@@ -473,7 +472,7 @@ to the large number of variables which may impact the measurements.
 Therefore, the approach used within this study consists of performing indirect measurements by mapping the instructions associated to their
 mnemonics into a for loop whose unroll factor was parameterizable (between 1 and 5). 
 To avoid introducing some operation throughput effect which would corrupt the measurement of latency, a dependency between instructions 
-throughout the loop iterations has been artificially enforced. 
+throughout the loop iterations has been artificially enforced.  This method of measurement has been tested with success on the Power8 machine \cite{Ewart:2015:PEI:2832087.2832088}
 
 Within this study, all benchmarks were compiled using GCC and repeated 100 times. 
 %The results of this experiment are reported in Figure~\ref{fig.LATENCY_OPS} in function of the used unroll factor.  
@@ -526,7 +525,8 @@ Programming polynomial evaluation and $e^x$ for high performance computing is no
 instructions. A solution would be to write directly in assembly language: the solution is conceivable although it is very time consuming. 
 We consider the alternative of using meta-programming associated to a recursive algorithm. It simplifies the generation of all polynomial evaluations
 as soon as all possible methods have been programmed. Moreover, as the algorithms are generic, they can be plugged into any DSL to generate 
-a SIMD code. The algorithms are successively instantiated with the basic type double and a generic vector class coming from the Cyme library.
+a SIMD code. The algorithms are successively instantiated with the basic type double and a generic vector class coming from any SIMD DSL library,
+here we selected a library we developed inside the BBP \cite{CymeISC2014}.
 To control the quality of our ASM at least on x86 platform we extract the DAG (Figure~\ref{DAG}) using the IACA tool, for example for the evaluation
 of the first order Horner method on a polynomial of degree 10. The match is perfect between the theory and the generated assembly.
 
@@ -694,7 +694,7 @@ The two options \texttt{-fast-math} and \texttt{-fma} are mandatory to better co
 \section{Results}
 \subsection{Polynomials, preliminary analysis and validations}
 
-Build an efficient theoretical method is not trivial, and vendor simulator performance are not released on the market. 
+Build an efficient theoretical method is not trivial, and vendor performance simulator  are not released on the market. 
 Nevertheless a few experimental data for latency measurement with the simplest polynomial evaluation can be verified easily. 
 The classical Horner's method  provides a dependency chain between all the operations (As shown by the AMS DAG, Figure \ref{DAG}), therefore any instructions
 can be only executed if the previous one is finished. The classical Horner's method gives 10 successives mull/add or 
@@ -709,7 +709,7 @@ The last multiplication corresponds to the final product between the two polynom
 architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects.  This first analysis shows already two informations, the factorization and the programming model is efficient.
 
 \subsection{Polynomials, latency analysis} The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. 
-The results are not distributed uniformly. For the scalar version they are distributed around 30 [cycle] (BroadWell) and 40 [cycle] (SandyBriddge). For the vectorial version, the distribution is more regular. In details, some packets of points appear (confirm by the table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}. It should be an compiler artefact, specially for the scalar version. The -fast-math reorganise the computation  of the power of $n$, as all the version are just slightly different (confirm by a fast quick look on the disassemble ,code), considering the out of order execution and the renaming of the register, it is clear that a few version give the same results. Oppositely for the vectorial version these packets are less visible because SIMD intrinsics programming prevent any optimization of the -fast-math, and  every algorithm is more unique.  
+The results are not distributed uniformly. For the scalar version they are distributed around 30 [cycle] (BroadWell) and 40 [cycle] (SandyBriddge). For the vectorial version, the distribution is more regular. In details, some packets of points appear (confirm by the table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}. It should be an compiler artefact, specially for the scalar version. The -fast-math reorganise the computation  of the power of $n$, as all the version are just slightly different (confirm by a fast quick look on the disassemble ,code), considering the out of order execution and the renaming of the register, it is clear that a few version give the same results. Oppositely for the vectorial version these packets are less visible because SIMD intrinsics programming prevent any optimization of the \texttt{-fast-math}, and  every algorithm is more unique.  
 
 For the Latency measurement, as excepted for all platform the longest latency concerns the classical Horner method due to the chain dependency. Considering the Horner method like the reference performance point the spectra of the results are large. The best results can out-perform by a factor lightly larger than 2 for the SandyBridge. In details if we have a look on the 10 best  results in the Table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}, as excepted the factorisation is a good pattern for improve the performance. 
 
@@ -908,6 +908,7 @@ $P_b^{2}P_b^{4}P_e^{4}$ & 15.18 & 63.90 & 10  & $P_e^{6}P_b^{2}P_b^{2}$ & 15.72 
 $P_{h^1}^{2}P_e^{4}P_{h^3}^{4}$ & 15.22 & 63.98 & 9  & $P_e^{2}P_e^{4}P_{h^2}^{4}$ & 13.71 & 67.79 & 9 \\
 $P_e^{2}P_e^{4}P_{h^2}^{4}$ & 15.18 & 64.73 & 9  & $P_b^{2}P_e^{4}P_{h^2}^{4}$ & 16.70 & 67.80 & 9 \\
 $P_e^{2}P_b^{4}P_{h^2}^{4}$ & 12.44 & 64.73 & 9  & $P_e^{2}P_e^{4}P_e^{4}$ & 16.25 & 68.02 & 10 \\
+\hline
 \end{tabular}
 \end{center}
 \caption{Best Latency/throughput [cycle] $e^x$  evaluations SandBridge platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
@@ -942,6 +943,7 @@ $P_b^{2}P_b^{2}P_b^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.54 & 52.10 & 9  & $P_b^{2}P_b^
 $P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 9.54 & 52.10 & 9  & $P_b^{2}P_b^{2}P_b^{2}P_b^{2}P_b^{2}$ & 12.70 & 55.96 & 10 \\
 $P_b^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 9.31 & 52.16 & 10  & $P_b^{2}P_e^{2}P_e^{2}P_{h^1}^{2}P_{h^1}^{2}$ & 12.50 & 55.99 & 9 \\
 $P_e^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 9.31 & 52.16 & 10  & $P_b^{2}P_e^{2}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 12.73 & 56.02 & 9 \\
+\hline
 \end{tabular}
 \end{center}
 \caption{Best Latency/throughput [cycle]  $e^x$  evaluations BroadWell platform. The criteria indicates the sort the tuple (throughput, latency, ulp),
@@ -967,7 +969,7 @@ the first product where released in 2011, Intel may have not updated their libra
 method. For the latency/throughput difference of performance, we do not have any informations about the algorithm that Intel implements. 
 Disassemble the code lets appear  a look at table and a polynomial of lower degree, which explain easily the difference of performance.
 About the poor performance on the IMF library, we do not have good explanation, make a good vectorial version like the SVML should automatically
-gave good results for the scalar version as the registers are the same (XMM is nested in YMM).
+gives good results for the scalar version as the registers are the same (XMM is nested in YMM).
 
 
 
