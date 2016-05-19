@@ -715,14 +715,27 @@ For the Latency measurement, as excepted for all platform the longest latency co
 
 \subsection{Polynomials, throughput analysis}
 
-\begin{figure}[ht]
+\begin{figure}[ht!]
 \mbox{
 \hspace{-2cm}
 \includegraphics[scale=0.7]{allht_scalar.eps} 
 \hspace{-2.5cm}
 \includegraphics[scale=0.7]{allht_vector.eps}
 }
-\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT0} }
+\mbox{
+\hspace{-2cm}
+\includegraphics[scale=0.7]{all_precision_scalar.eps} 
+\hspace{-2.5cm}
+\includegraphics[scale=0.7]{all_precision_vector.eps}
+}
+%\caption{Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
+%the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
+%\end{figure}
+
+%}
+\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT0}
+Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
+the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
 \end{figure}
 
 
@@ -738,40 +751,7 @@ where the factorisation has been applied. This processus was performed with Matl
 of the determinant due to the round-off error. Kahan the father of IEEE floating point investigated the phenomena on simple quadratic \cite{Kahan2002}, 
 consequently it should be possible to improve the ULP of all factorisation pattern. 
 
-More surprisingly, the vector presents a shift of 1 ULP compare to the scalar version. Although we do not have a clear idea of this shift, for the scalar
-version the compiler has more freedom than the vector version where  the SIMD intrinsics associated to the algorithm fix the operations executions.
-In the scalar version, the compiler reorganise the operations following is setting in policy, we think the generated is done to maximise the performance and
-minimise the error.
-
-\begin{figure}[h]
-\mbox{
-\vspace{-2.5cm}
-\includegraphics[scale=0.7]{hw_histo_vector_l_sb.eps} 
-\hspace{-2.5cm}
-\includegraphics[scale=0.7]{hw_histo_vector_t_sb.eps} 
-}
-\mbox{
-\vspace{-2.5cm}
-\includegraphics[scale=0.7]{hw_histo_vector_l_hw.eps} 
-\hspace{-2.5cm}
-\includegraphics[scale=0.7]{hw_histo_vector_t_hw.eps} 
-}
-\caption{Latency and Throughput frequency of the vectorial version. The analysis is done for the original polynomial or the factorization associated. Sampling interval of 1 for the latency and 0.1 for the throughput.}
-\end{figure}
-
-
-\begin{figure}[h]
-\mbox{
-\hspace{-2cm}
-\includegraphics[scale=0.7]{all_precision_scalar.eps} 
-\hspace{-2.5cm}
-\includegraphics[scale=0.7]{all_precision_vector.eps}
-}
-\caption{Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
-the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
-\end{figure}
-
-\begin{table}[ht]
+\begin{table}[t!]
 \begin{center}
 \begin{tabular}{ l c c c  l c c  c }
 \hline
@@ -806,7 +786,31 @@ $P_b^{4}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 7.36 & 31.71 & 12  & $P_e^{6}P_e^{2}P_{h^1}
 on a specific part \label{LTR_EXP_0}}
 \end{table}%
 
-\begin{table}[ht]
+
+More surprisingly, the vector presents a shift of 1 ULP compare to the scalar version. Although we do not have a clear idea of this shift, for the scalar
+version the compiler has more freedom than the vector version where  the SIMD intrinsics associated to the algorithm fix the operations executions.
+In the scalar version, the compiler reorganise the operations following is setting in policy, we think the generated is done to maximise the performance and
+minimise the error.
+
+%\begin{figure}[h]
+%\mbox{
+%\vspace{-2.5cm}
+%\includegraphics[scale=0.7]{hw_histo_vector_l_sb.eps} 
+%\hspace{-2.5cm}
+%\includegraphics[scale=0.7]{hw_histo_vector_t_sb.eps} 
+%}
+%\mbox{
+%\vspace{-2.5cm}
+%\includegraphics[scale=0.7]{hw_histo_vector_l_hw.eps} 
+%\hspace{-2.5cm}
+%\includegraphics[scale=0.7]{hw_histo_vector_t_hw.eps} 
+%}
+%\caption{Latency and Throughput frequency of the vectorial version. The analysis is done for the original polynomial or the factorization associated. Sampling interval of 1 for the latency and 0.1 for the throughput.}
+%\end{figure}
+
+
+
+\begin{table}[ht!]
 \begin{center}
 \begin{tabular}{ l c c c  l c c  c }
 \hline
@@ -843,10 +847,10 @@ on a specific part \label{LTR_EXP_1}}
 \end{table}%
 
 \subsection{Exponentials}
-Evaluate the exponential necessitates the addition of the computation of $2^k$ and the boundary conditions has we have described in the section \ref{TwokSection} and \ref{BoundarySection}.
-The throughput/latency benchmarks are reported in the table  \ref{twokboundary}. The results are similar whatever the the platform and the backend (vectorial/scalar), with a little improvement 
-on the BroadWell version, specially for the vector version because the native support of the  AVX2  compared to the limited AVX1 on the Sandybridge allow more vectorial SIMD instructions 
-specially for the integer manipulations. However the latency of the boundary and the $2^k$ are quiet expensive in term of cycle. It is easily explain. Both operations introduced chain
+Evaluate the exponential necessitates the addition of the computation of $2^k$ and the boundary conditions that have been described in the section \ref{TwokSection} and \ref{BoundarySection}.
+The throughput/latency benchmarks are reported in the table  \ref{twokboundary}. The results are similar whatever  the platforms and the backend (vectorial/scalar), with a little improvement 
+on the BroadWell version, and specially for the vector version because it supports  AVX2  which allows more vectorial SIMD integers instructions.
+However the latency of the boundary and the $2^k$ are quiet expensive in term of cycle. It is easily explained. Both operations introduced a chain
 of dependency that does not allow parallelism although the large number of ALU inside the processors.
 
 
@@ -865,19 +869,6 @@ BroadWell     & 3.63  &16.00  & 2.70 &   18.00 &  4.94&  10.65& 2.64 &  8.01 \\
 \end{center}
 \caption{Benchmark of the $2^k$ and the boundary conditions for the evaluation of $e^x$. \label{twokboundary}}
 \end{table}%
-
-If we know evaluate  $e^x$  (Figures \ref{PLOT_LT00} and Tables \ref{LTR_EXP_00} and \ref{LTR_EXP_11}), the results confirms the results obtained with  the polynomials evaluation.
-The factorisation scheme provides the best results. Globally the throughput has been multiplied by three and the latency by two.  However thinks are a much complex.
-In details, "large" vectorizations provide better latency due to a better fill up of the pipelines, the consequences the port 0,1 (floating point) are saturated, and consequently, it slows down the integer traitement  for the boundary condition and the evaluation of $2^k$ which are also evaluated on similar port (0,1 and 5), consequently throughput increases drastically for such scheme. The larger number
-of port and FPU/APU limit this effect on BroadWell compare to SandyBridge. Moreover, this effect is much presented on the vectorial version because the code the SIMD code is generated like it is, the intrinsics prevents any optimaztion of the compiler using the fast-math option 
-compare to the scalar version.
-
-The final comparison concerns the Intel Mathematical Function (IMF - scalar version) and Intel Short Vector Mathematical Library (SVML - vectorial version), both libraries are delivered with Intel Compiler. The benchmarks throughtput/latency/ulp provide the following results for the scalar version [20.61/52.69/-] and vector version [39.20/6.38/2]. Note we were not able to measure the properly the ulp of the scalar version because the intel does not provide a specific API contrary to the SVML, which is problematic in the ULP benchmark. The vectorial results (39.20/6.38/2) are particularly good compared to 
-our best score (55.89/8.84/9). We know the factorization process into our algorithm introduce error, for the latency/throughput difference of performance, we do not have any informations about
-the algorithm that Intel implements. Disassemble the code let appears look at table and polynomial of lower degree (6), which explain easily the difference of performance.
-
-
-
 \begin{figure}[ht]
 \mbox{
 \hspace{-2cm}
@@ -957,12 +948,41 @@ $P_e^{4}P_b^{2}P_b^{2}P_{h^1}^{2}$ & 9.31 & 52.16 & 10  & $P_b^{2}P_e^{2}P_e^{2}
 on a specific part \label{LTR_EXP_11}}
 \end{table}%
 
+Evaluate  $e^x$  (Figures \ref{PLOT_LT00} and Tables \ref{LTR_EXP_00} and \ref{LTR_EXP_11}) confirm the results obtained by the polynomials evaluation.
+The factorisation scheme provides the best results. Globally the throughput has been multiplied by three and the latency by two.  However thinks are a bit more complex.
+In details, "large" vectorisations provide better latency due to a better fill up of the pipelines, the consequences the port 0,1 (floating point) are saturated, it slows down 
+the integer and bitwise operations  for the boundary conditions and the evaluation of $2^k$ which are also evaluated on similar port (0,1 and 5), consequently
+throughput increases drastically for this scheme. The larger number of port and FPU/APU limit this effect on BroadWell compare to SandyBridge.
+Moreover, this effect is much presented on the vectorial version because the code the SIMD code is generated like it is, the intrinsics prevents any optimisation 
+of the compiler due to the \texttt{-fast-math} option
+compare to the scalar version.
+
+The final comparison concerns the Intel Mathematical Function (IMF - scalar version) and Intel Short Vector Mathematical Library (SVML - vectorial version), 
+both libraries are delivered with Intel Compiler (15.0.0). The benchmarks throughtput/latency/ulp provide the following results for the scalar [20.61/52.69/-] 
+and vectorial [6.38/39.20/2] on BroadWell and scalar [12.11/67.39/-], vectorial [12.25/55.37/2] on SandyBridge.
+Note we were not able to measure the properly  the ulp of the scalar version because the intel does not provide a specific API contrary to the SVML, 
+which is problematic in the ULP benchmark. Our results that are summurized on the table \ref{LTR_EXP_00} and \ref{LTR_EXP_11} can be equivalent 
+or better specially for the scalar version on SandyBridge platform. However the vectorial on BroadWell is not reachable. The SandyBridge platform is quiet old
+the first product where released in 2011, Intel may have not updated their library for this target. Our results have a larger error, we know it comes from the factorisation
+method. For the latency/throughput difference of performance, we do not have any informations about the algorithm that Intel implements. 
+Disassemble the code lets appear  a look at table and a polynomial of lower degree, which explain easily the difference of performance.
+About the poor performance on the IMF library, we do not have good explanation, make a good vectorial version like the SVML should automatically
+gave good results for the scalar version as the registers are the same (XMM is nested in YMM).
+
+
+
 \section{Conclusions}
 
 We evaluate the most famous pattern of polynomial on 10 degree polynomial, moreover we explored the factorisation scheme with systematic combination
 of all patterns. We did a systematic study of the 3 keys parameters throughput/latency/ulp.  We show the factorization is an interesting pattern on superscalar
 architecture and it provides better results for the throughput and the latency. We show the dependency effect between the throughput and the latency. 
-We do not reach better results than vendors library although our best score, but we do not have a clear idea of the algorithm of the vendors.
+We do not reach better results than vendors library although our best score, but we do not have a clear idea of the algorithm of the vendors. However factorization
+is definitively a good pattern on superscalar processor and could be applied to other fields of computer sciences.
+
+\section{Acknowledgments} The authors of the present paper would like to gratefully thank the members of the Blue Brain Project HPC team, for the many discussions 
+and feedback they provided. In addition, theSwiss National Supercomputing Center (CSCS) and their collaborators (Hussein Nasser El- Harake) 
+are here thanked for providing access and support to a BroadWell system.  This work has been funded by both the EPFL Blue Brain Project (funded by the Swiss ETH board) 
+and the Supercomputing and Modeling for the Human Brain (SMHB) project supported by the German Helmholtz Association. 
 
 \bibliographystyle{elsarticle-num}
 \bibliography{bib/modeling}
