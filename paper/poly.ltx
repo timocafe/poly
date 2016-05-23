@@ -82,7 +82,6 @@ The first study is interesting but it does not put enough attention in the pure 
 (Horner method) and does not provides any information on the boundary limits. \cite{Costas} provide an excellent work, but boundary conditions is neglected 
 and the polynomial evaluations is limited to the classical Horner method.  To summaries an excellent review of method of polynomial and  elementary
 functions implementation can be found in \cite{Muller:1997:EFA:261217}.
-
 In this paper we are considering the performance can be only reached if the algorithm is specifically design to the hardware targeting.
 The super scalar architecture is now the default platform, the algorithm must be massively parallel to maximise the pipelines utilisation.
 
@@ -394,7 +393,7 @@ Branching is impossible on SIMD architectures, nevertheless we describe an alter
 
 This algorithm has been applied for the scalar and vectorial versions.
 
-\section{superscalar Processors \& methods}
+\section{Superscalar Processors \& methods}
 
 It exists several definition of superscalar processor, but two seem more interesting:  "Dispatch multiple instructions every cycle" from
 \cite{thomas1987high} or "Execute two or more scalar operations in parallel" from \cite{Lam1990}.
@@ -682,7 +681,7 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 \caption{BroadWell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
 \end{figure}
 
-\section{Processors and Compiler}
+\subsection{Processors and Compiler}
 
 This work focuses on the last release of Intel Xeon processor (BroadWell) and an oldest generation (SandyBridge). We privileged the intel architecture 
 because it is well know and  well documented. The compiler is GCC. All informations are summarised in the table \ref{env_compil}.
