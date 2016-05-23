@@ -75,18 +75,20 @@ and efficient  Estrin's method.
 
 \maketitle
 
-\section{Superscalar processor}
-It exists several definition of superscalar processor, but two seem more interesting:  "Dispatch multiple instructions every cycle" from
-\cite{thomas1987high} or "Execute two or more scalar operations in parallel" from \cite{Lam1990}.
-Whatever the definitions, they are two main ideas: execute instructions concurrently and independently in separate execution pipelines. Moreover, 
-the throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
-Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
+The performance evaluation of the polynomials small degree is the key factor for the good executions and the performances of the elementary functions.
+The evaluation of polynomial and consequently the elementary functions is a very active research field \cite{DBLP:OverillW94}, recently
+studies has been released to evaluate polynomial \cite{Reynolds2010}  or maximise the throughput of elementary functions \cite{DBLP:DukhanV13}. 
+The first study is interesting but it does not put enough attention in the pure performance. The second one really focus only on one method of evaluation
+(Horner method) and does not provides any information on the boundary limits. \cite{Costas} provide an excellent work, but boundary conditions is neglected 
+and the polynomial evaluations is limited to the classical Horner method.  To summaries an excellent review of method of polynomial and  elementary
+functions implementation can be found in \cite{Muller:1997:EFA:261217}.
 
-Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the BroadWell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the BroadWell) and Arithmetic Logic Unit (ALU - \textit{e.g.} four on the BroadWell). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
+In this paper we are considering the performance can be only reached if the algorithm is specifically design to the hardware targeting.
+The super scalar architecture is now the default platform, the algorithm must be massively parallel to maximise the pipelines utilisation.
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
-$e^x$. State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the core unit of the last
-processor of Intel (SandyBridge and BroadWell), and the different method we will use for coding and measure the veracity of the results.
+$e^x$. We remember the State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the super scalar architecture and 
+ core unit of the last processor of Intel (SandyBridge and BroadWell), and the different method we will use for coding and measure the veracity of the results.
 We present results for the polynomial evaluation and exponential for scalar and vectorial version, and then we compare to vendor exponential library.
 
 \section{Polynomial evaluation, state of the art}
@@ -115,7 +117,7 @@ but inefficient from the point of view of the processor, because it introduces p
 
 \subsection{Horner method: $k^{th}$-order}
 \textit{``Horner's method''} can be generalised to an arbitrary order by building new polynomials over $x^k$ instead of $x$ \cite{Dorn:1962:GHR:1661979.1661987}.
-The main advantage is to introduce parallelism that removes the data hazards, especially for high orders of $k$.
+The main advantage is to introduce parallelism that removes the data hazards, especially for high orders of $k$, \textit{e.g.} for $k=2$ it corresponds to the "Even-Odd" pattern.
 Given a degree of parallelism $k$, Horner's $k^{th}$-order method reads:
  \begin{eqnarray}
    P(x_0) &=&  Q_0(x_0^k) + Q_1(x_0^k) + \dots + Q_{k-1}(x_0^k) \\
@@ -250,7 +252,10 @@ solution, because the extrema are not located on the control points.
 And iterate until the error function is lower than the wanted precision. 
 \end{enumerate}
 
-The Remez method is powerfull, a full detail and rigorous analysis can be found in \cite{Fraser:1965:SMC:321281.321282}. In this paper, the \texttt{boost::math::tools} package was selected.  A polynomial of degree 10 gives a satisfactory trade-off between accuracy and performance (demonstrate in section \ref{section_ulp}). This polynomial will be the starting point for the method previously describe. 
+The Remez method is powerfull, a full detail and rigorous analysis can be found in \cite{Fraser:1965:SMC:321281.321282}. The only default of the Remez method 
+is the usage of irrational number that maybe not represented by a finite number of bit (53 bits precision for double precision IEEE), the Remez algorithm may introduce
+penalisable rounding effect,  \cite{BrisebarreChevillard2007} proposed alternative to reach better approximation. Consequently, the Remez approximation has been performed 
+with a customise extended form of the floating point (150 bits digit precision) with a polynomial of degree 10. It gives a satisfactory trade-off between accuracy and performance (demonstrate in section \ref{section_ulp}). This polynomial will be the starting point for the method previously describe. 
 
 \subsection{Notations}
 In this section, the following notations are introduced. Any polynomial $P$ is characterised by two parameters, the degree and the method of evaluation. 
@@ -361,7 +366,7 @@ in previous exponential study \cite{Costas}. The  boundary limits to respect are
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{l c c c c c c }
-$x$                         & $-\infty$  &$+\infty$ & 0 & NaN & $> max$  & $< max$  \\
+$x$                         & $-\infty$  &$+\infty$ & 0 & NaN & $> -707$  & $< 707$  \\
 		          \hline
 $e^x$                   &  0 & $+\infty$  & 1 & NaN & $+\infty$   & 0 \\
 		             \hline
@@ -389,7 +394,16 @@ Branching is impossible on SIMD architectures, nevertheless we describe an alter
 
 This algorithm has been applied for the scalar and vectorial versions.
 
-\section{Processors \& methods}
+\section{superscalar Processors \& methods}
+
+It exists several definition of superscalar processor, but two seem more interesting:  "Dispatch multiple instructions every cycle" from
+\cite{thomas1987high} or "Execute two or more scalar operations in parallel" from \cite{Lam1990}.
+Whatever the definitions, they are two main ideas: execute instructions concurrently and independently in separate execution pipelines. Moreover, 
+the throughput of the execution into the concurrent pipelines may be really improved by allowing out-of-order execution.
+Nevertheless, if the dispatcher is ineffective at keeping all of these units fed with instructions, the performance of the system will be no better than that of a simpler, cheaper in-order design.
+
+Modern processors have more than one pipelines. On the last release of Intel this number reaches 8 pipelines for the BroadWell processor, and more interesting processors can have several Floating Point Unit (FPU - \textit{e.g.} two on the BroadWell) and Arithmetic Logic Unit (ALU - \textit{e.g.} four on the BroadWell). Complementary to the execution pipeline, the execution of a single instructions is also pipeline in several step \cite{Power7FPU}. It allows to restart the same operation (if no dependency chain) without waiting the completeness of the previous one.
+
 Performing a full review of processors is a huge work and it is outside the scope of this paper. We focus on the general execution of the processors, but still consider enough details
 to explain our results. Whatever the architecture of the chip, the execution of the binary code follows the same logic. Fetch/decode units read a stream of instructions
 from the L1 instructions cache memory and decode them into a series of micro operations that are executed by the processor's parallel executions units.
