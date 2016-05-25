@@ -315,22 +315,23 @@ To determine $k$, we apply the floor function to both sides of~\eqref{xyk}
 \end{eqnarray} 
 Now that $k$ has been determined, we can compute $y$ by solving~\eqref{xyk}.
 
-The previous equations can be integrated in the following algorithm:
+The previous equations can be integrated in the next algorithm. The algorithm necessitates a correction with $ln(2)$. Due
+to rounding effect the correction must used the splitting method to reduce the undesirable effect \cite{Goldberg:1991:CSK:103162.103163}.
 
 \begin{algorithm}[H]
  \KwData{$x$ floating point number}
  \KwResult{$k$ signed integer and $y$ floating point number}
-$ k =  \floor*{\frac{x}{ln2}} $ \;
-\tcc{For rounding issue $-k \times ln2$ correction: in two steps}
+$ k =  \floor*{\frac{x}{ln(2)}} $ \;
+\tcc{For rounding issue $-k \times ln(2)$ correction: in two steps}
 $y = x - k\times6.93145751953125 \times  10^{-1}$\;
 $y = x - k\times1.42860682030941723212  \times 10^{-6}$\;
  \textbf{return} $k$ and $y$\;
- \caption{$2^k$ evaluation algorithm. Note the operation  interpret\_as\_double interprets $k$ as a double it is not a cast operation.}
+ \caption{$2^k$ evaluation algorithm.}
 \end{algorithm}
 
 \subsection{$2^k$ fast evaluation} \label{TwokSection}
-Computing $2^k$ may be done with a left bit shift but it can only work if $ (k << 63) \leq 2^{64}$ and it requires a cast from integer to double, which can be a compute intensive instruction.
-An alternative solution utilises the floating point representation. Rational numbers can be represented approximately under the following form:
+Computing $2^k$ may be done with a left bit shift. But is is not suitable because of the limited domain with 64-bit integer.
+An alternative solution utilises the floating point representation. Real numbers can be represented approximately under the following form:
 
 \begin{eqnarray}
 x = -1^s \times (1+F) \times 2^{e+bias}
@@ -344,7 +345,7 @@ x = -1^s \times (1+F) \times 2^{e+bias}
 \end{center}
 \end{figure}
 
-For double precision numbers (Figure \ref{doubleIEEE}): $s$ sign bit, $e + bias $ is the exponent (11 bits), it is bias (engineering sense of the word).
+For IEEE-754 double precision numbers (Figure \ref{doubleIEEE}): $s$ sign bit, $e + bias $ is the exponent (11 bits), it is bias (engineering sense of the word).
 The bias is equal to 1023 and $e$ belongs [-1022,1023]. $F$ is the mantissa (53 bits) $\sum_{n=1}^{p-1} bit_n \times 
 2^{-n}$. The method consists in taking the wanted $k$, adding the bias and moving it into the exponent part of the floating point representation, and letting the machine interpret it like a double.
 The method is efficient, fast and does not introduce any errors. This method can be described by the following algorithm:
@@ -547,8 +548,8 @@ instructions. A solution would be to write directly in assembly language: the so
 We consider the alternative of using C++ meta-programming associated to recursive algorithms, inspired from the famous pattern of the meta-factorial \cite{citeulike:2443933}.
  It simplifies the generation of all polynomial evaluations
 as soon as all possible methods have been programmed. Moreover, as the algorithms are generic, they can be plugged into any DSL to generate 
-a SIMD code. The algorithms are successively instantiated with the basic type double and a generic vector class coming from any SIMD DSL library,
-here we selected a library we developed inside the BBP \cite{CymeISC2014}.
+a SIMD code. The algorithms are successively instantiated with the basic type double and a generic vector class coming from any SIMD DSL library  \cite{Pohl:2016:ECS:2870650.2870653},
+here, we selected a library we developed inside the BBP \cite{CymeISC2014}.
 To control the quality of our ASM at least on x86 platform we extract the DAG (Figure~\ref{DAG}) using the IACA tool, for example for the evaluation
 of the first order Horner method on a polynomial of degree 10. The match is perfect between the theory and the generated assembly.
 
@@ -709,9 +710,9 @@ BroadWell     & E5-2630 & yes & GCC 4.9.3  &  \texttt{-O3 -march=native -fma} \\
 This work focuses on the last release of Intel Xeon processor (BroadWell) and an oldest generation (SandyBridge). We privileged the intel architecture 
 because it is well know and  well documented. The compiler is GCC. All informations are summarised in the table \ref{env_compil}.
 
-
-
-The two options \texttt{-fast-math} and \texttt{-fma} are mandatory to better computation of $x$ to the power of $n$ (as presented in the section \ref{powern}) and the utilization of the FMA for the scalar version. And finally the option \texttt{-fabi-version=6} for a usage of GCC vector Instructions through Built-in Functions.
+The options \texttt{-fast-math} reorders the algebraical associative expressions following the IEEE-754 standard for a faster evaluation. Note this optimization
+only work for the scalar version. Compilers does not reorganise SIMD code, every intrinsics are considered like it is. The \texttt{-fma} is mandatory to catch FMA pattern.
+And finally the option \texttt{-fabi-version=6} for a usage of GCC vector Instructions through library signature.
 
  
 \section{Results}
@@ -754,9 +755,8 @@ architecture 53.04 [cycle] on the SandyBridge, one more time the results are per
 
 \subsection{Polynomials, latency analysis} 
 
-
 The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. 
-The results are not distributed uniformly. For the scalar version they are distributed around 30 [cycle] (BroadWell) and 40 [cycle] (SandyBriddge). For the vectorial version, the distribution is more regular. In details, some packets of points appear (confirm by the table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}. It should be an compiler artefact, specially for the scalar version. The -fast-math reorganise the computation  of the power of $n$, as all the version are just slightly different (confirm by a fast quick look on the disassemble ,code), considering the out of order execution and the renaming of the register, it is clear that a few version give the same results. Oppositely for the vectorial version these packets are less visible because SIMD intrinsics programming prevent any optimization of the \texttt{-fast-math}, and  every algorithm is more unique.  
+The results are not distributed uniformly. For the scalar version they are distributed around 30 [cycle] (BroadWell) and 40 [cycle] (SandyBriddge). For the vectorial version, the distribution is more regular. In details, some packets of points appear (confirm by the table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}. It is due to the \texttt{-fast-math} option. The \texttt{-fast-math} reorganises the computation  of the power of $n$ think impossible for the vector version, as all the version are just slightly different (confirm by a fast quick look on the disassemble ,code), considering the out of order execution and the renaming of the register, it is clear that a few version give the same results. Oppositely for the vectorial version these packets are less visible because SIMD intrinsics programming prevent any optimisation of the \texttt{-fast-math},  every algorithm is unique.  
 
 For the Latency measurement, as excepted for all platform the longest latency concerns the classical Horner method due to the chain dependency. Considering the Horner method like the reference performance point the spectra of the results are large. The best results can out-perform by a factor lightly larger than 2 for the SandyBridge. In details if we have a look on the 10 best  results in the Table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}, as excepted the factorisation is a good pattern for improve the performance. 
 
