@@ -764,7 +764,9 @@ For the Latency measurement, as excepted for all platform the longest latency co
 
 The throughput analysis is similar to the latency one, but with one more additional information. Factorization pattern increase slightly the throughput in cycle, it can be
 easily understand. The  factorisation pattern  improves the parallelism and consequently a better fill up of the pipeline, therefore it takes more cycle to restart a new operations
-as the pipelines are full.
+as the pipelines are full. Oppositely, the classical Horner scheme with its chain-dependency introduces a lot of bubbles in the pipelines and improve the throughput. The programmers 
+are confronted to a dilemma, intensive users of polynomials should privilege the throughput and so Horner method  \cite{DBLP:DukhanV13} whereas occasional user should prefer latency
+and so factorisation scheme.
 
 \subsection{Polynomials, precision analysis \label{section_ulp}}
 \begin{table}[t!]
