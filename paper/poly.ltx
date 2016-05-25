@@ -76,18 +76,24 @@ and efficient  Estrin's method.
 \maketitle
 
 The performance evaluation of the polynomials small degree is the key factor for the good executions and the performances of the elementary functions.
-The evaluation of polynomial and consequently the elementary functions is a very active research field \cite{DBLP:OverillW94}, recently
-studies has been released to evaluate polynomial \cite{Reynolds2010}  or maximise the throughput of elementary functions \cite{DBLP:DukhanV13}. 
-The first study is interesting but it does not put enough attention in the pure performance. The second one really focus only on one method of evaluation
-(Horner method) and does not provides any information on the boundary limits. \cite{Costas} provide an excellent work, but boundary conditions is neglected 
-and the polynomial evaluations is limited to the classical Horner method.  To summaries an excellent review of method of polynomial and  elementary
-functions implementation can be found in \cite{Muller:1997:EFA:261217}.
-In this paper we are considering the performance can be only reached if the algorithm is specifically design to the hardware targeting.
-The super scalar architecture is now the default platform, the algorithm must be massively parallel to maximise the pipelines utilisation.
+The theoretical research in polynomial evaluation is a very active research field, and it is very well summarised  in \cite{Knuth:1997:ACP:270146, Muller:1997:EFA:261217}.
+Complementary, the performance evaluation of these researches on the processors is always active from \cite{DBLP:OverillW94} on the vectorial processor to \cite{Reynolds2010, DBLP:DukhanV13}  
+more recently .
 
-This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and \textit{in fine} it's application on the elementary function
-$e^x$. We remember the State of the art of polynomial is first presented and the elementary function $e^x$. Then, more technically we describe the super scalar architecture and 
- core unit of the last processor of Intel (SandyBridge and BroadWell), and the different method we will use for coding and measure the veracity of the results.
+On this two example, the study of \cite{Reynolds2010} evaluates polynomial  but it does not put enough attention in the pure performance, specially for small degree.
+ \cite{DBLP:DukhanV13} only focusds to maximise the throughput of elementary functions, using a unique  method of evaluation
+(Horner method) and does not provides any information on the boundary limits. \cite{Costas} provides an excellent work, but boundary conditions is neglected 
+and the polynomial evaluations is limited to the classical Horner method. An interesting point will be, the knowledge of the implementation of mathematical vendors libraries 
+(IBM - mass or Intel - imf/svml),  obviously vendors do not communicate about theirs implementations.
+
+To summaries an excellent review of method of polynomial and  elementary
+functions implementation can be found in \cite{Muller:1997:EFA:261217}.
+In this paper we are considering the performance can be only reached if the algorithm is specifically design to the hardware which is  target.
+Nowdays, in HPC the superscalar architecture is standard, consequently the algorithm must be massively parallel to maximise the pipelines utilisation.
+
+This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and in the end it's application on the elementary function
+$e^x$. We remember the state of the art of polynomial  and the elementary function $e^x$. Then, more technically, we describe the super scalar architecture and 
+ core unit of the last processor X86 of Intel (SandyBridge and BroadWell), and the different method we will use for coding and measure the veracity of the results.
 We present results for the polynomial evaluation and exponential for scalar and vectorial version, and then we compare to vendor exponential library.
 
 \section{Polynomial evaluation, state of the art}
@@ -95,7 +101,8 @@ In evaluating the polynomial of degree $n$,
  \begin{eqnarray}
    P(x) = a_0 + a_1 x  + \dots + a_{n} x^{n}, \,\, (a_i  \in \R) \label{P0}
  \end{eqnarray}
- a large number of methods can be applied. In this study, we selected the most significant, extracted from the seminal work of Knuth \cite{Knuth:1997:ACP:270146}. %the art of programming [cite vol 2].
+ a large number of methods can be applied. In this study, we selected the most significant, extracted from the work of Knuth \cite{Knuth:1997:ACP:270146} who collects and summarise
+ all the state of the art. %the art of programming [cite vol 2].
  The followings methods have been selected: the Brute Force method, the Horner method from order 1 to $n-1$, the Estrin method. Moreover, factorisation techniques have been applied to all the  methods previously enumerated. To improve performance, the main challenge consists in maximising the parallelism and minimising the pipelining data hazards, in order to avoid bubbles that have the effect of deteriorating performance.
 %\section{Algorithms}
 \subsection{Evaluation of Powers \label{powern}}
@@ -365,7 +372,7 @@ in previous exponential study \cite{Costas}. The  boundary limits to respect are
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{l c c c c c c }
-$x$                         & $-\infty$  &$+\infty$ & 0 & NaN & $> -707$  & $< 707$  \\
+$x$                         & $-\infty$  &$+\infty$ & 0 & NaN & $> 707$  & $< -707$  \\
 		          \hline
 $e^x$                   &  0 & $+\infty$  & 1 & NaN & $+\infty$   & 0 \\
 		             \hline
@@ -680,12 +687,6 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 }
 \caption{BroadWell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
 \end{figure}
-
-\subsection{Processors and Compiler}
-
-This work focuses on the last release of Intel Xeon processor (BroadWell) and an oldest generation (SandyBridge). We privileged the intel architecture 
-because it is well know and  well documented. The compiler is GCC. All informations are summarised in the table \ref{env_compil}.
-
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{ l c c c c }
@@ -701,11 +702,39 @@ BroadWell     & E5-2630 & yes & GCC 4.9.3  &  \texttt{-O3 -march=native -fma} \\
 \end{center}
 \end{table}
 
+\subsection{Processors and Compiler}
+
+This work focuses on the last release of Intel Xeon processor (BroadWell) and an oldest generation (SandyBridge). We privileged the intel architecture 
+because it is well know and  well documented. The compiler is GCC. All informations are summarised in the table \ref{env_compil}.
+
+
+
 The two options \texttt{-fast-math} and \texttt{-fma} are mandatory to better computation of $x$ to the power of $n$ (as presented in the section \ref{powern}) and the utilization of the FMA for the scalar version. And finally the option \texttt{-fabi-version=6} for a usage of GCC vector Instructions through Built-in Functions.
 
  
 \section{Results}
 \subsection{Polynomials, preliminary analysis and validations}
+
+\begin{figure}[ht!]
+\mbox{
+\hspace{-2cm}
+\includegraphics[scale=0.7]{allht_scalar.eps} 
+\hspace{-2.5cm}
+\includegraphics[scale=0.7]{allht_vector.eps}
+}
+\mbox{
+\hspace{-2cm}
+\includegraphics[scale=0.7]{all_precision_scalar.eps} 
+\hspace{-2.5cm}
+\includegraphics[scale=0.7]{all_precision_vector.eps}
+}
+\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT0}
+Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
+the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
+\end{figure}
+
+
+
 
 Build an efficient theoretical method is not trivial, and vendor performance simulator  are not released on the market. 
 Nevertheless a few experimental data for latency measurement with the simplest polynomial evaluation can be verified easily. 
@@ -721,49 +750,21 @@ In such situation the total latency of the produce of the polynomial is $ 6 [\te
 The last multiplication corresponds to the final product between the two polynomials, it is a blocking operations. The measurement gives  36.00 [cycle] on the BroadWell 
 architecture 53.04 [cycle] on the SandyBridge, one more time the results are perfects.  This first analysis shows already two informations, the factorization and the programming model is efficient.
 
-\subsection{Polynomials, latency analysis} The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. 
+\subsection{Polynomials, latency analysis} 
+
+
+The totality of the results latency/throughput for the polynomial evaluation on all platforms are presented on the figures \ref{PLOT_LT0}. 
 The results are not distributed uniformly. For the scalar version they are distributed around 30 [cycle] (BroadWell) and 40 [cycle] (SandyBriddge). For the vectorial version, the distribution is more regular. In details, some packets of points appear (confirm by the table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}. It should be an compiler artefact, specially for the scalar version. The -fast-math reorganise the computation  of the power of $n$, as all the version are just slightly different (confirm by a fast quick look on the disassemble ,code), considering the out of order execution and the renaming of the register, it is clear that a few version give the same results. Oppositely for the vectorial version these packets are less visible because SIMD intrinsics programming prevent any optimization of the \texttt{-fast-math}, and  every algorithm is more unique.  
 
 For the Latency measurement, as excepted for all platform the longest latency concerns the classical Horner method due to the chain dependency. Considering the Horner method like the reference performance point the spectra of the results are large. The best results can out-perform by a factor lightly larger than 2 for the SandyBridge. In details if we have a look on the 10 best  results in the Table \ref{LTR_EXP_0} and \ref{LTR_EXP_1}, as excepted the factorisation is a good pattern for improve the performance. 
 
 \subsection{Polynomials, throughput analysis}
 
-\begin{figure}[ht!]
-\mbox{
-\hspace{-2cm}
-\includegraphics[scale=0.7]{allht_scalar.eps} 
-\hspace{-2.5cm}
-\includegraphics[scale=0.7]{allht_vector.eps}
-}
-\mbox{
-\hspace{-2cm}
-\includegraphics[scale=0.7]{all_precision_scalar.eps} 
-\hspace{-2.5cm}
-\includegraphics[scale=0.7]{all_precision_vector.eps}
-}
-%\caption{Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
-%the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
-%\end{figure}
-
-%}
-\caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT0}
-Histogram of the precision of all polynomial evaluation for scalar version (left) and vector version (right). The bar of 
-the histogram is the total number os polynomial evaluations for a given ULP \label{PRECISION_ULP}}
-\end{figure}
-
-
-
 The throughput analysis is similar to the latency one, but with one more additional information. Factorization pattern increase slightly the throughput in cycle, it can be
 easily understand. The  factorisation pattern  improves the parallelism and consequently a better fill up of the pipeline, therefore it takes more cycle to restart a new operations
 as the pipelines are full.
 
 \subsection{Polynomials, precision analysis \label{section_ulp}}
-The ULP error estimator is presented on the Figure  \ref{PRECISION_ULP}. Errors is dispatched in two group. First group with a small ULP 2/3 or a larger one around 8/9.
-This behaviour is explained easily. The first group concerns all the polynomial of type $P^{10}_m$, no factorisation has been applied on it. Contrary to the $2^{nd}$ group 
-where the factorisation has been applied. This processus was performed with Matlab software, and it necessitates resolution of quadratic equation  it introduces numerical error.
-of the determinant due to the round-off error. Kahan the father of IEEE floating point investigated the phenomena on simple quadratic \cite{Kahan2002}, 
-consequently it should be possible to improve the ULP of all factorisation pattern. 
-
 \begin{table}[t!]
 \begin{center}
 \begin{tabular}{ l c c c  l c c  c }
@@ -798,6 +799,13 @@ $P_b^{4}P_e^{2}P_e^{2}P_{h^1}^{2}$ & 7.36 & 31.71 & 12  & $P_e^{6}P_e^{2}P_{h^1}
 \caption{Best Latency/throughput [cycle] polynomial evaluations on SandyBridge platform. The criteria indicates the sort of the tuple (throughput, latency, ulp), 
 on a specific part \label{LTR_EXP_0}}
 \end{table}%
+The ULP error estimator is presented on the Figure  \ref{PRECISION_ULP}. Errors is dispatched in two group. First group with a small ULP 2/3 or a larger one around 8/9.
+This behaviour is explained easily. The first group concerns all the polynomial of type $P^{10}_m$, no factorisation has been applied on it. Contrary to the $2^{nd}$ group 
+where the factorisation has been applied. This processus was performed with Matlab software, and it necessitates resolution of quadratic equation  it introduces numerical error.
+of the determinant due to the round-off error. Kahan the father of IEEE floating point investigated the phenomena on simple quadratic \cite{Kahan2002}, 
+consequently it should be possible to improve the ULP of all factorisation pattern. 
+
+
 
 
 More surprisingly, the vector presents a shift of 1 ULP compare to the scalar version. Although we do not have a clear idea of this shift, for the scalar
@@ -823,7 +831,7 @@ minimise the error.
 
 
 
-\begin{table}[ht!]
+\begin{table}[t!]
 \begin{center}
 \begin{tabular}{ l c c c  l c c  c }
 \hline
@@ -868,7 +876,7 @@ of dependency that does not allow parallelism although the large number of ALU i
 
 
 
-\begin{table}[ht]
+\begin{table}[t]
 \begin{center}
 \begin{tabular}{ l c c  c c c c c c  }
 \hline
@@ -891,9 +899,7 @@ BroadWell     & 3.63  &16.00  & 2.70 &   18.00 &  4.94&  10.65& 2.64 &  8.01 \\
 }
 \caption{Latency/Throughput for  all architectures, scalar version left and vectorial version right \label{PLOT_LT00} }
 \end{figure}
-
-
-\begin{table}[ht]
+\begin{table}[t]
 \begin{center}
 \begin{tabular}{ l c c c  l c c  c }
 \hline
@@ -984,8 +990,6 @@ Disassemble the code lets appear  a look at table and a polynomial of lower degr
 About the poor performance on the IMF library, we do not have good explanation, make a good vectorial version like the SVML should automatically
 gives good results for the scalar version as the registers are the same (XMM is nested in YMM).
 
-
-
 \section{Conclusions}
 
 We evaluate the most famous pattern of polynomial on 10 degree polynomial, moreover we explored the factorisation scheme with systematic combination
@@ -998,7 +1002,7 @@ is definitively a good pattern on superscalar processor and could be applied to 
 and feedback they provided. In addition, theSwiss National Supercomputing Center (CSCS) and their collaborators (Hussein Nasser El- Harake) 
 are here thanked for providing access and support to a BroadWell system.  This work has been funded by both the EPFL Blue Brain Project (funded by the Swiss ETH board) 
 and the Supercomputing and Modeling for the Human Brain (SMHB) project supported by the German Helmholtz Association. 
-
+\section{References}
 \bibliographystyle{elsarticle-num}
 \bibliography{bib/modeling}
 
