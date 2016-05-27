@@ -40,10 +40,13 @@ sub sort_tl{
      my @v_lines=();
      my $count=0;
      my ($my_table, $my_i)=@_;
+     my %hash=();
      for my $key (sort {$my_table->{$a}[$my_i] <=> $my_table->{$b}[$my_i] } keys %$my_table) {
          my ($ulp,$th,$la)=@{$my_table->{$key}};
          my $poly=$key;
          $poly=~s/(e|b|hkth\d+)d(\d+)/pretty_poly($1,$2)/eg;
+         next if exists $hash{$poly};
+         $hash{$poly}=1;
          push @v_lines, sprintf("\$%s\$ & %.2f & %.2f & %d ",$poly,$th,$la,$ulp);
          last if ++$count>=10;
      }
