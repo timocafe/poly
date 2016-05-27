@@ -341,10 +341,10 @@ and $c_h=1.42860682030941723212  \times 10^{-6}$.
 \begin{algorithm}[H]
  \KwData{$x$ floating point number}
  \KwResult{$k$ signed integer and $y$ floating point number}
-$ k =  \floor*{\frac{x}{ln(2)}} $ \;
+$ k \leftarrow  \floor*{\frac{x}{ln(2)}} $ \;
 \tcc{For rounding issue $-k \times ln(2)$ correction: in two steps}
-$y = x - k\times6.93145751953125 \times  10^{-1}$\;
-$y = x - k\times1.42860682030941723212  \times 10^{-6}$\;
+$y \leftarrow x - k\times6.93145751953125 \times  10^{-1}$\;
+$y \leftarrow x - k\times1.42860682030941723212  \times 10^{-6}$\;
  \textbf{return} $k$ and $y$\;
  \caption{$2^k$ evaluation algorithm.}
 \end{algorithm}
@@ -373,7 +373,7 @@ The method is efficient, fast and does not introduce any errors. This method can
 \begin{algorithm}[H]
  \KwData{$k$ signed integer}
  \KwResult{$2^k$ as double}
- $ k = (1023 + k) << 52 $\;
+ $ k  \leftarrow (1023 + k) << 52 $\;
  \textbf{return} interpret\_as\_double($k$)\;
  \caption{$2^k$ evaluation algorithm. Note the operation  interpret\_as\_double interprets $k$ as a double it is not a cast operation.}
 \end{algorithm}
