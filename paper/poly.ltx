@@ -77,17 +77,18 @@ and efficient  Estrin's method.
 
 The performance evaluation of the polynomials small degree is the key factor for the good executions and the performances of the elementary functions.
 The theoretical research in polynomial evaluation is a very active research field, and it is very well summarised  in \cite{Knuth:1997:ACP:270146, Muller:1997:EFA:261217}.
-Complementary, the performance evaluation of these researches on the processors is always active from \cite{DBLP:OverillW94} on the vectorial processor to \cite{Reynolds2010, DBLP:DukhanV13}  
+Complementary, the performance evaluation of these researches on the processors is always active from \cite{DBLP:OverillW94} on the vectorial processor to \cite{Reynolds2010, DBLP:DukhanV13, Shibata2010}  
 more recently .
 
-On this two example, the study of \cite{Reynolds2010} evaluates polynomial  but it does not put enough attention in the pure performance, specially for small degree.
- \cite{DBLP:DukhanV13} only focusds to maximise the throughput of elementary functions, using a unique  method of evaluation
-(Horner method) and does not provides any information on the boundary limits. \cite{Costas} provides an excellent work, but boundary conditions is neglected 
-and the polynomial evaluations is limited to the classical Horner method. An interesting point will be, the knowledge of the implementation of mathematical vendors libraries 
+On these examples, the study of \cite{Reynolds2010} evaluates polynomial  but it does not put enough attention in the pure performance (results should be reported in [cycles]), specially for small degree. \cite{DBLP:DukhanV13} only maximises the throughput of elementary functions, using a unique  method of evaluation
+(Horner method) and does not provides any information on the boundary limits, and the latency.  \cite{Shibata2010} focus only on the throughput and does not take into account the boundary limits.
+ \cite{Costas} provides an excellent work, but boundary conditions is again neglected. On the other hands all these authors limit their polynomial evaluation to the classical Horner method. 
+An interesting point will be, the knowledge of the implementation of mathematical vendors libraries 
 (IBM - mass or Intel - imf/svml),  obviously vendors do not communicate about theirs implementations.
 
 To summaries an excellent review of method of polynomial and  elementary
-functions implementation can be found in \cite{Muller:1997:EFA:261217}.
+functions implementation can be found in \cite{Muller:1997:EFA:261217}. The $e^x$ function can  
+
 In this paper we are considering the performance can be only reached if the algorithm is specifically design to the hardware which is  target.
 Nowdays, in HPC the superscalar architecture is standard, consequently the algorithm must be massively parallel to maximise the pipelines utilisation.
 
@@ -220,12 +221,13 @@ R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
 \end{eqnarray}
 
 When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
-series around $ln(2)/2$ but once again the error would be local.
+series around $ln(2)/2$ but once again the error would be local.  Clever author \cite{Shibata2010} adds second range reduction using property of the $e^x$, shifting the reduce value to 0
+and then improving the precision, unfortunately it necessitate an final additional transposition.
 
 \subsection{Polynomial approximation}
 
 As demonstrated truncated Taylor series can not be selected due to locality issues. An excellent alternative is to approximate $e^x$ with a polynomial using a minimax method.
-The Remez algorithm is an excellent solution. The method certifis that $f(x)$  ($e^x$ in our case) can be approximate by a unique minimax solution $R(x)$ minimising 
+The Remez algorithm is an excellent solution. The method certifies that $f(x)$  ($e^x$ in our case) can be approximate by a unique minimax solution $R(x)$ minimising 
 an  error function \textit{e.g.} $E(x)=f(x)-R(x)$) in the concerning interval. Moreover, the minimax solution verifies (Chebyshev proof).
 
 \begin{itemize}
@@ -315,8 +317,26 @@ To determine $k$, we apply the floor function to both sides of~\eqref{xyk}
 \end{eqnarray} 
 Now that $k$ has been determined, we can compute $y$ by solving~\eqref{xyk}.
 
-The previous equations can be integrated in the next algorithm. The algorithm necessitates a correction with $ln(2)$. Due
-to rounding effect the correction must used the splitting method to reduce the undesirable effect \cite{Goldberg:1991:CSK:103162.103163}.
+The previous equations can be integrated in the next algorithm. However, the algorithm may introduce rounding error \cite{Goldberg:1991:CSK:103162.103163}
+due to the multiplication between the large gap between $k$ and $ln(2)$. Consequently to extent the precision,
+the distributed property precision of the multiplication is used to double the precision (potentially).
+
+\begin{eqnarray}
+x \otimes (c_h \oplus c_l) = x \otimes c_h \oplus x \otimes c_l
+\end{eqnarray}
+
+In our case $x$ is $k$ and $ln(2)$ is $ (c_h \oplus c_l)$. The coefficient have been extracted from the cephes library \cite{MOS00a}: $c_l=6.93145751953125\times  10^{-1}$
+and $c_h=1.42860682030941723212  \times 10^{-6}$.
+
+% To determine $c_l$ we use the following formula
+%
+%\begin{eqnarray}
+%c_h = \floor*{\frac{2^b ln(2)_{104}}{2^b}} \,\,\, \textrm{and} \,\,\, c_l = ln(2) - c_h
+%\end{eqnarray}
+%For a maximum precision $b$ is setup to $52$ (precision of double floating point precision), $ln(2)_{104}$ must at least equal to 104 bits precision.
+%The computation of $c_h$ and $c_l$ give $c_h = \texttt{0x3FE62E42FEFA39F0}$ and $c_l = \texttt{0xBC9950D86FA0778D}$. These two number are surprising
+%compare too the literature. In fact a large number of mathematical library are based on $c_h = \texttt{0x401BB9D000000000}$ and $c_l = \texttt{0x3EB7F7D1CF79ABCA}$
+%.... surprising ....
 
 \begin{algorithm}[H]
  \KwData{$x$ floating point number}

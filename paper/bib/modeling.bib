@@ -2,12 +2,35 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for Ewart Timothée at 2016-05-25 16:48:32 +0200 
+%% Created for Ewart Timothée at 2016-05-27 15:49:09 +0200 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@article{Shibata2010,
+	Abstract = {Data-parallel architectures like SIMD (Single Instruction Multiple Data) or SIMT (Single Instruction Multiple Thread) have been adopted in many recent CPU and GPU architectures. Although some SIMD and SIMT instruction sets include double-precision arithmetic and bitwise operations, there are no instructions dedicated to evaluating elementary functions like trigonometric functions in double precision. Thus, these functions have to be evaluated one by one using an FPU or using a software library. However, traditional algorithms for evaluating these elementary functions involve heavy use of conditional branches and/or table look-ups, which are not suitable for SIMD computation. In this paper, efficient methods are proposed for evaluating the sine, cosine, arc tangent, exponential and logarithmic functions in double precision without table look-ups, scattering from, or gathering into SIMD registers, or conditional branches. We implemented these methods using the Intel SSE2 instruction set to evaluate their accuracy and speed. The results showed that the average error was less than 0.67 ulp, and the maximum error was 6 ulps. The computation speed was faster than the FPUs on Intel Core 2 and Core i7 processors.},
+	Author = {Shibata, Naoki},
+	Date-Added = {2016-05-27 13:41:54 +0000},
+	Date-Modified = {2016-05-27 13:41:54 +0000},
+	Doi = {10.1007/s00450-010-0108-2},
+	Issn = {1865-2042},
+	Journal = {Computer Science - Research and Development},
+	Number = {1},
+	Pages = {25--32},
+	Title = {Efficient evaluation methods of elementary functions suitable for SIMD computation},
+	Url = {http://dx.doi.org/10.1007/s00450-010-0108-2},
+	Volume = {25},
+	Year = {2010},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1007/s00450-010-0108-2}}
+
+@misc{MOS00a,
+	Author = {S. L. Moshier},
+	Note = {See \url{http://www.moshier.net}},
+	Opttopic = {Inverse of the Incomplete Beta Integral},
+	Title = {Cephes Math Library},
+	Year = {2000}}
 
 @book{citeulike:2443933,
 	Author = {Vandevoorde, David and Josuttis, Nicolai M.},
