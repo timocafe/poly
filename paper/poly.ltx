@@ -66,8 +66,8 @@ It has been massively studied, and is well documented. In this paper, we have ev
 on super scalar architecture.  And, we have completed this work by factorisation evaluation, which is surprisingly neglected in the literature.  
 This work has been focused on the most recent processors of  Intel, amongst others, several computational units are available.
 Moreover, we have applied our work on the elementary $e^x$ that  requires, in the current implementation,
-an evaluation  of a polynomial of degree 10 for a satisfying precision. The results obtained for the  factorization scheme benchmark are faster than the famous
-and efficient  Estrin's method.
+an evaluation  of a polynomial of degree 10 for a satisfying precision. The results obtained for the  factorisation scheme  benchmark are the fastest
+and the latency and the throughput are intrinsically dependent on each other.
 
 
 \end{abstract}
@@ -127,7 +127,7 @@ but inefficient from the point of view of the processor, because it introduces p
 
 \subsection{Horner method: $k^{th}$-order}
 \textit{``Horner's method''} can be generalised to an arbitrary order by building new polynomials over $x^k$ instead of $x$ \cite{Dorn:1962:GHR:1661979.1661987}.
-The main advantage is to introduce parallelism that removes the data hazards, especially for high orders of $k$, \textit{e.g.} for $k=2$ it corresponds to the "Even-Odd" pattern.
+The main advantage is to introduce parallelism that removes the data hazards, especially for high orders of $k$, \textit{e.g.}  $k=2$  corresponds to the "Even-Odd" split \cite{Newbery1975}.
 Given a degree of parallelism $k$, Horner's $k^{th}$-order method reads:
  \begin{eqnarray}
    P(x_0) &=&  Q_0(x_0^k) + Q_1(x_0^k) + \dots + Q_{k-1}(x_0^k) \\
@@ -212,7 +212,7 @@ Nevertheless, it can be a source of large error due to its non uniform error est
 e^y = \underbrace{\overbrace{1 + y + \frac{y^2}{2!} + \dots + \frac{y^n}{n!}}^{\text{Approximation}} + \overbrace{\frac{y^{n+1}}{n+1!} + \dots}^{\text{Truncation Error}}}_{\text{Exact mathematical formulation}}
 \end{eqnarray}
 
-Here the "Truncation Error" corresponds to the remainder $R_n$ from Taylor's Theorem. It can be expressed under an integral or the Lagrange form by:
+Here the "Truncation Error" corresponds to the remainder $R_n$ from Taylor's Theorem \cite{GeraldFWheatley2004}. It can be expressed under an integral or the Lagrange form by:
 \begin{eqnarray}
 R_n & = & \int_{a}^{y} \frac{(y-t)^n}{n!}f^{(n+1)}(t)dt \,\,\, \text{(the integral form)} \\
 	& = & \frac{f^{(n+1)}(c)}{(n+1)!}(y-1)^{n+1}, \,\,\, c \in [a,y] \,\,\, \text{(the Lagrange form)}
@@ -711,7 +711,7 @@ of the first order Horner method on a polynomial of degree 10. The match is perf
 %
 \end{tikzpicture}
 }
-\caption{BroadWell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/3.55 [cycle]), (b) Estrin (22.68/2.90 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (28.94/3.11 [cycle])  \label{DAG}}
+\caption{BroadWell mnemonic DAG of the polynomial evaluation for three methods of evaluation (latency/throughput), (a) classical Horner (50.0/4.09 [cycle]), (b) Estrin (22.68/3.40 [cycle]), (c)  Estrin$^6 \times$BruteForce$^4$ (24.00/3.85 [cycle])  \label{DAG}}
 \end{figure}
 \begin{table}[ht]
 \begin{center}
