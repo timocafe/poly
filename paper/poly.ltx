@@ -86,11 +86,14 @@ On these examples, the study of \cite{Reynolds2010} evaluates polynomial  but it
 An interesting point will be, the knowledge of the implementation of mathematical vendors libraries 
 (IBM - mass or Intel - imf/svml),  obviously vendors do not communicate about theirs implementations.
 
-To summaries an excellent review of method of polynomial and  elementary
-functions implementation can be found in \cite{Muller:1997:EFA:261217}. The $e^x$ function can  
+To summaries an excellent review of method of polynomial and  elementary functions implementation can be found in \cite{Muller:1997:EFA:261217}.
+In this paper, we implemented $e^x$ based on the a polynomial evaluation and not on a look at table like \cite{Tang:1989:TIE:63522.214389, 145565} 
+because look at table are not SIMD friendly and in the present study, the work focuses on the polynomial factorisation, we necessitate a polynomial
+of degree close to 10. Look at table algorithms need polynomial of degree 6 or less. One more time, the goal of this paper is not to evaluate 
+the $e^x$ implementation, but evaluate the factorisation pattern.
 
 In this paper we are considering the performance can be only reached if the algorithm is specifically design to the hardware which is  target.
-Nowdays, in HPC the superscalar architecture is standard, consequently the algorithm must be massively parallel to maximise the pipelines utilisation.
+Nowdays, in HPC the superscalar architecture is standard, consequently the algorithm must be parallel to maximise the pipelines utilisation.
 
 This paper focuses on the evaluation on polynomial of degree 10 on super-scalar processor, and in the end it's application on the elementary function
 $e^x$. We remember the state of the art of polynomial  and the elementary function $e^x$. Then, more technically, we describe the super scalar architecture and 
@@ -159,7 +162,7 @@ bubbles in the pipeline).
 \subsection{Factorization}
 
 Finally we consider the factorization method. This method is based on the fundamental algebraic property of polynomials with real coefficients , which states that any polynomial $P(x)$ of degree $2n$
- can be decomposed into a product of n quadratics factors with real coefficients (factorization).
+ can be decomposed into a product of $n$ quadratics factors with real coefficients (factorization).
 \begin{equation}\label{real-factor}
 P(x)= \prod\limits_{j=1}^{n} (x^2 + \alpha_j x + \beta_j),
 \end{equation}
@@ -258,11 +261,6 @@ is the usage of irrational number that maybe not represented by a finite number 
 penalisable rounding effect,  \cite{BrisebarreChevillard2007} proposed alternative to reach better approximation. Consequently, the Remez approximation has been performed 
 with a customise extended form of the floating point (150 bits digit precision) with a polynomial of degree 10. It gives a satisfactory trade-off between accuracy and performance (demonstrate in section \ref{section_ulp}). This polynomial will be the starting point for the method previously describe. 
 
-\subsection{Notations}
-In this section, the following notations are introduced. Any polynomial $P$ is characterised by two parameters, the degree and the method of evaluation. 
-The degree is represented by the superscript $n$, whereas the subscript is the method of evaluation. The different methods of evaluation are
-the brute force method ($b$), the Horner method of order $k$ ($h^k$) and the Estrin method ($e$). For example, $P^{6}_{e}$ means a polynomial of degree 6
-evaluated with the method of Estrin, whereas $P^8_{h^2}$ means a polynomial of degree 8 evaluated with the method of Horner with order 2.
 
 \subsection{Combinatory}
 
@@ -273,8 +271,13 @@ In this study, we focus on the evaluation of polynomials of degree 10, where the
 because they are very useful in the approximation of the exponential function $e^x$ with $x \in [0, ln2]$.
 The polynomials we consider are strictly positive in the range $[0, ln2]$, and therefore they do not have any real roots, but five pairs of complex conjugate
 roots. From the five pairs, five quadratic polynomials can be built following the factorization process described above. 
-The product of these five quadratic factors is the factorisation scheme.
-We note that there exist other alternative schemes.
+The product of these five quadratic factors is the factorisation scheme. We note that there exist other alternative schemes.
+
+But just before doing the combinatory analysis, let introduce the following notation
+Any polynomial $P$ is characterised by two parameters, the degree and the method of evaluation. 
+The degree is represented by the superscript $n$, whereas the subscript is the method of evaluation. The different methods of evaluation are
+the brute force method ($b$), the Horner method of order $k$ ($h^k$) and the Estrin method ($e$). For example, $P^{6}_{e}$ means a polynomial of degree 6
+evaluated with the method of Estrin, whereas $P^8_{h^2}$ means a polynomial of degree 8 evaluated with the method of Horner with order 2.
 
 To find the total number of combinations of polynomial factors, we start by considering all possible partitions of the number 10 as sum of even numbers.
 We only consider even numbers because, as stated above, all the polynomial factors we consider are of degree two, arising from the product of two factors associated to complex conjugate roots.
@@ -352,20 +355,20 @@ $y \leftarrow x - k\times1.42860682030941723212  \times 10^{-6}$\;
 \subsection{$2^k$ fast evaluation} \label{TwokSection}
 Computing $2^k$ may be done with a left bit shift. But is is not suitable because of the limited domain with 64-bit integer.
 An alternative solution utilises the floating point representation. Real numbers can be represented approximately under the following form:
-
+Le
 \begin{eqnarray}
 x = -1^s \times (1+F) \times 2^{e+bias}
 \end{eqnarray}
 
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.4]{618px-IEEE_754_Double_Floating_Point_Format} 
-\caption{double precision floating point number using IEEE-754 norm \label{doubleIEEE}}
-\end{center}
-\end{figure}
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.4]{618px-IEEE_754_Double_Floating_Point_Format} 
+%\caption{double precision floating point number using IEEE-754 norm \label{doubleIEEE}}
+%\end{center}
+%\end{figure}
 
-For IEEE-754 double precision numbers (Figure \ref{doubleIEEE}): $s$ sign bit, $e + bias $ is the exponent (11 bits), it is bias (engineering sense of the word).
+For IEEE-754 double precision number: $s$ sign bit, $e + bias $ is the exponent (11 bits), it is bias (engineering sense of the word).
 The bias is equal to 1023 and $e$ belongs [-1022,1023]. $F$ is the mantissa (53 bits) $\sum_{n=1}^{p-1} bit_n \times 
 2^{-n}$. The method consists in taking the wanted $k$, adding the bias and moving it into the exponent part of the floating point representation, and letting the machine interpret it like a double.
 The method is efficient, fast and does not introduce any errors. This method can be described by the following algorithm:
@@ -401,14 +404,14 @@ Branching is impossible on SIMD architectures, nevertheless we describe an alter
  \KwData{$x$ floating point number}
  \KwResult{$e^x$ with correct boundary condition (table \label{boundary})}
 
- $mask0 \leftarrow \neg(|x| > max)$\;   
- $mask1 \leftarrow x < max$\;
- $mask2 \leftarrow  +\infty$\;
+ $\texttt{mask0} \leftarrow \neg(|x| > max)$\;   
+ $\texttt{mask1} \leftarrow x < max$\;
+ $\texttt{mask2} \leftarrow  +\infty$\;
   \tcc{here $e^x$ does not compute extrema}
  \textbf{Compute}: $y \leftarrow e^x$\;
- $y  \leftarrow y \, \& \, mask0$\;
- $mask3 \leftarrow  mask 3 \, \& \, \neg mask1$\;
- $y \leftarrow  y | mask2$\;
+ $y  \leftarrow y \, \& \, \texttt{mask0}$\;
+ $\texttt{mask3} \leftarrow  \texttt{mask3} \, \& \, \neg \texttt{mask1}$\;
+ $y \leftarrow  y | \texttt{mask2}$\;
  \textbf{return} $y$\;
  \caption{Boundary condition algorithm. On X86 SIMD architecture true is represented by all bits true.\label{manipulation}}
 \end{algorithm}
@@ -1003,10 +1006,11 @@ of the compiler due to the \texttt{-fast-math} option
 compare to the scalar version.
 
 The final comparison concerns the Intel Mathematical Function (IMF - scalar version) and Intel Short Vector Mathematical Library (SVML - vectorial version), 
-both libraries are delivered with Intel Compiler (15.0.0). The benchmarks throughtput/latency/ulp provide the following results for the scalar [20.61/52.69/-] 
-and vectorial [6.38/39.20/2] on BroadWell and scalar [12.11/67.39/-], vectorial [12.25/55.37/2] on SandyBridge.
-Note we were not able to measure the properly  the ulp of the scalar version because the intel does not provide a specific API contrary to the SVML, 
-which is problematic in the ULP benchmark. Our results that are summurized on the table \ref{LTR_EXP_00} and \ref{LTR_EXP_11} can be equivalent 
+both libraries are delivered with Intel Compiler (15.0.0). The benchmarks throughtput/latency/ulp provide the following results for the scalar [20.61/52.69/2] 
+and vectorial [6.38/39.20/2] on BroadWell and scalar [12.11/67.39/2], vectorial [12.25/55.37/2] on SandyBridge.
+%Note we were not able to measure the properly  the ulp of the scalar version because the intel does not provide a specific API contrary to the SVML, 
+%which is problematic in the ULP benchmark. 
+Our results that are summurized on the table \ref{LTR_EXP_00} and \ref{LTR_EXP_11} can be equivalent 
 or better specially for the scalar version on SandyBridge platform. However the vectorial on BroadWell is not reachable. The SandyBridge platform is quiet old
 the first product where released in 2011, Intel may have not updated their library for this target. Our results have a larger error, we know it comes from the factorisation
 method. For the latency/throughput difference of performance, we do not have any informations about the algorithm that Intel implements. 
