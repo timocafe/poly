@@ -225,7 +225,7 @@ R_n &=& \frac{e^c}{(n+1)!}y^{n+1}, \,\,\, c \in [0,y] \\
 
 When $y=ln2$ and $n=10$, the remainder term has magnitude $R_{10} \leq \left| \frac{e^{ln2}}{11!}ln(2)^{11}\right| \sim 8.89 \times 10^{-10}$, which can be considered a large error compared to floating point accuracy. According to this formula, to guarantee an error lower than the double precision of the machine, $n=16$ is needed. An alternative would be to develop the Taylor 
 series around $ln(2)/2$ but once again the error would be local.  Clever author \cite{Shibata2010} adds second range reduction using property of the $e^x$, shifting the reduce value to 0
-and then improving the precision, unfortunately it necessitate an final additional transposition.
+and then improving the precision, unfortunately it necessitates a final additional transposition.
 
 \subsection{Polynomial approximation}
 
@@ -259,7 +259,7 @@ And iterate until the error function is lower than the wanted precision.
 The Remez method is powerfull, a full detail and rigorous analysis can be found in \cite{Fraser:1965:SMC:321281.321282}. The only default of the Remez method 
 is the usage of irrational number that maybe not represented by a finite number of bit (53 bits precision for double precision IEEE), the Remez algorithm may introduce
 penalisable rounding effect,  \cite{BrisebarreChevillard2007} proposed alternative to reach better approximation. Consequently, the Remez approximation has been performed 
-with a customise extended form of the floating point (150 bits digit precision) with a polynomial of degree 10. It gives a satisfactory trade-off between accuracy and performance (demonstrate in section \ref{section_ulp}). This polynomial will be the starting point for the method previously describe. 
+with a customise extended form of the floating point (150 bits digit precision) with a polynomial of degree 10 \cite{lolengine}. It gives a satisfactory trade-off between accuracy and performance (demonstrate in section \ref{section_ulp}). This polynomial will be the starting point for the method previously describe. 
 
 
 \subsection{Combinatory}

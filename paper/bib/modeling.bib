@@ -2,55 +2,61 @@
 %% http://bibdesk.sourceforge.net/
 
 
-%% Created for Ewart Timothée at 2016-05-27 15:49:09 +0200 
+%% Created for Ewart Timothée at 2016-05-30 11:03:33 +0200 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
-@article{Tang:1989:TIE:63522.214389,
- author = {Tang, Ping-Tak Peter},
- title = {Table-driven Implementation of the Exponential Function in IEEE Floating-point Arithmetic},
- journal = {ACM Trans. Math. Softw.},
- issue_date = {June 1989},
- volume = {15},
- number = {2},
- month = jun,
- year = {1989},
- issn = {0098-3500},
- pages = {144--157},
- numpages = {14},
- acmid = {214389},
- publisher = {ACM},
- address = {New York, NY, USA},
- keywords = {IEEE arithmetic, exponential function, implementation},
-} 
 
-@INPROCEEDINGS{145565, 
-author={P. T. P. Tang}, 
-booktitle={Computer Arithmetic, 1991. Proceedings., 10th IEEE Symposium on}, 
-title={Table-lookup algorithms for elementary functions and their error analysis}, 
-year={1991}, 
-pages={232-236}, 
-keywords={digital arithmetic;table lookup;elementary functions;error analysis;table lookup algorithms;tight error analysis;Algorithm design and analysis;Arithmetic;Computer science;Error analysis;Hardware;Laboratories;Mathematics;Polynomials;Runtime library;Yarn}, 
-month={Jun}}
+
+@misc{lolengine,
+	Author = {Lol Software},
+	Date-Added = {2016-05-30 08:55:47 +0000},
+	Date-Modified = {2016-05-30 09:02:31 +0000},
+	Title = {Remez exchange toolbox},
+	Url = {/lolengine.net/wiki/doc/maths/remez}}
+
+@article{Tang:1989:TIE:63522.214389,
+	Acmid = {214389},
+	Address = {New York, NY, USA},
+	Author = {Tang, Ping-Tak Peter},
+	Issn = {0098-3500},
+	Issue_Date = {June 1989},
+	Journal = {ACM Trans. Math. Softw.},
+	Keywords = {IEEE arithmetic, exponential function, implementation},
+	Month = jun,
+	Number = {2},
+	Numpages = {14},
+	Pages = {144--157},
+	Publisher = {ACM},
+	Title = {Table-driven Implementation of the Exponential Function in IEEE Floating-point Arithmetic},
+	Volume = {15},
+	Year = {1989}}
+
+@inproceedings{145565,
+	Author = {P. T. P. Tang},
+	Booktitle = {Computer Arithmetic, 1991. Proceedings., 10th IEEE Symposium on},
+	Keywords = {digital arithmetic;table lookup;elementary functions;error analysis;table lookup algorithms;tight error analysis;Algorithm design and analysis;Arithmetic;Computer science;Error analysis;Hardware;Laboratories;Mathematics;Polynomials;Runtime library;Yarn},
+	Month = {Jun},
+	Pages = {232-236},
+	Title = {Table-lookup algorithms for elementary functions and their error analysis},
+	Year = {1991}}
 
 @inproceedings{Pohl:2016:ECS:2870650.2870653,
- author = {Pohl, Angela and Cosenza, Biagio and Mesa, Mauricio Alvarez and Chi, Chi Ching and Juurlink, Ben},
- title = {An Evaluation of Current SIMD Programming Models for C++},
- booktitle = {Proceedings of the 3rd Workshop on Programming Models for SIMD/Vector Processing},
- series = {WPMVP '16},
- year = {2016},
- isbn = {978-1-4503-4060-1},
- location = {Barcelona, Spain},
- pages = {3:1--3:8},
- articleno = {3},
- numpages = {8},
- acmid = {2870653},
- publisher = {ACM},
- address = {New York, NY, USA},
- keywords = {C++, SIMD, parallel programming, programming model, vectorization},
-} 
-
+	Acmid = {2870653},
+	Address = {New York, NY, USA},
+	Articleno = {3},
+	Author = {Pohl, Angela and Cosenza, Biagio and Mesa, Mauricio Alvarez and Chi, Chi Ching and Juurlink, Ben},
+	Booktitle = {Proceedings of the 3rd Workshop on Programming Models for SIMD/Vector Processing},
+	Isbn = {978-1-4503-4060-1},
+	Keywords = {C++, SIMD, parallel programming, programming model, vectorization},
+	Location = {Barcelona, Spain},
+	Numpages = {8},
+	Pages = {3:1--3:8},
+	Publisher = {ACM},
+	Series = {WPMVP '16},
+	Title = {An Evaluation of Current SIMD Programming Models for C++},
+	Year = {2016}}
 
 @article{Shibata2010,
 	Abstract = {Data-parallel architectures like SIMD (Single Instruction Multiple Data) or SIMT (Single Instruction Multiple Thread) have been adopted in many recent CPU and GPU architectures. Although some SIMD and SIMT instruction sets include double-precision arithmetic and bitwise operations, there are no instructions dedicated to evaluating elementary functions like trigonometric functions in double precision. Thus, these functions have to be evaluated one by one using an FPU or using a software library. However, traditional algorithms for evaluating these elementary functions involve heavy use of conditional branches and/or table look-ups, which are not suitable for SIMD computation. In this paper, efficient methods are proposed for evaluating the sine, cosine, arc tangent, exponential and logarithmic functions in double precision without table look-ups, scattering from, or gathering into SIMD registers, or conditional branches. We implemented these methods using the Intel SSE2 instruction set to evaluate their accuracy and speed. The results showed that the average error was less than 0.67 ulp, and the maximum error was 6 ulps. The computation speed was faster than the FPUs on Intel Core 2 and Core i7 processors.},
@@ -207,20 +213,19 @@ month={Jun}}
 	Title = {{On the definition of ulp(x)}},
 	Year = {2005}}
 
-@url{Kahan2002,
+@misc{Kahan2002,
 	Author = {W. Kahan},
 	Date-Added = {2016-05-12 08:28:12 +0000},
-	Date-Modified = {2016-05-12 08:31:14 +0000},
+	Date-Modified = {2016-05-30 09:02:48 +0000},
 	Title = {On the Cost of Floating-Point Computation Without Extra-Precise Arithmetic},
 	Year = {2002}}
 
-@book{IACA,
+@misc{IACA,
 	Date-Added = {2016-05-10 09:51:16 +0000},
-	Date-Modified = {2016-05-10 09:51:36 +0000},
+	Date-Modified = {2016-05-30 09:03:31 +0000},
 	Publisher = {Intel},
-	Title = {Intel Archtecture Code Analyser},
-	Year = {2009-2012},
-	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QYi4uLy4uLy4uLy4uLy4uLy4uL3Zhci9mb2xkZXJzL3Z5LzJkeGpzM2hkN25zMDBjbjhtMDl2MjV0cjAwM2ZxcC9UL1dlYktpdFBERnMtMXE0a3A5L0lBQ0EtR3VpZGUucGRm0hcLGBlXTlMuZGF0YU8RAfoAAAAAAfoAAgAADE1hY2ludG9zaCBIRAAAAAAAAAAAAAAAAAAAANB+kB9IKwAAAejbPA5JQUNBLUd1aWRlLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB6Rpn01d70AAAAAAAAAAAAAYACAAACSAAAAAAAAAAAAAAAAAAAAARV2ViS2l0UERGcy0xcTRrcDkAABAACAAA0H6CDwAAABEACAAA01dfsAAAAAEAHAHo2zwBXFoyABmqOwAZqjoACVjOARFM3gERTN0AAgBsTWFjaW50b3NoIEhEOnByaXZhdGU6AHZhcjoAZm9sZGVyczoAdnk6ADJkeGpzM2hkN25zMDBjbjhtMDl2MjV0cjAwM2ZxcDoAVDoAV2ViS2l0UERGcy0xcTRrcDk6AElBQ0EtR3VpZGUucGRmAA4AHgAOAEkAQQBDAEEALQBHAHUAaQBkAGUALgBwAGQAZgAPABoADABNAGEAYwBpAG4AdABvAHMAaAAgAEgARAASAFhwcml2YXRlL3Zhci9mb2xkZXJzL3Z5LzJkeGpzM2hkN25zMDBjbjhtMDl2MjV0cjAwM2ZxcC9UL1dlYktpdFBERnMtMXE0a3A5L0lBQ0EtR3VpZGUucGRmABMAAS8A//8AAIAG0hscHR5aJGNsYXNzbmFtZVgkY2xhc3Nlc11OU011dGFibGVEYXRhox0fIFZOU0RhdGFYTlNPYmplY3TSGxwiI1xOU0RpY3Rpb25hcnmiIiBfEA9OU0tleWVkQXJjaGl2ZXLRJidUcm9vdIABAAgAEQAaACMALQAyADcAQABGAE0AVQBgAGcAagBsAG4AcQBzAHUAdwCEAI4A8wD4AQAC/gMAAwUDEAMZAycDKwMyAzsDQANNA1ADYgNlA2oAAAAAAAACAQAAAAAAAAAoAAAAAAAAAAAAAAAAAAADbA==}}
+	Title = {Intel Architecture Code Analyser},
+	Year = {2009-2012}}
 
 @book{Agner,
 	Author = {Agner Fog},
@@ -228,8 +233,7 @@ month={Jun}}
 	Date-Modified = {2016-05-10 09:49:29 +0000},
 	Publisher = {Technical University of Denmark},
 	Title = {The microarchitecture of Intel, AMD and VIA CPUs An optimization guide for assembly programmers and compiler makers},
-	Year = {1996-2016},
-	Bdsk-File-1 = {YnBsaXN0MDDUAQIDBAUGJCVYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoKgHCBMUFRYaIVUkbnVsbNMJCgsMDxJXTlMua2V5c1pOUy5vYmplY3RzViRjbGFzc6INDoACgAOiEBGABIAFgAdccmVsYXRpdmVQYXRoWWFsaWFzRGF0YV8QQC4uLy4uLy4uLy4uL0Rvd25sb2Fkcy9vcHRpbWl6YXRpb25fbWFudWFscy9taWNyb2FyY2hpdGVjdHVyZS5wZGbSFwsYGVdOUy5kYXRhTxEB0gAAAAAB0gACAAAMTWFjaW50b3NoIEhEAAAAAAAAAAAAAAAAAAAA0H6QH0grAAAB6RnsFW1pY3JvYXJjaGl0ZWN0dXJlLnBkZgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHpGe/Sv1u2AAAAAAAAAAAABAADAAAJIAAAAAAAAAAAAAAAAAAAABRvcHRpbWl6YXRpb25fbWFudWFscwAQAAgAANB+gg8AAAARAAgAANK/TaYAAAABABAB6RnsABPFXAANpEMADaD5AAIAUU1hY2ludG9zaCBIRDpVc2VyczoAZXdhcnQ6AERvd25sb2FkczoAb3B0aW1pemF0aW9uX21hbnVhbHM6AG1pY3JvYXJjaGl0ZWN0dXJlLnBkZgAADgAsABUAbQBpAGMAcgBvAGEAcgBjAGgAaQB0AGUAYwB0AHUAcgBlAC4AcABkAGYADwAaAAwATQBhAGMAaQBuAHQAbwBzAGgAIABIAEQAEgBAVXNlcnMvZXdhcnQvRG93bmxvYWRzL29wdGltaXphdGlvbl9tYW51YWxzL21pY3JvYXJjaGl0ZWN0dXJlLnBkZgATAAEvAAAVAAIADP//AACABtIbHB0eWiRjbGFzc25hbWVYJGNsYXNzZXNdTlNNdXRhYmxlRGF0YaMdHyBWTlNEYXRhWE5TT2JqZWN00hscIiNcTlNEaWN0aW9uYXJ5oiIgXxAPTlNLZXllZEFyY2hpdmVy0SYnVHJvb3SAAQAIABEAGgAjAC0AMgA3AEAARgBNAFUAYABnAGoAbABuAHEAcwB1AHcAhACOANEA1gDeArQCtgK7AsYCzwLdAuEC6ALxAvYDAwMGAxgDGwMgAAAAAAAAAgEAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAyI=}}
+	Year = {1996-2016}}
 
 @article{10.1109/AFIPS.1960.28,
 	Address = {Los Alamitos, CA, USA},
