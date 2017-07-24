@@ -219,8 +219,8 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
     if(name.compare("exp")==0){
         typedef tvalue_list<op_enum,arith_op::poly_exp> ops;
         ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
-
         {
+#ifdef POLY_CYME
 #ifdef __x86_64__
             typedef tvalue_list<op_enum,arith_op::v4dexp> vops; 
             v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
@@ -232,10 +232,12 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
             v2double v2d1={d1,d1},v2d2={d2,d2},v2d3={d3,d3};
             vops::template for_each<run_v2double_looped_karg>::run(std::cout,"default",H,n_inner,v2d1,v2d2,v2d3);
 #endif
+#endif
         }
     }else if(name.compare("poly")==0){
             typedef tvalue_list<op_enum,arith_op::poly_poly> ops;
             ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
+#ifdef POLY_CYME
 #ifdef __x86_64__
             typedef tvalue_list<op_enum,arith_op::v4dpoly> vops; 
             v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
@@ -247,9 +249,11 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
             v2double v2d1={d1,d1},v2d2={d2,d2},v2d3={d3,d3};
             vops::template for_each<run_v2double_looped_karg>::run(std::cout,"default",H,n_inner,v2d1,v2d2,v2d3);
 #endif
+#endif
     }else if(name.compare("tool")==0){
             typedef tvalue_list<op_enum,arith_op::poly_twok,arith_op::poly_boundary> ops;
             ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
+#ifdef POLY_CYME
 #ifdef __x86_64__
             typedef tvalue_list<op_enum,arith_op::v4dtwok,arith_op::v4dboundary> vops; 
             v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
@@ -260,6 +264,7 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
             typedef tvalue_list<op_enum,arith_op::v2dtwok,arith_op::v2dboundary> vops; 
             v2double v2d1={d1,d1},v2d2={d2,d2},v2d3={d3,d3};
             vops::template for_each<run_v2double_looped_karg>::run(std::cout,"default",H,n_inner,v2d1,v2d2,v2d3);
+#endif
 #endif
     }else if(name.compare("vendor")==0){
 #ifdef __x86_64__
@@ -272,6 +277,7 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
         ops::template for_each<run_double_looped_karg>::run(std::cout,"default",H,n_inner,d1,d2,d3);
 #endif
         {
+#ifdef POLY_CYME
 #ifdef __x86_64__
             typedef tvalue_list<op_enum,arith_op::svml4d> vops; 
             v4double v4d1={d1,d1,d1,d1},v4d2={d2,d2,d2,d2},v4d3={d3,d3,d3,d3};
@@ -282,6 +288,7 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
             typedef tvalue_list<op_enum,arith_op::massv> vops; 
             v2double v2d1={d1,d1},v2d2={d2,d2},v2d3={d3,d3};
             vops::template for_each<run_v2double_looped_karg>::run(std::cout,"default",H,n_inner,v2d1,v2d2,v2d3);
+#endif
 #endif
         }
 

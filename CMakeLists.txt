@@ -10,16 +10,20 @@ find_package(SIMD)
 find_package(FMA)
 
 include(SelectTech)
-include(Compiler)
+#include(Compiler)
+set (CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CXX_DIALECT_OPT_CXX11} ${COMPILER_OPT_ARCH_NATIVE} ${CMAKE_CXX_FLAGS} ${CYME_FMA_FLAGS} ${CYME_SIMD_FLAGS}")
 
 enable_testing()
-set(Boost_USE_STATIC_LIBS  ON)
-find_package(Boost 1.44 REQUIRED unit_test_framework system)
+#set(Boost_USE_STATIC_LIBS  ON)
+find_package(Boost COMPONENTS unit_test_framework system )
 #boost include
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/cyme/include)
+
+option (POLY_CYME "Build vectorization exp using cyme DSL" OFF)
+
 
 
 set(libexp bd10 bd2bd2bd2bd2bd2 bd2bd2bd2bd2ed2 bd2bd2bd2bd2hkth1d2 bd2bd2bd2ed2ed2 bd2bd2bd2ed2hkth1d2 bd2bd2bd2hkth1d2hkth1d2 bd2bd2ed2ed2ed2
