@@ -77,7 +77,7 @@ All numbers are fictives
 **ULP**
 ```
    .b/bench/ulp/exp/exp_scalar_ulp_ed10
-   5 // the ulp is 3 compare to std::exp (IEEE std)
+   3 // the ulp is 3 compare to std::exp (IEEE std)
 ```
 **Throughput**
 ```
