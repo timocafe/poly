@@ -6,6 +6,7 @@ minimum recquirements:
   - Power/X86 system 
   - linux system
   - cmake > 2.9
+  - machine that understand x86/ppc ASM and the inline GCC mode
   
 arborescence:
 ```
@@ -13,6 +14,15 @@ arborescence:
           -- latency (latency benchmark)
           -- throughtput (throughtput benchmark)
           -- lib (contains implementation of exp, scalar/vector version)
+             -- exp
+                -- scalar (implementation of the exp scalar version) 
+                -- vector (implementation of the exp vector version)          
+             -- poly
+                -- scalar (implementation of the polynomial evaluation scalar version) 
+                -- vector (implementation of the polynomial evaluation vector version)          
+             -- tool
+                -- scalar(implementation of 2^k and the branching part for the scalar version)
+                -- vector(implementation of 2^k and the branching part for the vector version)            
           -- ulp (ulp benchmark)
        -- cyme (DSL for the vectorial version)
        -- dot (contains ASM - DAG graphiz format/ATT)
@@ -44,4 +54,6 @@ to postprocess
 ```
 For the story:
 The directory poly/lib/scalar and poly/lib/vector contain the implementation of every exp(x). The generation of all theses files is performed with main.cpp of the lib directory.
+
+If your machine is super experimental you may switch off (POLY_CYME,POLY_BENCH,POLY_TEST). Then you will a get a library for every implementation of the exp, free to you to work a simple benchmark with it.
 
