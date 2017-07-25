@@ -18,7 +18,7 @@ option (POLY_CYME "Build vectorization exp using cyme DSL" ON)
 option (POLY_BENCH "Build benchmark" ON)
 option (POLY_TEST "Build bench and test " ON)
 
-if(POLY_TES)
+if(POLY_TEST)
 enable_testing()
 endif()
 #set(Boost_USE_STATIC_LIBS  ON)
