@@ -12,6 +12,7 @@ arborescence:
   poly -- bench (contains the benchmarks for latency/throughtput/ulp + header for the timer library)
           -- latency (latency benchmark)
           -- throughtput (throughtput benchmark)
+          -- lib (contains implementation of exp, scalar/vector version)
           -- ulp (ulp benchmark)
        -- cyme (DSL for the vectorial version)
        -- dot (contains ASM - DAG graphiz format/ATT)
