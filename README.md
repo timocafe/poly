@@ -52,7 +52,9 @@ Let's play with 236 exp(x) implementation
   run.sh b exp > out // b for the build directory and exp for the results
 ```
 **to run (by hand)**
+
 All numbers are fictives
+
 **Latency**
 ```
    .b/bench/latency/scalar_vector_latency_ed10 poly // run ed10 for the polynomial scalar and vector version
@@ -77,7 +79,7 @@ All numbers are fictives
 **ULP**
 ```
    .b/bench/ulp/exp/exp_scalar_ulp_ed10
-   5 // the ulp is 3 compare to std::exp (IEEE std)
+   3 // the ulp is 3 compare to std::exp (IEEE std)
 ```
 **Throughput**
 ```
