@@ -14,17 +14,19 @@ include(SelectTech)
 set (CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CXX_DIALECT_OPT_CXX11} ${COMPILER_OPT_ARCH_NATIVE} ${CMAKE_CXX_FLAGS} ${CYME_FMA_FLAGS} ${CYME_SIMD_FLAGS}")
 
+option (POLY_CYME "Build vectorization exp using cyme DSL" ON)
+option (POLY_BENCH "Build benchmark" ON)
+option (POLY_TEST "Build bench and test " ON)
+
+if(POLY_TES)
 enable_testing()
+endif()
 #set(Boost_USE_STATIC_LIBS  ON)
 find_package(Boost COMPONENTS unit_test_framework system )
 #boost include
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/cyme/include)
-
-option (POLY_CYME "Build vectorization exp using cyme DSL" OFF)
-
-
 
 set(libexp bd10 bd2bd2bd2bd2bd2 bd2bd2bd2bd2ed2 bd2bd2bd2bd2hkth1d2 bd2bd2bd2ed2ed2 bd2bd2bd2ed2hkth1d2 bd2bd2bd2hkth1d2hkth1d2 bd2bd2ed2ed2ed2
 bd2bd2ed2ed2hkth1d2 bd2bd2ed2hkth1d2hkth1d2 bd2bd2hkth1d2hkth1d2hkth1d2 bd2bd4bd4 bd2bd4ed4 bd2bd4hkth1d4 bd2bd4hkth2d4 bd2bd4hkth3d4 bd2ed2ed2ed2ed2
