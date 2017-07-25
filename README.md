@@ -17,7 +17,6 @@ arborescence:
        -- dot (contains ASM - DAG graphiz format/ATT)
        -- llc (tiny library to measure the throughput, read hardware counter)  
        -- poly (contains the program that generate all variations of the exp implementation)
-       -- res (contains perl script to preprocess the results of the bench)
 ```       
 to compile
 ```
