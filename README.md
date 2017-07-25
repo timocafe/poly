@@ -17,7 +17,7 @@ arborescence:
        -- cyme (DSL for the vectorial version)
        -- dot (contains ASM - DAG graphiz format/ATT)
        -- llc (tiny library to measure the throughput, read hardware counter)  
-       -- poly (contains the program that generate all variations of the exp implementation)
+       -- poly (contains the program that generate all variations of the exp implementation for poly/lib directory)
 ```       
 to compile
 ```
@@ -34,3 +34,6 @@ to postprocess
 ```
   perl pp_exp.pl out > out.hmtl
 ```
+For the story:
+The directory poly/lib/scalar and poly/lib/vector contain the implementation of every exp(x). The generation of all theses files is performed with main.cpp of the lib directory.
+
