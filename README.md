@@ -8,6 +8,7 @@ minimum recquirements:
   - cmake > 2.9
   
 arborescence:
+```
   poly -- bench (contains the benchmarks for latency/throughtput/ulp + header for the timer library)
           -- latency (latency benchmark)
           -- throughtput (throughtput benchmark)
@@ -16,9 +17,20 @@ arborescence:
        -- dot (contains ASM - DAG graphiz format/ATT)
        -- llc (tiny library to measure the throughput, read hardware counter)  
        -- poly (contains the program that generate all variations of the exp implementation)
-       
+       -- res (contains perl script to preprocess the results of the bench)
+```       
 to compile
+```
   mkdir b
   cd b
   cmake ..
   make // can be long > 3000 files to compiles
+```
+to run
+```
+  run.sh b exp > out // b for the build directory and exp for the results
+```
+to postprocess
+```
+  perl pp_exp.pl out > out.hmtl
+```
