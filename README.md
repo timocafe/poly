@@ -26,6 +26,14 @@ to compile
   cmake ..
   make // can be long > 3000 files to compiles
 ```
+to modify
+```
+  ccmake .
+  POLY_CYME buidl the vectorial version using cyme DSL (ON DEFAULT)
+  POLY_BENCH build the benchmark throughput/ulp/latency (ON DEFAULT)
+  POLY_TEST build the test (ON DEFAULT)
+```
+
 to run
 ```
   run.sh b exp > out // b for the build directory and exp for the results
