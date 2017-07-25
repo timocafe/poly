@@ -1,5 +1,7 @@
 # poly
 
+Let's play with 236 exp(x) implementation
+
 **minimum recquirements:**
   - GCC > 4.9 (primary compiler because inlining is better)
   - Intel Compiler (to compare to vendor implementation)
