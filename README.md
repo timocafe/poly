@@ -57,28 +57,28 @@ All numbers are fictives
 
 **Latency**
 ```
-   .b/bench/latency/scalar_vector_latency_ed10 poly // run ed10 for the polynomial scalar and vector version
-   .b/bench/latency/scalar_vector_latency_ed10 exp  // run ed10 for the polynomial scalar and vector version
-   .b/bench/latency/scalar_vector_latency_ed10 tool  // run the 2^k and the boundary
-   .b/bench/latency/scalar_vector_latency_ed10 vendor  // run the vendor version
-   [ewart@super_machine b]$ ./bench/latency/scalar_vector_latency_ed10 poly
+   ./b/bench/latency/scalar_vector_latency_ed10 poly // run ed10 for the polynomial scalar and vector version
+   ./b/bench/latency/scalar_vector_latency_ed10 exp  // run ed10 for the polynomial scalar and vector version
+   ./b/bench/latency/scalar_vector_latency_ed10 tool  // run the 2^k and the boundary
+   ./b/bench/latency/scalar_vector_latency_ed10 vendor  // run the vendor version
+   [ewart@super_machine b]$ ./b/bench/latency/scalar_vector_latency_ed10 poly
    scalar::poly 35.0671
    vector::poly 30.2791
-   [ewart@super_machine b]$ ./bench/latency/scalar_vector_latency_ed10 exp
+   [ewart@super_machine b]$ ./b/bench/latency/scalar_vector_latency_ed10 exp
    scalar::exp 75.0317
    vector::exp 61.4446
-   [ewart@super_machine b]$ ./bench/latency/scalar_vector_latency_ed10 tool
+   [ewart@super_machine b]$ ./b/bench/latency/scalar_vector_latency_ed10 tool
    scalar::twok 36.006
    scalar::boundary 26.0249
    vector::twok 31.0046 // 2^k
    vector::boundary 20.96371 // the boundary condition
-   [ewart@super_machine b]$ ./bench/latency/scalar_vector_latency_ed10 vendor
+   [ewart@super_machine b]$ ./b/bench/latency/scalar_vector_latency_ed10 vendor
    imf 76.9489 // scalar version of intel
    svml4d 75.166 //vec version of intel
 ```
 **ULP**
 ```
-   .b/bench/ulp/exp/exp_scalar_ulp_ed10
+   ./b/bench/ulp/exp/exp_scalar_ulp_ed10
    3 // the ulp is 3 compare to std::exp (IEEE std)
 ```
 **Throughput**
