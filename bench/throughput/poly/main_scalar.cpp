@@ -2,6 +2,7 @@
 #include <limits>
 #include <random>
 #include <algorithm>
+#include <functional>
 #include <chrono>
 #include <boost/math/special_functions/next.hpp>
 

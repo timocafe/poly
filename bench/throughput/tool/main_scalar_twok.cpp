@@ -3,6 +3,7 @@
 #include <random>
 #include <algorithm>
 #include <chrono>
+#include <functional>
 #include <boost/math/special_functions/next.hpp>
 
 namespace poly {
