@@ -11,7 +11,7 @@ foreach(i ${libexp})
     target_link_libraries(scalar_vector_latency_${i} exp_scalar_${i} poly_scalar_${i})
     target_link_libraries(scalar_vector_latency_${i} scalar_twok scalar_boundary )
     if (CMAKE_SYSTEM_PROCESSOR MATCHES "(x86)|(X86)")
-    target_link_libraries(scalar_vector_latency_${i} llc -L${INTEL_LIB_PATH} -lsvml -limf)
+    target_link_libraries(scalar_vector_latency_${i} llc -L${INTEL_LIB_PATH} -lsvml -limf -lintlc)
     endif()
 
     if (CMAKE_SYSTEM_PROCESSOR MATCHES "(ppc64le)")
