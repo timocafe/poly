@@ -450,7 +450,7 @@ namespace poly{
         ps << "            vec_simd<T,O,N> log2e(1.4426950408889634073599);\n";
         ps << "            vec_simd<T,O,N> y(x*log2e);\n";
         ps << "            vec_simd<int,O,N> k = floor(y); // k int\n";
-        ps << "            vec_simd<T,O,N> p(cast<T,O>(k)); // k float\n";
+        ps << "            vec_simd<T,O,N> p(convert<T,O>(k)); // k float\n";
         ps << "            /* x -= p * log2; */\n";
         ps << "            vec_simd<T,O,N> c1(6.93145751953125E-1);\n"; // very sensitive precision eplose if 0.693145
         ps << "            vec_simd<T,O,N> c2(1.42860682030941723212E-6);\n";
@@ -522,15 +522,15 @@ namespace poly{
         printer p;
         for(auto t = v.begin(); t != v.end(); ++t){
 
-//              std::string tag((*t).tag());
-//              std::ostringstream buf;
-//              p.cyme_vlib(buf,(*t).cyme_generate(),tag);
-//              print<poly::file>(buf,tag);
-         
                 std::string tag((*t).tag());
                 std::ostringstream buf;
-                p.serial_lib_poly(buf,(*t).generate(),tag);
+                p.cyme_vlib(buf,(*t).cyme_generate(),tag);
                 print<poly::file>(buf,tag);
+         
+//              std::string tag((*t).tag());
+//              std::ostringstream buf;
+//              p.serial_lib_poly(buf,(*t).generate(),tag);
+//              print<poly::file>(buf,tag);
 
 //            {
 //                std::string tag("benchmark_"+(*t).tag());
