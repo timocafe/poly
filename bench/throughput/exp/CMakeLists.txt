@@ -17,7 +17,7 @@ endif()
 
     add_executable(exp_scalar_throughput_vendor main_scalar.cpp)
     set_target_properties(exp_scalar_throughput_vendor PROPERTIES COMPILE_FLAGS -DEXP_VENDOR)
-    target_link_libraries(exp_scalar_throughput_vendor -L ${INTEL_LIB_PATH} -limf -lintlc)
+    target_link_libraries(exp_scalar_throughput_vendor -L${INTEL_LIB_PATH} -limf -lintlc)
 endif()
 
 if (CMAKE_SYSTEM_PROCESSOR MATCHES "(ppc64le)")
