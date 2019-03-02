@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <chrono>
 #include <array>
+#include <functional>
 #include <boost/math/special_functions/next.hpp>
 
 //some type

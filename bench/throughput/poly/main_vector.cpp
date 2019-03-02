@@ -4,6 +4,7 @@
 #include <cmath>
 #include <algorithm>
 #include <chrono>
+#include <functional>
 #include <array>
 #include <boost/math/special_functions/next.hpp>
 

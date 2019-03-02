@@ -2,6 +2,7 @@
 #include <limits>
 #include <random>
 #include <cmath>
+#include <functional>
 #include <algorithm>
 #include <chrono>
 #include <array>

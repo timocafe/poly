@@ -939,14 +939,14 @@ forceinline simd_trait<double, cyme::avx, 1>::register_type
 _mm_ge<double, cyme::avx, 1>(simd_trait<double, cyme::avx, 1>::register_type xmm0) {
 #ifdef __AVX2__
     __m256i permutation = _mm256_setr_epi32(0, 2, 4, 6, 1, 3, 5, 7);
-    __m256i tmp = _mm256_castps_si256(xmm0);
+    __m256i tmp = _mm256_castpd_si256(xmm0);
     tmp = _mm256_srli_epi64(tmp, 52);
     tmp = _mm256_sub_epi64(tmp, _mm256_set1_epi64x(1023));
     // AVX2 does not support _mm256_cvtepi32_pd >_<
     // so tmp = A 0 B 0 C 0 D 0
     __m256i tmp2 = _mm256_permutevar8x32_epi32(tmp, permutation); // A B C D 0 0 0 0
     __m128i e = _mm256_extractf128_si256(tmp2, 0);                // A B C D in integer 128 bits register
-    __m256 r = _mm256_cvtepi32_pd(e);                             // A B C D in double 256 bits register
+    __m256d r = _mm256_cvtepi32_pd(e);                             // A B C D in double 256 bits register
 #else
     __m128d lo = _mm256_extractf128_pd(xmm0, 0);
     __m128d hi = _mm256_extractf128_pd(xmm0, 1);
@@ -972,8 +972,8 @@ forceinline simd_trait<double, cyme::avx, 2>::register_type
 _mm_ge<double, cyme::avx, 2>(simd_trait<double, cyme::avx, 2>::register_type xmm0) {
 #ifdef __AVX2__
     __m256i permutation = _mm256_setr_epi32(0, 2, 4, 6, 1, 3, 5, 7);
-    __m256i tmp0 = _mm256_castps_si256(xmm0.r0);
-    __m256i tmp1 = _mm256_castps_si256(xmm0.r1);
+    __m256i tmp0 = _mm256_castpd_si256(xmm0.r0);
+    __m256i tmp1 = _mm256_castpd_si256(xmm0.r1);
     tmp0 = _mm256_srli_epi64(tmp0, 52);
     tmp1 = _mm256_srli_epi64(tmp1, 52);
     tmp0 = _mm256_sub_epi64(tmp0, _mm256_set1_epi64x(1023));
@@ -984,8 +984,8 @@ _mm_ge<double, cyme::avx, 2>(simd_trait<double, cyme::avx, 2>::register_type xmm
     __m256i tmp21 = _mm256_permutevar8x32_epi32(tmp1, permutation); // A B C D 0 0 0 0
     __m128i e0 = _mm256_extractf128_si256(tmp20, 0);                //  A B C D in integer 128 bits register
     __m128i e1 = _mm256_extractf128_si256(tmp21, 0);                //  A B C D in integer 128 bits register
-    __m256 r0 = _mm256_cvtepi32_pd(e0);                             // A B C D in double 256 bits register
-    __m256 r1 = _mm256_cvtepi32_pd(e1);                             // A B C D in double 256 bits register
+    __m256d r0 = _mm256_cvtepi32_pd(e0);                             // A B C D in double 256 bits register
+    __m256d r1 = _mm256_cvtepi32_pd(e1);                             // A B C D in double 256 bits register
 #else
     __m128d lo0 = _mm256_extractf128_pd(xmm0.r0, 0);
     __m128d hi0 = _mm256_extractf128_pd(xmm0.r0, 1);
@@ -1021,10 +1021,10 @@ _mm_ge<double, cyme::avx, 4>(simd_trait<double, cyme::avx, 4>::register_type xmm
 
 #ifdef __AVX2__
     __m256i permutation = _mm256_setr_epi32(0, 2, 4, 6, 1, 3, 5, 7);
-    __m256i tmp0 = _mm256_castps_si256(xmm0.r0);
-    __m256i tmp1 = _mm256_castps_si256(xmm0.r1);
-    __m256i tmp2 = _mm256_castps_si256(xmm0.r2);
-    __m256i tmp3 = _mm256_castps_si256(xmm0.r3);
+    __m256i tmp0 = _mm256_castpd_si256(xmm0.r0);
+    __m256i tmp1 = _mm256_castpd_si256(xmm0.r1);
+    __m256i tmp2 = _mm256_castpd_si256(xmm0.r2);
+    __m256i tmp3 = _mm256_castpd_si256(xmm0.r3);
     tmp0 = _mm256_srli_epi64(tmp0, 52);
     tmp1 = _mm256_srli_epi64(tmp1, 52);
     tmp2 = _mm256_srli_epi64(tmp2, 52);
@@ -1043,10 +1043,10 @@ _mm_ge<double, cyme::avx, 4>(simd_trait<double, cyme::avx, 4>::register_type xmm
     __m128i e1 = _mm256_extractf128_si256(tmp21, 0);                //  A B C D in integer 128 bits register
     __m128i e2 = _mm256_extractf128_si256(tmp22, 0);                //  A B C D in integer 128 bits register
     __m128i e3 = _mm256_extractf128_si256(tmp23, 0);                //  A B C D in integer 128 bits register
-    __m256 r0 = _mm256_cvtepi32_pd(e0);                             // A B C D in double 256 bits register
-    __m256 r1 = _mm256_cvtepi32_pd(e1);                             // A B C D in double 256 bits register
-    __m256 r2 = _mm256_cvtepi32_pd(e2);                             // A B C D in double 256 bits register
-    __m256 r3 = _mm256_cvtepi32_pd(e3);                             // A B C D in double 256 bits register
+    __m256d r0 = _mm256_cvtepi32_pd(e0);                             // A B C D in double 256 bits register
+    __m256d r1 = _mm256_cvtepi32_pd(e1);                             // A B C D in double 256 bits register
+    __m256d r2 = _mm256_cvtepi32_pd(e2);                             // A B C D in double 256 bits register
+    __m256d r3 = _mm256_cvtepi32_pd(e3);                             // A B C D in double 256 bits register
 #else
 
     __m128d lo0 = _mm256_extractf128_pd(xmm0.r0, 0);
