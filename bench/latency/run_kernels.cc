@@ -266,6 +266,7 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
             vops::template for_each<run_v2double_looped_karg>::run(std::cout,"default",H,n_inner,v2d1,v2d2,v2d3);
 #endif
 #endif
+/*
     }else if(name.compare("vendor")==0){
 #ifdef __x86_64__
         typedef tvalue_list<op_enum, arith_op::imf> ops;
@@ -291,7 +292,7 @@ void run_looped_karg_kernels(harness &H, std::string const name) {
 #endif
 #endif
         }
-
+*/
     }else{
         std::cerr << " I do not know ! " << std::endl;
     }

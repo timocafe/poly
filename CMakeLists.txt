@@ -28,7 +28,7 @@ include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR})
 include_directories(${PROJECT_SOURCE_DIR}/cyme/include)
 
-set(INTEL_LIB_PATH /nix/store/arxdbxsw23mpah255pkymkcgr43j2d25-generated-env-module-icc/lib/)
+#set(INTEL_LIB_PATH /nix/store/arxdbxsw23mpah255pkymkcgr43j2d25-generated-env-module-icc/lib/)
 
 set(libexp bd10 bd2bd2bd2bd2bd2 bd2bd2bd2bd2ed2 bd2bd2bd2bd2hkth1d2 bd2bd2bd2ed2ed2 bd2bd2bd2ed2hkth1d2 bd2bd2bd2hkth1d2hkth1d2 bd2bd2ed2ed2ed2
 bd2bd2ed2ed2hkth1d2 bd2bd2ed2hkth1d2hkth1d2 bd2bd2hkth1d2hkth1d2hkth1d2 bd2bd4bd4 bd2bd4ed4 bd2bd4hkth1d4 bd2bd4hkth2d4 bd2bd4hkth3d4 bd2ed2ed2ed2ed2
