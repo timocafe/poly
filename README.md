@@ -7,7 +7,7 @@ results, surprise!
 
 At least it works on X86, I did not tested since a long time on Power because I do not have any machine available.
 
-**minimum recquirements:**
+**Minimum Recquirements:**
   - GCC > 4.9 (primary compiler because inlining is better)
   - Intel Compiler (to compare to vendor implementation)
   - Power/X86 system 
@@ -15,7 +15,7 @@ At least it works on X86, I did not tested since a long time on Power because I 
   - cmake > 2.9
   - machine that understand x86/ppc ASM and the inline GCC mode
   
-**arborescence:**
+**Arborescence:**
 ```
   poly -- bench (contains the benchmarks for latency/throughtput/ulp + header for the timer library)
           -- latency (latency benchmark)
@@ -36,14 +36,14 @@ At least it works on X86, I did not tested since a long time on Power because I 
        -- llc (tiny library to measure the throughput, read hardware counter)  
        -- poly (contains the program that generate all variations of the exp implementation for poly/lib directory)
 ```       
-**to compile**
+**Compilation**
 ```
   mkdir b
   cd b
   cmake ..
   make // can be long > 3000 files to compile
 ```
-**to modify**
+**Modification**
 ```
   ccmake .
   POLY_CYME buidl the vectorial version using cyme DSL (ON DEFAULT)
@@ -52,11 +52,11 @@ At least it works on X86, I did not tested since a long time on Power because I 
   CMAKE_BUILD_TYPE DEBUG (default) / RELEASE (mandatory for the perf)
 ```
 
-**to run (all)**
+**Run (all)**
 ```
   run.sh b exp > out // b for the build directory and exp for the results
 ```
-**to run (by hand)**
+**Run (by hand)**
 
 All numbers are fictives
 
