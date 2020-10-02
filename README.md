@@ -65,7 +65,6 @@ All numbers are fictives
    ./b/bench/latency/scalar_vector_latency_ed10 poly // run ed10 for the polynomial scalar and vector version
    ./b/bench/latency/scalar_vector_latency_ed10 exp  // run ed10 for the polynomial scalar and vector version
    ./b/bench/latency/scalar_vector_latency_ed10 tool  // run the 2^k and the boundary
-   ./b/bench/latency/scalar_vector_latency_ed10 vendor  // run the vendor version
    [ewart@super_machine b]$ ./b/bench/latency/scalar_vector_latency_ed10 poly
    scalar::poly 35.0671
    vector::poly 30.2791
