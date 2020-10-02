@@ -1,7 +1,7 @@
 # poly
 
 Let's play with 236 exp(x) implementation. This work is the code of my exponential paper, how make an exponential faster than vendor exp(x).
-All details are in this [https://dl.acm.org/doi/10.1145/3408893!](paper). The idea is to perform factorization for the polynomial evaluation
+All details are in this [paper!](https://dl.acm.org/doi/10.1145/3408893). The idea is to perform factorization for the polynomial evaluation
 of the exp(x) function. For each factor choose a method evaluation and bench. As processors are out of order, you never know what will be  the 
 results, surprise!
 
