@@ -1,9 +1,11 @@
 # poly
 
-Let's play with 236 exp(x) implementation. This work is the code of my exponential paper, how make an exponential faster than vendor.
-All details are in this [!https://dl.acm.org/doi/10.1145/3408893](paper). The idea is to perform factorization for the polynomial evaluation
-of the exp(x) function. For each factor choose a method evaluation and bench. As processor is out of order, you never know what will be the 
-surprise.
+Let's play with 236 exp(x) implementation. This work is the code of my exponential paper, how make an exponential faster than vendor exp(x).
+All details are in this [https://dl.acm.org/doi/10.1145/3408893!](paper). The idea is to perform factorization for the polynomial evaluation
+of the exp(x) function. For each factor choose a method evaluation and bench. As processors are out of order, you never know what will be  the 
+results, surprise!
+
+At least it works on X86, I did not tested since a long time on Power because I do not have any machine available.
 
 **minimum recquirements:**
   - GCC > 4.9 (primary compiler because inlining is better)
